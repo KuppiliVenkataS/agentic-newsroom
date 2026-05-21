@@ -1,0 +1,398 @@
+2026-05-21 16:37:11,875  INFO      run_ingestion  === Ingestion run started: 2026-05-21_15-37-11 ===
+2026-05-21 16:37:11,876  INFO      run_ingestion  Storage root: /Volumes/Mac_extension/projects/OilNewsDB/agentic_newsroom
+2026-05-21 16:37:11,883  INFO      agentic_newsroom.ingestion.rss_fetcher  Fetching RSS: ft_markets
+2026-05-21 16:37:12,124  INFO      httpx  HTTP Request: GET https://www.ft.com/rss/home/uk "HTTP/1.1 200 OK"
+2026-05-21 16:37:12,188  INFO      agentic_newsroom.ingestion.rss_fetcher    ft_markets: 10 new articles
+2026-05-21 16:37:12,188  INFO      agentic_newsroom.ingestion.rss_fetcher  Fetching RSS: ft_companies
+2026-05-21 16:37:12,617  INFO      httpx  HTTP Request: GET https://www.ft.com/companies?format=rss "HTTP/1.1 200 OK"
+2026-05-21 16:37:12,658  INFO      agentic_newsroom.ingestion.rss_fetcher    ft_companies: 20 new articles
+2026-05-21 16:37:12,658  INFO      agentic_newsroom.ingestion.rss_fetcher  Fetching RSS: reuters_business
+2026-05-21 16:37:12,685  WARNING   agentic_newsroom.ingestion.rss_fetcher    Failed to fetch reuters_business: [Errno 8] nodename nor servname provided, or not known
+2026-05-21 16:37:12,685  INFO      agentic_newsroom.ingestion.rss_fetcher  Fetching RSS: reuters_energy
+2026-05-21 16:37:12,702  WARNING   agentic_newsroom.ingestion.rss_fetcher    Failed to fetch reuters_energy: [Errno 8] nodename nor servname provided, or not known
+2026-05-21 16:37:12,702  INFO      agentic_newsroom.ingestion.rss_fetcher  Fetching RSS: bloomberg_energy
+2026-05-21 16:37:13,055  INFO      httpx  HTTP Request: GET https://feeds.bloomberg.com/energy/news.rss "HTTP/1.1 404 Not Found"
+2026-05-21 16:37:13,057  WARNING   agentic_newsroom.ingestion.rss_fetcher    Failed to fetch bloomberg_energy: Client error '404 Not Found' for url 'https://feeds.bloomberg.com/energy/news.rss'
+For more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/404
+2026-05-21 16:37:13,058  INFO      agentic_newsroom.ingestion.rss_fetcher  Fetching RSS: oilprice_news
+2026-05-21 16:37:13,836  INFO      httpx  HTTP Request: GET https://oilprice.com/rss/main "HTTP/1.1 200 OK"
+2026-05-21 16:37:13,893  INFO      agentic_newsroom.ingestion.rss_fetcher    oilprice_news: 15 new articles
+2026-05-21 16:37:13,893  INFO      agentic_newsroom.ingestion.rss_fetcher  Fetching RSS: rigzone
+2026-05-21 16:37:14,304  INFO      httpx  HTTP Request: GET https://www.rigzone.com/news/rss/rigzone_latest.aspx "HTTP/1.1 200 OK"
+2026-05-21 16:37:14,384  INFO      agentic_newsroom.ingestion.rss_fetcher    rigzone: 20 new articles
+2026-05-21 16:37:14,384  INFO      agentic_newsroom.ingestion.rss_fetcher  Fetching RSS: platts_oil
+2026-05-21 16:37:14,457  INFO      httpx  HTTP Request: GET https://www.spglobal.com/commodityinsights/en/rss-feed/oil "HTTP/1.1 403 Forbidden"
+2026-05-21 16:37:14,457  WARNING   agentic_newsroom.ingestion.rss_fetcher    Failed to fetch platts_oil: Client error '403 Forbidden' for url 'https://www.spglobal.com/commodityinsights/en/rss-feed/oil'
+For more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/403
+2026-05-21 16:37:14,457  INFO      agentic_newsroom.ingestion.rss_fetcher  Fetching RSS: eia_petroleum_weekly
+2026-05-21 16:37:14,694  INFO      httpx  HTTP Request: GET https://www.eia.gov/petroleum/weekly/includes/archive.php?format=rss "HTTP/1.1 200 OK"
+2026-05-21 16:37:14,930  INFO      agentic_newsroom.ingestion.rss_fetcher    eia_petroleum_weekly: 0 new articles
+2026-05-21 16:37:14,930  INFO      agentic_newsroom.ingestion.rss_fetcher  Fetching RSS: opec_news
+2026-05-21 16:37:15,005  INFO      httpx  HTTP Request: GET https://www.opec.org/opec_web/en/press_room/4_rss_latest.htm "HTTP/1.1 403 Forbidden"
+2026-05-21 16:37:15,006  WARNING   agentic_newsroom.ingestion.rss_fetcher    Failed to fetch opec_news: Client error '403 Forbidden' for url 'https://www.opec.org/opec_web/en/press_room/4_rss_latest.htm'
+For more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/403
+2026-05-21 16:37:15,006  INFO      run_ingestion  RSS total new articles: 65
+2026-05-21 16:37:15,006  INFO      agentic_newsroom.ingestion.eia_fetcher  Fetching EIA: wti_spot (PET.RWTC.D)
+2026-05-21 16:37:15,992  INFO      httpx  HTTP Request: GET https://api.eia.gov/v2/seriesid/PET.RWTC.D?api_key=8rXxybukI1E0yjQxUVFS0JPNL4QtmQiQrceec1oD&data%5B0%5D=value&sort%5B0%5D%5Bcolumn%5D=period&sort%5B0%5D%5Bdirection%5D=desc&length=10&offset=0 "HTTP/1.1 200 OK"
+2026-05-21 16:37:15,997  INFO      agentic_newsroom.ingestion.eia_fetcher    wti_spot: 10 data points
+2026-05-21 16:37:15,997  INFO      agentic_newsroom.ingestion.eia_fetcher  Fetching EIA: brent_spot (PET.RBRTE.D)
+2026-05-21 16:37:17,017  INFO      httpx  HTTP Request: GET https://api.eia.gov/v2/seriesid/PET.RBRTE.D?api_key=8rXxybukI1E0yjQxUVFS0JPNL4QtmQiQrceec1oD&data%5B0%5D=value&sort%5B0%5D%5Bcolumn%5D=period&sort%5B0%5D%5Bdirection%5D=desc&length=10&offset=0 "HTTP/1.1 200 OK"
+2026-05-21 16:37:17,019  INFO      agentic_newsroom.ingestion.eia_fetcher    brent_spot: 10 data points
+2026-05-21 16:37:17,019  INFO      agentic_newsroom.ingestion.eia_fetcher  Fetching EIA: us_inventory (PET.WCESTUS1.W)
+2026-05-21 16:37:18,554  INFO      httpx  HTTP Request: GET https://api.eia.gov/v2/seriesid/PET.WCESTUS1.W?api_key=8rXxybukI1E0yjQxUVFS0JPNL4QtmQiQrceec1oD&data%5B0%5D=value&sort%5B0%5D%5Bcolumn%5D=period&sort%5B0%5D%5Bdirection%5D=desc&length=10&offset=0 "HTTP/1.1 200 OK"
+2026-05-21 16:37:18,556  INFO      agentic_newsroom.ingestion.eia_fetcher    us_inventory: 10 data points
+2026-05-21 16:37:18,556  INFO      agentic_newsroom.ingestion.eia_fetcher  Fetching EIA: us_production (PET.WCRFPUS2.W)
+2026-05-21 16:37:20,089  INFO      httpx  HTTP Request: GET https://api.eia.gov/v2/seriesid/PET.WCRFPUS2.W?api_key=8rXxybukI1E0yjQxUVFS0JPNL4QtmQiQrceec1oD&data%5B0%5D=value&sort%5B0%5D%5Bcolumn%5D=period&sort%5B0%5D%5Bdirection%5D=desc&length=10&offset=0 "HTTP/1.1 200 OK"
+2026-05-21 16:37:20,091  INFO      agentic_newsroom.ingestion.eia_fetcher    us_production: 10 data points
+2026-05-21 16:37:20,091  INFO      run_ingestion  EIA data points: 40
+2026-05-21 16:37:20,093  ERROR     run_ingestion  Archive write failed: [Errno 13] Permission denied: '/Volumes/projects'
+2026-05-21 16:55:14,631  INFO      run_ingestion  === Ingestion run started: 2026-05-21_15-55-14 ===
+2026-05-21 16:55:14,635  INFO      run_ingestion  Storage root: /Volumes/Mac_extension/projects/OilNewsDB/agentic_newsroom
+2026-05-21 16:55:14,638  INFO      agentic_newsroom.ingestion.rss_fetcher  Fetching RSS: ft_markets
+2026-05-21 16:55:14,873  INFO      httpx  HTTP Request: GET https://www.ft.com/rss/home/uk "HTTP/1.1 200 OK"
+2026-05-21 16:55:14,948  INFO      agentic_newsroom.ingestion.rss_fetcher    ft_markets: 2 new articles
+2026-05-21 16:55:14,948  INFO      agentic_newsroom.ingestion.rss_fetcher  Fetching RSS: ft_companies
+2026-05-21 16:55:15,149  INFO      httpx  HTTP Request: GET https://www.ft.com/companies?format=rss "HTTP/1.1 200 OK"
+2026-05-21 16:55:15,166  INFO      agentic_newsroom.ingestion.rss_fetcher    ft_companies: 2 new articles
+2026-05-21 16:55:15,167  INFO      agentic_newsroom.ingestion.rss_fetcher  Fetching RSS: reuters_business
+2026-05-21 16:55:15,202  WARNING   agentic_newsroom.ingestion.rss_fetcher    Failed to fetch reuters_business: [Errno 8] nodename nor servname provided, or not known
+2026-05-21 16:55:15,202  INFO      agentic_newsroom.ingestion.rss_fetcher  Fetching RSS: reuters_energy
+2026-05-21 16:55:15,224  WARNING   agentic_newsroom.ingestion.rss_fetcher    Failed to fetch reuters_energy: [Errno 8] nodename nor servname provided, or not known
+2026-05-21 16:55:15,224  INFO      agentic_newsroom.ingestion.rss_fetcher  Fetching RSS: bloomberg_energy
+2026-05-21 16:55:15,620  INFO      httpx  HTTP Request: GET https://feeds.bloomberg.com/energy/news.rss "HTTP/1.1 404 Not Found"
+2026-05-21 16:55:15,622  WARNING   agentic_newsroom.ingestion.rss_fetcher    Failed to fetch bloomberg_energy: Client error '404 Not Found' for url 'https://feeds.bloomberg.com/energy/news.rss'
+For more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/404
+2026-05-21 16:55:15,622  INFO      agentic_newsroom.ingestion.rss_fetcher  Fetching RSS: oilprice_news
+2026-05-21 16:55:16,365  INFO      httpx  HTTP Request: GET https://oilprice.com/rss/main "HTTP/1.1 200 OK"
+2026-05-21 16:55:16,370  INFO      agentic_newsroom.ingestion.rss_fetcher    oilprice_news: 0 new articles
+2026-05-21 16:55:16,370  INFO      agentic_newsroom.ingestion.rss_fetcher  Fetching RSS: rigzone
+2026-05-21 16:55:16,793  INFO      httpx  HTTP Request: GET https://www.rigzone.com/news/rss/rigzone_latest.aspx "HTTP/1.1 200 OK"
+2026-05-21 16:55:16,803  INFO      agentic_newsroom.ingestion.rss_fetcher    rigzone: 0 new articles
+2026-05-21 16:55:16,803  INFO      agentic_newsroom.ingestion.rss_fetcher  Fetching RSS: platts_oil
+2026-05-21 16:55:16,885  INFO      httpx  HTTP Request: GET https://www.spglobal.com/commodityinsights/en/rss-feed/oil "HTTP/1.1 403 Forbidden"
+2026-05-21 16:55:16,886  WARNING   agentic_newsroom.ingestion.rss_fetcher    Failed to fetch platts_oil: Client error '403 Forbidden' for url 'https://www.spglobal.com/commodityinsights/en/rss-feed/oil'
+For more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/403
+2026-05-21 16:55:16,886  INFO      agentic_newsroom.ingestion.rss_fetcher  Fetching RSS: eia_petroleum_weekly
+2026-05-21 16:55:17,142  INFO      httpx  HTTP Request: GET https://www.eia.gov/petroleum/weekly/includes/archive.php?format=rss "HTTP/1.1 200 OK"
+2026-05-21 16:55:17,376  INFO      agentic_newsroom.ingestion.rss_fetcher    eia_petroleum_weekly: 0 new articles
+2026-05-21 16:55:17,376  INFO      agentic_newsroom.ingestion.rss_fetcher  Fetching RSS: opec_news
+2026-05-21 16:55:17,452  INFO      httpx  HTTP Request: GET https://www.opec.org/opec_web/en/press_room/4_rss_latest.htm "HTTP/1.1 403 Forbidden"
+2026-05-21 16:55:17,452  WARNING   agentic_newsroom.ingestion.rss_fetcher    Failed to fetch opec_news: Client error '403 Forbidden' for url 'https://www.opec.org/opec_web/en/press_room/4_rss_latest.htm'
+For more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/403
+2026-05-21 16:55:17,452  INFO      run_ingestion  RSS total new articles: 4
+2026-05-21 16:55:17,452  INFO      agentic_newsroom.ingestion.eia_fetcher  Fetching EIA: wti_spot (PET.RWTC.D)
+2026-05-21 16:55:18,426  INFO      httpx  HTTP Request: GET https://api.eia.gov/v2/seriesid/PET.RWTC.D?api_key=8rXxybukI1E0yjQxUVFS0JPNL4QtmQiQrceec1oD&data%5B0%5D=value&sort%5B0%5D%5Bcolumn%5D=period&sort%5B0%5D%5Bdirection%5D=desc&length=10&offset=0 "HTTP/1.1 200 OK"
+2026-05-21 16:55:18,428  INFO      agentic_newsroom.ingestion.eia_fetcher    wti_spot: 10 data points
+2026-05-21 16:55:18,428  INFO      agentic_newsroom.ingestion.eia_fetcher  Fetching EIA: brent_spot (PET.RBRTE.D)
+2026-05-21 16:55:19,564  INFO      httpx  HTTP Request: GET https://api.eia.gov/v2/seriesid/PET.RBRTE.D?api_key=8rXxybukI1E0yjQxUVFS0JPNL4QtmQiQrceec1oD&data%5B0%5D=value&sort%5B0%5D%5Bcolumn%5D=period&sort%5B0%5D%5Bdirection%5D=desc&length=10&offset=0 "HTTP/1.1 200 OK"
+2026-05-21 16:55:19,565  INFO      agentic_newsroom.ingestion.eia_fetcher    brent_spot: 10 data points
+2026-05-21 16:55:19,565  INFO      agentic_newsroom.ingestion.eia_fetcher  Fetching EIA: us_inventory (PET.WCESTUS1.W)
+2026-05-21 16:55:21,238  INFO      httpx  HTTP Request: GET https://api.eia.gov/v2/seriesid/PET.WCESTUS1.W?api_key=8rXxybukI1E0yjQxUVFS0JPNL4QtmQiQrceec1oD&data%5B0%5D=value&sort%5B0%5D%5Bcolumn%5D=period&sort%5B0%5D%5Bdirection%5D=desc&length=10&offset=0 "HTTP/1.1 200 OK"
+2026-05-21 16:55:21,240  INFO      agentic_newsroom.ingestion.eia_fetcher    us_inventory: 10 data points
+2026-05-21 16:55:21,240  INFO      agentic_newsroom.ingestion.eia_fetcher  Fetching EIA: us_production (PET.WCRFPUS2.W)
+2026-05-21 16:55:22,725  INFO      httpx  HTTP Request: GET https://api.eia.gov/v2/seriesid/PET.WCRFPUS2.W?api_key=8rXxybukI1E0yjQxUVFS0JPNL4QtmQiQrceec1oD&data%5B0%5D=value&sort%5B0%5D%5Bcolumn%5D=period&sort%5B0%5D%5Bdirection%5D=desc&length=10&offset=0 "HTTP/1.1 200 OK"
+2026-05-21 16:55:22,727  INFO      agentic_newsroom.ingestion.eia_fetcher    us_production: 10 data points
+2026-05-21 16:55:22,727  INFO      run_ingestion  EIA data points: 40
+2026-05-21 16:55:22,730  INFO      agentic_newsroom.ingestion.archive_writer  Saved run to /Volumes/Mac_extension/projects/OilNewsDB/agentic_newsroom/raw/2026/05/2026-05-21_15-55-14_run.json (4 articles, 40 data points)
+2026-05-21 16:55:22,731  INFO      agentic_newsroom.ingestion.audit_logger  Audit written: status=ok, articles=4
+2026-05-21 16:55:22,732  INFO      run_ingestion  === Run complete: ok | 4 articles | 40 data points ===
+2026-05-21 17:00:07,701  INFO      run_ingestion  === Ingestion run started: 2026-05-21_16-00-07 ===
+2026-05-21 17:00:07,719  INFO      run_ingestion  Storage root: /Volumes/Mac_extension/projects/OilNewsDB/agentic_newsroom
+2026-05-21 17:00:07,731  INFO      agentic_newsroom.ingestion.rss_fetcher  Fetching RSS: ft_markets
+2026-05-21 17:00:07,952  INFO      httpx  HTTP Request: GET https://www.ft.com/rss/home/uk "HTTP/1.1 200 OK"
+2026-05-21 17:00:07,981  INFO      agentic_newsroom.ingestion.rss_fetcher    ft_markets: 0 new articles
+2026-05-21 17:00:07,981  INFO      agentic_newsroom.ingestion.rss_fetcher  Fetching RSS: ft_companies
+2026-05-21 17:00:08,193  INFO      httpx  HTTP Request: GET https://www.ft.com/companies?format=rss "HTTP/1.1 200 OK"
+2026-05-21 17:00:08,205  INFO      agentic_newsroom.ingestion.rss_fetcher    ft_companies: 0 new articles
+2026-05-21 17:00:08,205  INFO      agentic_newsroom.ingestion.rss_fetcher  Fetching RSS: reuters_business
+2026-05-21 17:00:08,236  WARNING   agentic_newsroom.ingestion.rss_fetcher    Failed to fetch reuters_business: [Errno 8] nodename nor servname provided, or not known
+2026-05-21 17:00:08,236  INFO      agentic_newsroom.ingestion.rss_fetcher  Fetching RSS: reuters_energy
+2026-05-21 17:00:08,259  WARNING   agentic_newsroom.ingestion.rss_fetcher    Failed to fetch reuters_energy: [Errno 8] nodename nor servname provided, or not known
+2026-05-21 17:00:08,259  INFO      agentic_newsroom.ingestion.rss_fetcher  Fetching RSS: bloomberg_energy
+2026-05-21 17:00:08,684  INFO      httpx  HTTP Request: GET https://feeds.bloomberg.com/energy/news.rss "HTTP/1.1 404 Not Found"
+2026-05-21 17:00:08,686  WARNING   agentic_newsroom.ingestion.rss_fetcher    Failed to fetch bloomberg_energy: Client error '404 Not Found' for url 'https://feeds.bloomberg.com/energy/news.rss'
+For more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/404
+2026-05-21 17:00:08,686  INFO      agentic_newsroom.ingestion.rss_fetcher  Fetching RSS: oilprice_news
+2026-05-21 17:00:09,509  INFO      httpx  HTTP Request: GET https://oilprice.com/rss/main "HTTP/1.1 200 OK"
+2026-05-21 17:00:09,624  INFO      agentic_newsroom.ingestion.rss_fetcher    oilprice_news: 1 new articles
+2026-05-21 17:00:09,625  INFO      agentic_newsroom.ingestion.rss_fetcher  Fetching RSS: rigzone
+2026-05-21 17:00:10,034  INFO      httpx  HTTP Request: GET https://www.rigzone.com/news/rss/rigzone_latest.aspx "HTTP/1.1 200 OK"
+2026-05-21 17:00:10,045  INFO      agentic_newsroom.ingestion.rss_fetcher    rigzone: 0 new articles
+2026-05-21 17:00:10,045  INFO      agentic_newsroom.ingestion.rss_fetcher  Fetching RSS: platts_oil
+2026-05-21 17:00:10,130  INFO      httpx  HTTP Request: GET https://www.spglobal.com/commodityinsights/en/rss-feed/oil "HTTP/1.1 403 Forbidden"
+2026-05-21 17:00:10,131  WARNING   agentic_newsroom.ingestion.rss_fetcher    Failed to fetch platts_oil: Client error '403 Forbidden' for url 'https://www.spglobal.com/commodityinsights/en/rss-feed/oil'
+For more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/403
+2026-05-21 17:00:10,131  INFO      agentic_newsroom.ingestion.rss_fetcher  Fetching RSS: eia_petroleum_weekly
+2026-05-21 17:00:10,367  INFO      httpx  HTTP Request: GET https://www.eia.gov/petroleum/weekly/includes/archive.php?format=rss "HTTP/1.1 200 OK"
+2026-05-21 17:00:10,602  INFO      agentic_newsroom.ingestion.rss_fetcher    eia_petroleum_weekly: 0 new articles
+2026-05-21 17:00:10,602  INFO      agentic_newsroom.ingestion.rss_fetcher  Fetching RSS: opec_news
+2026-05-21 17:00:10,675  INFO      httpx  HTTP Request: GET https://www.opec.org/opec_web/en/press_room/4_rss_latest.htm "HTTP/1.1 403 Forbidden"
+2026-05-21 17:00:10,675  WARNING   agentic_newsroom.ingestion.rss_fetcher    Failed to fetch opec_news: Client error '403 Forbidden' for url 'https://www.opec.org/opec_web/en/press_room/4_rss_latest.htm'
+For more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/403
+2026-05-21 17:00:10,675  INFO      run_ingestion  RSS total new articles: 1
+2026-05-21 17:00:10,675  INFO      agentic_newsroom.ingestion.eia_fetcher  Fetching EIA: wti_spot (PET.RWTC.D)
+2026-05-21 17:00:17,648  INFO      httpx  HTTP Request: GET https://api.eia.gov/v2/seriesid/PET.RWTC.D?api_key=8rXxybukI1E0yjQxUVFS0JPNL4QtmQiQrceec1oD&data%5B0%5D=value&sort%5B0%5D%5Bcolumn%5D=period&sort%5B0%5D%5Bdirection%5D=desc&length=10&offset=0 "HTTP/1.1 200 OK"
+2026-05-21 17:00:17,649  INFO      agentic_newsroom.ingestion.eia_fetcher    wti_spot: 10 data points
+2026-05-21 17:00:17,649  INFO      agentic_newsroom.ingestion.eia_fetcher  Fetching EIA: brent_spot (PET.RBRTE.D)
+2026-05-21 17:00:23,894  INFO      httpx  HTTP Request: GET https://api.eia.gov/v2/seriesid/PET.RBRTE.D?api_key=8rXxybukI1E0yjQxUVFS0JPNL4QtmQiQrceec1oD&data%5B0%5D=value&sort%5B0%5D%5Bcolumn%5D=period&sort%5B0%5D%5Bdirection%5D=desc&length=10&offset=0 "HTTP/1.1 200 OK"
+2026-05-21 17:00:23,961  INFO      agentic_newsroom.ingestion.eia_fetcher    brent_spot: 10 data points
+2026-05-21 17:00:23,961  INFO      agentic_newsroom.ingestion.eia_fetcher  Fetching EIA: us_inventory (PET.WCESTUS1.W)
+2026-05-21 17:00:30,853  INFO      httpx  HTTP Request: GET https://api.eia.gov/v2/seriesid/PET.WCESTUS1.W?api_key=8rXxybukI1E0yjQxUVFS0JPNL4QtmQiQrceec1oD&data%5B0%5D=value&sort%5B0%5D%5Bcolumn%5D=period&sort%5B0%5D%5Bdirection%5D=desc&length=10&offset=0 "HTTP/1.1 200 OK"
+2026-05-21 17:00:30,855  INFO      agentic_newsroom.ingestion.eia_fetcher    us_inventory: 10 data points
+2026-05-21 17:00:30,855  INFO      agentic_newsroom.ingestion.eia_fetcher  Fetching EIA: us_production (PET.WCRFPUS2.W)
+2026-05-21 17:00:38,227  INFO      httpx  HTTP Request: GET https://api.eia.gov/v2/seriesid/PET.WCRFPUS2.W?api_key=8rXxybukI1E0yjQxUVFS0JPNL4QtmQiQrceec1oD&data%5B0%5D=value&sort%5B0%5D%5Bcolumn%5D=period&sort%5B0%5D%5Bdirection%5D=desc&length=10&offset=0 "HTTP/1.1 200 OK"
+2026-05-21 17:00:38,229  INFO      agentic_newsroom.ingestion.eia_fetcher    us_production: 10 data points
+2026-05-21 17:00:38,229  INFO      run_ingestion  EIA data points: 40
+2026-05-21 17:00:38,558  INFO      agentic_newsroom.ingestion.archive_writer  Saved run to /Volumes/Mac_extension/projects/OilNewsDB/agentic_newsroom/raw/2026/05/2026-05-21_16-00-07_run.json (1 articles, 40 data points)
+2026-05-21 17:00:38,559  INFO      agentic_newsroom.ingestion.audit_logger  Audit written: status=ok, articles=1
+2026-05-21 17:00:38,559  INFO      run_ingestion  === Run complete: ok | 1 articles | 40 data points ===
+2026-05-21 17:02:03,671  INFO      run_ingestion  === Ingestion run started: 2026-05-21_16-02-03 ===
+2026-05-21 17:02:03,681  INFO      run_ingestion  Storage root: /Volumes/Mac_extension/projects/OilNewsDB/agentic_newsroom
+2026-05-21 17:02:03,688  INFO      agentic_newsroom.ingestion.rss_fetcher  Fetching RSS: ft_markets
+2026-05-21 17:02:03,925  INFO      httpx  HTTP Request: GET https://www.ft.com/rss/home/uk "HTTP/1.1 200 OK"
+2026-05-21 17:02:03,942  INFO      agentic_newsroom.ingestion.rss_fetcher    ft_markets: 0 new articles
+2026-05-21 17:02:03,942  INFO      agentic_newsroom.ingestion.rss_fetcher  Fetching RSS: ft_companies
+2026-05-21 17:02:04,350  INFO      httpx  HTTP Request: GET https://www.ft.com/companies?format=rss "HTTP/1.1 200 OK"
+2026-05-21 17:02:04,364  INFO      agentic_newsroom.ingestion.rss_fetcher    ft_companies: 0 new articles
+2026-05-21 17:02:04,364  INFO      agentic_newsroom.ingestion.rss_fetcher  Fetching RSS: reuters_business
+2026-05-21 17:02:04,403  WARNING   agentic_newsroom.ingestion.rss_fetcher    Failed to fetch reuters_business: [Errno 8] nodename nor servname provided, or not known
+2026-05-21 17:02:04,403  INFO      agentic_newsroom.ingestion.rss_fetcher  Fetching RSS: reuters_energy
+2026-05-21 17:02:04,426  WARNING   agentic_newsroom.ingestion.rss_fetcher    Failed to fetch reuters_energy: [Errno 8] nodename nor servname provided, or not known
+2026-05-21 17:02:04,426  INFO      agentic_newsroom.ingestion.rss_fetcher  Fetching RSS: bloomberg_energy
+2026-05-21 17:02:04,885  INFO      httpx  HTTP Request: GET https://feeds.bloomberg.com/energy/news.rss "HTTP/1.1 404 Not Found"
+2026-05-21 17:02:04,887  WARNING   agentic_newsroom.ingestion.rss_fetcher    Failed to fetch bloomberg_energy: Client error '404 Not Found' for url 'https://feeds.bloomberg.com/energy/news.rss'
+For more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/404
+2026-05-21 17:02:04,887  INFO      agentic_newsroom.ingestion.rss_fetcher  Fetching RSS: oilprice_news
+2026-05-21 17:02:05,893  INFO      httpx  HTTP Request: GET https://oilprice.com/rss/main "HTTP/1.1 200 OK"
+2026-05-21 17:02:05,906  INFO      agentic_newsroom.ingestion.rss_fetcher    oilprice_news: 0 new articles
+2026-05-21 17:02:05,906  INFO      agentic_newsroom.ingestion.rss_fetcher  Fetching RSS: rigzone
+2026-05-21 17:02:06,337  INFO      httpx  HTTP Request: GET https://www.rigzone.com/news/rss/rigzone_latest.aspx "HTTP/1.1 200 OK"
+2026-05-21 17:02:06,347  INFO      agentic_newsroom.ingestion.rss_fetcher    rigzone: 0 new articles
+2026-05-21 17:02:06,347  INFO      agentic_newsroom.ingestion.rss_fetcher  Fetching RSS: platts_oil
+2026-05-21 17:02:06,437  INFO      httpx  HTTP Request: GET https://www.spglobal.com/commodityinsights/en/rss-feed/oil "HTTP/1.1 403 Forbidden"
+2026-05-21 17:02:06,437  WARNING   agentic_newsroom.ingestion.rss_fetcher    Failed to fetch platts_oil: Client error '403 Forbidden' for url 'https://www.spglobal.com/commodityinsights/en/rss-feed/oil'
+For more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/403
+2026-05-21 17:02:06,437  INFO      agentic_newsroom.ingestion.rss_fetcher  Fetching RSS: eia_petroleum_weekly
+2026-05-21 17:02:06,691  INFO      httpx  HTTP Request: GET https://www.eia.gov/petroleum/weekly/includes/archive.php?format=rss "HTTP/1.1 200 OK"
+2026-05-21 17:02:06,929  INFO      agentic_newsroom.ingestion.rss_fetcher    eia_petroleum_weekly: 0 new articles
+2026-05-21 17:02:06,929  INFO      agentic_newsroom.ingestion.rss_fetcher  Fetching RSS: opec_news
+2026-05-21 17:02:07,009  INFO      httpx  HTTP Request: GET https://www.opec.org/opec_web/en/press_room/4_rss_latest.htm "HTTP/1.1 403 Forbidden"
+2026-05-21 17:02:07,009  WARNING   agentic_newsroom.ingestion.rss_fetcher    Failed to fetch opec_news: Client error '403 Forbidden' for url 'https://www.opec.org/opec_web/en/press_room/4_rss_latest.htm'
+For more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/403
+2026-05-21 17:02:07,009  INFO      run_ingestion  RSS total new articles: 0
+2026-05-21 17:02:07,009  INFO      agentic_newsroom.ingestion.eia_fetcher  Fetching EIA: wti_spot (PET.RWTC.D)
+2026-05-21 17:02:09,400  INFO      httpx  HTTP Request: GET https://api.eia.gov/v2/seriesid/PET.RWTC.D?api_key=8rXxybukI1E0yjQxUVFS0JPNL4QtmQiQrceec1oD&data%5B0%5D=value&sort%5B0%5D%5Bcolumn%5D=period&sort%5B0%5D%5Bdirection%5D=desc&length=10&offset=0 "HTTP/1.1 200 OK"
+2026-05-21 17:02:09,402  INFO      agentic_newsroom.ingestion.eia_fetcher    wti_spot: 10 data points
+2026-05-21 17:02:09,402  INFO      agentic_newsroom.ingestion.eia_fetcher  Fetching EIA: brent_spot (PET.RBRTE.D)
+2026-05-21 17:02:10,505  INFO      httpx  HTTP Request: GET https://api.eia.gov/v2/seriesid/PET.RBRTE.D?api_key=8rXxybukI1E0yjQxUVFS0JPNL4QtmQiQrceec1oD&data%5B0%5D=value&sort%5B0%5D%5Bcolumn%5D=period&sort%5B0%5D%5Bdirection%5D=desc&length=10&offset=0 "HTTP/1.1 200 OK"
+2026-05-21 17:02:10,506  INFO      agentic_newsroom.ingestion.eia_fetcher    brent_spot: 10 data points
+2026-05-21 17:02:10,506  INFO      agentic_newsroom.ingestion.eia_fetcher  Fetching EIA: us_inventory (PET.WCESTUS1.W)
+2026-05-21 17:02:13,460  INFO      httpx  HTTP Request: GET https://api.eia.gov/v2/seriesid/PET.WCESTUS1.W?api_key=8rXxybukI1E0yjQxUVFS0JPNL4QtmQiQrceec1oD&data%5B0%5D=value&sort%5B0%5D%5Bcolumn%5D=period&sort%5B0%5D%5Bdirection%5D=desc&length=10&offset=0 "HTTP/1.1 200 OK"
+2026-05-21 17:02:13,461  INFO      agentic_newsroom.ingestion.eia_fetcher    us_inventory: 10 data points
+2026-05-21 17:02:13,461  INFO      agentic_newsroom.ingestion.eia_fetcher  Fetching EIA: us_production (PET.WCRFPUS2.W)
+2026-05-21 17:02:16,842  INFO      httpx  HTTP Request: GET https://api.eia.gov/v2/seriesid/PET.WCRFPUS2.W?api_key=8rXxybukI1E0yjQxUVFS0JPNL4QtmQiQrceec1oD&data%5B0%5D=value&sort%5B0%5D%5Bcolumn%5D=period&sort%5B0%5D%5Bdirection%5D=desc&length=10&offset=0 "HTTP/1.1 200 OK"
+2026-05-21 17:02:16,844  INFO      agentic_newsroom.ingestion.eia_fetcher    us_production: 10 data points
+2026-05-21 17:02:16,845  INFO      run_ingestion  EIA data points: 40
+2026-05-21 17:02:16,861  INFO      agentic_newsroom.ingestion.archive_writer  Saved run to /Volumes/Mac_extension/projects/OilNewsDB/agentic_newsroom/raw/2026/05/2026-05-21_16-02-03_run.json (0 articles, 40 data points)
+2026-05-21 17:02:16,863  INFO      agentic_newsroom.ingestion.audit_logger  Audit written: status=ok, articles=0
+2026-05-21 17:02:16,863  INFO      run_ingestion  === Run complete: ok | 0 articles | 40 data points ===
+2026-05-21 17:03:41,992  INFO      run_ingestion  === Ingestion run started: 2026-05-21_16-03-41 ===
+2026-05-21 17:03:41,993  INFO      run_ingestion  Storage root: /Volumes/Mac_extension/projects/OilNewsDB/agentic_newsroom
+2026-05-21 17:03:41,993  INFO      agentic_newsroom.ingestion.rss_fetcher  Fetching RSS: ft_markets
+2026-05-21 17:03:42,187  INFO      httpx  HTTP Request: GET https://www.ft.com/rss/home/uk "HTTP/1.1 200 OK"
+2026-05-21 17:03:42,213  INFO      agentic_newsroom.ingestion.rss_fetcher    ft_markets: 0 new articles
+2026-05-21 17:03:42,214  INFO      agentic_newsroom.ingestion.rss_fetcher  Fetching RSS: ft_companies
+2026-05-21 17:03:42,450  INFO      httpx  HTTP Request: GET https://www.ft.com/companies?format=rss "HTTP/1.1 200 OK"
+2026-05-21 17:03:42,463  INFO      agentic_newsroom.ingestion.rss_fetcher    ft_companies: 0 new articles
+2026-05-21 17:03:42,464  INFO      agentic_newsroom.ingestion.rss_fetcher  Fetching RSS: reuters_business
+2026-05-21 17:03:42,495  WARNING   agentic_newsroom.ingestion.rss_fetcher    Failed to fetch reuters_business: [Errno 8] nodename nor servname provided, or not known
+2026-05-21 17:03:42,495  INFO      agentic_newsroom.ingestion.rss_fetcher  Fetching RSS: reuters_energy
+2026-05-21 17:03:42,518  WARNING   agentic_newsroom.ingestion.rss_fetcher    Failed to fetch reuters_energy: [Errno 8] nodename nor servname provided, or not known
+2026-05-21 17:03:42,518  INFO      agentic_newsroom.ingestion.rss_fetcher  Fetching RSS: bloomberg_energy
+2026-05-21 17:03:42,983  INFO      httpx  HTTP Request: GET https://feeds.bloomberg.com/energy/news.rss "HTTP/1.1 404 Not Found"
+2026-05-21 17:03:42,985  WARNING   agentic_newsroom.ingestion.rss_fetcher    Failed to fetch bloomberg_energy: Client error '404 Not Found' for url 'https://feeds.bloomberg.com/energy/news.rss'
+For more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/404
+2026-05-21 17:03:42,985  INFO      agentic_newsroom.ingestion.rss_fetcher  Fetching RSS: oilprice_news
+2026-05-21 17:03:43,711  INFO      httpx  HTTP Request: GET https://oilprice.com/rss/main "HTTP/1.1 200 OK"
+2026-05-21 17:03:43,721  INFO      agentic_newsroom.ingestion.rss_fetcher    oilprice_news: 0 new articles
+2026-05-21 17:03:43,721  INFO      agentic_newsroom.ingestion.rss_fetcher  Fetching RSS: rigzone
+2026-05-21 17:03:44,139  INFO      httpx  HTTP Request: GET https://www.rigzone.com/news/rss/rigzone_latest.aspx "HTTP/1.1 200 OK"
+2026-05-21 17:03:44,149  INFO      agentic_newsroom.ingestion.rss_fetcher    rigzone: 0 new articles
+2026-05-21 17:03:44,149  INFO      agentic_newsroom.ingestion.rss_fetcher  Fetching RSS: platts_oil
+2026-05-21 17:03:44,231  INFO      httpx  HTTP Request: GET https://www.spglobal.com/commodityinsights/en/rss-feed/oil "HTTP/1.1 403 Forbidden"
+2026-05-21 17:03:44,231  WARNING   agentic_newsroom.ingestion.rss_fetcher    Failed to fetch platts_oil: Client error '403 Forbidden' for url 'https://www.spglobal.com/commodityinsights/en/rss-feed/oil'
+For more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/403
+2026-05-21 17:03:44,231  INFO      agentic_newsroom.ingestion.rss_fetcher  Fetching RSS: eia_petroleum_weekly
+2026-05-21 17:03:44,451  INFO      httpx  HTTP Request: GET https://www.eia.gov/petroleum/weekly/includes/archive.php?format=rss "HTTP/1.1 200 OK"
+2026-05-21 17:03:44,687  INFO      agentic_newsroom.ingestion.rss_fetcher    eia_petroleum_weekly: 0 new articles
+2026-05-21 17:03:44,687  INFO      agentic_newsroom.ingestion.rss_fetcher  Fetching RSS: opec_news
+2026-05-21 17:03:44,751  INFO      httpx  HTTP Request: GET https://www.opec.org/opec_web/en/press_room/4_rss_latest.htm "HTTP/1.1 403 Forbidden"
+2026-05-21 17:03:44,751  WARNING   agentic_newsroom.ingestion.rss_fetcher    Failed to fetch opec_news: Client error '403 Forbidden' for url 'https://www.opec.org/opec_web/en/press_room/4_rss_latest.htm'
+For more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/403
+2026-05-21 17:03:44,751  INFO      run_ingestion  RSS total new articles: 0
+2026-05-21 17:03:44,751  INFO      agentic_newsroom.ingestion.eia_fetcher  Fetching EIA: wti_spot (PET.RWTC.D)
+2026-05-21 17:03:46,953  INFO      httpx  HTTP Request: GET https://api.eia.gov/v2/seriesid/PET.RWTC.D?api_key=8rXxybukI1E0yjQxUVFS0JPNL4QtmQiQrceec1oD&data%5B0%5D=value&sort%5B0%5D%5Bcolumn%5D=period&sort%5B0%5D%5Bdirection%5D=desc&length=10&offset=0 "HTTP/1.1 200 OK"
+2026-05-21 17:03:46,955  INFO      agentic_newsroom.ingestion.eia_fetcher    wti_spot: 10 data points
+2026-05-21 17:03:46,955  INFO      agentic_newsroom.ingestion.eia_fetcher  Fetching EIA: brent_spot (PET.RBRTE.D)
+2026-05-21 17:03:49,118  INFO      httpx  HTTP Request: GET https://api.eia.gov/v2/seriesid/PET.RBRTE.D?api_key=8rXxybukI1E0yjQxUVFS0JPNL4QtmQiQrceec1oD&data%5B0%5D=value&sort%5B0%5D%5Bcolumn%5D=period&sort%5B0%5D%5Bdirection%5D=desc&length=10&offset=0 "HTTP/1.1 200 OK"
+2026-05-21 17:03:49,119  INFO      agentic_newsroom.ingestion.eia_fetcher    brent_spot: 10 data points
+2026-05-21 17:03:49,119  INFO      agentic_newsroom.ingestion.eia_fetcher  Fetching EIA: us_inventory (PET.WCESTUS1.W)
+2026-05-21 17:03:51,459  INFO      httpx  HTTP Request: GET https://api.eia.gov/v2/seriesid/PET.WCESTUS1.W?api_key=8rXxybukI1E0yjQxUVFS0JPNL4QtmQiQrceec1oD&data%5B0%5D=value&sort%5B0%5D%5Bcolumn%5D=period&sort%5B0%5D%5Bdirection%5D=desc&length=10&offset=0 "HTTP/1.1 200 OK"
+2026-05-21 17:03:51,461  INFO      agentic_newsroom.ingestion.eia_fetcher    us_inventory: 10 data points
+2026-05-21 17:03:51,461  INFO      agentic_newsroom.ingestion.eia_fetcher  Fetching EIA: us_production (PET.WCRFPUS2.W)
+2026-05-21 17:03:54,222  INFO      httpx  HTTP Request: GET https://api.eia.gov/v2/seriesid/PET.WCRFPUS2.W?api_key=8rXxybukI1E0yjQxUVFS0JPNL4QtmQiQrceec1oD&data%5B0%5D=value&sort%5B0%5D%5Bcolumn%5D=period&sort%5B0%5D%5Bdirection%5D=desc&length=10&offset=0 "HTTP/1.1 200 OK"
+2026-05-21 17:03:54,223  INFO      agentic_newsroom.ingestion.eia_fetcher    us_production: 10 data points
+2026-05-21 17:03:54,223  INFO      run_ingestion  EIA data points: 40
+2026-05-21 17:03:54,301  INFO      agentic_newsroom.ingestion.archive_writer  Saved run to /Volumes/Mac_extension/projects/OilNewsDB/agentic_newsroom/raw/2026/05/2026-05-21_16-03-41_run.json (0 articles, 40 data points)
+2026-05-21 17:03:54,623  INFO      agentic_newsroom.ingestion.audit_logger  Audit written: status=ok, articles=0
+2026-05-21 17:03:54,624  INFO      run_ingestion  === Run complete: ok | 0 articles | 40 data points ===
+2026-05-21 17:08:53,063  INFO      run_ingestion  === Ingestion run started: 2026-05-21_16-08-53 ===
+2026-05-21 17:08:53,086  INFO      run_ingestion  Storage root: /Volumes/Mac_extension/projects/OilNewsDB/agentic_newsroom
+2026-05-21 17:08:53,200  INFO      agentic_newsroom.ingestion.rss_fetcher  Fetching RSS: ft_markets
+2026-05-21 17:08:53,549  INFO      httpx  HTTP Request: GET https://www.ft.com/rss/home/uk "HTTP/1.1 200 OK"
+2026-05-21 17:08:53,613  INFO      agentic_newsroom.ingestion.rss_fetcher    ft_markets: 12 new articles
+2026-05-21 17:08:53,613  INFO      agentic_newsroom.ingestion.rss_fetcher  Fetching RSS: ft_companies
+2026-05-21 17:08:53,787  INFO      httpx  HTTP Request: GET https://www.ft.com/companies?format=rss "HTTP/1.1 200 OK"
+2026-05-21 17:08:53,829  INFO      agentic_newsroom.ingestion.rss_fetcher    ft_companies: 19 new articles
+2026-05-21 17:08:53,829  INFO      agentic_newsroom.ingestion.rss_fetcher  Fetching RSS: reuters_business
+2026-05-21 17:08:53,855  WARNING   agentic_newsroom.ingestion.rss_fetcher    Failed to fetch reuters_business: [Errno 8] nodename nor servname provided, or not known
+2026-05-21 17:08:53,855  INFO      agentic_newsroom.ingestion.rss_fetcher  Fetching RSS: reuters_energy
+2026-05-21 17:08:53,871  WARNING   agentic_newsroom.ingestion.rss_fetcher    Failed to fetch reuters_energy: [Errno 8] nodename nor servname provided, or not known
+2026-05-21 17:08:53,871  INFO      agentic_newsroom.ingestion.rss_fetcher  Fetching RSS: bloomberg_energy
+2026-05-21 17:08:54,334  INFO      httpx  HTTP Request: GET https://feeds.bloomberg.com/energy/news.rss "HTTP/1.1 404 Not Found"
+2026-05-21 17:08:54,336  WARNING   agentic_newsroom.ingestion.rss_fetcher    Failed to fetch bloomberg_energy: Client error '404 Not Found' for url 'https://feeds.bloomberg.com/energy/news.rss'
+For more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/404
+2026-05-21 17:08:54,336  INFO      agentic_newsroom.ingestion.rss_fetcher  Fetching RSS: oilprice_news
+2026-05-21 17:08:55,208  INFO      httpx  HTTP Request: GET https://oilprice.com/rss/main "HTTP/1.1 200 OK"
+2026-05-21 17:08:55,249  INFO      agentic_newsroom.ingestion.rss_fetcher    oilprice_news: 15 new articles
+2026-05-21 17:08:55,249  INFO      agentic_newsroom.ingestion.rss_fetcher  Fetching RSS: rigzone
+2026-05-21 17:08:55,676  INFO      httpx  HTTP Request: GET https://www.rigzone.com/news/rss/rigzone_latest.aspx "HTTP/1.1 200 OK"
+2026-05-21 17:08:55,730  INFO      agentic_newsroom.ingestion.rss_fetcher    rigzone: 20 new articles
+2026-05-21 17:08:55,730  INFO      agentic_newsroom.ingestion.rss_fetcher  Fetching RSS: platts_oil
+2026-05-21 17:08:55,806  INFO      httpx  HTTP Request: GET https://www.spglobal.com/commodityinsights/en/rss-feed/oil "HTTP/1.1 403 Forbidden"
+2026-05-21 17:08:55,806  WARNING   agentic_newsroom.ingestion.rss_fetcher    Failed to fetch platts_oil: Client error '403 Forbidden' for url 'https://www.spglobal.com/commodityinsights/en/rss-feed/oil'
+For more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/403
+2026-05-21 17:08:55,807  INFO      agentic_newsroom.ingestion.rss_fetcher  Fetching RSS: eia_petroleum_weekly
+2026-05-21 17:08:56,620  INFO      httpx  HTTP Request: GET https://www.eia.gov/petroleum/weekly/includes/archive.php?format=rss "HTTP/1.1 200 OK"
+2026-05-21 17:08:56,856  INFO      agentic_newsroom.ingestion.rss_fetcher    eia_petroleum_weekly: 0 new articles
+2026-05-21 17:08:56,856  INFO      agentic_newsroom.ingestion.rss_fetcher  Fetching RSS: opec_news
+2026-05-21 17:08:56,928  INFO      httpx  HTTP Request: GET https://www.opec.org/opec_web/en/press_room/4_rss_latest.htm "HTTP/1.1 403 Forbidden"
+2026-05-21 17:08:56,929  WARNING   agentic_newsroom.ingestion.rss_fetcher    Failed to fetch opec_news: Client error '403 Forbidden' for url 'https://www.opec.org/opec_web/en/press_room/4_rss_latest.htm'
+For more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/403
+2026-05-21 17:08:56,929  INFO      run_ingestion  RSS total new articles: 66
+2026-05-21 17:08:56,929  INFO      agentic_newsroom.ingestion.eia_fetcher  Fetching EIA: wti_spot (PET.RWTC.D)
+2026-05-21 17:08:58,608  INFO      httpx  HTTP Request: GET https://api.eia.gov/v2/seriesid/PET.RWTC.D?api_key=8rXxybukI1E0yjQxUVFS0JPNL4QtmQiQrceec1oD&data%5B0%5D=value&sort%5B0%5D%5Bcolumn%5D=period&sort%5B0%5D%5Bdirection%5D=desc&length=10&offset=0 "HTTP/1.1 200 OK"
+2026-05-21 17:08:58,620  INFO      agentic_newsroom.ingestion.eia_fetcher    wti_spot: 10 data points
+2026-05-21 17:08:58,620  INFO      agentic_newsroom.ingestion.eia_fetcher  Fetching EIA: brent_spot (PET.RBRTE.D)
+2026-05-21 17:09:00,203  INFO      httpx  HTTP Request: GET https://api.eia.gov/v2/seriesid/PET.RBRTE.D?api_key=8rXxybukI1E0yjQxUVFS0JPNL4QtmQiQrceec1oD&data%5B0%5D=value&sort%5B0%5D%5Bcolumn%5D=period&sort%5B0%5D%5Bdirection%5D=desc&length=10&offset=0 "HTTP/1.1 200 OK"
+2026-05-21 17:09:00,204  INFO      agentic_newsroom.ingestion.eia_fetcher    brent_spot: 10 data points
+2026-05-21 17:09:00,204  INFO      agentic_newsroom.ingestion.eia_fetcher  Fetching EIA: us_inventory (PET.WCESTUS1.W)
+2026-05-21 17:09:02,767  INFO      httpx  HTTP Request: GET https://api.eia.gov/v2/seriesid/PET.WCESTUS1.W?api_key=8rXxybukI1E0yjQxUVFS0JPNL4QtmQiQrceec1oD&data%5B0%5D=value&sort%5B0%5D%5Bcolumn%5D=period&sort%5B0%5D%5Bdirection%5D=desc&length=10&offset=0 "HTTP/1.1 200 OK"
+2026-05-21 17:09:02,768  INFO      agentic_newsroom.ingestion.eia_fetcher    us_inventory: 10 data points
+2026-05-21 17:09:02,769  INFO      agentic_newsroom.ingestion.eia_fetcher  Fetching EIA: us_production (PET.WCRFPUS2.W)
+2026-05-21 17:09:04,504  INFO      httpx  HTTP Request: GET https://api.eia.gov/v2/seriesid/PET.WCRFPUS2.W?api_key=8rXxybukI1E0yjQxUVFS0JPNL4QtmQiQrceec1oD&data%5B0%5D=value&sort%5B0%5D%5Bcolumn%5D=period&sort%5B0%5D%5Bdirection%5D=desc&length=10&offset=0 "HTTP/1.1 200 OK"
+2026-05-21 17:09:04,506  INFO      agentic_newsroom.ingestion.eia_fetcher    us_production: 10 data points
+2026-05-21 17:09:04,506  INFO      run_ingestion  EIA data points: 40
+2026-05-21 17:09:04,514  INFO      agentic_newsroom.ingestion.archive_writer  Saved run to /Volumes/Mac_extension/projects/OilNewsDB/agentic_newsroom/raw/2026/05/2026-05-21_16-08-53_run.json (66 articles, 40 data points)
+2026-05-21 17:09:04,582  INFO      agentic_newsroom.ingestion.audit_logger  Audit written: status=ok, articles=66
+2026-05-21 17:09:04,582  INFO      run_ingestion  === Run complete: ok | 66 articles | 40 data points ===
+2026-05-21 17:11:46,414  INFO      run_ingestion  === Ingestion run started: 2026-05-21_16-11-46 ===
+2026-05-21 17:11:46,426  INFO      run_ingestion  Storage root: /Volumes/Mac_extension/projects/OilNewsDB/agentic_newsroom
+2026-05-21 17:11:46,443  INFO      agentic_newsroom.ingestion.rss_fetcher  Fetching RSS: ft_markets
+2026-05-21 17:11:46,655  INFO      httpx  HTTP Request: GET https://www.ft.com/rss/home/uk "HTTP/1.1 200 OK"
+2026-05-21 17:11:46,689  INFO      agentic_newsroom.ingestion.rss_fetcher    ft_markets: 0 new articles
+2026-05-21 17:11:46,690  INFO      agentic_newsroom.ingestion.rss_fetcher  Fetching RSS: ft_companies
+2026-05-21 17:11:46,877  INFO      httpx  HTTP Request: GET https://www.ft.com/companies?format=rss "HTTP/1.1 200 OK"
+2026-05-21 17:11:46,890  INFO      agentic_newsroom.ingestion.rss_fetcher    ft_companies: 0 new articles
+2026-05-21 17:11:46,890  INFO      agentic_newsroom.ingestion.rss_fetcher  Fetching RSS: reuters_business
+2026-05-21 17:11:46,922  WARNING   agentic_newsroom.ingestion.rss_fetcher    Failed to fetch reuters_business: [Errno 8] nodename nor servname provided, or not known
+2026-05-21 17:11:46,922  INFO      agentic_newsroom.ingestion.rss_fetcher  Fetching RSS: reuters_energy
+2026-05-21 17:11:46,944  WARNING   agentic_newsroom.ingestion.rss_fetcher    Failed to fetch reuters_energy: [Errno 8] nodename nor servname provided, or not known
+2026-05-21 17:11:46,944  INFO      agentic_newsroom.ingestion.rss_fetcher  Fetching RSS: bloomberg_energy
+2026-05-21 17:11:47,339  INFO      httpx  HTTP Request: GET https://feeds.bloomberg.com/energy/news.rss "HTTP/1.1 404 Not Found"
+2026-05-21 17:11:47,341  WARNING   agentic_newsroom.ingestion.rss_fetcher    Failed to fetch bloomberg_energy: Client error '404 Not Found' for url 'https://feeds.bloomberg.com/energy/news.rss'
+For more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/404
+2026-05-21 17:11:47,341  INFO      agentic_newsroom.ingestion.rss_fetcher  Fetching RSS: oilprice_news
+2026-05-21 17:11:48,357  INFO      httpx  HTTP Request: GET https://oilprice.com/rss/main "HTTP/1.1 200 OK"
+2026-05-21 17:11:48,371  INFO      agentic_newsroom.ingestion.rss_fetcher    oilprice_news: 0 new articles
+2026-05-21 17:11:48,371  INFO      agentic_newsroom.ingestion.rss_fetcher  Fetching RSS: rigzone
+2026-05-21 17:11:48,795  INFO      httpx  HTTP Request: GET https://www.rigzone.com/news/rss/rigzone_latest.aspx "HTTP/1.1 200 OK"
+2026-05-21 17:11:48,807  INFO      agentic_newsroom.ingestion.rss_fetcher    rigzone: 0 new articles
+2026-05-21 17:11:48,807  INFO      agentic_newsroom.ingestion.rss_fetcher  Fetching RSS: platts_oil
+2026-05-21 17:11:48,891  INFO      httpx  HTTP Request: GET https://www.spglobal.com/commodityinsights/en/rss-feed/oil "HTTP/1.1 403 Forbidden"
+2026-05-21 17:11:48,891  WARNING   agentic_newsroom.ingestion.rss_fetcher    Failed to fetch platts_oil: Client error '403 Forbidden' for url 'https://www.spglobal.com/commodityinsights/en/rss-feed/oil'
+For more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/403
+2026-05-21 17:11:48,891  INFO      agentic_newsroom.ingestion.rss_fetcher  Fetching RSS: eia_petroleum_weekly
+2026-05-21 17:11:49,208  INFO      httpx  HTTP Request: GET https://www.eia.gov/petroleum/weekly/includes/archive.php?format=rss "HTTP/1.1 200 OK"
+2026-05-21 17:11:49,441  INFO      agentic_newsroom.ingestion.rss_fetcher    eia_petroleum_weekly: 0 new articles
+2026-05-21 17:11:49,441  INFO      agentic_newsroom.ingestion.rss_fetcher  Fetching RSS: opec_news
+2026-05-21 17:11:49,501  INFO      httpx  HTTP Request: GET https://www.opec.org/opec_web/en/press_room/4_rss_latest.htm "HTTP/1.1 403 Forbidden"
+2026-05-21 17:11:49,502  WARNING   agentic_newsroom.ingestion.rss_fetcher    Failed to fetch opec_news: Client error '403 Forbidden' for url 'https://www.opec.org/opec_web/en/press_room/4_rss_latest.htm'
+For more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/403
+2026-05-21 17:11:49,502  INFO      run_ingestion  RSS total new articles: 0
+2026-05-21 17:11:49,502  INFO      agentic_newsroom.ingestion.eia_fetcher  Fetching EIA: wti_spot (PET.RWTC.D)
+2026-05-21 17:11:50,505  INFO      httpx  HTTP Request: GET https://api.eia.gov/v2/seriesid/PET.RWTC.D?api_key=8rXxybukI1E0yjQxUVFS0JPNL4QtmQiQrceec1oD&data%5B0%5D=value&sort%5B0%5D%5Bcolumn%5D=period&sort%5B0%5D%5Bdirection%5D=desc&length=10&offset=0 "HTTP/1.1 200 OK"
+2026-05-21 17:11:50,506  INFO      agentic_newsroom.ingestion.eia_fetcher    wti_spot: 10 data points
+2026-05-21 17:11:50,507  INFO      agentic_newsroom.ingestion.eia_fetcher  Fetching EIA: brent_spot (PET.RBRTE.D)
+2026-05-21 17:11:51,443  INFO      httpx  HTTP Request: GET https://api.eia.gov/v2/seriesid/PET.RBRTE.D?api_key=8rXxybukI1E0yjQxUVFS0JPNL4QtmQiQrceec1oD&data%5B0%5D=value&sort%5B0%5D%5Bcolumn%5D=period&sort%5B0%5D%5Bdirection%5D=desc&length=10&offset=0 "HTTP/1.1 200 OK"
+2026-05-21 17:11:51,444  INFO      agentic_newsroom.ingestion.eia_fetcher    brent_spot: 10 data points
+2026-05-21 17:11:51,444  INFO      agentic_newsroom.ingestion.eia_fetcher  Fetching EIA: us_inventory (PET.WCESTUS1.W)
+2026-05-21 17:11:53,363  INFO      httpx  HTTP Request: GET https://api.eia.gov/v2/seriesid/PET.WCESTUS1.W?api_key=8rXxybukI1E0yjQxUVFS0JPNL4QtmQiQrceec1oD&data%5B0%5D=value&sort%5B0%5D%5Bcolumn%5D=period&sort%5B0%5D%5Bdirection%5D=desc&length=10&offset=0 "HTTP/1.1 200 OK"
+2026-05-21 17:11:53,365  INFO      agentic_newsroom.ingestion.eia_fetcher    us_inventory: 10 data points
+2026-05-21 17:11:53,365  INFO      agentic_newsroom.ingestion.eia_fetcher  Fetching EIA: us_production (PET.WCRFPUS2.W)
+2026-05-21 17:11:54,828  INFO      httpx  HTTP Request: GET https://api.eia.gov/v2/seriesid/PET.WCRFPUS2.W?api_key=8rXxybukI1E0yjQxUVFS0JPNL4QtmQiQrceec1oD&data%5B0%5D=value&sort%5B0%5D%5Bcolumn%5D=period&sort%5B0%5D%5Bdirection%5D=desc&length=10&offset=0 "HTTP/1.1 200 OK"
+2026-05-21 17:11:54,829  INFO      agentic_newsroom.ingestion.eia_fetcher    us_production: 10 data points
+2026-05-21 17:11:54,829  INFO      run_ingestion  EIA data points: 40
+2026-05-21 17:11:54,831  INFO      agentic_newsroom.ingestion.archive_writer  Saved run to /Volumes/Mac_extension/projects/OilNewsDB/agentic_newsroom/raw/2026/05/2026-05-21_16-11-46_run.json (0 articles, 40 data points)
+2026-05-21 17:11:54,848  INFO      agentic_newsroom.ingestion.audit_logger  Audit written: status=ok, articles=0
+2026-05-21 17:11:54,848  INFO      run_ingestion  === Run complete: ok | 0 articles | 40 data points ===
+2026-05-21 17:13:13,547  INFO      run_ingestion  === Ingestion run started: 2026-05-21_16-13-13 ===
+2026-05-21 17:13:13,547  INFO      run_ingestion  Storage root: /Volumes/Mac_extension/projects/OilNewsDB/agentic_newsroom
+2026-05-21 17:13:13,551  INFO      agentic_newsroom.ingestion.rss_fetcher  Fetching RSS: ft_markets
+2026-05-21 17:13:13,854  INFO      httpx  HTTP Request: GET https://www.ft.com/rss/home/uk "HTTP/1.1 200 OK"
+2026-05-21 17:13:13,881  INFO      agentic_newsroom.ingestion.rss_fetcher    ft_markets: 12 new articles
+2026-05-21 17:13:13,881  INFO      agentic_newsroom.ingestion.rss_fetcher  Fetching RSS: ft_companies
+2026-05-21 17:13:14,064  INFO      httpx  HTTP Request: GET https://www.ft.com/companies?format=rss "HTTP/1.1 200 OK"
+2026-05-21 17:13:14,102  INFO      agentic_newsroom.ingestion.rss_fetcher    ft_companies: 19 new articles
+2026-05-21 17:13:14,102  INFO      agentic_newsroom.ingestion.rss_fetcher  Fetching RSS: reuters_business
+2026-05-21 17:13:14,124  WARNING   agentic_newsroom.ingestion.rss_fetcher    Failed to fetch reuters_business: [Errno 8] nodename nor servname provided, or not known
+2026-05-21 17:13:14,124  INFO      agentic_newsroom.ingestion.rss_fetcher  Fetching RSS: reuters_energy
+2026-05-21 17:13:14,142  WARNING   agentic_newsroom.ingestion.rss_fetcher    Failed to fetch reuters_energy: [Errno 8] nodename nor servname provided, or not known
+2026-05-21 17:13:14,142  INFO      agentic_newsroom.ingestion.rss_fetcher  Fetching RSS: bloomberg_energy
+2026-05-21 17:13:14,488  INFO      httpx  HTTP Request: GET https://feeds.bloomberg.com/energy/news.rss "HTTP/1.1 404 Not Found"
+2026-05-21 17:13:14,490  WARNING   agentic_newsroom.ingestion.rss_fetcher    Failed to fetch bloomberg_energy: Client error '404 Not Found' for url 'https://feeds.bloomberg.com/energy/news.rss'
+For more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/404
+2026-05-21 17:13:14,490  INFO      agentic_newsroom.ingestion.rss_fetcher  Fetching RSS: oilprice_news
+2026-05-21 17:13:15,497  INFO      httpx  HTTP Request: GET https://oilprice.com/rss/main "HTTP/1.1 200 OK"
+2026-05-21 17:13:15,529  INFO      agentic_newsroom.ingestion.rss_fetcher    oilprice_news: 15 new articles
+2026-05-21 17:13:15,529  INFO      agentic_newsroom.ingestion.rss_fetcher  Fetching RSS: rigzone
+2026-05-21 17:13:15,955  INFO      httpx  HTTP Request: GET https://www.rigzone.com/news/rss/rigzone_latest.aspx "HTTP/1.1 200 OK"
+2026-05-21 17:13:16,009  INFO      agentic_newsroom.ingestion.rss_fetcher    rigzone: 20 new articles
+2026-05-21 17:13:16,010  INFO      agentic_newsroom.ingestion.rss_fetcher  Fetching RSS: platts_oil
+2026-05-21 17:13:16,077  INFO      httpx  HTTP Request: GET https://www.spglobal.com/commodityinsights/en/rss-feed/oil "HTTP/1.1 403 Forbidden"
+2026-05-21 17:13:16,077  WARNING   agentic_newsroom.ingestion.rss_fetcher    Failed to fetch platts_oil: Client error '403 Forbidden' for url 'https://www.spglobal.com/commodityinsights/en/rss-feed/oil'
+For more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/403
+2026-05-21 17:13:16,077  INFO      agentic_newsroom.ingestion.rss_fetcher  Fetching RSS: eia_petroleum_weekly
+2026-05-21 17:13:16,265  INFO      httpx  HTTP Request: GET https://www.eia.gov/petroleum/weekly/includes/archive.php?format=rss "HTTP/1.1 200 OK"
+2026-05-21 17:13:16,497  INFO      agentic_newsroom.ingestion.rss_fetcher    eia_petroleum_weekly: 0 new articles
+2026-05-21 17:13:16,497  INFO      agentic_newsroom.ingestion.rss_fetcher  Fetching RSS: opec_news
+2026-05-21 17:13:16,551  INFO      httpx  HTTP Request: GET https://www.opec.org/opec_web/en/press_room/4_rss_latest.htm "HTTP/1.1 403 Forbidden"
+2026-05-21 17:13:16,552  WARNING   agentic_newsroom.ingestion.rss_fetcher    Failed to fetch opec_news: Client error '403 Forbidden' for url 'https://www.opec.org/opec_web/en/press_room/4_rss_latest.htm'
+For more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/403
+2026-05-21 17:13:16,552  INFO      run_ingestion  RSS total new articles: 66
+2026-05-21 17:13:16,552  INFO      agentic_newsroom.ingestion.eia_fetcher  Fetching EIA: wti_spot (PET.RWTC.D)
+2026-05-21 17:13:17,953  INFO      httpx  HTTP Request: GET https://api.eia.gov/v2/seriesid/PET.RWTC.D?api_key=8rXxybukI1E0yjQxUVFS0JPNL4QtmQiQrceec1oD&data%5B0%5D=value&sort%5B0%5D%5Bcolumn%5D=period&sort%5B0%5D%5Bdirection%5D=desc&length=10&offset=0 "HTTP/1.1 200 OK"
+2026-05-21 17:13:17,967  INFO      agentic_newsroom.ingestion.eia_fetcher    wti_spot: 10 data points
+2026-05-21 17:13:17,967  INFO      agentic_newsroom.ingestion.eia_fetcher  Fetching EIA: brent_spot (PET.RBRTE.D)
+2026-05-21 17:13:19,588  INFO      httpx  HTTP Request: GET https://api.eia.gov/v2/seriesid/PET.RBRTE.D?api_key=8rXxybukI1E0yjQxUVFS0JPNL4QtmQiQrceec1oD&data%5B0%5D=value&sort%5B0%5D%5Bcolumn%5D=period&sort%5B0%5D%5Bdirection%5D=desc&length=10&offset=0 "HTTP/1.1 200 OK"
+2026-05-21 17:13:19,590  INFO      agentic_newsroom.ingestion.eia_fetcher    brent_spot: 10 data points
+2026-05-21 17:13:19,590  INFO      agentic_newsroom.ingestion.eia_fetcher  Fetching EIA: us_inventory (PET.WCESTUS1.W)
+2026-05-21 17:13:21,283  INFO      httpx  HTTP Request: GET https://api.eia.gov/v2/seriesid/PET.WCESTUS1.W?api_key=8rXxybukI1E0yjQxUVFS0JPNL4QtmQiQrceec1oD&data%5B0%5D=value&sort%5B0%5D%5Bcolumn%5D=period&sort%5B0%5D%5Bdirection%5D=desc&length=10&offset=0 "HTTP/1.1 200 OK"
+2026-05-21 17:13:21,284  INFO      agentic_newsroom.ingestion.eia_fetcher    us_inventory: 10 data points
+2026-05-21 17:13:21,285  INFO      agentic_newsroom.ingestion.eia_fetcher  Fetching EIA: us_production (PET.WCRFPUS2.W)
+2026-05-21 17:13:23,072  INFO      httpx  HTTP Request: GET https://api.eia.gov/v2/seriesid/PET.WCRFPUS2.W?api_key=8rXxybukI1E0yjQxUVFS0JPNL4QtmQiQrceec1oD&data%5B0%5D=value&sort%5B0%5D%5Bcolumn%5D=period&sort%5B0%5D%5Bdirection%5D=desc&length=10&offset=0 "HTTP/1.1 200 OK"
+2026-05-21 17:13:23,074  INFO      agentic_newsroom.ingestion.eia_fetcher    us_production: 10 data points
+2026-05-21 17:13:23,074  INFO      run_ingestion  EIA data points: 40
+2026-05-21 17:13:23,079  INFO      agentic_newsroom.ingestion.archive_writer  Saved run to /Volumes/Mac_extension/projects/OilNewsDB/agentic_newsroom/raw/2026/05/2026-05-21_16-13-13_run.json (66 articles, 40 data points)
+2026-05-21 17:13:23,711  INFO      agentic_newsroom.ingestion.audit_logger  Audit written: status=ok, articles=66
+2026-05-21 17:13:23,711  INFO      run_ingestion  === Run complete: ok | 66 articles | 40 data points ===

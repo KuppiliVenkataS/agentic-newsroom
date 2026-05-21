@@ -13,22 +13,17 @@ import os
 # Default assumes it's mounted at /Volumes/OilNewsDB on macOS.
 # Change to wherever your drive mounts.
 
-# print('hello world')
+print('hello world')
 STORAGE_ROOT = Path("/Volumes/Mac_extension/projects/OilNewsDB/agentic_newsroom")
-RAW_DIR  = STORAGE_ROOT/"data"/"raw"      # one JSON file per source per run
-LOG_DIR  = STORAGE_ROOT/"data"/"logs"     # audit logs
-DEDUP_DB = STORAGE_ROOT/"data"/"dedup.db" # SQLite dedup registry
+print(STORAGE_ROOT,'++++++++++')
+
+RAW_DIR  = STORAGE_ROOT / "raw"      # one JSON file per source per run
+LOG_DIR  = STORAGE_ROOT / "logs"     # audit logs
+DEDUP_DB = STORAGE_ROOT / "dedup.db" # SQLite dedup registry
 
 # ── EIA API ───────────────────────────────────────────────────────────────────
 # Free key from https://www.eia.gov/opendata/
-# EIA_API_KEY = "8rXxybukI1E0yjQxUVFS0JPNL4QtmQiQrceec1oD"
-
-# ── Ollama (local LLM) ────────────────────────────────────────────────────────
-# Ollama runs locally — no API key needed.
-# Start with: ollama serve
-# Pull model:  ollama pull llama3.1:8b
-OLLAMA_BASE_URL = "http://localhost:11434"
-OLLAMA_MODEL    = "llama3.1:8b"
+EIA_API_KEY = "8rXxybukI1E0yjQxUVFS0JPNL4QtmQiQrceec1oD"
 
 
 
@@ -45,19 +40,20 @@ EIA_SERIES = {
     "us_production":"PET.WCRFPUS2.W",# US crude production (weekly)
 }
 
-
 # ── RSS feeds ─────────────────────────────────────────────────────────────────
 RSS_FEEDS = {
-    "ft_markets":           "https://www.ft.com/rss/home/uk",
-    "ft_companies":         "https://www.ft.com/companies?format=rss",
-    "reuters_business":     "https://feeds.reuters.com/reuters/businessNews",
-    "reuters_energy":       "https://feeds.reuters.com/reuters/UKenergyNews",
-    "reuters_commodities":  "https://feeds.reuters.com/reuters/commoditiesNews",
-    "bloomberg_markets":    "https://feeds.bloomberg.com/markets/news.rss",
-    "oilprice_news":        "https://oilprice.com/rss/main",
-    "rigzone":              "https://www.rigzone.com/news/rss/rigzone_latest.aspx",
+    "ft_markets":      "https://www.ft.com/rss/home/uk",
+    "ft_companies":    "https://www.ft.com/companies?format=rss",
+    "reuters_business":"https://feeds.reuters.com/reuters/businessNews",
+    "reuters_energy":  "https://feeds.reuters.com/reuters/UKenergyNews",
+    "bloomberg_energy":"https://feeds.bloomberg.com/energy/news.rss",
+    "oilprice_news":   "https://oilprice.com/rss/main",
+    "rigzone":         "https://www.rigzone.com/news/rss/rigzone_latest.aspx",
+    "platts_oil":      "https://www.spglobal.com/commodityinsights/en/rss-feed/oil",
     "eia_petroleum_weekly": "https://www.eia.gov/petroleum/weekly/includes/archive.php?format=rss",
+    "opec_news":       "https://www.opec.org/opec_web/en/press_room/4_rss_latest.htm",
 }
+
 # ── Request settings ──────────────────────────────────────────────────────────
 REQUEST_TIMEOUT = 20          # seconds per HTTP request
 MAX_ARTICLES_PER_FEED = 50    # cap per feed per run to stay polite

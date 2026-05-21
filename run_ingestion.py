@@ -4,10 +4,10 @@ Main ingestion runner.
 Run manually:
     python run_ingestion.py
 
-Or via cron (every 12 hours) — add this to crontab:
-    0 6,18 * * * /path/to/venv/bin/python /path/to/agentic_newsroom/run_ingestion.py >> /Volumes/OilNewsDB/agentic_newsroom/logs/cron.log 2>&1
+Or via cron (every 12 hours):
+    0 6,18 * * * /path/to/venv/bin/python /path/to/agentic_newsroom/run_ingestion.py >> /Volumes/Mac_extension/projects/OilNewsDB/agentic_newsroom/logs/cron.log 2>&1
 
-The script is safe to run multiple times — dedup prevents repeated articles.
+Safe to run multiple times — dedup prevents repeated articles.
 """
 
 import logging
@@ -15,18 +15,20 @@ import sys
 from datetime import datetime, timezone
 from pathlib import Path
 
-# ── Make sure local packages resolve regardless of cwd ────────────────────────
 sys.path.insert(0, str(Path(__file__).parent))
 
 from config.settings import STORAGE_ROOT, DEDUP_DB, LOG_DIR
 from agentic_newsroom.ingestion.dedup import DedupRegistry
 from agentic_newsroom.ingestion.rss_fetcher import fetch_all_feeds
 from agentic_newsroom.ingestion.eia_fetcher import fetch_eia_data
+from agentic_newsroom.ingestion.gdelt_fetcher import fetch_gdelt_data
 from agentic_newsroom.ingestion.archive_writer import save_run
 from agentic_newsroom.ingestion.audit_logger import write_audit
+from agentic_newsroom.processing.cleaner import prepare_article
+from agentic_newsroom.processing.extractor import process_articles
+from agentic_newsroom.processing.processed_writer import save_processed
 
-# ── Logging setup ─────────────────────────────────────────────────────────────
-print('********',LOG_DIR)
+# ── Logging ───────────────────────────────────────────────────────────────────
 LOG_DIR.mkdir(parents=True, exist_ok=True)
 logging.basicConfig(
     level=logging.INFO,
@@ -40,8 +42,9 @@ logger = logging.getLogger("run_ingestion")
 
 
 def run():
-    started_at = datetime.now(timezone.utc).isoformat()
-    run_id     = datetime.utcnow().strftime("%Y-%m-%d_%H-%M-%S")
+    now        = datetime.now(timezone.utc)
+    started_at = now.isoformat()
+    run_id     = now.strftime("%Y-%m-%d_%H-%M-%S")
     errors: list[str] = []
 
     logger.info(f"=== Ingestion run started: {run_id} ===")
@@ -70,7 +73,18 @@ def run():
         logger.error(msg)
         errors.append(msg)
 
-    # ── 4. Save archive ────────────────────────────────────────────────────
+    # ── 4. Fetch GDELT via BigQuery ────────────────────────────────────────
+    gdelt_records: list[dict] = []
+    try:
+        gdelt_records = fetch_gdelt_data()
+        logger.info(f"GDELT records: {len(gdelt_records)}")
+        articles.extend(gdelt_records)
+    except Exception as exc:
+        msg = f"GDELT fetch failed: {exc}"
+        logger.error(msg)
+        errors.append(msg)
+
+    # ── 5. Save raw archive ────────────────────────────────────────────────
     archive_path = ""
     try:
         saved = save_run(articles, market_data, run_id)
@@ -80,7 +94,35 @@ def run():
         logger.error(msg)
         errors.append(msg)
 
-    # ── 5. Write audit log ─────────────────────────────────────────────────
+    # ── 6. Clean and chunk articles ────────────────────────────────────────
+    prepared: list[dict] = []
+    try:
+        prepared = [prepare_article(a) for a in articles]
+        logger.info(f"Prepared {len(prepared)} articles for extraction")
+    except Exception as exc:
+        msg = f"Cleaning/chunking failed: {exc}"
+        logger.error(msg)
+        errors.append(msg)
+
+    # ── 7. LLM entity extraction ───────────────────────────────────────────
+    enriched: list[dict] = []
+    try:
+        enriched = process_articles(prepared)
+        logger.info(f"Extraction complete: {len(enriched)} articles enriched")
+    except Exception as exc:
+        msg = f"Extraction failed: {exc}"
+        logger.error(msg)
+        errors.append(msg)
+
+    # ── 8. Save processed output ───────────────────────────────────────────
+    try:
+        save_processed(enriched, run_id)
+    except Exception as exc:
+        msg = f"Processed write failed: {exc}"
+        logger.error(msg)
+        errors.append(msg)
+
+    # ── 9. Write audit log ─────────────────────────────────────────────────
     finished_at = datetime.now(timezone.utc).isoformat()
     status = "ok" if not errors else ("partial" if (articles or market_data) else "failed")
 
@@ -98,7 +140,6 @@ def run():
     dedup.close()
     logger.info(f"=== Run complete: {status} | {len(articles)} articles | {len(market_data)} data points ===")
 
-    # Exit code 1 on full failure so cron can alert
     if status == "failed":
         sys.exit(1)
 

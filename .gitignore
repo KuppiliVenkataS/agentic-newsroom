@@ -3,4 +3,6 @@ secrets/
 env/
 agentic_newsroom/config/
 agentic_newsroom/ingestion/__pycache__
-config/
+config/__pycache__/
+*.pyc 
+*.pyo 
