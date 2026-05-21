@@ -1,12 +1,16 @@
+
+##==========================
 """
 Central config. Edit paths and API keys here before running.
 """
 
 from pathlib import Path
+from dotenv import load_dotenv
+import os
 
 # ── Storage root ──────────────────────────────────────────────────────────────
 # Point this at your 2TB external disk.
-# Default assumes it's mounted at /Volumes/projects/OilNewsDB on macOS.
+# Default assumes it's mounted at /Volumes/OilNewsDB on macOS.
 # Change to wherever your drive mounts.
 STORAGE_ROOT = Path("/Volumes/projects/OilNewsDB/agentic_newsroom")
 
@@ -16,7 +20,14 @@ DEDUP_DB = STORAGE_ROOT / "dedup.db" # SQLite dedup registry
 
 # ── EIA API ───────────────────────────────────────────────────────────────────
 # Free key from https://www.eia.gov/opendata/
-EIA_API_KEY = " key here"
+EIA_API_KEY = "8rXxybukI1E0yjQxUVFS0JPNL4QtmQiQrceec1oD"
+
+
+
+load_dotenv()
+
+EIA_API_KEY = os.getenv("EIA_API_KEY", "")
+GCP_PROJECT_ID = os.getenv("GCP_PROJECT_ID", "")
 
 # EIA series to pull each run
 EIA_SERIES = {
@@ -44,6 +55,13 @@ RSS_FEEDS = {
 REQUEST_TIMEOUT = 20          # seconds per HTTP request
 MAX_ARTICLES_PER_FEED = 50    # cap per feed per run to stay polite
 USER_AGENT = "AgenticNewsroom/1.0 (research project; contact: santhilatakv@gmail.com)"
+
+# ── GCP / GDELT ───────────────────────────────────────────────────────────────
+# Your GCP project ID — visible in the console project dropdown
+GCP_PROJECT_ID = "agentic-newsroom"
+
+# Path to your service account JSON key file
+GCP_KEY_FILE = "~/secrets/agentic-newsroom-132bc7cb81ee.json"
 
 # ── Run cadence ───────────────────────────────────────────────────────────────
 CYCLE_HOURS = 12              # how often the full pipeline runs
