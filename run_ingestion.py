@@ -19,13 +19,14 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).parent))
 
 from config.settings import STORAGE_ROOT, DEDUP_DB, LOG_DIR
-from ingestion.dedup import DedupRegistry
-from ingestion.rss_fetcher import fetch_all_feeds
-from ingestion.eia_fetcher import fetch_eia_data
-from ingestion.archive_writer import save_run
-from ingestion.audit_logger import write_audit
+from agentic_newsroom.ingestion.dedup import DedupRegistry
+from agentic_newsroom.ingestion.rss_fetcher import fetch_all_feeds
+from agentic_newsroom.ingestion.eia_fetcher import fetch_eia_data
+from agentic_newsroom.ingestion.archive_writer import save_run
+from agentic_newsroom.ingestion.audit_logger import write_audit
 
 # ── Logging setup ─────────────────────────────────────────────────────────────
+print('********',LOG_DIR)
 LOG_DIR.mkdir(parents=True, exist_ok=True)
 logging.basicConfig(
     level=logging.INFO,

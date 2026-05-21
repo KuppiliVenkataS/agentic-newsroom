@@ -13,7 +13,7 @@ import feedparser
 import httpx
 
 from config.settings import RSS_FEEDS, REQUEST_TIMEOUT, MAX_ARTICLES_PER_FEED, USER_AGENT
-from ingestion.dedup import DedupRegistry
+from agentic_newsroom.ingestion.dedup import DedupRegistry
 
 logger = logging.getLogger(__name__)
 

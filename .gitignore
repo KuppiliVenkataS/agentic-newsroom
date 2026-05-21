@@ -1,4 +1,4 @@
 .env
 secrets/
 env/
-config/Settings.py
+config/settings.py
