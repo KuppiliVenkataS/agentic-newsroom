@@ -1,8 +1,10 @@
 .env
 secrets/
 env/
-agentic_newsroom/config/
+config/settings.py
 agentic_newsroom/ingestion/__pycache__
+agentic_newsroom/processing/__pycache__
+
 config/__pycache__/
 *.pyc 
 *.pyo 
