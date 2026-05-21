@@ -1,4 +1,4 @@
 .env
 secrets/
 env/
-agentic_newsroom/config/
+agentic_newsroom/config/Settings.py
