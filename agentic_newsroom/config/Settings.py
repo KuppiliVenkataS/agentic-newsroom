@@ -16,7 +16,7 @@ DEDUP_DB = STORAGE_ROOT / "dedup.db" # SQLite dedup registry
 
 # ── EIA API ───────────────────────────────────────────────────────────────────
 # Free key from https://www.eia.gov/opendata/
-EIA_API_KEY = "8rXxybukI1E0yjQxUVFS0JPNL4QtmQiQrceec1oD"
+EIA_API_KEY = " key here"
 
 # EIA series to pull each run
 EIA_SERIES = {
