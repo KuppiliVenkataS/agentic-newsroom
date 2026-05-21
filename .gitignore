@@ -1,4 +1,6 @@
 .env
 secrets/
 env/
+agentic_newsroom/config/
+agentic_newsroom/ingestion/__pycache__
 config/
