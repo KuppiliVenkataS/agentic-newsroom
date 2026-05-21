@@ -1,4 +1,4 @@
 .env
 secrets/
 env/
-config/
+agentic_newsroom/config/
