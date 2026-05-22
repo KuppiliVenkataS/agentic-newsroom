@@ -9,6 +9,7 @@ agentic_newsroom/data/raw/
 agentic_newsroom/graph/kuzu
 agentic_newsroom/vectordb/
 agentic_newsroom/reports/
+agentic_newsroom_copy/
 config/__pycache__/
 *.pyc 
 *.pyo 
