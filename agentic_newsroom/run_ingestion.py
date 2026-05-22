@@ -21,6 +21,7 @@ from config.settings import STORAGE_ROOT, DEDUP_DB, LOG_DIR, RAW_DIR
 from ingestion.dedup import DedupRegistry
 from ingestion.rss_fetcher import fetch_all_feeds
 from ingestion.eia_fetcher import fetch_eia_data
+from ingestion.yfinance_fetcher import fetch_live_prices
 from ingestion.gdelt_fetcher import fetch_gdelt_data
 from ingestion.archive_writer import save_run
 from ingestion.audit_logger import write_audit

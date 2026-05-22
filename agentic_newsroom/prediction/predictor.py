@@ -101,17 +101,22 @@ def _eia_signal(market_data: list[dict]) -> tuple[float, dict]:
     avg_score   = (wti_score + brent_score) / 2
 
     # Get latest prices for reporting
-    def latest_price(label):
-        points = [d for d in market_data if d.get("label") == label and d.get("value") is not None]
-        points.sort(key=lambda x: x.get("period", ""), reverse=True)
-        return {"period": points[0]["period"], "value": points[0]["value"]} if points else {}
+    def latest_price(live_label, eia_label):
+        # Prefer live yfinance price, fall back to EIA
+        live = [d for d in market_data if d.get("label") == live_label and d.get("value") is not None]
+        if live:
+            live.sort(key=lambda x: x.get("period", ""), reverse=True)
+            return {"period": live[0]["period"], "value": live[0]["value"], "source": "live"}
+        eia = [d for d in market_data if d.get("label") == eia_label and d.get("value") is not None]
+        eia.sort(key=lambda x: x.get("period", ""), reverse=True)
+        return {"period": eia[0]["period"], "value": eia[0]["value"], "source": "eia"} if eia else {}
 
     detail = {
         "wti_trend":   round(wti_score, 3),
         "brent_trend": round(brent_score, 3),
         "score":       round(avg_score, 3),
-        "wti_latest":  latest_price("wti_spot"),
-        "brent_latest":latest_price("brent_spot"),
+        "wti_latest":  latest_price("wti_live", "wti_spot"),
+        "brent_latest":latest_price("brent_live", "brent_spot"),
     }
     return avg_score, detail
 
