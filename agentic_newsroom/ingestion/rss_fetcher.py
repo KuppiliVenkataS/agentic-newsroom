@@ -2,7 +2,8 @@
 RSS feed fetcher.
 
 Fetches all configured feeds, parses them with feedparser,
-filters by dedup registry, and returns clean article dicts.
+filters to oil/energy relevant articles only,
+then filters by dedup registry, and returns clean article dicts.
 """
 
 import logging
@@ -13,9 +14,30 @@ import feedparser
 import httpx
 
 from config.settings import RSS_FEEDS, REQUEST_TIMEOUT, MAX_ARTICLES_PER_FEED, USER_AGENT
-from agentic_newsroom.ingestion.dedup import DedupRegistry
+from ingestion.dedup import DedupRegistry
 
 logger = logging.getLogger(__name__)
+
+# Keywords to match against title + summary.
+# An article must contain at least one of these to be kept.
+OIL_KEYWORDS = [
+    "oil", "crude", "brent", "wti", "opec", "petroleum",
+    "energy", "barrel", "refinery", "drilling", "rig",
+    "natural gas", "lng", "pipeline", "fuel", "gasoline",
+    "shale", "offshore", "oilfield", "hydrocarbon",
+    "saudi aramco", "exxon", "chevron", "shell", "bp",
+    "totalenergies", "conocophillips", "halliburton",
+    "schlumberger", "baker hughes", "equinor", "adnoc",
+    "rosneft", "gazprom", "petrochina", "sinopec",
+    "supply cut", "production cut", "oil price", "energy price",
+    "oil market", "oil demand", "oil supply", "oil inventory",
+]
+
+
+def _is_oil_relevant(title: str, summary: str) -> bool:
+    """Return True if article title or summary contains an oil keyword."""
+    text = (title + " " + summary).lower()
+    return any(kw in text for kw in OIL_KEYWORDS)
 
 
 def _parse_date(entry) -> str:
@@ -25,7 +47,7 @@ def _parse_date(entry) -> str:
             return datetime(*entry.published_parsed[:6], tzinfo=timezone.utc).isoformat()
         except Exception:
             pass
-    return datetime.utcnow().isoformat()
+    return datetime.now(timezone.utc).isoformat()
 
 
 def _clean_entry(entry, source_key: str) -> Optional[dict]:
@@ -43,19 +65,20 @@ def _clean_entry(entry, source_key: str) -> Optional[dict]:
         summary = entry.description.strip()
 
     return {
-        "source":    source_key,
-        "url":       url,
-        "title":     title,
-        "summary":   summary[:2000],   # cap so JSON stays manageable
-        "published": _parse_date(entry),
-        "fetched_at": datetime.utcnow().isoformat(),
-        "type":      "rss_article",
+        "source":     source_key,
+        "url":        url,
+        "title":      title,
+        "summary":    summary[:2000],
+        "published":  _parse_date(entry),
+        "fetched_at": datetime.now(timezone.utc).isoformat(),
+        "type":       "rss_article",
     }
 
 
 def fetch_all_feeds(dedup: DedupRegistry) -> list[dict]:
     """
     Fetch every RSS feed in settings.RSS_FEEDS.
+    Keeps only oil/energy relevant articles.
     Returns only new (non-duplicate) articles.
     """
     all_articles: list[dict] = []
@@ -64,7 +87,6 @@ def fetch_all_feeds(dedup: DedupRegistry) -> list[dict]:
     for feed_key, feed_url in RSS_FEEDS.items():
         logger.info(f"Fetching RSS: {feed_key}")
         try:
-            # Use httpx to fetch the raw bytes (handles redirects cleanly)
             response = httpx.get(feed_url, headers=headers, timeout=REQUEST_TIMEOUT,
                                  follow_redirects=True)
             response.raise_for_status()
@@ -74,9 +96,16 @@ def fetch_all_feeds(dedup: DedupRegistry) -> list[dict]:
             continue
 
         count_new = 0
+        count_filtered = 0
+
         for entry in parsed.entries[:MAX_ARTICLES_PER_FEED]:
             article = _clean_entry(entry, feed_key)
             if article is None:
+                continue
+
+            # Oil relevance filter
+            if not _is_oil_relevant(article["title"], article["summary"]):
+                count_filtered += 1
                 continue
 
             if dedup.is_duplicate(article["url"], article["title"]):
@@ -86,6 +115,6 @@ def fetch_all_feeds(dedup: DedupRegistry) -> list[dict]:
             all_articles.append(article)
             count_new += 1
 
-        logger.info(f"  {feed_key}: {count_new} new articles")
+        logger.info(f"  {feed_key}: {count_new} new articles ({count_filtered} filtered as non-oil)")
 
     return all_articles

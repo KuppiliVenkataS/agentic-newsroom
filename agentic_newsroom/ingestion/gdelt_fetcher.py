@@ -2,17 +2,12 @@
 GDELT fetcher via Google BigQuery.
 
 Queries the public GDELT GKG (Global Knowledge Graph) table for oil/energy
-related news from the last 12 hours. Returns structured dicts shaped the same
-as RSS articles so they land in the same JSON archive.
-
-GDELT GKG schema reference:
-https://blog.gdeltproject.org/gdelt-2-0-our-global-world-in-realtime/
-
-Cost: Each query scans ~50-200MB. Well within the 1TB/month free tier.
+related news from today. Returns structured dicts shaped the same as RSS
+articles so they land in the same JSON archive.
 """
 
 import logging
-from datetime import datetime, timedelta, timezone
+from datetime import datetime, timezone
 from pathlib import Path
 
 from google.cloud import bigquery
@@ -21,17 +16,6 @@ from google.oauth2 import service_account
 from config.settings import GCP_PROJECT_ID, GCP_KEY_FILE
 
 logger = logging.getLogger(__name__)
-
-# Oil and energy related themes in GDELT's taxonomy
-OIL_THEMES = [
-    "CRUDE_OIL",
-    "ENV_OIL",
-    "ENERGY",
-    "OPEC",
-    "OIL_PRICE",
-    "NATURAL_GAS",
-    "PETROLEUM",
-]
 
 GDELT_QUERY = """
 SELECT
@@ -44,20 +28,19 @@ SELECT
     V2Organizations,
     V2Tone,
     AllNames,
-    Amounts,
-    TranslationInfo,
-    Extras
+    Amounts
 FROM
     `gdelt-bq.gdeltv2.gkg_partitioned`
 WHERE
-    _PARTITIONTIME >= TIMESTAMP('{start}')
-    AND _PARTITIONTIME < TIMESTAMP('{end}')
+    DATE(_PARTITIONTIME) = '{date}'
     AND (
-        LOWER(V2Themes) LIKE '%oil%'
-        OR LOWER(V2Themes) LIKE '%opec%'
-        OR LOWER(V2Themes) LIKE '%petroleum%'
-        OR LOWER(V2Themes) LIKE '%crude%'
-        OR LOWER(V2Themes) LIKE '%energy%'
+        V2Themes LIKE '%CRUDE_OIL%'
+        OR V2Themes LIKE '%ENV_OIL%'
+        OR V2Themes LIKE '%ENERGY%'
+        OR V2Themes LIKE '%OPEC%'
+        OR V2Themes LIKE '%OIL_PRICE%'
+        OR V2Themes LIKE '%NATURAL_GAS%'
+        OR V2Themes LIKE '%PETROLEUM%'
         OR LOWER(AllNames) LIKE '%brent%'
         OR LOWER(AllNames) LIKE '%wti%'
     )
@@ -79,14 +62,13 @@ def _build_client() -> bigquery.Client:
 
 def _parse_tone(tone_str: str) -> dict:
     """
-    V2Tone is a comma-separated string:
+    V2Tone is comma-separated:
     Tone, Positive, Negative, Polarity, ARD, SGRD, WC
-    Returns a dict with named fields.
     """
     if not tone_str:
         return {}
     parts = tone_str.split(",")
-    keys = ["tone", "positive", "negative", "polarity", "ard", "sgrd", "word_count"]
+    keys  = ["tone", "positive", "negative", "polarity", "ard", "sgrd", "word_count"]
     result = {}
     for i, key in enumerate(keys):
         if i < len(parts):
@@ -99,30 +81,27 @@ def _parse_tone(tone_str: str) -> dict:
 
 def fetch_gdelt_data() -> list[dict]:
     """
-    Query GDELT GKG for oil/energy news from the last 12 hours.
+    Query GDELT GKG for today's oil/energy news.
     Returns a list of structured dicts.
     """
     if GCP_PROJECT_ID == "YOUR_GCP_PROJECT_ID_HERE":
         logger.warning("GCP project ID not set — skipping GDELT fetch.")
         return []
 
-    now = datetime.now(timezone.utc)
-    start = (now - timedelta(hours=12)).strftime("%Y-%m-%d %H:%M:%S")
-    end = now.strftime("%Y-%m-%d %H:%M:%S")
+    today = datetime.now(timezone.utc).strftime("%Y-%m-%d")
+    query = GDELT_QUERY.format(date=today)
 
-    query = GDELT_QUERY.format(start=start, end=end)
-
-    logger.info(f"Querying GDELT GKG: {start} → {end}")
+    logger.info(f"Querying GDELT GKG for date: {today}")
 
     try:
-        client = _build_client()
-        job = client.query(query)
-        rows = list(job.result())
+        client     = _build_client()
+        job        = client.query(query)
+        rows       = list(job.result())
     except Exception as exc:
         logger.error(f"GDELT query failed: {exc}")
         return []
 
-    fetched_at = now.isoformat()
+    fetched_at = datetime.now(timezone.utc).isoformat()
     results: list[dict] = []
 
     for row in rows:
@@ -133,7 +112,7 @@ def fetch_gdelt_data() -> list[dict]:
         results.append({
             "source":        "gdelt",
             "url":           url,
-            "title":         "",                          # GKG doesn't carry titles
+            "title":         "",
             "summary":       "",
             "published":     str(row.get("DATE", "")),
             "fetched_at":    fetched_at,

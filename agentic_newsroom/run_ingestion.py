@@ -18,15 +18,16 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).parent))
 
 from config.settings import STORAGE_ROOT, DEDUP_DB, LOG_DIR
-from agentic_newsroom.ingestion.dedup import DedupRegistry
-from agentic_newsroom.ingestion.rss_fetcher import fetch_all_feeds
-from agentic_newsroom.ingestion.eia_fetcher import fetch_eia_data
-from agentic_newsroom.ingestion.gdelt_fetcher import fetch_gdelt_data
-from agentic_newsroom.ingestion.archive_writer import save_run
-from agentic_newsroom.ingestion.audit_logger import write_audit
-from agentic_newsroom.processing.cleaner import prepare_article
-from agentic_newsroom.processing.extractor import process_articles
-from agentic_newsroom.processing.processed_writer import save_processed
+from ingestion.dedup import DedupRegistry
+from ingestion.rss_fetcher import fetch_all_feeds
+from ingestion.eia_fetcher import fetch_eia_data
+from ingestion.gdelt_fetcher import fetch_gdelt_data
+from ingestion.archive_writer import save_run
+from ingestion.audit_logger import write_audit
+from processing.cleaner import prepare_article
+from processing.extractor import process_articles
+from processing.processed_writer import save_processed
+from vectordb.store import VectorStore
 
 # ── Logging ───────────────────────────────────────────────────────────────────
 LOG_DIR.mkdir(parents=True, exist_ok=True)
@@ -122,7 +123,17 @@ def run():
         logger.error(msg)
         errors.append(msg)
 
-    # ── 9. Write audit log ─────────────────────────────────────────────────
+    # ── 9. Embed into vector DB ───────────────────────────────────────────
+    try:
+        store       = VectorStore()
+        added       = store.add_articles(enriched)
+        logger.info(f"Vector DB: {added} chunks added, {store.count()} total")
+    except Exception as exc:
+        msg = f"Vector DB failed: {exc}"
+        logger.error(msg)
+        errors.append(msg)
+
+    # ── 10. Write audit log ─────────────────────────────────────────────────
     finished_at = datetime.now(timezone.utc).isoformat()
     status = "ok" if not errors else ("partial" if (articles or market_data) else "failed")
 

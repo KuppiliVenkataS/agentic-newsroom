@@ -1,0 +1,1283 @@
+{
+  "run_id": "2026-05-21_18-26-39",
+  "run_timestamp": "2026-05-21T18:26:49.998886",
+  "article_count": 97,
+  "market_data_count": 40,
+  "articles": [
+    {
+      "source": "ft_markets",
+      "url": "https://www.ft.com/content/970b1bab-ca00-4ea1-8964-a59ea431de6e",
+      "title": "‘Fast entry’ SpaceX, OpenAI and Anthropic IPOs to ignite Wall St trading frenzy",
+      "summary": "Passive investors set to dump billions of shares to make way for new stocks",
+      "published": "2026-05-21T17:41:43+00:00",
+      "fetched_at": "2026-05-21T18:26:39.754395",
+      "type": "rss_article"
+    },
+    {
+      "source": "ft_markets",
+      "url": "https://www.ft.com/content/a59be3cf-eee2-4b10-9c86-b6e4dc0dbbdb",
+      "title": "Six takeaways from Musk’s 200,000-word planetary vision",
+      "summary": "Elon Musk’s rockets-to-AI conglomerate lays out its ambitions",
+      "published": "2026-05-21T15:03:46+00:00",
+      "fetched_at": "2026-05-21T18:26:39.756839",
+      "type": "rss_article"
+    },
+    {
+      "source": "ft_markets",
+      "url": "https://www.ft.com/content/10cecc4e-dbce-477d-9f10-068581c6e650",
+      "title": "Goldman Sachs eclipses Morgan Stanley’s Michael Grimes on SpaceX IPO",
+      "summary": "Celebrated tech banker lost influence over Elon Musk’s blockbuster listing amid stint in Trump administration",
+      "published": "2026-05-21T17:10:55+00:00",
+      "fetched_at": "2026-05-21T18:26:39.758761",
+      "type": "rss_article"
+    },
+    {
+      "source": "ft_markets",
+      "url": "https://www.ft.com/content/521d1861-82c5-4194-9358-f3dd53d122b5",
+      "title": "How Chris Hohn built the world’s most profitable hedge fund",
+      "summary": "The billionaire hedge fund manager has deep convictions on finance, philanthropy — and, increasingly, faith",
+      "published": "2026-05-21T04:00:09+00:00",
+      "fetched_at": "2026-05-21T18:26:39.760985",
+      "type": "rss_article"
+    },
+    {
+      "source": "ft_markets",
+      "url": "https://www.ft.com/content/d6d4e49a-4236-486e-9415-8c88d9f97b34",
+      "title": "Burnham’s not the messiah. He’s old Labour’s last throw",
+      "summary": "Being a new face gets you a hearing but doesn’t change the economic picture",
+      "published": "2026-05-21T10:52:28+00:00",
+      "fetched_at": "2026-05-21T18:26:39.762605",
+      "type": "rss_article"
+    },
+    {
+      "source": "ft_markets",
+      "url": "https://www.ft.com/content/ba9dc280-6b1f-4c2f-ba5e-f7e31d36c05f",
+      "title": "The Supreme Court turns its back on 60 years of Black enfranchisement",
+      "summary": "Its decision in Louisiana vs Callais ignores the law and overturns precedent",
+      "published": "2026-05-21T14:00:06+00:00",
+      "fetched_at": "2026-05-21T18:26:39.764191",
+      "type": "rss_article"
+    },
+    {
+      "source": "ft_markets",
+      "url": "https://www.ft.com/content/af3b8719-e9be-4228-9bf9-921f77ad2448",
+      "title": "Closing tax loophole for oil groups will fund cost of living package, says Reeves",
+      "summary": "Chancellor sets out sweeping package of measures aimed at helping businesses and families",
+      "published": "2026-05-21T18:01:05+00:00",
+      "fetched_at": "2026-05-21T18:26:39.765745",
+      "type": "rss_article"
+    },
+    {
+      "source": "ft_markets",
+      "url": "https://www.ft.com/content/39d9d323-b501-4033-bf1b-e60e7c5239cc",
+      "title": "Morrisons blames UK government policy for shutting 100 lossmaking stores",
+      "summary": "Closures are latest cost-cutting step by UK supermarket chain",
+      "published": "2026-05-21T16:38:41+00:00",
+      "fetched_at": "2026-05-21T18:26:39.767348",
+      "type": "rss_article"
+    },
+    {
+      "source": "ft_markets",
+      "url": "https://www.ft.com/content/e08cbca2-b5ca-428d-8bef-79378308d426",
+      "title": "Rubio sees ‘good signs’ US could reach deal with Iran",
+      "summary": "Pakistani mediators expected to travel to Tehran as diplomacy to end conflict intensifies",
+      "published": "2026-05-21T17:32:57+00:00",
+      "fetched_at": "2026-05-21T18:26:39.768948",
+      "type": "rss_article"
+    },
+    {
+      "source": "ft_markets",
+      "url": "https://www.ft.com/content/4c1d2ee0-e9dd-410f-bdc3-e0917f3ca41f",
+      "title": "Walmart says customers are rationing petrol as Iran war hits wallets",
+      "summary": "US retail giant’s shares plunge after saying it absorbed higher fuel expenses to hold down prices for consumers",
+      "published": "2026-05-21T15:16:59+00:00",
+      "fetched_at": "2026-05-21T18:26:39.770613",
+      "type": "rss_article"
+    },
+    {
+      "source": "ft_markets",
+      "url": "https://www.ft.com/content/14213cb0-8d11-4118-bac0-12a403696185",
+      "title": "Trump abruptly postpones AI order after White House infighting",
+      "summary": "President refuses to approve order hours before planned signing due to fears US innovators will lose out to China",
+      "published": "2026-05-21T17:49:41+00:00",
+      "fetched_at": "2026-05-21T18:26:39.772236",
+      "type": "rss_article"
+    },
+    {
+      "source": "ft_markets",
+      "url": "https://www.ft.com/content/2911c03a-4387-4545-a0c1-ef71b07294a5",
+      "title": "Five arrested over claims of electoral fraud in Angela Rayner’s constituency",
+      "summary": "Greater Manchester Police opens probe after reports over ‘concerns about candidates’ in May 7 local elections",
+      "published": "2026-05-21T16:29:14+00:00",
+      "fetched_at": "2026-05-21T18:26:39.773758",
+      "type": "rss_article"
+    },
+    {
+      "source": "ft_markets",
+      "url": "https://www.ft.com/content/3991ada8-d363-4e93-b18f-5ba9c274f026",
+      "title": "Streeting floats ‘wealth tax’ in bid to woo Labour left",
+      "summary": "Leadership hopeful says equalising capital gains tax rates with income tax could raise £12bn a year",
+      "published": "2026-05-21T12:33:11+00:00",
+      "fetched_at": "2026-05-21T18:26:39.775214",
+      "type": "rss_article"
+    },
+    {
+      "source": "ft_companies",
+      "url": "https://www.ft.com/content/e84a958f-0a3b-4c8d-8876-673eff4e7445",
+      "title": "TfL voices concern over robotaxis as ministers invite bids",
+      "summary": "Officials say more work is needed to show self-driving vehicles will bring ‘net benefit on safety’",
+      "published": "2026-05-21T18:01:05+00:00",
+      "fetched_at": "2026-05-21T18:26:39.967012",
+      "type": "rss_article"
+    },
+    {
+      "source": "ft_companies",
+      "url": "https://www.ft.com/content/248af60b-29c9-4686-9498-0392059fca37",
+      "title": "BT is finally getting on top of its altnet threat",
+      "summary": "UK telecom has put up a fight as its rivals slow their rate of sprawl",
+      "published": "2026-05-21T17:26:06+00:00",
+      "fetched_at": "2026-05-21T18:26:39.969069",
+      "type": "rss_article"
+    },
+    {
+      "source": "ft_companies",
+      "url": "https://www.ft.com/content/a7aa26d1-1bad-407f-8bff-4ae491cb8ce0",
+      "title": "Nvidia fails to dazzle investors despite lifting dividends",
+      "summary": "Shares in world’s most valuable company slip despite announcing better than expected revenue and forecasts",
+      "published": "2026-05-21T16:33:35+00:00",
+      "fetched_at": "2026-05-21T18:26:39.970764",
+      "type": "rss_article"
+    },
+    {
+      "source": "ft_companies",
+      "url": "https://www.ft.com/content/b1f0c063-7b2f-4393-87ad-8cc0d6f187c0",
+      "title": "Air France, Airbus found guilty of involuntary manslaughter in 2009 Rio-Paris crash",
+      "summary": "Both groups to appeal ruling after Paris court finds the companies responsible for negligence that led to accident",
+      "published": "2026-05-21T16:29:06+00:00",
+      "fetched_at": "2026-05-21T18:26:39.972336",
+      "type": "rss_article"
+    },
+    {
+      "source": "ft_companies",
+      "url": "https://www.ft.com/content/4108d107-9c9e-4367-a737-a44539ab1879",
+      "title": "Crypto platforms rush to launch derivatives linked to SpaceX",
+      "summary": "Binance among exchanges to offer so-called perpetual futures to speculate on price of rocket company’s upcoming IPO",
+      "published": "2026-05-21T16:10:09+00:00",
+      "fetched_at": "2026-05-21T18:26:39.973812",
+      "type": "rss_article"
+    },
+    {
+      "source": "ft_companies",
+      "url": "https://www.ft.com/content/31dc6298-fa86-47e4-8855-e5ac751fe189",
+      "title": "UK business activity fell for first time in more than a year in May",
+      "summary": "PMI figures reflect domestic political uncertainty adding to fallout from Middle East war",
+      "published": "2026-05-21T16:01:28+00:00",
+      "fetched_at": "2026-05-21T18:26:39.975186",
+      "type": "rss_article"
+    },
+    {
+      "source": "ft_companies",
+      "url": "https://www.ft.com/content/ef657644-bd53-4e59-927b-5b3c483389fc",
+      "title": "AJ Bell boss warns of Isa reform ‘black hole’",
+      "summary": "Investment site says proposed rules could deter first-time investors",
+      "published": "2026-05-21T15:46:46+00:00",
+      "fetched_at": "2026-05-21T18:26:39.976507",
+      "type": "rss_article"
+    },
+    {
+      "source": "ft_companies",
+      "url": "https://www.ft.com/content/016f7ee9-b71d-439d-9f48-2a66de0dd623",
+      "title": "Spotify targets high-spending superfans with AI-generated music",
+      "summary": "Streamer and Universal Music Group strike licensing deal for a paid add-on tool within Spotify’s app",
+      "published": "2026-05-21T15:45:07+00:00",
+      "fetched_at": "2026-05-21T18:26:39.977879",
+      "type": "rss_article"
+    },
+    {
+      "source": "ft_companies",
+      "url": "https://www.ft.com/content/0d60c5a4-22b9-4ac2-a8e1-e387a6368678",
+      "title": "Leaseholders pay for ‘years of underfunding’ in UK’s ageing housing stock",
+      "summary": "Average service charge in buildings that are more than 25 years old and six storeys tall hits £7,300 per year",
+      "published": "2026-05-21T15:16:56+00:00",
+      "fetched_at": "2026-05-21T18:26:39.979413",
+      "type": "rss_article"
+    },
+    {
+      "source": "ft_companies",
+      "url": "https://www.ft.com/content/1984bd92-1457-4ff1-abf0-dde6ea9dde95",
+      "title": "Swiss giant battery developer taps UK tech to feed AI power boom",
+      "summary": "World’s largest vanadium flow battery project selects Invinity Energy Systems to meet data centre energy demands",
+      "published": "2026-05-21T14:51:42+00:00",
+      "fetched_at": "2026-05-21T18:26:39.980832",
+      "type": "rss_article"
+    },
+    {
+      "source": "ft_companies",
+      "url": "https://www.ft.com/content/064ce1dc-b811-4c69-b217-0250405fc030",
+      "title": "Post Office replaces Fujitsu after Horizon scandal",
+      "summary": "Accenture and OneView Commerce win £500mn contracts to run and create alternative to notorious IT system",
+      "published": "2026-05-21T14:45:44+00:00",
+      "fetched_at": "2026-05-21T18:26:39.982128",
+      "type": "rss_article"
+    },
+    {
+      "source": "ft_companies",
+      "url": "https://www.ft.com/content/616b54fc-e750-4c90-9798-405355542eb4",
+      "title": "UK energy regulator warns traders against gaming the interconnector market",
+      "summary": "Analysts warn of risk of traders holding ‘market to ransom’ by hoarding capacity on electricity import-export lines",
+      "published": "2026-05-21T14:37:56+00:00",
+      "fetched_at": "2026-05-21T18:26:39.983425",
+      "type": "rss_article"
+    },
+    {
+      "source": "ft_companies",
+      "url": "https://www.ft.com/content/f9d3653a-42e3-4296-be81-b7fa4f16b624",
+      "title": "London mayor blocks the Met’s £50mn Palantir deal",
+      "summary": "Mayor’s Office for Policing and Crime identifies ‘clear and serious’ breaches of procurement rules",
+      "published": "2026-05-21T14:30:48+00:00",
+      "fetched_at": "2026-05-21T18:26:39.984877",
+      "type": "rss_article"
+    },
+    {
+      "source": "ft_companies",
+      "url": "https://www.ft.com/content/268bf01d-545e-4245-a5c7-5c00c053df10",
+      "title": "EasyJet to launch loyalty scheme to woo unhappy British Airways flyers",
+      "summary": "Budget airline says UK flag carrier’s overhaul had made its programme too ‘elite’",
+      "published": "2026-05-21T13:58:00+00:00",
+      "fetched_at": "2026-05-21T18:26:39.986382",
+      "type": "rss_article"
+    },
+    {
+      "source": "ft_companies",
+      "url": "https://www.ft.com/content/729f5012-d4d4-49b9-81ab-3263b8604dd1",
+      "title": "BYD in talks with Christian Horner over entering F1",
+      "summary": "EV maker intends to meet senior officials from the motorsport after discussions with former Red Bull Racing chief",
+      "published": "2026-05-21T13:55:45+00:00",
+      "fetched_at": "2026-05-21T18:26:39.987930",
+      "type": "rss_article"
+    },
+    {
+      "source": "ft_companies",
+      "url": "https://www.ft.com/content/5490adb3-a052-4f0f-b155-320d4c61aee5",
+      "title": "Musk, SpaceX and Muscovite fever dreams",
+      "summary": "Tech titans are in many ways the intellectual heirs of the Soviet space programme",
+      "published": "2026-05-21T12:45:30+00:00",
+      "fetched_at": "2026-05-21T18:26:40.014750",
+      "type": "rss_article"
+    },
+    {
+      "source": "ft_companies",
+      "url": "https://www.ft.com/content/58fcca43-9195-49e2-b1c3-0e3bfb0147cd",
+      "title": "How to make sense of SpaceX’s nonsensical valuation",
+      "summary": "The market has never before had to price a stock so speculative yet so large",
+      "published": "2026-05-21T12:25:58+00:00",
+      "fetched_at": "2026-05-21T18:26:40.016327",
+      "type": "rss_article"
+    },
+    {
+      "source": "ft_companies",
+      "url": "https://www.ft.com/content/5d72a42e-db70-4893-9b57-911ed8a2d2b9",
+      "title": "Stellantis to invest €60bn and launch 60 new models under plan to revive carmaker",
+      "summary": "European group will partner with Chinese rivals and keep all of its factories under strategy laid out by chief executive",
+      "published": "2026-05-21T12:22:49+00:00",
+      "fetched_at": "2026-05-21T18:26:40.017783",
+      "type": "rss_article"
+    },
+    {
+      "source": "ft_companies",
+      "url": "https://www.ft.com/content/92baf913-8987-4c65-82da-311e80f773b0",
+      "title": "US quantum investment includes groups tied to Trump administration",
+      "summary": "Beneficiaries of $2bn push include start-up backed by firm linked to Trump family and another taken public by Pentagon official",
+      "published": "2026-05-21T12:21:14+00:00",
+      "fetched_at": "2026-05-21T18:26:40.019174",
+      "type": "rss_article"
+    },
+    {
+      "source": "bloomberg_markets",
+      "url": "https://www.bloomberg.com/news/articles/2026-05-20/latest-oil-market-news-and-analysis-for-may-21",
+      "title": "Oil Falls on Hopes for Iran Peace Progress, Hormuz Reopening",
+      "summary": "Oil fell with investors’ hopes buoyed that the US and Iran are closing in on a peace deal that could lead to a resumption of flows through the vital Strait of Hormuz.",
+      "published": "2026-05-20T22:11:53+00:00",
+      "fetched_at": "2026-05-21T18:26:40.512521",
+      "type": "rss_article"
+    },
+    {
+      "source": "bloomberg_markets",
+      "url": "https://www.bloomberg.com/news/videos/2026-05-21/mortgage-rates-hit-highest-since-august-video",
+      "title": "Mortgage Rates Hit Highest Since August as War Fans Inflation",
+      "summary": "Diane Swonk, Chief Economist at KPMG joins Scarlet Fu on \"Bloomberg Markets.\" US mortgage rates surged this week to the highest level since August, threatening a spring selling season that was just starting to get a pulse. The average rate for 30-year fixed loans jumped to 6.51% from 6.36%, the biggest weekly increase since the end of March, Freddie Mac reported on Thursday.  (Source: Bloomberg)",
+      "published": "2026-05-21T18:18:22+00:00",
+      "fetched_at": "2026-05-21T18:26:40.514931",
+      "type": "rss_article"
+    },
+    {
+      "source": "bloomberg_markets",
+      "url": "https://www.bloomberg.com/news/articles/2026-05-20/asian-stocks-to-rise-as-nvidia-whipsaws-on-results-markets-wrap",
+      "title": "Stocks Rise and Oil Falls on US-Iran Deal Hopes: Markets Wrap",
+      "summary": "Hopes for a diplomatic way out of the war in Iran lifted stocks and bonds as oil dropped on speculation that a deal would pave the way for a revival of energy flows through the key Strait of Hormuz.",
+      "published": "2026-05-20T22:04:51+00:00",
+      "fetched_at": "2026-05-21T18:26:40.516645",
+      "type": "rss_article"
+    },
+    {
+      "source": "bloomberg_markets",
+      "url": "https://www.bloomberg.com/news/videos/2026-05-21/walmart-stock-is-rich-champine-video",
+      "title": "Walmart Stock is Rich: Champine",
+      "summary": "Laura Champine, director of research, consumer sector head at Tabor Asset Management, joins Scarlet Fu on \"Bloomberg Markets. Walmart warned rising fuel costs are squeezing the company’s bottom line and could lead to higher prices for shoppers. (Source: Bloomberg)",
+      "published": "2026-05-21T17:58:33+00:00",
+      "fetched_at": "2026-05-21T18:26:40.518352",
+      "type": "rss_article"
+    },
+    {
+      "source": "bloomberg_markets",
+      "url": "https://www.bloomberg.com/news/videos/2026-05-21/market-risks-keep-multiplying-doriwala-video",
+      "title": "Market Risks Keep Multiplying: Doriwala",
+      "summary": "Alifia Doriwala, co-chief investment officer at RockCreek, joins Scarlet Fu on \"Bloomberg Markets.\" A standoff between the US and Iran over key issues lifted oil prices, dragging down stocks and bonds on concern that a prolonged closure of the Strait of Hormuz could worsen energy disruptions and fuel inflation. (Source: Bloomberg)",
+      "published": "2026-05-21T17:52:01+00:00",
+      "fetched_at": "2026-05-21T18:26:40.519991",
+      "type": "rss_article"
+    },
+    {
+      "source": "bloomberg_markets",
+      "url": "https://www.bloomberg.com/news/articles/2026-05-21/airbus-air-france-culpable-for-af447-crash-french-court-rules",
+      "title": "Airbus, Air France Found Guilty in 2009 Rio-Paris Crash",
+      "summary": "Airbus SE and Air France were found guilty of involuntary manslaughter in the deadly crash of a passenger jet en route to Paris from Rio de Janeiro 17 years ago after a French appeals court overturned a previous ruling.",
+      "published": "2026-05-21T14:12:14+00:00",
+      "fetched_at": "2026-05-21T18:26:40.521538",
+      "type": "rss_article"
+    },
+    {
+      "source": "bloomberg_markets",
+      "url": "https://www.bloomberg.com/news/videos/2026-05-21/gold-declines-as-traders-weigh-rate-path-video",
+      "title": "Gold Declines as Traders Weigh Rate Path After US-Iran Standoff",
+      "summary": "Bloomberg's Jack Ryan joins Scarlet Fu on \"Bloomberg Markets.\" Gold declined on persistent concerns that elevated energy prices stemming from the ongoing Middle East conflict may force central banks to keep interest rates higher for longer. (Source: Bloomberg)",
+      "published": "2026-05-21T17:47:44+00:00",
+      "fetched_at": "2026-05-21T18:26:40.523051",
+      "type": "rss_article"
+    },
+    {
+      "source": "bloomberg_markets",
+      "url": "https://www.bloomberg.com/news/articles/2026-05-21/stock-futures-fall-as-nvidia-fails-to-spark-lift-walmart-slides",
+      "title": "US Stocks Erase Loss on Peace-Deal Hopes as Oil, Yields Decline",
+      "summary": "US stocks pared earlier losses, with oil and Treasury erasing gains as investors gauged the latest efforts at reaching a peace settlement in the Middle East.",
+      "published": "2026-05-21T12:37:14+00:00",
+      "fetched_at": "2026-05-21T18:26:40.524560",
+      "type": "rss_article"
+    },
+    {
+      "source": "bloomberg_markets",
+      "url": "https://www.bloomberg.com/news/articles/2026-05-21/spacex-challenges-ai-rivals-for-control-of-26-5-trillion-market",
+      "title": "SpaceX Joins Battle for Control of $26.5 Trillion AI Market",
+      "summary": "SpaceX is marketing itself to IPO investors as an artificial intelligence play targeting a $26.5 trillion potential market opportunity, signaling its intention to wrest business from investor darlings whose valuations have soared.",
+      "published": "2026-05-21T15:49:47+00:00",
+      "fetched_at": "2026-05-21T18:26:40.526085",
+      "type": "rss_article"
+    },
+    {
+      "source": "bloomberg_markets",
+      "url": "https://www.bloomberg.com/news/articles/2026-05-21/retail-traders-can-now-own-slice-of-kalshi-in-private-asset-boom",
+      "title": "Retail Traders Can Now Own Slice of Kalshi in Private-Asset Boom",
+      "summary": "Retail bettors made Kalshi worth more than $20 billion. Until Thursday, none of them could own a piece of it.",
+      "published": "2026-05-21T17:18:43+00:00",
+      "fetched_at": "2026-05-21T18:26:40.527562",
+      "type": "rss_article"
+    },
+    {
+      "source": "bloomberg_markets",
+      "url": "https://www.bloomberg.com/news/articles/2026-05-21/spacex-ipo-requires-leap-of-faith-in-ai-mars-and-musk-s-vision",
+      "title": "SpaceX IPO Requires a Leap of Faith in AI, Musk and Mars",
+      "summary": "Elon Musk’s SpaceX pulled back the curtain on a business empire that has racked up ballooning losses and debt after acquiring a cash-hungry startup, and pumping billions of dollars into futuristic endeavors ranging from AI to a Mars rocket.",
+      "published": "2026-05-21T10:00:00+00:00",
+      "fetched_at": "2026-05-21T18:26:40.529049",
+      "type": "rss_article"
+    },
+    {
+      "source": "bloomberg_markets",
+      "url": "https://www.bloomberg.com/news/videos/2026-05-21/oil-gains-as-iran-s-uranium-stance-clouds-hormuz-outlook-video",
+      "title": "Oil Gains as Iran’s Uranium Stance Clouds Hormuz Outlook",
+      "summary": "Oil gained Monday as traders weighed conflicting reports on Iran’s uranium enrichment, a key sticking point in peace negotiations with the US that could dictate the pace of reopening the vital Strait of Hormuz.\n\nWest Texas Intermediate traded above $101 a barrel Monday after sliding 5.7% in the previous session. Prices pared some gains after Al Jazeera reported no new uranium directive had been issued, citing an unnamed Iranian official. Traders have been on high alert for clues on the status of negotiations between the US and Iran to parse when the strait &mdash; subject to a double blockade by Tehran and the US military &mdash; might reopen and to gird against a potential return to active fighting. The virtual closure of the waterway, a key global energy shipping route, has caused energy prices to soar.\n\nWe get reaction from Mike McGlone, Senior Commodity Strategist for Bloomberg Intelligence. (Source: Bloomberg)",
+      "published": "2026-05-21T17:12:27+00:00",
+      "fetched_at": "2026-05-21T18:26:40.530551",
+      "type": "rss_article"
+    },
+    {
+      "source": "bloomberg_markets",
+      "url": "https://www.bloomberg.com/news/videos/2026-05-21/open-interest-5-21-2026-video",
+      "title": "Open Interest 5/21/2026",
+      "summary": "Get a jump start on the US trading day with Matt Miller and Dani Burger on \"Bloomberg Open Interest.\" Nvidia’s blowout earnings fail to supercharge the AI trade, as investors eye the next wave of mega IPOs from SpaceX, OpenAI, and Anthropic. Plus, Jamie Dimon’s AI hiring shift: more AI staff, fewer bankers Plus,  warnings on the AI debt boom, e.l.f Beauty’s Rhode-fueled surge, and a Trump advisor’s prediction for lower gas prices. (Source: Bloomberg)",
+      "published": "2026-05-21T17:10:27+00:00",
+      "fetched_at": "2026-05-21T18:26:40.532052",
+      "type": "rss_article"
+    },
+    {
+      "source": "bloomberg_markets",
+      "url": "https://www.bloomberg.com/news/articles/2026-05-21/brazilian-executives-waver-on-flavio-bolsonaro-over-ties-to-master-ceo-vorcaro",
+      "title": "Brazilian Executives Waver on Flávio Bolsonaro Over His Ties to Jailed CEO",
+      "summary": "Some Brazilian executives and investors are tempering their support for presidential candidate Flávio Bolsonaro as he seeks backing in the nation’s financial hub days after details emerged about his relationship with a scandal-plagued banker.",
+      "published": "2026-05-21T17:08:33+00:00",
+      "fetched_at": "2026-05-21T18:26:40.533551",
+      "type": "rss_article"
+    },
+    {
+      "source": "bloomberg_markets",
+      "url": "https://www.bloomberg.com/news/videos/2026-05-21/stellantis-plots-70-billion-turnaround-on-brand-reset",
+      "title": "Stellantis Plots $70 Billion Turnaround on Brand Reset",
+      "summary": "Stellantis NV announced a major investment push focused on four core brands in a broad reset to boost profitability. The automaking group will spend some €60 billion ($70 billion) through 2030 to launch 60 new models, prioritizing the Jeep, Ram, Peugeot and Fiat brands. \n\nIn North America, it plans to add a new compact and midsize pickup truck as well as a new entry-level model for the Dodge brand to help it rebuild after years of sales declines. Chrysler, which today sells just a minivan, will get three new crossover models with a price range of $25,000 to $35,000. Stellantis is also targeting 25% revenue growth in North America.\n\nFor more, we speak with Craig Trudell, Managing Editor of Global Business Coverage for Bloomberg News. (Source: Bloomberg)",
+      "published": "2026-05-21T17:07:19+00:00",
+      "fetched_at": "2026-05-21T18:26:40.535340",
+      "type": "rss_article"
+    },
+    {
+      "source": "bloomberg_markets",
+      "url": "https://www.bloomberg.com/news/videos/2026-05-21/home-buyers-hit-as-bond-rout-drives-rates-higher-video",
+      "title": "Home Buyers Hit as Bond Rout Drives Rates Higher",
+      "summary": "Since the oil-price shock from President Donald Trump’s Iran war unleashed the biggest jump in inflation since 2023, bond prices have tumbled, pushing yields on some US government debt to the highest levels in nearly two decades. \nThe rate on 10-year Treasuries, which sets the floor for mortgages, has climbed to around 4.6%, with traders saying 5% is within reach.\nGennadiy Goldberg, Head of US Rates Strategy at TD Securities, joins to discuss rates breaking through key technical levels, what's really driving the selloff, and how the Fed should react. (Source: Bloomberg)",
+      "published": "2026-05-21T16:48:36+00:00",
+      "fetched_at": "2026-05-21T18:26:40.537375",
+      "type": "rss_article"
+    },
+    {
+      "source": "bloomberg_markets",
+      "url": "https://www.bloomberg.com/news/articles/2026-05-21/french-resilience-to-war-fallout-wilts-in-blow-to-budget-efforts",
+      "title": "French Resilience to Iran War Wilts in Blow to Budget Plans",
+      "summary": "France’s economic sturdiness in the face of the Iran war shock is crumbling, jeopardizing plans to rein in the budget deficit as the country gears up for a pivotal election in 2027.",
+      "published": "2026-05-21T11:28:06+00:00",
+      "fetched_at": "2026-05-21T18:26:40.539441",
+      "type": "rss_article"
+    },
+    {
+      "source": "bloomberg_markets",
+      "url": "https://www.bloomberg.com/news/articles/2026-05-21/turkey-liquidated-almost-all-its-us-treasury-holdings-in-march",
+      "title": "Turkey Liquidated Almost All US Treasury Holdings in March",
+      "summary": "Turkey offloaded almost all of its US Treasuries in March as it stepped up efforts to defend the lira amid intense economic pressure from soaring energy costs.",
+      "published": "2026-05-21T12:35:36+00:00",
+      "fetched_at": "2026-05-21T18:26:40.541337",
+      "type": "rss_article"
+    },
+    {
+      "source": "bloomberg_markets",
+      "url": "https://www.bloomberg.com/news/articles/2026-05-21/dimming-risk-appetites-welcome-development-for-us-equity-bulls",
+      "title": "Dimming Risk Appetites Welcome Development for US Equity Bulls",
+      "summary": "Beneath the surface of a stock market sitting at record highs, signs of trepidation are building.",
+      "published": "2026-05-21T14:58:05+00:00",
+      "fetched_at": "2026-05-21T18:26:40.543205",
+      "type": "rss_article"
+    },
+    {
+      "source": "bloomberg_markets",
+      "url": "https://www.bloomberg.com/news/articles/2026-01-28/deutsche-bank-offices-inspected-by-frankfurt-prosecutor",
+      "title": "Deutsche Bank Raided Over Late Filing of AML Report",
+      "summary": "Deutsche Bank AG was raided by German authorities on Wednesday as part of a money laundering probe looking at past dealings by staff with firms linked to the now-sanctioned Roman Abramovich, setting back the lender’s long-running effort to shed a previous reputation as a magnet for scandals.",
+      "published": "2026-01-28T12:23:46+00:00",
+      "fetched_at": "2026-05-21T18:26:40.545313",
+      "type": "rss_article"
+    },
+    {
+      "source": "bloomberg_markets",
+      "url": "https://www.bloomberg.com/news/articles/2026-01-29/deutsche-bank-plans-new-buyback-in-results-overshadowed-by-raid",
+      "title": "Deutsche Bank Raid Casts Cloud Over Record Profit",
+      "summary": "Deutsche Bank AG closed out a record year for profit with higher trading income and a new share buyback, a boost to Chief Executive Officer Christian Sewing a day after a raid of its Frankfurt offices raked up memories of the lender’s past troubles.",
+      "published": "2026-01-29T06:04:47+00:00",
+      "fetched_at": "2026-05-21T18:26:40.547150",
+      "type": "rss_article"
+    },
+    {
+      "source": "bloomberg_markets",
+      "url": "https://www.bloomberg.com/news/articles/2026-05-21/argentina-s-surge-in-foreign-reserves-risks-reigniting-inflation",
+      "title": "Argentina’s Surge in Foreign Reserves Risks Reigniting Inflation",
+      "summary": "There are, by all appearances, more than enough dollars flowing into Argentina for the country to fulfill its pledge to replenish its depleted foreign reserves. Each week, they pour in, the result of factors such as a boom in commodity exports and corporate bond sales.",
+      "published": "2026-05-21T16:30:01+00:00",
+      "fetched_at": "2026-05-21T18:26:40.549013",
+      "type": "rss_article"
+    },
+    {
+      "source": "bloomberg_markets",
+      "url": "https://www.bloomberg.com/news/videos/2026-05-21/mamdani-s-tax-plans-may-hurt-new-york-dimon-says-video",
+      "title": "Mamdani's Tax Plans May Hurt New York, Dimon Says",
+      "summary": "\"People think that somehow being anti-business is going to help the city, it’s not.\" JPMorgan CEO Jamie Dimon criticized plans by New York Mayor Zohran Mamdani to place more taxes on the rich. (Source: Bloomberg)",
+      "published": "2026-05-21T16:28:56+00:00",
+      "fetched_at": "2026-05-21T18:26:40.550888",
+      "type": "rss_article"
+    },
+    {
+      "source": "bloomberg_markets",
+      "url": "https://www.bloomberg.com/news/videos/2026-05-21/bloomberg-surveillance-5-21-2026-video",
+      "title": "Bloomberg Surveillance 5/21/2026",
+      "summary": "Jonathan Ferro, Lisa Abramowicz and Annmarie Hordern speak daily with leaders and decision makers from Wall Street to Washington and beyond. No other program better positions investors and executives for the trading day. (Source: Bloomberg)",
+      "published": "2026-05-21T16:27:39+00:00",
+      "fetched_at": "2026-05-21T18:26:40.552694",
+      "type": "rss_article"
+    },
+    {
+      "source": "bloomberg_markets",
+      "url": "https://www.bloomberg.com/news/articles/2026-05-21/turkey-s-fx-sales-reach-6-billion-after-opposition-ruling",
+      "title": "Turkey’s FX Sales Reach $6 Billion After Opposition Ruling",
+      "summary": "Turkish state lenders sold about $6 billion to defend the lira on Thursday, about half shortly after a court decision that removed the main opposition party’s leadership, according to traders familiar with the transactions.",
+      "published": "2026-05-21T16:27:25+00:00",
+      "fetched_at": "2026-05-21T18:26:40.554484",
+      "type": "rss_article"
+    },
+    {
+      "source": "bloomberg_markets",
+      "url": "https://www.bloomberg.com/news/articles/2026-05-21/straightpath-founders-get-prison-for-386-million-pre-ipo-fraud",
+      "title": "StraightPath Founders Get Prison for $386 Million Pre-IPO Fraud",
+      "summary": "The founders of StraightPath Venture Partners LLC were sentenced to years in prison for defrauding investors who gave them $386 million to supposedly invest cheaply in hot companies about to go public.",
+      "published": "2026-05-21T16:24:43+00:00",
+      "fetched_at": "2026-05-21T18:26:40.556508",
+      "type": "rss_article"
+    },
+    {
+      "source": "bloomberg_markets",
+      "url": "https://www.bloomberg.com/news/articles/2026-05-21/german-weapons-maker-rheinmetall-selling-first-bond-in-16-years",
+      "title": "Germany’s Rheinmetall Raises First Public Bond Since 2010",
+      "summary": "Debt investors appetite for Europe’s booming defense sector was on full display on Thursday as Rheinmetall AG drew more than €3.9 billion ($4.5 billion) of orders for its first conventional public bond sale since 2010.",
+      "published": "2026-05-21T08:45:53+00:00",
+      "fetched_at": "2026-05-21T18:26:40.558610",
+      "type": "rss_article"
+    },
+    {
+      "source": "bloomberg_markets",
+      "url": "https://www.bloomberg.com/news/articles/2026-05-21/blackrock-latam-etf-sees-outflows-on-ai-shift-local-politics",
+      "title": "BlackRock Latam ETF Sees Outflows on AI Shift, Local Politics",
+      "summary": "Investors are selling the largest exchange-traded fund tracking Latin American stocks at the fastest pace in years as mounting political uncertainty across the region and the artificial-intelligence trade in Asia prompt money managers to rethink their exposure.",
+      "published": "2026-05-21T16:21:21+00:00",
+      "fetched_at": "2026-05-21T18:26:40.560792",
+      "type": "rss_article"
+    },
+    {
+      "source": "bloomberg_markets",
+      "url": "https://www.bloomberg.com/news/articles/2026-05-21/fed-s-barkin-says-repeated-supply-shocks-test-inflation-anchor",
+      "title": "Fed’s Barkin Says Repeated Supply Shocks Test Inflation Anchor",
+      "summary": "Federal Reserve Bank of Richmond President Tom Barkin said the ability of businesses and consumers to tolerate the latest in a series of supply shocks will determine whether the US central bank can continue to “look through” higher inflation without raising interest rates.",
+      "published": "2026-05-21T16:20:00+00:00",
+      "fetched_at": "2026-05-21T18:26:40.562884",
+      "type": "rss_article"
+    },
+    {
+      "source": "bloomberg_markets",
+      "url": "https://www.bloomberg.com/news/articles/2026-05-21/rising-treasury-yields-disrupt-mortgage-rates-in-break-from-decades-long-decline",
+      "title": "Homebuyers Hammered as War-Fueled Bond Rout Drives Up Rates",
+      "summary": "Najimah Roberson, a lifelong renter, spent the past two years searching around Harrisburg, Pennsylvania, for a home she could afford &mdash; getting outbid nearly 30 times along the way.",
+      "published": "2026-05-21T13:15:03+00:00",
+      "fetched_at": "2026-05-21T18:26:40.564918",
+      "type": "rss_article"
+    },
+    {
+      "source": "oilprice_news",
+      "url": "https://oilprice.com/Energy/Crude-Oil/ADNOC-Warns-Gulf-Oil-Disruptions-Could-Last-Until-2027.html",
+      "title": "ADNOC Warns Gulf Oil Disruptions Could Last Until 2027",
+      "summary": "It still seems that oil markets are believing their own theories more than hard-hitting warnings from Arab national oil companies. Even with all signs on red, optimism still shows oil prices as depressed, not really reflecting reality at all. When Sultan Ahmed Al Jaber, Abu Dhabi National Oil Company’s CEO, and more or less one of the most outspoken visionaries in the Gulf, publicly warns that oil flows from the Persian Gulf will remain severely disrupted until at least mid-2027, markets, traders, and financials should pay attention and act.…",
+      "published": "2026-05-21T18:00:00+00:00",
+      "fetched_at": "2026-05-21T18:26:41.456611",
+      "type": "rss_article"
+    },
+    {
+      "source": "oilprice_news",
+      "url": "https://oilprice.com/Latest-Energy-News/World-News/Oil-Prices-Rise-As-Iran-Draws-Red-Line-on-Uranium.html",
+      "title": "Oil Prices Rise As Iran Draws Red Line on Uranium",
+      "summary": "Oil prices rose on Thursday as fresh signs of trouble in Iran peace talks as the parties hit a wall over enriched uranium. WTI crude climbed 2.2% to $100.40 while Brent gained 1.8% to $106.90 as reports emerged that Iran's Supreme Leader, Mojtaba Khamenei, has drawn a hard line on one of Washington's key demands: the removal of Iran's stockpile of highly enriched uranium. According to Reuters, Khamenei issued a directive that near-weapons-grade uranium must remain inside Iran, complicating already fragile negotiations aimed at ending the U.S.-Israeli…",
+      "published": "2026-05-21T17:30:00+00:00",
+      "fetched_at": "2026-05-21T18:26:41.459950",
+      "type": "rss_article"
+    },
+    {
+      "source": "oilprice_news",
+      "url": "https://oilprice.com/Energy/Energy-General/US-Awards-2-Billion-to-Nine-Quantum-Computing-Companies.html",
+      "title": "U.S. Awards $2 Billion to Nine Quantum Computing Companies",
+      "summary": "IBM and small-cap quantum names, including IonQ, D-Wave Quantum, Rigetti Computing, Infleqtion, and other peers, are surging in New York premarket trading after a Wall Street Journal report said the Trump administration is preparing to award $2 billion in CHIPS Act grants to nine quantum-computing companies. IBM is set to receive half of the $2 billion tranche, or about $1 billion, as the large-cap leader in the race to build quantum computing systems that could revolutionize national security, accelerate scientific discovery, and deliver a range…",
+      "published": "2026-05-21T17:00:00+00:00",
+      "fetched_at": "2026-05-21T18:26:41.462613",
+      "type": "rss_article"
+    },
+    {
+      "source": "oilprice_news",
+      "url": "https://oilprice.com/Energy/Energy-General/UK-Fuel-Crunch-Forces-Starmer-to-Face-Difficult-Policy-Choices.html",
+      "title": "UK Fuel Crunch Forces Starmer to Face Difficult Policy Choices",
+      "summary": "Sir Keir Starmer has spelt out a number of policies to address fuel shortages, signalling the government’s fears that the Iran war could hit motorists and households.  During Prime Minister’s Questions, Starmer defended an announcement last year to “phase” new sanctions on Russia, while also trailing a policy to freeze a 5p fuel duty cut beyond September.  The government pledged to introduce a new sanction on oil and gas flows from Russia that passed through third countries, announcing the measure last October. …",
+      "published": "2026-05-21T16:00:00+00:00",
+      "fetched_at": "2026-05-21T18:26:41.465456",
+      "type": "rss_article"
+    },
+    {
+      "source": "oilprice_news",
+      "url": "https://oilprice.com/Latest-Energy-News/World-News/China-Boosts-Oil-Stockpiles-Despite-Import-Plunge.html",
+      "title": "China Boosts Oil Stockpiles Despite Import Plunge",
+      "summary": "China appears to continue sending crude into strategic and commercial reserves despite the plunge in its imports and the world’s biggest-ever supply shock. China likely sent 430,000 barrels per day (bpd) of crude to reserves last month, according to estimates by Reuters columnist Clyde Russell based on official data about imports, refinery throughput, and domestic production. Unlike the United States, China does not report inventories. Analysts are looking at overall supply (domestic production plus imports) and refinery processing rates…",
+      "published": "2026-05-21T15:30:00+00:00",
+      "fetched_at": "2026-05-21T18:26:41.468399",
+      "type": "rss_article"
+    },
+    {
+      "source": "oilprice_news",
+      "url": "https://oilprice.com/Alternative-Energy/Geothermal-Energy/Americas-Abandoned-Oil-Wells-Could-Power-the-Next-Geothermal-Boom.html",
+      "title": "America’s Abandoned Oil Wells Could Power the Next Geothermal Boom",
+      "summary": "As the United States continues to explore its vast geothermal potential, researchers are exploring the possibility of using abandoned oil wells to produce clean energy. A growing body of literature is emerging on the topic, with many hopeful scientists worldwide promoting the potential for well conversion for geothermal energy production.  Geothermal energy is produced by drilling into underground heat pockets in the Earth’s surface to access heat. The Earth’s core has a temperature of roughly 5,200°C, while rock and water…",
+      "published": "2026-05-21T15:00:00+00:00",
+      "fetched_at": "2026-05-21T18:26:41.471306",
+      "type": "rss_article"
+    },
+    {
+      "source": "oilprice_news",
+      "url": "https://oilprice.com/Latest-Energy-News/World-News/Saudi-Oil-Export-Income-Jumped-to-35-Year-High-in-March-as-Prices-Soared.html",
+      "title": "Saudi Oil Export Income Jumped to 3.5-Year High in March as Prices Soared",
+      "summary": "Despite the lowest production and export volumes on record, Saudi Arabia saw the value of its oil exports surge by 37.4% in March to the highest level in three and a half years, data from Saudi Arabia’s General Authority for Statistics showed. The value of the Kingdom’s total merchandise exports rose by 21.5% in March 2026 from a year earlier, with oil exports surging by 37.4% as the soaring oil prices and the re-routing of crude exports to the Red Sea port Yanbu helped the world’s top crude exporter offset most of the traffic…",
+      "published": "2026-05-21T14:30:00+00:00",
+      "fetched_at": "2026-05-21T18:26:41.474232",
+      "type": "rss_article"
+    },
+    {
+      "source": "oilprice_news",
+      "url": "https://oilprice.com/Geopolitics/Middle-East/Trumps-Iran-Dilemma-Can-Only-Be-Delayed-for-So-Long.html",
+      "title": "Trump's Iran Dilemma Can Only Be Delayed for So Long",
+      "summary": "Over two days, US President Donald Trump has repeatedly raised the prospect that the cease-fire with Iran will be broken by new US military strikes -- in comments that have drawn close scrutiny from analysts and policymakers. In a Truth Social post on May 18, Trump said the leaders of Qatar, Saudi Arabia, and the United Arab Emirates had asked him to hold off on what he called a \"planned military attack,\" scheduled for May 19, to allow diplomacy more time. On May 19, he said an attack may take place \"Friday, Saturday, Sunday, something, ‌maybe…",
+      "published": "2026-05-21T14:00:00+00:00",
+      "fetched_at": "2026-05-21T18:26:41.477156",
+      "type": "rss_article"
+    },
+    {
+      "source": "oilprice_news",
+      "url": "https://oilprice.com/Latest-Energy-News/World-News/China-Raises-Fuel-Price-Caps-Again-as-Iran-War-Keeps-Oil-Markets-on-Edge.html",
+      "title": "China Raises Fuel Price Caps Again as Iran War Keeps Oil Markets on Edge",
+      "summary": "China will raise the price cap for its domestic retail prices of gasoline and diesel once again, as of May 22, in the latest hike of the maximum retail prices for domestic fuel since the Iran war led to surging oil prices. China will now increase the maximum retail price of gasoline by $11.03 (75 Chinese yuan) per metric ton as of Friday, according to a notice by the state planner. The cap on China’s retail diesel prices will be raised by $10.29 (70 yuan) per ton, the authorities said. Unlike another major Asian oil consumer, India, which…",
+      "published": "2026-05-21T13:30:00+00:00",
+      "fetched_at": "2026-05-21T18:26:41.480127",
+      "type": "rss_article"
+    },
+    {
+      "source": "oilprice_news",
+      "url": "https://oilprice.com/Latest-Energy-News/World-News/Japans-Crude-Imports-from-Middle-East-Slump-to-Lowest-on-Record.html",
+      "title": "Japan’s Crude Imports from Middle East Slump to Lowest on Record",
+      "summary": "Japan in April imported the lowest volume of crude oil from the Middle East on record dating back to 1979 as the Iran war and the de facto closure of the Strait of Hormuz choked supply from the region. Japan’s crude imports from the Middle East plummeted by 67.2% in April compared to the same month of 2025, provisional trade data from Japan’s Finance Ministry showed on Thursday. The April 2026 volume, estimated in Japan at 3.843 million kiloliters of crude oil, was the lowest since data collection began in 1979. Japanese imports of…",
+      "published": "2026-05-21T12:30:00+00:00",
+      "fetched_at": "2026-05-21T18:26:41.482667",
+      "type": "rss_article"
+    },
+    {
+      "source": "oilprice_news",
+      "url": "https://oilprice.com/Latest-Energy-News/World-News/Chinas-Solar-Exports-Soar-as-World-Grapples-with-Energy-Crisis.html",
+      "title": "China's Solar Exports Soar as World Grapples with Energy Crisis",
+      "summary": "Despite the end of China's export tax refunds on April 1, exports of Chinese solar cells and panels continued to surge in April as demand for solar installations in Africa, Southeast Asia, and Europe soars amid the oil and gas crisis. Exports to Southeast Asia and Africa eased off the records in March, which benefited from the export refund policy. But they were up by 75-85% compared to April 2025, according to official Chinese customs data carried by Reuters. Despite the expectations of higher prices of the products without the tax refund, overseas…",
+      "published": "2026-05-21T11:30:00+00:00",
+      "fetched_at": "2026-05-21T18:26:41.485137",
+      "type": "rss_article"
+    },
+    {
+      "source": "oilprice_news",
+      "url": "https://oilprice.com/Latest-Energy-News/World-News/US-Energy-Storage-Installations-Post-Record-First-Quarter.html",
+      "title": "U.S. Energy Storage Installations Post Record First Quarter",
+      "summary": "Despite unfavorable federal policies, the U.S. energy storage additions jumped by 31% from a year earlier to 9.7 gigawatt-hours (GWh) in the first quarter of 2026, the strongest first quarter in history, a new report showed on Thursday.    With energy storage gaining momentum, U.S. developers are set to install more than 610 GWh of energy storage by 2030, according to the report by the Solar Energy Industries Association (SEIA) and Benchmark Mineral Intelligence. The estimates through 2030 were revised up from earlier forecasts as investors,…",
+      "published": "2026-05-21T10:15:00+00:00",
+      "fetched_at": "2026-05-21T18:26:41.487784",
+      "type": "rss_article"
+    },
+    {
+      "source": "oilprice_news",
+      "url": "https://oilprice.com/Latest-Energy-News/World-News/Traders-Expect-Oil-Prices-to-Remain-Above-81-for-the-Next-12-Months.html",
+      "title": "Traders Expect Oil Prices to Remain Above $81 for the Next 12 Months",
+      "summary": "Oil prices are set to average between $81 and $100 per barrel over the next 12 months as demand destruction will help balance a market that continues to price in a lasting war risk premium, a Bloomberg Intelligence survey showed on Thursday.   More than 40% of the 126 respondents in the survey of asset managers and energy market strategists believe that demand destruction will be the single biggest driver of efforts at balancing the market amid the worst oil supply shock in history. Another 21% say that re-routing and adjustments to logistics…",
+      "published": "2026-05-21T09:00:00+00:00",
+      "fetched_at": "2026-05-21T18:26:41.490358",
+      "type": "rss_article"
+    },
+    {
+      "source": "oilprice_news",
+      "url": "https://oilprice.com/Latest-Energy-News/World-News/Wind-and-Solar-Overtake-Gas-Power-Generation-for-the-First-Time.html",
+      "title": "Wind and Solar Overtake Gas Power Generation for the First Time",
+      "summary": "Wind and solar power generation topped gas-fired power plant output for the first time ever on a monthly basis in April, as the energy crunch limited gas availability and made the fuel more expensive. Wind and solar installations generated 22% of the world’s electricity last month, climate outlet Ember reported, as cited by Reuters. Gas generation, meanwhile, accounted for 20% of the global total in April. “The current energy crisis has further strengthened the economic case for renewables compared to imported gas, while also adding…",
+      "published": "2026-05-21T07:45:00+00:00",
+      "fetched_at": "2026-05-21T18:26:41.492863",
+      "type": "rss_article"
+    },
+    {
+      "source": "oilprice_news",
+      "url": "https://oilprice.com/Latest-Energy-News/World-News/Goldman-Sachs-Sounds-Fresh-Alarm-on-Global-Oil-Stockpiles.html",
+      "title": "Goldman Sachs Sounds Fresh Alarm on Global Oil Stockpiles",
+      "summary": "Global oil inventories are falling at an accelerated rate, Goldman Sachs has warned, noting April draws from inventories had run at double the rate until the end of March. Since the start of May, global draws from inventories have been running at 8.7 million barrels daily, which is the highest ever, the investment bank’s analysts said. “Physical markets continue to tighten, as estimated oil exports through the strait remain at a very low 5% of normal,” they said. Earlier this month, Goldman said that global oil inventories…",
+      "published": "2026-05-21T06:40:00+00:00",
+      "fetched_at": "2026-05-21T18:26:41.495633",
+      "type": "rss_article"
+    },
+    {
+      "source": "rigzone",
+      "url": "https://www.rigzone.com/news/wire/oil_near_100_seen_as_base_case_for_2026-21-may-2026-183747-article/?rss=true",
+      "title": "Oil Near $100 Seen as Base Case for 2026",
+      "summary": "Oil market participants are increasingly pricing crude to be capped near $100 a barrel over the next year.",
+      "published": "2026-05-21T15:19:03+00:00",
+      "fetched_at": "2026-05-21T18:26:41.924362",
+      "type": "rss_article"
+    },
+    {
+      "source": "rigzone",
+      "url": "https://www.rigzone.com/news/usa_eia_reveals_latest_usa_diesel_price_forecast_for_2026-21-may-2026-183750-article/?rss=true",
+      "title": "USA EIA Reveals Latest USA Diesel Price Forecast for 2026",
+      "summary": "A quarterly breakdown included in the EIA's May STEO projected that the on-highway diesel fuel price will average $5.36 per gallon in the second quarter of this year.",
+      "published": "2026-05-21T14:38:10+00:00",
+      "fetched_at": "2026-05-21T18:26:41.927603",
+      "type": "rss_article"
+    },
+    {
+      "source": "rigzone",
+      "url": "https://www.rigzone.com/news/bp_enters_3_new_indonesian_blocks-21-may-2026-183749-article/?rss=true",
+      "title": "BP Enters 3 New Indonesian Blocks",
+      "summary": "Two of the exploration blocks sit near the BP-operated Tangguh LNG in Papua Barat province, presenting 'potential for short-cycle development', BP said.",
+      "published": "2026-05-21T14:37:10+00:00",
+      "fetched_at": "2026-05-21T18:26:41.930883",
+      "type": "rss_article"
+    },
+    {
+      "source": "rigzone",
+      "url": "https://www.rigzone.com/news/naftogaz_wins_foreign_court_order_to_enforce_14b_claims_against_gazprom-21-may-2026-183746-article/?rss=true",
+      "title": "Naftogaz Wins Foreign Court Order to Enforce $1.4B Claims against Gazprom",
+      "summary": "The Astana International Financial Center Court - not part of Kazakhstan's judicial system - allowed Naftogaz to enforce a $1.4-billion international arbitration award against Gazprom in the country.",
+      "published": "2026-05-21T12:01:45+00:00",
+      "fetched_at": "2026-05-21T18:26:41.933390",
+      "type": "rss_article"
+    },
+    {
+      "source": "rigzone",
+      "url": "https://www.rigzone.com/news/what_happens_to_oil_if_iran_permanently_taxes_hormuz_traffic-21-may-2026-183745-article/?rss=true",
+      "title": "What Happens to Oil if Iran Permanently Taxes Hormuz Traffic?",
+      "summary": "What would the implications be for the oil market if Iran decided to permanently tax/toll traffic through the Strait of Hormuz?",
+      "published": "2026-05-21T11:11:42+00:00",
+      "fetched_at": "2026-05-21T18:26:41.935672",
+      "type": "rss_article"
+    },
+    {
+      "source": "rigzone",
+      "url": "https://www.rigzone.com/news/wood_mackenzie_warns_oil_could_hit_200-21-may-2026-183744-article/?rss=true",
+      "title": "Wood Mackenzie Warns Oil Could Hit $200",
+      "summary": "Wood Mackenzie said its analysis indicates that Brent crude prices could approach $200 per barrel by end-2026.",
+      "published": "2026-05-21T09:38:24+00:00",
+      "fetched_at": "2026-05-21T18:26:41.937934",
+      "type": "rss_article"
+    },
+    {
+      "source": "rigzone",
+      "url": "https://www.rigzone.com/news/constellation_to_invest_in_pine_creek_rng-21-may-2026-183743-article/?rss=true",
+      "title": "Constellation to Invest in Pine Creek RNG",
+      "summary": "'The agreement creates the framework for Constellation and Pine Creek to develop approximately 3.0 million MMBtus annually of additional RNG production'.",
+      "published": "2026-05-21T07:36:05+00:00",
+      "fetched_at": "2026-05-21T18:26:41.940858",
+      "type": "rss_article"
+    },
+    {
+      "source": "rigzone",
+      "url": "https://www.rigzone.com/news/arab_energy_fund_makes_120mm_lng_investment_in_midocean-21-may-2026-183742-article/?rss=true",
+      "title": "Arab Energy Fund Makes $120MM LNG Investment in MidOcean",
+      "summary": "EIG's MidOcean secured a $120 million equity commitment from The Arab Energy Fund, toward a $2 billion investment target from newcomers.",
+      "published": "2026-05-21T07:23:26+00:00",
+      "fetched_at": "2026-05-21T18:26:41.944035",
+      "type": "rss_article"
+    },
+    {
+      "source": "rigzone",
+      "url": "https://www.rigzone.com/news/wire/rubio_to_visit_delhi_as_us_seeks_to_boost_energy_exports-21-may-2026-183741-article/?rss=true",
+      "title": "Rubio to Visit Delhi as US Seeks to Boost Energy Exports",
+      "summary": "'India has been receptive to diversification, and what that means is buying more American energy,' Ambassador Sergio Gor said.",
+      "published": "2026-05-21T07:15:27+00:00",
+      "fetched_at": "2026-05-21T18:26:41.946342",
+      "type": "rss_article"
+    },
+    {
+      "source": "rigzone",
+      "url": "https://www.rigzone.com/news/wire/oil_falls_as_iran_deal_hopes_rise-20-may-2026-183740-article/?rss=true",
+      "title": "Oil Falls As Iran Deal Hopes Rise",
+      "summary": "Oil prices plunged after Trump signaled progress toward a possible Iran deal.",
+      "published": "2026-05-20T20:00:33+00:00",
+      "fetched_at": "2026-05-21T18:26:41.948644",
+      "type": "rss_article"
+    },
+    {
+      "source": "rigzone",
+      "url": "https://www.rigzone.com/news/wire/vitol_overtakes_shell_in_ranking_of_usa_physical_gas_traders-20-may-2026-183737-article/?rss=true",
+      "title": "Vitol Overtakes Shell in Ranking of USA Physical Gas Traders",
+      "summary": "The firm overtook energy heavyweight Shell Plc among the top 10 U.S. physical gas traders, according to regulatory filings.",
+      "published": "2026-05-20T20:00:00+00:00",
+      "fetched_at": "2026-05-21T18:26:41.951701",
+      "type": "rss_article"
+    },
+    {
+      "source": "rigzone",
+      "url": "https://www.rigzone.com/news/phillips_66_to_proceed_with_two_new_processing_plants-20-may-2026-183739-article/?rss=true",
+      "title": "Phillips 66 to Proceed with Two New Processing Plants",
+      "summary": "Phillips 66 approved a natural gas processing project and a natural gas liquids fractionator project, both expected to start operations 2028.",
+      "published": "2026-05-20T15:37:10+00:00",
+      "fetched_at": "2026-05-21T18:26:41.954698",
+      "type": "rss_article"
+    },
+    {
+      "source": "rigzone",
+      "url": "https://www.rigzone.com/news/usa_eia_lowers_henry_hub_price_forecast_for_2026_2027-20-may-2026-183738-article/?rss=true",
+      "title": "USA EIA Lowers Henry Hub Price Forecast for 2026, 2027",
+      "summary": "The U.S. Energy Information Administration lowered its Henry Hub spot price forecasts for 2026 and 2027 in its latest short term energy outlook.",
+      "published": "2026-05-20T14:33:14+00:00",
+      "fetched_at": "2026-05-21T18:26:41.956851",
+      "type": "rss_article"
+    },
+    {
+      "source": "rigzone",
+      "url": "https://www.rigzone.com/news/wire/iran_war_prompts_nigeria_producers_to_lift_oil_output-20-may-2026-183736-article/?rss=true",
+      "title": "Iran War Prompts Nigeria Producers to Lift Oil Output",
+      "summary": "Nigerian oil companies are plowing windfall gains from the Iran war crude rally into near-term extraction projects.",
+      "published": "2026-05-20T14:14:39+00:00",
+      "fetched_at": "2026-05-21T18:26:41.958982",
+      "type": "rss_article"
+    },
+    {
+      "source": "rigzone",
+      "url": "https://www.rigzone.com/news/conocophillips_inks_alaska_lng_deal_to_supply_domestic_consumers-20-may-2026-183735-article/?rss=true",
+      "title": "ConocoPhillips Inks Alaska LNG Deal to Supply Domestic Consumers",
+      "summary": "ConocoPhillips signed a 30-year deal with Glenfarne to supply natural gas produced on Alaska's North Slope to the state under phase 1 of the Alaska LNG project.",
+      "published": "2026-05-20T13:51:39+00:00",
+      "fetched_at": "2026-05-21T18:26:41.961757",
+      "type": "rss_article"
+    },
+    {
+      "source": "rigzone",
+      "url": "https://www.rigzone.com/news/empire_petroleum_posts_lower_revenue-20-may-2026-183734-article/?rss=true",
+      "title": "Empire Petroleum Posts Lower Revenue",
+      "summary": "The Tulsa, Oklahoma-based producer reported $7.68 million in sales revenue for the first quarter, down from $8.99 million for the same three-month period last year due to lower production and lower realized oil and gas prices.",
+      "published": "2026-05-20T12:34:20+00:00",
+      "fetched_at": "2026-05-21T18:26:41.964659",
+      "type": "rss_article"
+    },
+    {
+      "source": "rigzone",
+      "url": "https://www.rigzone.com/news/would_usa_allow_iran_hormuz_tax_in_exchange_for_peace_deal-20-may-2026-183733-article/?rss=true",
+      "title": "Would USA Allow Iran Hormuz Tax In Exchange for Peace Deal?",
+      "summary": "Rigzone talks to Simon Henderson, director of the Washington Institute's Bernstein Program on Gulf and Energy Policy, and Howard Shatz, a senior economist at RAND and a professor of policy analysis at the RAND School of Public Policy.",
+      "published": "2026-05-20T10:55:51+00:00",
+      "fetched_at": "2026-05-21T18:26:41.967344",
+      "type": "rss_article"
+    },
+    {
+      "source": "rigzone",
+      "url": "https://www.rigzone.com/news/why_is_oil_moving_lower_today-20-may-2026-183732-article/?rss=true",
+      "title": "Why Is Oil Moving Lower Today?",
+      "summary": "U.S. President Donald Trump's Iran comments are directly shaping the oil ecosystem, Naeem Aslam, CIO at Zaye Capital Markets, said.",
+      "published": "2026-05-20T09:37:03+00:00",
+      "fetched_at": "2026-05-21T18:26:41.970286",
+      "type": "rss_article"
+    },
+    {
+      "source": "rigzone",
+      "url": "https://www.rigzone.com/news/aramco_pasqal_launch_platform_offering_quantum_computing-20-may-2026-183731-article/?rss=true",
+      "title": "Aramco, Pasqal Launch Platform Offering Quantum Computing",
+      "summary": "Aramco and Pasqal said they had inaugurated Saudi Arabia's first quantum computer and launched the Middle East's first commercial quantum-computing-as-a-service platform.",
+      "published": "2026-05-20T08:03:04+00:00",
+      "fetched_at": "2026-05-21T18:26:41.973685",
+      "type": "rss_article"
+    },
+    {
+      "source": "rigzone",
+      "url": "https://www.rigzone.com/news/wire/uk_to_allow_import_of_fuels_refined_from_russian_oil-20-may-2026-183730-article/?rss=true",
+      "title": "UK to Allow Import of Fuels Refined from Russian Oil",
+      "summary": "The UK will effectively loosen some Russian sanctions by allowing imports of diesel and jet fuel refined from Moscow's crude in countries like India and Turkey.",
+      "published": "2026-05-20T07:39:52+00:00",
+      "fetched_at": "2026-05-21T18:26:41.975907",
+      "type": "rss_article"
+    }
+  ],
+  "market_data": [
+    {
+      "source": "eia",
+      "series_id": "PET.RWTC.D",
+      "label": "wti_spot",
+      "period": "2026-05-18",
+      "value": 112.25,
+      "unit": "",
+      "fetched_at": "2026-05-21T18:26:42.600673",
+      "type": "market_data"
+    },
+    {
+      "source": "eia",
+      "series_id": "PET.RWTC.D",
+      "label": "wti_spot",
+      "period": "2026-05-15",
+      "value": 108.99,
+      "unit": "",
+      "fetched_at": "2026-05-21T18:26:42.600673",
+      "type": "market_data"
+    },
+    {
+      "source": "eia",
+      "series_id": "PET.RWTC.D",
+      "label": "wti_spot",
+      "period": "2026-05-14",
+      "value": 104.66,
+      "unit": "",
+      "fetched_at": "2026-05-21T18:26:42.600673",
+      "type": "market_data"
+    },
+    {
+      "source": "eia",
+      "series_id": "PET.RWTC.D",
+      "label": "wti_spot",
+      "period": "2026-05-13",
+      "value": 104.52,
+      "unit": "",
+      "fetched_at": "2026-05-21T18:26:42.600673",
+      "type": "market_data"
+    },
+    {
+      "source": "eia",
+      "series_id": "PET.RWTC.D",
+      "label": "wti_spot",
+      "period": "2026-05-12",
+      "value": 105.78,
+      "unit": "",
+      "fetched_at": "2026-05-21T18:26:42.600673",
+      "type": "market_data"
+    },
+    {
+      "source": "eia",
+      "series_id": "PET.RWTC.D",
+      "label": "wti_spot",
+      "period": "2026-05-11",
+      "value": 101.56,
+      "unit": "",
+      "fetched_at": "2026-05-21T18:26:42.600673",
+      "type": "market_data"
+    },
+    {
+      "source": "eia",
+      "series_id": "PET.RWTC.D",
+      "label": "wti_spot",
+      "period": "2026-05-08",
+      "value": 98.87,
+      "unit": "",
+      "fetched_at": "2026-05-21T18:26:42.600673",
+      "type": "market_data"
+    },
+    {
+      "source": "eia",
+      "series_id": "PET.RWTC.D",
+      "label": "wti_spot",
+      "period": "2026-05-07",
+      "value": 98.38,
+      "unit": "",
+      "fetched_at": "2026-05-21T18:26:42.600673",
+      "type": "market_data"
+    },
+    {
+      "source": "eia",
+      "series_id": "PET.RWTC.D",
+      "label": "wti_spot",
+      "period": "2026-05-06",
+      "value": 98.75,
+      "unit": "",
+      "fetched_at": "2026-05-21T18:26:42.600673",
+      "type": "market_data"
+    },
+    {
+      "source": "eia",
+      "series_id": "PET.RWTC.D",
+      "label": "wti_spot",
+      "period": "2026-05-05",
+      "value": 105.66,
+      "unit": "",
+      "fetched_at": "2026-05-21T18:26:42.600673",
+      "type": "market_data"
+    },
+    {
+      "source": "eia",
+      "series_id": "PET.RBRTE.D",
+      "label": "brent_spot",
+      "period": "2026-05-18",
+      "value": 116.73,
+      "unit": "",
+      "fetched_at": "2026-05-21T18:26:42.600673",
+      "type": "market_data"
+    },
+    {
+      "source": "eia",
+      "series_id": "PET.RBRTE.D",
+      "label": "brent_spot",
+      "period": "2026-05-15",
+      "value": 113.96,
+      "unit": "",
+      "fetched_at": "2026-05-21T18:26:42.600673",
+      "type": "market_data"
+    },
+    {
+      "source": "eia",
+      "series_id": "PET.RBRTE.D",
+      "label": "brent_spot",
+      "period": "2026-05-14",
+      "value": 110.91,
+      "unit": "",
+      "fetched_at": "2026-05-21T18:26:42.600673",
+      "type": "market_data"
+    },
+    {
+      "source": "eia",
+      "series_id": "PET.RBRTE.D",
+      "label": "brent_spot",
+      "period": "2026-05-13",
+      "value": 110.28,
+      "unit": "",
+      "fetched_at": "2026-05-21T18:26:42.600673",
+      "type": "market_data"
+    },
+    {
+      "source": "eia",
+      "series_id": "PET.RBRTE.D",
+      "label": "brent_spot",
+      "period": "2026-05-12",
+      "value": 111.37,
+      "unit": "",
+      "fetched_at": "2026-05-21T18:26:42.600673",
+      "type": "market_data"
+    },
+    {
+      "source": "eia",
+      "series_id": "PET.RBRTE.D",
+      "label": "brent_spot",
+      "period": "2026-05-11",
+      "value": 106.11,
+      "unit": "",
+      "fetched_at": "2026-05-21T18:26:42.600673",
+      "type": "market_data"
+    },
+    {
+      "source": "eia",
+      "series_id": "PET.RBRTE.D",
+      "label": "brent_spot",
+      "period": "2026-05-08",
+      "value": 103.48,
+      "unit": "",
+      "fetched_at": "2026-05-21T18:26:42.600673",
+      "type": "market_data"
+    },
+    {
+      "source": "eia",
+      "series_id": "PET.RBRTE.D",
+      "label": "brent_spot",
+      "period": "2026-05-07",
+      "value": 101.82,
+      "unit": "",
+      "fetched_at": "2026-05-21T18:26:42.600673",
+      "type": "market_data"
+    },
+    {
+      "source": "eia",
+      "series_id": "PET.RBRTE.D",
+      "label": "brent_spot",
+      "period": "2026-05-06",
+      "value": 103.7,
+      "unit": "",
+      "fetched_at": "2026-05-21T18:26:42.600673",
+      "type": "market_data"
+    },
+    {
+      "source": "eia",
+      "series_id": "PET.RBRTE.D",
+      "label": "brent_spot",
+      "period": "2026-05-05",
+      "value": 114.51,
+      "unit": "",
+      "fetched_at": "2026-05-21T18:26:42.600673",
+      "type": "market_data"
+    },
+    {
+      "source": "eia",
+      "series_id": "PET.WCESTUS1.W",
+      "label": "us_inventory",
+      "period": "2026-05-15",
+      "value": 445013,
+      "unit": "",
+      "fetched_at": "2026-05-21T18:26:42.600673",
+      "type": "market_data"
+    },
+    {
+      "source": "eia",
+      "series_id": "PET.WCESTUS1.W",
+      "label": "us_inventory",
+      "period": "2026-05-08",
+      "value": 452876,
+      "unit": "",
+      "fetched_at": "2026-05-21T18:26:42.600673",
+      "type": "market_data"
+    },
+    {
+      "source": "eia",
+      "series_id": "PET.WCESTUS1.W",
+      "label": "us_inventory",
+      "period": "2026-05-01",
+      "value": 457182,
+      "unit": "",
+      "fetched_at": "2026-05-21T18:26:42.600673",
+      "type": "market_data"
+    },
+    {
+      "source": "eia",
+      "series_id": "PET.WCESTUS1.W",
+      "label": "us_inventory",
+      "period": "2026-04-24",
+      "value": 459495,
+      "unit": "",
+      "fetched_at": "2026-05-21T18:26:42.600673",
+      "type": "market_data"
+    },
+    {
+      "source": "eia",
+      "series_id": "PET.WCESTUS1.W",
+      "label": "us_inventory",
+      "period": "2026-04-17",
+      "value": 465729,
+      "unit": "",
+      "fetched_at": "2026-05-21T18:26:42.600673",
+      "type": "market_data"
+    },
+    {
+      "source": "eia",
+      "series_id": "PET.WCESTUS1.W",
+      "label": "us_inventory",
+      "period": "2026-04-10",
+      "value": 463804,
+      "unit": "",
+      "fetched_at": "2026-05-21T18:26:42.600673",
+      "type": "market_data"
+    },
+    {
+      "source": "eia",
+      "series_id": "PET.WCESTUS1.W",
+      "label": "us_inventory",
+      "period": "2026-04-03",
+      "value": 464717,
+      "unit": "",
+      "fetched_at": "2026-05-21T18:26:42.600673",
+      "type": "market_data"
+    },
+    {
+      "source": "eia",
+      "series_id": "PET.WCESTUS1.W",
+      "label": "us_inventory",
+      "period": "2026-03-27",
+      "value": 461636,
+      "unit": "",
+      "fetched_at": "2026-05-21T18:26:42.600673",
+      "type": "market_data"
+    },
+    {
+      "source": "eia",
+      "series_id": "PET.WCESTUS1.W",
+      "label": "us_inventory",
+      "period": "2026-03-20",
+      "value": 456185,
+      "unit": "",
+      "fetched_at": "2026-05-21T18:26:42.600673",
+      "type": "market_data"
+    },
+    {
+      "source": "eia",
+      "series_id": "PET.WCESTUS1.W",
+      "label": "us_inventory",
+      "period": "2026-03-13",
+      "value": 449259,
+      "unit": "",
+      "fetched_at": "2026-05-21T18:26:42.600673",
+      "type": "market_data"
+    },
+    {
+      "source": "eia",
+      "series_id": "PET.WCRFPUS2.W",
+      "label": "us_production",
+      "period": "2026-05-15",
+      "value": 13702,
+      "unit": "",
+      "fetched_at": "2026-05-21T18:26:42.600673",
+      "type": "market_data"
+    },
+    {
+      "source": "eia",
+      "series_id": "PET.WCRFPUS2.W",
+      "label": "us_production",
+      "period": "2026-05-08",
+      "value": 13710,
+      "unit": "",
+      "fetched_at": "2026-05-21T18:26:42.600673",
+      "type": "market_data"
+    },
+    {
+      "source": "eia",
+      "series_id": "PET.WCRFPUS2.W",
+      "label": "us_production",
+      "period": "2026-05-01",
+      "value": 13573,
+      "unit": "",
+      "fetched_at": "2026-05-21T18:26:42.600673",
+      "type": "market_data"
+    },
+    {
+      "source": "eia",
+      "series_id": "PET.WCRFPUS2.W",
+      "label": "us_production",
+      "period": "2026-04-24",
+      "value": 13586,
+      "unit": "",
+      "fetched_at": "2026-05-21T18:26:42.600673",
+      "type": "market_data"
+    },
+    {
+      "source": "eia",
+      "series_id": "PET.WCRFPUS2.W",
+      "label": "us_production",
+      "period": "2026-04-17",
+      "value": 13585,
+      "unit": "",
+      "fetched_at": "2026-05-21T18:26:42.600673",
+      "type": "market_data"
+    },
+    {
+      "source": "eia",
+      "series_id": "PET.WCRFPUS2.W",
+      "label": "us_production",
+      "period": "2026-04-10",
+      "value": 13596,
+      "unit": "",
+      "fetched_at": "2026-05-21T18:26:42.600673",
+      "type": "market_data"
+    },
+    {
+      "source": "eia",
+      "series_id": "PET.WCRFPUS2.W",
+      "label": "us_production",
+      "period": "2026-04-03",
+      "value": 13596,
+      "unit": "",
+      "fetched_at": "2026-05-21T18:26:42.600673",
+      "type": "market_data"
+    },
+    {
+      "source": "eia",
+      "series_id": "PET.WCRFPUS2.W",
+      "label": "us_production",
+      "period": "2026-03-27",
+      "value": 13657,
+      "unit": "",
+      "fetched_at": "2026-05-21T18:26:42.600673",
+      "type": "market_data"
+    },
+    {
+      "source": "eia",
+      "series_id": "PET.WCRFPUS2.W",
+      "label": "us_production",
+      "period": "2026-03-20",
+      "value": 13657,
+      "unit": "",
+      "fetched_at": "2026-05-21T18:26:42.600673",
+      "type": "market_data"
+    },
+    {
+      "source": "eia",
+      "series_id": "PET.WCRFPUS2.W",
+      "label": "us_production",
+      "period": "2026-03-13",
+      "value": 13668,
+      "unit": "",
+      "fetched_at": "2026-05-21T18:26:42.600673",
+      "type": "market_data"
+    }
+  ]
+}
