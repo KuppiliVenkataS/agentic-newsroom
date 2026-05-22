@@ -192,4 +192,22 @@ brent: {brent_latest.get('value')} ({brent_latest.get('period')})
         f.write(header + report_text)
 
     logger.info(f"Report saved: {filepath}")
+
+    # Auto-convert to docx if pandoc is available
+    try:
+        import subprocess
+        docx_path = filepath.with_suffix(".docx")
+        result = subprocess.run(
+            ["pandoc", str(filepath), "-o", str(docx_path)],
+            capture_output=True, text=True, timeout=30
+        )
+        if result.returncode == 0:
+            logger.info(f"DOCX saved: {docx_path}")
+        else:
+            logger.warning(f"Pandoc failed: {result.stderr}")
+    except FileNotFoundError:
+        logger.info("Pandoc not installed — skipping DOCX conversion")
+    except Exception as e:
+        logger.warning(f"DOCX conversion error: {e}")
+
     return filepath
