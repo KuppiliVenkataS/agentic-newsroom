@@ -31,6 +31,7 @@ from config.settings import SKIP_EXTRACTION, SKIP_INGESTION
 from vectordb.store import VectorStore
 from graph.knowledge_graph import KnowledgeGraph
 from prediction.predictor import generate_prediction
+from report.generator import generate_report
 
 # ── Logging ───────────────────────────────────────────────────────────────────
 LOG_DIR.mkdir(parents=True, exist_ok=True)
@@ -170,7 +171,19 @@ def run():
         logger.error(msg)
         errors.append(msg)
 
-    # ── 12. Write audit log ────────────────────────────────────────────────
+    # ── 12. Generate report ───────────────────────────────────────────────
+    try:
+        if prediction:
+            report_path = generate_report(prediction, kg)
+            logger.info(f"Report saved: {report_path}")
+        else:
+            logger.warning("Skipping report — no prediction available")
+    except Exception as exc:
+        msg = f"Report generation failed: {exc}"
+        logger.error(msg)
+        errors.append(msg)
+
+    # ── 13. Write audit log ────────────────────────────────────────────────
     finished_at = datetime.now(timezone.utc).isoformat()
     status = "ok" if not errors else ("partial" if (articles or market_data) else "failed")
 
