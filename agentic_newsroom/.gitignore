@@ -4,7 +4,10 @@ env/
 config/settings.py
 agentic_newsroom/ingestion/__pycache__
 agentic_newsroom/processing/__pycache__
-
+agentic_newsroom/data/processed/
+agentic_newsroom/data/raw/
+agentic_newsroom/graph/kuzu
+agentic_newsroom/vectordb/
 config/__pycache__/
 *.pyc 
 *.pyo 
