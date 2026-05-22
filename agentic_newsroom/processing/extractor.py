@@ -151,6 +151,9 @@ def process_articles(articles: list[dict]) -> list[dict]:
     Run entity extraction on all articles that have chunks.
     Returns enriched article dicts with extraction results attached.
     """
+    
+    
+
     enriched = []
     total    = len(articles)
 

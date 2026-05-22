@@ -69,12 +69,12 @@ def prepare_article(article: dict) -> dict:
     """
     # Combine title and summary as the text body for RSS articles
     if article.get("type") == "gdelt_gkg":
-        raw_text = " ".join(filter(None, [
-            article.get("names", ""),
-            article.get("themes", ""),
-            article.get("persons", ""),
-            article.get("organisations", ""),
-        ]))
+        return {
+            **article,
+            "cleaned_text": "",
+            "chunks":       [],
+            "chunk_count":  0,
+        }
     else:
         raw_text = " ".join(filter(None, [
             article.get("title", ""),

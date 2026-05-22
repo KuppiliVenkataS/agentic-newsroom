@@ -17,7 +17,7 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).parent))
 
-from config.settings import STORAGE_ROOT, DEDUP_DB, LOG_DIR
+from config.settings import STORAGE_ROOT, DEDUP_DB, LOG_DIR, RAW_DIR
 from ingestion.dedup import DedupRegistry
 from ingestion.rss_fetcher import fetch_all_feeds
 from ingestion.eia_fetcher import fetch_eia_data
@@ -27,7 +27,10 @@ from ingestion.audit_logger import write_audit
 from processing.cleaner import prepare_article
 from processing.extractor import process_articles
 from processing.processed_writer import save_processed
+from config.settings import SKIP_EXTRACTION, SKIP_INGESTION
 from vectordb.store import VectorStore
+from graph.knowledge_graph import KnowledgeGraph
+from prediction.predictor import generate_prediction
 
 # ── Logging ───────────────────────────────────────────────────────────────────
 LOG_DIR.mkdir(parents=True, exist_ok=True)
@@ -54,50 +57,66 @@ def run():
     # ── 1. Dedup registry ──────────────────────────────────────────────────
     dedup = DedupRegistry(DEDUP_DB)
 
-    # ── 2. Fetch RSS feeds ─────────────────────────────────────────────────
-    articles: list[dict] = []
-    try:
-        articles = fetch_all_feeds(dedup)
-        logger.info(f"RSS total new articles: {len(articles)}")
-    except Exception as exc:
-        msg = f"RSS fetch failed: {exc}"
-        logger.error(msg)
-        errors.append(msg)
-
-    # ── 3. Fetch EIA market data ───────────────────────────────────────────
+    # ── 2-5. Ingestion (RSS, EIA, GDELT, archive) ────────────────────────
+    articles: list[dict]    = []
     market_data: list[dict] = []
-    try:
-        market_data = fetch_eia_data()
-        logger.info(f"EIA data points: {len(market_data)}")
-    except Exception as exc:
-        msg = f"EIA fetch failed: {exc}"
-        logger.error(msg)
-        errors.append(msg)
+    archive_path            = ""
 
-    # ── 4. Fetch GDELT via BigQuery ────────────────────────────────────────
-    gdelt_records: list[dict] = []
-    try:
-        gdelt_records = fetch_gdelt_data()
-        logger.info(f"GDELT records: {len(gdelt_records)}")
-        articles.extend(gdelt_records)
-    except Exception as exc:
-        msg = f"GDELT fetch failed: {exc}"
-        logger.error(msg)
-        errors.append(msg)
+    if SKIP_INGESTION:
+        logger.info("Ingestion skipped (SKIP_INGESTION=true) — loading last raw archive")
+        import json, glob
+        raw_files = sorted(glob.glob(str(RAW_DIR / "**" / "*_run.json"), recursive=True))
+        if raw_files:
+            last = raw_files[-1]
+            logger.info(f"  Loading: {last}")
+            data        = json.load(open(last))
+            articles    = data.get("articles", [])
+            market_data = data.get("market_data", [])
+            logger.info(f"  Loaded {len(articles)} articles, {len(market_data)} data points")
+        else:
+            logger.warning("  No raw archive found — nothing to process")
+    else:
+        try:
+            articles = fetch_all_feeds(dedup)
+            logger.info(f"RSS total new articles: {len(articles)}")
+        except Exception as exc:
+            msg = f"RSS fetch failed: {exc}"
+            logger.error(msg)
+            errors.append(msg)
 
-    # ── 5. Save raw archive ────────────────────────────────────────────────
-    archive_path = ""
-    try:
-        saved = save_run(articles, market_data, run_id)
-        archive_path = str(saved)
-    except Exception as exc:
-        msg = f"Archive write failed: {exc}"
-        logger.error(msg)
-        errors.append(msg)
+        try:
+            market_data = fetch_eia_data()
+            logger.info(f"EIA data points: {len(market_data)}")
+        except Exception as exc:
+            msg = f"EIA fetch failed: {exc}"
+            logger.error(msg)
+            errors.append(msg)
+
+        try:
+            gdelt_records = fetch_gdelt_data()
+            logger.info(f"GDELT records: {len(gdelt_records)}")
+            articles.extend(gdelt_records)
+        except Exception as exc:
+            msg = f"GDELT fetch failed: {exc}"
+            logger.error(msg)
+            errors.append(msg)
+
+        try:
+            saved        = save_run(articles, market_data, run_id)
+            archive_path = str(saved)
+        except Exception as exc:
+            msg = f"Archive write failed: {exc}"
+            logger.error(msg)
+            errors.append(msg)
 
     # ── 6. Clean and chunk articles ────────────────────────────────────────
     prepared: list[dict] = []
     try:
+        # Strip any cached chunks from archive before re-cleaning
+        for a in articles:
+            a.pop("chunks", None)
+            a.pop("cleaned_text", None)
+            a.pop("chunk_count", None)
         prepared = [prepare_article(a) for a in articles]
         logger.info(f"Prepared {len(prepared)} articles for extraction")
     except Exception as exc:
@@ -107,13 +126,18 @@ def run():
 
     # ── 7. LLM entity extraction ───────────────────────────────────────────
     enriched: list[dict] = []
-    try:
-        enriched = process_articles(prepared)
-        logger.info(f"Extraction complete: {len(enriched)} articles enriched")
-    except Exception as exc:
-        msg = f"Extraction failed: {exc}"
-        logger.error(msg)
-        errors.append(msg)
+    if SKIP_EXTRACTION:
+        logger.info("Extraction skipped (SKIP_EXTRACTION=true)")
+        enriched = prepared
+    else:
+        try:
+            enriched = process_articles(prepared)
+            logger.info(f"Extraction complete: {len(enriched)} articles enriched")
+        except Exception as exc:
+            msg = f"Extraction failed: {exc}"
+            logger.error(msg)
+            errors.append(msg)
+            enriched = prepared
 
     # ── 8. Save processed output ───────────────────────────────────────────
     try:
@@ -133,7 +157,20 @@ def run():
         logger.error(msg)
         errors.append(msg)
 
-    # ── 10. Write audit log ─────────────────────────────────────────────────
+    # ── 11. Generate prediction ──────────────────────────────────────────
+    prediction = {}
+    try:
+        kg         = KnowledgeGraph()
+        added      = kg.add_articles(enriched)
+        logger.info(f"Knowledge graph: {added} articles added")
+        prediction = generate_prediction(kg)
+        logger.info(f"Prediction: {prediction['direction']} ({prediction['confidence']}) score={prediction['score']}")
+    except Exception as exc:
+        msg = f"Prediction failed: {exc}"
+        logger.error(msg)
+        errors.append(msg)
+
+    # ── 12. Write audit log ────────────────────────────────────────────────
     finished_at = datetime.now(timezone.utc).isoformat()
     status = "ok" if not errors else ("partial" if (articles or market_data) else "failed")
 
