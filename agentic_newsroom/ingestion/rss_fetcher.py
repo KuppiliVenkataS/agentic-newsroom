@@ -21,16 +21,33 @@ logger = logging.getLogger(__name__)
 # Keywords to match against title + summary.
 # An article must contain at least one of these to be kept.
 OIL_KEYWORDS = [
+    # Commodities
     "oil", "crude", "brent", "wti", "opec", "petroleum",
     "energy", "barrel", "refinery", "drilling", "rig",
     "natural gas", "lng", "pipeline", "fuel", "gasoline",
     "shale", "offshore", "oilfield", "hydrocarbon",
+    "ebob", "naphtha", "gasoil", "diesel", "jet fuel",
+    "backwardation", "contango", "spread", "futures",
+
+    # Companies
     "saudi aramco", "exxon", "chevron", "shell", "bp",
     "totalenergies", "conocophillips", "halliburton",
     "schlumberger", "baker hughes", "equinor", "adnoc",
-    "rosneft", "gazprom", "petrochina", "sinopec",
+    "rosneft", "gazprom", "petrochina", "sinopec","adnoc",
+    "vitol", "trafigura", "glencore", "gunvor", "mercuria",
+
+    # Geopolitical — critical for this client
+    "hormuz", "strait of hormuz", "iran", "iranian",
+    "sanctions", "russia", "ukraine", "opec+",
+    "israel", "lebanon", "hezbollah", "houthi",
+    "tanker", "shipping", "vessel", "blockade",
+    "nuclear", "enrichment", "uranium",
+
+    # Market signals
     "supply cut", "production cut", "oil price", "energy price",
     "oil market", "oil demand", "oil supply", "oil inventory",
+    "drawdown", "build", "inventory", "stockpile",
+    "iea", "eia", "opec report", "market outlook",
 ]
 
 

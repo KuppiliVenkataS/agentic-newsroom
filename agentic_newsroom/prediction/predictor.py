@@ -180,12 +180,20 @@ def _confidence_from_score(score: float) -> str:
     return "low"
 
 
-def generate_prediction(kg: KnowledgeGraph) -> dict:
+def generate_prediction(kg: KnowledgeGraph, market_data: list[dict] = None,
+                        articles: list[dict] = None) -> dict:
     """
     Generate a price direction prediction by combining all three signals.
+    Accepts market_data and articles directly from the pipeline.
+    Falls back to loading last archive if not provided.
     Returns a structured prediction dict.
     """
-    articles, market_data = _load_last_archive()
+    if market_data is None or articles is None:
+        _articles, _market_data = _load_last_archive()
+        if articles is None:
+            articles = _articles
+        if market_data is None:
+            market_data = _market_data
 
     # Compute individual signals
     sent_score, sent_detail = _sentiment_signal(kg)

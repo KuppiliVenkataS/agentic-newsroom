@@ -94,6 +94,16 @@ def run():
             logger.error(msg)
             errors.append(msg)
 
+        # ── 3b. Live prices from OilPriceAPI ──────────────────────────────
+        try:
+            live_prices = fetch_live_prices()
+            market_data.extend(live_prices)
+            logger.info(f"Live prices fetched: {len(live_prices)}")
+        except Exception as exc:
+            msg = f"Live price fetch failed: {exc}"
+            logger.error(msg)
+            errors.append(msg)
+
         try:
             gdelt_records = fetch_gdelt_data()
             logger.info(f"GDELT records: {len(gdelt_records)}")
@@ -165,7 +175,7 @@ def run():
         kg         = KnowledgeGraph()
         added      = kg.add_articles(enriched)
         logger.info(f"Knowledge graph: {added} articles added")
-        prediction = generate_prediction(kg)
+        prediction = generate_prediction(kg, market_data=market_data, articles=articles)
         logger.info(f"Prediction: {prediction['direction']} ({prediction['confidence']}) score={prediction['score']}")
     except Exception as exc:
         msg = f"Prediction failed: {exc}"
