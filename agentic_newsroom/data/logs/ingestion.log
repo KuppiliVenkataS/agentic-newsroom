@@ -5658,3 +5658,11 @@ For more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/St
 2026-05-25 10:35:09,945  INFO      processing.extractor    Extracting [5/556]: FirstFT: Oil falls as Iran talks advance
 2026-05-25 10:35:21,716  INFO      httpx  HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
 2026-05-25 10:35:21,925  INFO      processing.extractor    Extracting [6/556]: US consumers face looming spending squeeze as Trump tax reba
+2026-05-25 10:35:36,966  INFO      httpx  HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2026-05-25 10:35:37,172  INFO      processing.extractor    Extracting [7/556]: It’s not just SpaceX: Big Tech is dominating bond markets to
+2026-05-25 10:35:48,050  INFO      httpx  HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2026-05-25 10:35:48,257  INFO      processing.extractor    Extracting [8/556]: Can Exxon build the world’s biggest carbon capture business?
+2026-05-25 10:35:59,897  INFO      httpx  HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2026-05-25 10:36:00,105  INFO      processing.extractor    Extracting [9/556]: Iran’s Guards used UAE company to buy military satellite equ
+2026-05-25 10:36:14,182  INFO      httpx  HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2026-05-25 10:36:14,391  INFO      processing.extractor    Extracting [10/556]: Iran says possible memorandum does not include Hormuz specif

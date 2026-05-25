@@ -14,3 +14,4 @@ config/__pycache__/
 *.pyc 
 *.pyo 
 agentic_newsroom/graph/kuzu
+agentic_newsroom/data/dedup.db
