@@ -5666,3 +5666,186 @@ For more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/St
 2026-05-25 10:36:00,105  INFO      processing.extractor    Extracting [9/556]: Iran’s Guards used UAE company to buy military satellite equ
 2026-05-25 10:36:14,182  INFO      httpx  HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
 2026-05-25 10:36:14,391  INFO      processing.extractor    Extracting [10/556]: Iran says possible memorandum does not include Hormuz specif
+2026-05-25 10:36:25,182  INFO      httpx  HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2026-05-25 10:36:25,388  INFO      processing.extractor    Extracting [11/556]: Iran deal hopes; Brent falls below $100 - what’s moving mark
+2026-05-25 10:36:40,029  INFO      httpx  HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2026-05-25 10:36:40,239  INFO      processing.extractor    Extracting [12/556]: Huawei proposes new path for chip development amid US sancti
+2026-05-25 10:36:52,018  INFO      httpx  HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2026-05-25 10:36:52,227  INFO      processing.extractor    Extracting [13/556]: Stocks Extend Gains as Crude Oil Drops on Iran: Markets Wrap
+2026-05-25 10:37:04,874  INFO      httpx  HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2026-05-25 10:37:05,078  INFO      processing.extractor    Extracting [14/556]: Swiss Trader Had Lucrative Role Getting Iraqi Oil Through Ho
+2026-05-25 10:37:17,420  INFO      httpx  HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2026-05-25 10:37:17,627  INFO      processing.extractor    Extracting [15/556]: Gold Gains as Prospects of Iran Deal Temper Inflation Concer
+2026-05-25 10:37:29,095  INFO      httpx  HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2026-05-25 10:37:29,303  INFO      processing.extractor    Extracting [16/556]: India Rupee Climbs on Oil Relief, Central Bank Valuation Com
+2026-05-25 10:37:42,288  INFO      httpx  HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2026-05-25 10:37:42,498  INFO      processing.extractor    Extracting [17/556]: Resurgent Political Risk Derails Rallies in Emerging Markets
+2026-05-25 10:37:55,242  INFO      httpx  HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2026-05-25 10:37:55,452  INFO      processing.extractor    Extracting [18/556]: Abu Dhabi, Qatar Quietly Slip More Tankers Through Hormuz
+2026-05-25 10:38:12,467  INFO      httpx  HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2026-05-25 10:38:12,676  INFO      processing.extractor    Extracting [19/556]: European Gas Drops as US Signals Progress Toward Deal With I
+2026-05-25 10:38:26,724  INFO      httpx  HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2026-05-25 10:38:26,933  INFO      processing.extractor    Extracting [20/556]: MAIA: High Oil Price Offsets Saudi’s Export Volume Loss
+2026-05-25 10:38:41,988  INFO      httpx  HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2026-05-25 10:38:42,196  INFO      processing.extractor    Extracting [21/556]: Iran Reescalation Risk Can Spike Rand Levels
+2026-05-25 10:38:58,384  INFO      httpx  HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2026-05-25 10:38:58,591  INFO      processing.extractor    Extracting [22/556]: Deal Or No Deal? Oil Falls On Hope | Insight with Haslinda A
+2026-05-25 10:39:11,206  INFO      httpx  HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2026-05-25 10:39:11,412  INFO      processing.extractor    Extracting [23/556]: Oil Slides as US Touts Progress on Deal Toward Reopening Str
+2026-05-25 10:39:24,643  INFO      httpx  HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2026-05-25 10:39:24,848  INFO      processing.extractor    Extracting [24/556]: Australia to Include Existing LNG Contracts in Reservation
+2026-05-25 10:39:41,423  INFO      httpx  HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2026-05-25 10:39:41,632  INFO      processing.extractor    Extracting [25/556]: Rubio Plays Down Imminent U.S.-Iran Deal
+2026-05-25 10:39:57,711  INFO      httpx  HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2026-05-25 10:39:57,917  INFO      processing.extractor    Extracting [26/556]: India Raises Fuel Prices for Fourth Time as Oil Crisis Hits 
+2026-05-25 10:40:21,474  INFO      httpx  HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2026-05-25 10:40:21,681  INFO      processing.extractor    Extracting [27/556]: More Tankers Make It Through the Strait of Hormuz
+2026-05-25 10:40:38,968  INFO      httpx  HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2026-05-25 10:40:39,177  INFO      processing.extractor    Extracting [28/556]: Oil Prices Plunge Below $100 on Iran Deal Optimism
+2026-05-25 10:40:59,342  INFO      httpx  HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2026-05-25 10:40:59,552  INFO      processing.extractor    Extracting [29/556]: European Gas Storage Can’t Survive 3 More Months of Hormuz
+2026-05-25 10:41:21,190  INFO      httpx  HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2026-05-25 10:41:21,394  INFO      processing.extractor    Extracting [30/556]: Coal Is Fueling China’s Next Energy Power Play
+2026-05-25 10:41:35,024  INFO      httpx  HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2026-05-25 10:41:35,226  INFO      processing.extractor    Extracting [31/556]: 1 In 4 Cars Sold Globally Is An Electric Vehicle
+2026-05-25 10:41:55,321  INFO      httpx  HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2026-05-25 10:41:55,533  INFO      processing.extractor    Extracting [32/556]: Australia’s LNG Industry Warns Policy Uncertainty Is Hurting
+2026-05-25 10:42:07,942  INFO      httpx  HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2026-05-25 10:42:08,150  INFO      processing.extractor    Extracting [33/556]: U.S.-Iran Deal Delayed as Trump Refuses to “Rush” Agreement
+2026-05-25 10:42:23,412  INFO      httpx  HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2026-05-25 10:42:23,621  INFO      processing.extractor    Extracting [34/556]: Heat Pump Sales Surge Across Europe Amid Energy Shortages
+2026-05-25 10:42:41,226  INFO      httpx  HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2026-05-25 10:42:41,430  INFO      processing.extractor    Extracting [35/556]: Norway Doubles Down on Oil and Gas as Europe Scrambles for S
+2026-05-25 10:42:56,528  INFO      httpx  HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2026-05-25 10:42:56,738  INFO      processing.extractor    Extracting [36/556]: EU's 20th Sanctions Package Forces Kyrgyzstan's Hand on Russ
+2026-05-25 10:43:13,465  INFO      httpx  HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2026-05-25 10:43:13,670  INFO      processing.extractor    Extracting [37/556]: Soaring Energy Prices Are Driving a Home Solar Boom
+2026-05-25 10:43:27,163  INFO      httpx  HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2026-05-25 10:43:27,373  INFO      processing.extractor    Extracting [38/556]: Colombia's Natural Gas Crisis Deepens as Strait of Hormuz Cl
+2026-05-25 10:43:44,839  INFO      httpx  HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2026-05-25 10:43:45,051  INFO      processing.extractor    Extracting [39/556]: Gazprom Starts Production at Chona Fields in Eastern Siberia
+2026-05-25 10:44:00,909  INFO      httpx  HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2026-05-25 10:44:01,115  INFO      processing.extractor    Extracting [40/556]: Eni Secures LNG Offtake Deals for Indonesia Projects
+2026-05-25 10:44:17,803  INFO      httpx  HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2026-05-25 10:44:18,009  INFO      processing.extractor    Extracting [41/556]: Qatar Quietly Ships LNG via Hormuz to Key Buyers
+2026-05-25 10:44:34,998  INFO      httpx  HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2026-05-25 10:44:35,205  INFO      processing.extractor    Extracting [42/556]: NYSE Owner, OKX to Launch Perpetual Futures Tied to Oil
+2026-05-25 10:44:48,077  INFO      httpx  HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2026-05-25 10:44:48,285  INFO      processing.extractor    Extracting [43/556]: Ukraine Says It Targeted Yaroslavl Oil Refinery Again
+2026-05-25 10:45:02,661  INFO      httpx  HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2026-05-25 10:45:02,867  INFO      processing.extractor    Extracting [44/556]: Oil Swings on Iran Peace Hopes
+2026-05-25 10:45:15,569  INFO      httpx  HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2026-05-25 10:45:15,780  INFO      processing.extractor    Extracting [45/556]: USA Crude Oil Stocks Drop Almost 8MM Barrels WoW
+2026-05-25 10:45:31,636  INFO      httpx  HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2026-05-25 10:45:31,844  INFO      processing.extractor    Extracting [46/556]: UK to Close Oil Tax Loophole
+2026-05-25 10:45:44,284  INFO      httpx  HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2026-05-25 10:45:44,491  INFO      processing.extractor    Extracting [47/556]: ExxonMobil, QatarEnergy Eye Egypt Facilities for Potential C
+2026-05-25 10:45:59,084  INFO      httpx  HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2026-05-25 10:45:59,292  INFO      processing.extractor    Extracting [48/556]: EIR Says Qatari LNG Outage Will Shift Gas Market to Deficit
+2026-05-25 10:46:12,834  INFO      httpx  HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2026-05-25 10:46:13,038  INFO      processing.extractor    Extracting [49/556]: Oil Exerts Influence Well Beyond Energy Market
+2026-05-25 10:46:24,411  INFO      httpx  HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2026-05-25 10:46:24,618  INFO      processing.extractor    Extracting [50/556]: Ithaca Completes Acquisition in Shell Discovery, Farms Down 
+2026-05-25 10:46:41,383  INFO      httpx  HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2026-05-25 10:46:41,591  INFO      processing.extractor    Extracting [51/556]: Equinor, Aker BP Agree Stakes Swap in North Sea, Barents Sea
+2026-05-25 10:46:54,800  INFO      httpx  HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2026-05-25 10:46:55,008  INFO      processing.extractor    Extracting [52/556]: First Oil Tanker to Exit Hormuz since War Expected in Japan
+2026-05-25 10:47:07,984  INFO      httpx  HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2026-05-25 10:47:08,192  INFO      processing.extractor    Extracting [53/556]: Conoco Says Venezuela Bid to Woo Oil Firms Falls Short
+2026-05-25 10:47:21,436  INFO      httpx  HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2026-05-25 10:47:21,641  INFO      processing.extractor    Extracting [54/556]: Crude Closes Down for Third Day
+2026-05-25 10:47:34,764  INFO      httpx  HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2026-05-25 10:47:34,973  INFO      processing.extractor    Extracting [55/556]: Oil Near $100 Seen as Base Case for 2026
+2026-05-25 10:47:46,789  INFO      httpx  HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2026-05-25 10:47:46,999  INFO      processing.extractor    Extracting [56/556]: USA EIA Reveals Latest USA Diesel Price Forecast for 2026
+2026-05-25 10:48:02,230  INFO      httpx  HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2026-05-25 10:48:02,501  INFO      run_ingestion  Extraction complete: 556 articles enriched
+2026-05-25 10:48:02,853  INFO      processing.processed_writer  Saved processed output: /Volumes/Mac_extension/projects/OilNewsDB/agentic_newsroom/data/processed/2026/05/2026-05-25_09-33-38_processed.json
+2026-05-25 10:48:02,853  INFO      vectordb.store  Loading embedding model: all-MiniLM-L6-v2
+2026-05-25 10:48:04,842  INFO      sentence_transformers.base.model  No device provided, using mps
+2026-05-25 10:48:05,030  INFO      httpx  HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/modules.json "HTTP/1.1 307 Temporary Redirect"
+2026-05-25 10:48:05,041  INFO      httpx  HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/modules.json "HTTP/1.1 200 OK"
+2026-05-25 10:48:05,149  INFO      httpx  HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/config_sentence_transformers.json "HTTP/1.1 307 Temporary Redirect"
+2026-05-25 10:48:05,167  INFO      httpx  HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/config_sentence_transformers.json "HTTP/1.1 200 OK"
+2026-05-25 10:48:05,176  INFO      sentence_transformers.base.model  Loading SentenceTransformer model from sentence-transformers/all-MiniLM-L6-v2.
+2026-05-25 10:48:05,277  INFO      httpx  HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/config_sentence_transformers.json "HTTP/1.1 307 Temporary Redirect"
+2026-05-25 10:48:05,291  INFO      httpx  HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/config_sentence_transformers.json "HTTP/1.1 200 OK"
+2026-05-25 10:48:05,394  INFO      httpx  HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/README.md "HTTP/1.1 307 Temporary Redirect"
+2026-05-25 10:48:05,408  INFO      httpx  HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/README.md "HTTP/1.1 200 OK"
+2026-05-25 10:48:05,511  INFO      httpx  HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/modules.json "HTTP/1.1 307 Temporary Redirect"
+2026-05-25 10:48:05,525  INFO      httpx  HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/modules.json "HTTP/1.1 200 OK"
+2026-05-25 10:48:05,631  INFO      httpx  HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/sentence_bert_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-05-25 10:48:05,642  INFO      httpx  HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/sentence_bert_config.json "HTTP/1.1 200 OK"
+2026-05-25 10:48:05,747  INFO      httpx  HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/adapter_config.json "HTTP/1.1 404 Not Found"
+2026-05-25 10:48:05,880  INFO      httpx  HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-05-25 10:48:05,893  INFO      httpx  HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/config.json "HTTP/1.1 200 OK"
+2026-05-25 10:48:07,352  INFO      httpx  HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/processor_config.json "HTTP/1.1 404 Not Found"
+2026-05-25 10:48:07,465  INFO      httpx  HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/preprocessor_config.json "HTTP/1.1 404 Not Found"
+2026-05-25 10:48:07,566  INFO      httpx  HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/video_preprocessor_config.json "HTTP/1.1 404 Not Found"
+2026-05-25 10:48:07,669  INFO      httpx  HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/preprocessor_config.json "HTTP/1.1 404 Not Found"
+2026-05-25 10:48:07,776  INFO      httpx  HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/tokenizer_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-05-25 10:48:07,786  INFO      httpx  HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/tokenizer_config.json "HTTP/1.1 200 OK"
+2026-05-25 10:48:07,887  INFO      httpx  HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-05-25 10:48:07,896  INFO      httpx  HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/config.json "HTTP/1.1 200 OK"
+2026-05-25 10:48:07,999  INFO      httpx  HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-05-25 10:48:08,009  INFO      httpx  HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/config.json "HTTP/1.1 200 OK"
+2026-05-25 10:48:08,111  INFO      httpx  HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/tokenizer_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-05-25 10:48:08,121  INFO      httpx  HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/tokenizer_config.json "HTTP/1.1 200 OK"
+2026-05-25 10:48:08,328  INFO      httpx  HTTP Request: GET https://huggingface.co/api/models/sentence-transformers/all-MiniLM-L6-v2/tree/main/additional_chat_templates?recursive=false&expand=false "HTTP/1.1 404 Not Found"
+2026-05-25 10:48:08,439  INFO      httpx  HTTP Request: GET https://huggingface.co/api/models/sentence-transformers/all-MiniLM-L6-v2/tree/main?recursive=true&expand=false "HTTP/1.1 200 OK"
+2026-05-25 10:48:08,680  INFO      httpx  HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/1_Pooling/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-05-25 10:48:08,693  INFO      httpx  HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/1_Pooling%2Fconfig.json "HTTP/1.1 200 OK"
+2026-05-25 10:48:08,803  INFO      httpx  HTTP Request: GET https://huggingface.co/api/models/sentence-transformers/all-MiniLM-L6-v2 "HTTP/1.1 200 OK"
+2026-05-25 10:48:10,294  INFO      vectordb.store  Vector store ready. Collection size: 86 chunks
+2026-05-25 10:48:11,990  INFO      vectordb.store    Embedded batch 1: 56 chunks
+2026-05-25 10:48:12,001  INFO      vectordb.store  Vector store updated. Total chunks in DB: 102
+2026-05-25 10:48:12,001  INFO      run_ingestion  Vector DB: 56 chunks added, 102 total
+2026-05-25 10:48:13,789  INFO      graph.knowledge_graph  Knowledge graph ready at /Volumes/Mac_extension/projects/OilNewsDB/agentic_newsroom/graph/kuzu
+2026-05-25 10:48:58,748  INFO      graph.knowledge_graph  Knowledge graph updated: 56 articles processed
+2026-05-25 10:48:58,750  INFO      run_ingestion  Knowledge graph: 56 articles added
+2026-05-25 10:48:58,823  INFO      prediction.predictor  Signals — sentiment: -0.500, EIA: 0.546, GDELT: -0.025
+2026-05-25 10:48:58,824  INFO      prediction.predictor  Prediction: neutral (low) score=0.0135
+2026-05-25 10:48:58,825  INFO      run_ingestion  Prediction: neutral (low) score=0.0135
+2026-05-25 10:48:58,883  INFO      vectordb.store  Loading embedding model: all-MiniLM-L6-v2
+2026-05-25 10:48:58,888  INFO      sentence_transformers.base.model  No device provided, using mps
+2026-05-25 10:48:59,036  INFO      httpx  HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/modules.json "HTTP/1.1 307 Temporary Redirect"
+2026-05-25 10:48:59,047  INFO      httpx  HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/modules.json "HTTP/1.1 200 OK"
+2026-05-25 10:48:59,149  INFO      httpx  HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/config_sentence_transformers.json "HTTP/1.1 307 Temporary Redirect"
+2026-05-25 10:48:59,161  INFO      httpx  HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/config_sentence_transformers.json "HTTP/1.1 200 OK"
+2026-05-25 10:48:59,163  INFO      sentence_transformers.base.model  Loading SentenceTransformer model from sentence-transformers/all-MiniLM-L6-v2.
+2026-05-25 10:48:59,265  INFO      httpx  HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/config_sentence_transformers.json "HTTP/1.1 307 Temporary Redirect"
+2026-05-25 10:48:59,280  INFO      httpx  HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/config_sentence_transformers.json "HTTP/1.1 200 OK"
+2026-05-25 10:48:59,386  INFO      httpx  HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/README.md "HTTP/1.1 307 Temporary Redirect"
+2026-05-25 10:48:59,399  INFO      httpx  HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/README.md "HTTP/1.1 200 OK"
+2026-05-25 10:48:59,508  INFO      httpx  HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/modules.json "HTTP/1.1 307 Temporary Redirect"
+2026-05-25 10:48:59,520  INFO      httpx  HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/modules.json "HTTP/1.1 200 OK"
+2026-05-25 10:48:59,629  INFO      httpx  HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/sentence_bert_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-05-25 10:48:59,641  INFO      httpx  HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/sentence_bert_config.json "HTTP/1.1 200 OK"
+2026-05-25 10:48:59,756  INFO      httpx  HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/adapter_config.json "HTTP/1.1 404 Not Found"
+2026-05-25 10:48:59,866  INFO      httpx  HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-05-25 10:48:59,877  INFO      httpx  HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/config.json "HTTP/1.1 200 OK"
+2026-05-25 10:49:00,043  INFO      httpx  HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/processor_config.json "HTTP/1.1 404 Not Found"
+2026-05-25 10:49:00,154  INFO      httpx  HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/preprocessor_config.json "HTTP/1.1 404 Not Found"
+2026-05-25 10:49:00,256  INFO      httpx  HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/video_preprocessor_config.json "HTTP/1.1 404 Not Found"
+2026-05-25 10:49:00,371  INFO      httpx  HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/preprocessor_config.json "HTTP/1.1 404 Not Found"
+2026-05-25 10:49:00,476  INFO      httpx  HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/tokenizer_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-05-25 10:49:00,488  INFO      httpx  HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/tokenizer_config.json "HTTP/1.1 200 OK"
+2026-05-25 10:49:00,593  INFO      httpx  HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-05-25 10:49:00,605  INFO      httpx  HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/config.json "HTTP/1.1 200 OK"
+2026-05-25 10:49:00,715  INFO      httpx  HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-05-25 10:49:00,728  INFO      httpx  HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/config.json "HTTP/1.1 200 OK"
+2026-05-25 10:49:00,833  INFO      httpx  HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/tokenizer_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-05-25 10:49:00,846  INFO      httpx  HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/tokenizer_config.json "HTTP/1.1 200 OK"
+2026-05-25 10:49:00,957  INFO      httpx  HTTP Request: GET https://huggingface.co/api/models/sentence-transformers/all-MiniLM-L6-v2/tree/main/additional_chat_templates?recursive=false&expand=false "HTTP/1.1 404 Not Found"
+2026-05-25 10:49:01,065  INFO      httpx  HTTP Request: GET https://huggingface.co/api/models/sentence-transformers/all-MiniLM-L6-v2/tree/main?recursive=true&expand=false "HTTP/1.1 200 OK"
+2026-05-25 10:49:01,222  INFO      httpx  HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/1_Pooling/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-05-25 10:49:01,234  INFO      httpx  HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/1_Pooling%2Fconfig.json "HTTP/1.1 200 OK"
+2026-05-25 10:49:01,341  INFO      httpx  HTTP Request: GET https://huggingface.co/api/models/sentence-transformers/all-MiniLM-L6-v2 "HTTP/1.1 200 OK"
+2026-05-25 10:49:01,968  INFO      vectordb.store  Vector store ready. Collection size: 102 chunks
+2026-05-25 10:49:02,466  INFO      report.generator  Generating report via Ollama...
+2026-05-25 10:49:49,435  INFO      httpx  HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2026-05-25 10:49:49,780  INFO      report.generator  Report saved: /Volumes/Mac_extension/projects/OilNewsDB/agentic_newsroom/reports/2026-05-25_09-49-49_report.md
+2026-05-25 10:49:50,361  INFO      report.generator  DOCX saved: /Volumes/Mac_extension/projects/OilNewsDB/agentic_newsroom/reports/2026-05-25_09-49-49_report.docx
+2026-05-25 10:49:50,361  INFO      run_ingestion  Report saved: /Volumes/Mac_extension/projects/OilNewsDB/agentic_newsroom/reports/2026-05-25_09-49-49_report.md
+2026-05-25 10:49:50,412  INFO      ingestion.audit_logger  Audit written: status=ok, articles=556
+2026-05-25 10:49:50,416  INFO      run_ingestion  === Run complete: ok | 556 articles | 42 data points ===
