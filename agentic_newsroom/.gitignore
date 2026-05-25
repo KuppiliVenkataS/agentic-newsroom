@@ -13,3 +13,4 @@ agentic_newsroom_copy/
 config/__pycache__/
 *.pyc 
 *.pyo 
+agentic_newsroom/graph/kuzu

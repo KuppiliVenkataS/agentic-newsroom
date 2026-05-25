@@ -33,7 +33,7 @@ OIL_KEYWORDS = [
     "saudi aramco", "exxon", "chevron", "shell", "bp",
     "totalenergies", "conocophillips", "halliburton",
     "schlumberger", "baker hughes", "equinor", "adnoc",
-    "rosneft", "gazprom", "petrochina", "sinopec","adnoc",
+    "rosneft", "gazprom", "petrochina", "sinopec",
     "vitol", "trafigura", "glencore", "gunvor", "mercuria",
 
     # Geopolitical — critical for this client

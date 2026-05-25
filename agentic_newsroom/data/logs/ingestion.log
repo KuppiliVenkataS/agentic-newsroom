@@ -5582,3 +5582,79 @@ For more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/St
 2026-05-25 08:55:40,479  INFO      run_ingestion  Report saved: /Volumes/Mac_extension/projects/OilNewsDB/agentic_newsroom/reports/2026-05-25_07-55-37_report.md
 2026-05-25 08:55:40,502  INFO      ingestion.audit_logger  Audit written: status=ok, articles=501
 2026-05-25 08:55:40,504  INFO      run_ingestion  === Run complete: ok | 501 articles | 42 data points ===
+2026-05-25 10:33:38,423  INFO      run_ingestion  === Ingestion run started: 2026-05-25_09-33-38 ===
+2026-05-25 10:33:38,424  INFO      run_ingestion  Storage root: /Volumes/Mac_extension/projects/OilNewsDB/agentic_newsroom
+2026-05-25 10:33:38,432  INFO      ingestion.rss_fetcher  Fetching RSS: ft_markets
+2026-05-25 10:33:38,657  INFO      httpx  HTTP Request: GET https://www.ft.com/rss/home/uk "HTTP/1.1 200 OK"
+2026-05-25 10:33:38,681  INFO      ingestion.rss_fetcher    ft_markets: 4 new articles (6 filtered as non-oil)
+2026-05-25 10:33:38,681  INFO      ingestion.rss_fetcher  Fetching RSS: ft_companies
+2026-05-25 10:33:38,893  INFO      httpx  HTTP Request: GET https://www.ft.com/companies?format=rss "HTTP/1.1 200 OK"
+2026-05-25 10:33:38,918  INFO      ingestion.rss_fetcher    ft_companies: 5 new articles (19 filtered as non-oil)
+2026-05-25 10:33:38,918  INFO      ingestion.rss_fetcher  Fetching RSS: nasdaq_commodities
+2026-05-25 10:33:58,973  WARNING   ingestion.rss_fetcher    Failed to fetch nasdaq_commodities: The read operation timed out
+2026-05-25 10:33:58,974  INFO      ingestion.rss_fetcher  Fetching RSS: reuters_business
+2026-05-25 10:33:59,022  WARNING   ingestion.rss_fetcher    Failed to fetch reuters_business: [Errno 8] nodename nor servname provided, or not known
+2026-05-25 10:33:59,022  INFO      ingestion.rss_fetcher  Fetching RSS: reuters_energy
+2026-05-25 10:33:59,047  WARNING   ingestion.rss_fetcher    Failed to fetch reuters_energy: [Errno 8] nodename nor servname provided, or not known
+2026-05-25 10:33:59,047  INFO      ingestion.rss_fetcher  Fetching RSS: investing_oil
+2026-05-25 10:33:59,149  INFO      httpx  HTTP Request: GET https://www.investing.com/rss/news_14.rss "HTTP/1.1 200 OK"
+2026-05-25 10:33:59,186  INFO      ingestion.rss_fetcher    investing_oil: 3 new articles (7 filtered as non-oil)
+2026-05-25 10:33:59,186  INFO      ingestion.rss_fetcher  Fetching RSS: bloomberg_markets
+2026-05-25 10:33:59,495  INFO      httpx  HTTP Request: GET https://feeds.bloomberg.com/markets/news.rss "HTTP/1.1 200 OK"
+2026-05-25 10:33:59,625  INFO      ingestion.rss_fetcher    bloomberg_markets: 12 new articles (18 filtered as non-oil)
+2026-05-25 10:33:59,625  INFO      ingestion.rss_fetcher  Fetching RSS: bloomberg_energy
+2026-05-25 10:33:59,909  INFO      httpx  HTTP Request: GET https://feeds.bloomberg.com/energy/news.rss "HTTP/1.1 404 Not Found"
+2026-05-25 10:33:59,911  WARNING   ingestion.rss_fetcher    Failed to fetch bloomberg_energy: Client error '404 Not Found' for url 'https://feeds.bloomberg.com/energy/news.rss'
+For more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/404
+2026-05-25 10:33:59,911  INFO      ingestion.rss_fetcher  Fetching RSS: oilprice_news
+2026-05-25 10:34:00,833  INFO      httpx  HTTP Request: GET https://oilprice.com/rss/main "HTTP/1.1 200 OK"
+2026-05-25 10:34:00,890  INFO      ingestion.rss_fetcher    oilprice_news: 14 new articles (1 filtered as non-oil)
+2026-05-25 10:34:00,890  INFO      ingestion.rss_fetcher  Fetching RSS: platts_oil
+2026-05-25 10:34:00,961  INFO      httpx  HTTP Request: GET https://www.spglobal.com/commodityinsights/en/rss-feed/oil "HTTP/1.1 403 Forbidden"
+2026-05-25 10:34:00,961  WARNING   ingestion.rss_fetcher    Failed to fetch platts_oil: Client error '403 Forbidden' for url 'https://www.spglobal.com/commodityinsights/en/rss-feed/oil'
+For more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/403
+2026-05-25 10:34:00,961  INFO      ingestion.rss_fetcher  Fetching RSS: rigzone
+2026-05-25 10:34:01,346  INFO      httpx  HTTP Request: GET https://www.rigzone.com/news/rss/rigzone_latest.aspx "HTTP/1.1 200 OK"
+2026-05-25 10:34:01,410  INFO      ingestion.rss_fetcher    rigzone: 18 new articles (2 filtered as non-oil)
+2026-05-25 10:34:01,410  INFO      ingestion.rss_fetcher  Fetching RSS: opec_news
+2026-05-25 10:34:01,496  INFO      httpx  HTTP Request: GET https://www.opec.org/opec_web/en/press_room/4_rss_latest.htm "HTTP/1.1 403 Forbidden"
+2026-05-25 10:34:01,497  WARNING   ingestion.rss_fetcher    Failed to fetch opec_news: Client error '403 Forbidden' for url 'https://www.opec.org/opec_web/en/press_room/4_rss_latest.htm'
+For more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/403
+2026-05-25 10:34:01,497  INFO      ingestion.rss_fetcher  Fetching RSS: eia_petroleum_weekly
+2026-05-25 10:34:01,964  INFO      httpx  HTTP Request: GET https://www.eia.gov/petroleum/weekly/includes/archive.php?format=rss "HTTP/1.1 200 OK"
+2026-05-25 10:34:02,185  INFO      ingestion.rss_fetcher    eia_petroleum_weekly: 0 new articles (0 filtered as non-oil)
+2026-05-25 10:34:02,185  INFO      run_ingestion  RSS total new articles: 56
+2026-05-25 10:34:02,185  INFO      ingestion.eia_fetcher  Fetching EIA: wti_spot (PET.RWTC.D)
+2026-05-25 10:34:03,122  INFO      httpx  HTTP Request: GET https://api.eia.gov/v2/seriesid/PET.RWTC.D?api_key=8rXxybukI1E0yjQxUVFS0JPNL4QtmQiQrceec1oD&data%5B0%5D=value&sort%5B0%5D%5Bcolumn%5D=period&sort%5B0%5D%5Bdirection%5D=desc&length=10&offset=0 "HTTP/1.1 200 OK"
+2026-05-25 10:34:03,123  INFO      ingestion.eia_fetcher    wti_spot: 10 data points
+2026-05-25 10:34:03,123  INFO      ingestion.eia_fetcher  Fetching EIA: brent_spot (PET.RBRTE.D)
+2026-05-25 10:34:03,958  INFO      httpx  HTTP Request: GET https://api.eia.gov/v2/seriesid/PET.RBRTE.D?api_key=8rXxybukI1E0yjQxUVFS0JPNL4QtmQiQrceec1oD&data%5B0%5D=value&sort%5B0%5D%5Bcolumn%5D=period&sort%5B0%5D%5Bdirection%5D=desc&length=10&offset=0 "HTTP/1.1 200 OK"
+2026-05-25 10:34:03,970  INFO      ingestion.eia_fetcher    brent_spot: 10 data points
+2026-05-25 10:34:03,970  INFO      ingestion.eia_fetcher  Fetching EIA: us_inventory (PET.WCESTUS1.W)
+2026-05-25 10:34:05,445  INFO      httpx  HTTP Request: GET https://api.eia.gov/v2/seriesid/PET.WCESTUS1.W?api_key=8rXxybukI1E0yjQxUVFS0JPNL4QtmQiQrceec1oD&data%5B0%5D=value&sort%5B0%5D%5Bcolumn%5D=period&sort%5B0%5D%5Bdirection%5D=desc&length=10&offset=0 "HTTP/1.1 200 OK"
+2026-05-25 10:34:05,446  INFO      ingestion.eia_fetcher    us_inventory: 10 data points
+2026-05-25 10:34:05,446  INFO      ingestion.eia_fetcher  Fetching EIA: us_production (PET.WCRFPUS2.W)
+2026-05-25 10:34:06,881  INFO      httpx  HTTP Request: GET https://api.eia.gov/v2/seriesid/PET.WCRFPUS2.W?api_key=8rXxybukI1E0yjQxUVFS0JPNL4QtmQiQrceec1oD&data%5B0%5D=value&sort%5B0%5D%5Bcolumn%5D=period&sort%5B0%5D%5Bdirection%5D=desc&length=10&offset=0 "HTTP/1.1 200 OK"
+2026-05-25 10:34:06,883  INFO      ingestion.eia_fetcher    us_production: 10 data points
+2026-05-25 10:34:06,883  INFO      run_ingestion  EIA data points: 40
+2026-05-25 10:34:07,602  INFO      httpx  HTTP Request: GET https://api.oilpriceapi.com/v1/prices/latest?by_code=BRENT_CRUDE_USD "HTTP/1.1 200 OK"
+2026-05-25 10:34:07,603  INFO      ingestion.yfinance_fetcher    brent_live: $98.35
+2026-05-25 10:34:08,152  INFO      httpx  HTTP Request: GET https://api.oilpriceapi.com/v1/prices/latest?by_code=WTI_USD "HTTP/1.1 200 OK"
+2026-05-25 10:34:08,154  INFO      ingestion.yfinance_fetcher    wti_live: $91.81
+2026-05-25 10:34:08,154  INFO      run_ingestion  Live prices fetched: 2
+2026-05-25 10:34:08,154  INFO      ingestion.gdelt_fetcher  Querying GDELT GKG for date: 2026-05-25
+2026-05-25 10:34:13,359  INFO      ingestion.gdelt_fetcher  GDELT: 500 records returned
+2026-05-25 10:34:13,359  INFO      run_ingestion  GDELT records: 500
+2026-05-25 10:34:13,448  INFO      ingestion.archive_writer  Saved run to /Volumes/Mac_extension/projects/OilNewsDB/agentic_newsroom/data/raw/2026/05/2026-05-25_09-33-38_run.json (556 articles, 42 data points)
+2026-05-25 10:34:13,449  INFO      run_ingestion  Prepared 556 articles for extraction
+2026-05-25 10:34:13,449  INFO      processing.extractor    Extracting [1/556]: Rubio says Washington will find ‘another way’ if Iran talks 
+2026-05-25 10:34:34,848  INFO      httpx  HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2026-05-25 10:34:35,059  INFO      processing.extractor    Extracting [2/556]: Republican hardliners warn Trump is giving up too much in Ir
+2026-05-25 10:34:46,836  INFO      httpx  HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2026-05-25 10:34:47,039  INFO      processing.extractor    Extracting [3/556]: Fertiliser groups cut production as Iran war squeezes sulphu
+2026-05-25 10:34:58,656  INFO      httpx  HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2026-05-25 10:34:58,866  INFO      processing.extractor    Extracting [4/556]: UK universities cut jobs, research and teaching amid squeeze
+2026-05-25 10:35:09,712  INFO      httpx  HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2026-05-25 10:35:09,945  INFO      processing.extractor    Extracting [5/556]: FirstFT: Oil falls as Iran talks advance
+2026-05-25 10:35:21,716  INFO      httpx  HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2026-05-25 10:35:21,925  INFO      processing.extractor    Extracting [6/556]: US consumers face looming spending squeeze as Trump tax reba
