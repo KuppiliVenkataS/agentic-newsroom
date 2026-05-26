@@ -48,6 +48,28 @@ OIL_KEYWORDS = [
     "oil market", "oil demand", "oil supply", "oil inventory",
     "drawdown", "build", "inventory", "stockpile",
     "iea", "eia", "opec report", "market outlook",
+
+    # Trump / US policy
+    "trump", "sanctions", "executive order", "energy dominance",
+    "drill baby drill", "strategic reserve", "spr",
+    "iran deal", "iran nuclear", "hormuz", "iran sanctions",
+    "tariff", "trade war", "venezuela sanctions",
+    "saudi", "mbs", "mohammed bin salman",
+    "white house energy", "department of energy",
+
+    # Iran war / conflict — high oil price impact
+    "iran war", "iran attack", "iran strike", "iran missile",
+    "iran nuclear deal", "iran enrichment", "iran iaea",
+    "strait of hormuz blockade", "hormuz closure", "hormuz tension",
+    "persian gulf", "gulf tension", "gulf conflict",
+    "israel iran", "iran israel strike", "shadow war",
+    "iranian revolutionary guard", "irgc",
+    "iran proxy", "iran backed", "houthi attack", "red sea attack",
+    "tanker attack", "oil tanker seized", "oil ship attack",
+    "gulf of oman", "arabian sea incident",
+    "us iran", "us military iran", "us carrier iran",
+    "nuclear threshold", "breakout", "centrifuge",
+    "fordow", "natanz", "iran facility",
 ]
 
 

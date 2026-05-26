@@ -57,7 +57,9 @@ Write the morning briefing note now. Style rules:
 - Then immediately give Brent and WTI prices on the next line
 - Write in flowing paragraphs, no headers, no bullet points
 - Be opinionated — say what YOU think will happen and why
-- Highlight geopolitical risks — Iran, Hormuz, Russia, Ukraine, OPEC+ tensions
+- Highlight geopolitical risks — Iran war risk, Hormuz closure probability, Russia, Ukraine, OPEC+ tensions
+- If any Iran conflict, strike, or Hormuz closure news exists, lead with it — this is the single biggest upside risk to oil prices
+- Quantify the Iran risk where possible e.g. 'a Hormuz closure could spike Brent by $20-30'
 - Mention spreads and market structure if data supports it (backwardation, contango)
 - End with your personal outlook for the next 12-24 hours
 - Keep it under 400 words
