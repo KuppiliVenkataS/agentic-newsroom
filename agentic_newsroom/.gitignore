@@ -1,7 +1,6 @@
 .env
 secrets/
 env/
-config/settings.py
 
 data/processed/
 data/raw/
