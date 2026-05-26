@@ -6087,3 +6087,457 @@ For more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/St
 2026-05-26 05:24:38,251  INFO      run_ingestion  Report saved: /Volumes/Mac_extension/projects/OilNewsDB/agentic_newsroom/reports/2026-05-26_04-24-37_report.md
 2026-05-26 05:24:38,293  INFO      ingestion.audit_logger  Audit written: status=ok, articles=541
 2026-05-26 05:24:38,296  INFO      run_ingestion  === Run complete: ok | 541 articles | 42 data points ===
+2026-05-26 11:21:17,867  INFO      run_ingestion  === Ingestion run started: 2026-05-26_10-21-17 ===
+2026-05-26 11:21:17,867  INFO      run_ingestion  Storage root: /Volumes/Mac_extension/projects/OilNewsDB/agentic_newsroom
+2026-05-26 11:21:17,899  INFO      ingestion.rss_fetcher  Fetching RSS: ft_markets
+2026-05-26 11:21:18,116  INFO      httpx  HTTP Request: GET https://www.ft.com/rss/home/uk "HTTP/1.1 200 OK"
+2026-05-26 11:21:18,163  INFO      ingestion.rss_fetcher    ft_markets: 3 new articles (6 filtered as non-oil)
+2026-05-26 11:21:18,163  INFO      ingestion.rss_fetcher  Fetching RSS: ft_companies
+2026-05-26 11:21:18,472  INFO      httpx  HTTP Request: GET https://www.ft.com/companies?format=rss "HTTP/1.1 200 OK"
+2026-05-26 11:21:18,540  INFO      ingestion.rss_fetcher    ft_companies: 6 new articles (19 filtered as non-oil)
+2026-05-26 11:21:18,540  INFO      ingestion.rss_fetcher  Fetching RSS: nasdaq_commodities
+2026-05-26 11:21:36,658  WARNING   ingestion.rss_fetcher    Failed to fetch nasdaq_commodities: Server disconnected without sending a response.
+2026-05-26 11:21:36,658  INFO      ingestion.rss_fetcher  Fetching RSS: reuters_business
+2026-05-26 11:21:36,712  WARNING   ingestion.rss_fetcher    Failed to fetch reuters_business: [Errno 8] nodename nor servname provided, or not known
+2026-05-26 11:21:36,712  INFO      ingestion.rss_fetcher  Fetching RSS: reuters_energy
+2026-05-26 11:21:36,740  WARNING   ingestion.rss_fetcher    Failed to fetch reuters_energy: [Errno 8] nodename nor servname provided, or not known
+2026-05-26 11:21:36,740  INFO      ingestion.rss_fetcher  Fetching RSS: investing_oil
+2026-05-26 11:21:36,846  INFO      httpx  HTTP Request: GET https://www.investing.com/rss/news_14.rss "HTTP/1.1 200 OK"
+2026-05-26 11:21:36,892  INFO      ingestion.rss_fetcher    investing_oil: 3 new articles (7 filtered as non-oil)
+2026-05-26 11:21:36,893  INFO      ingestion.rss_fetcher  Fetching RSS: bloomberg_markets
+2026-05-26 11:21:37,329  INFO      httpx  HTTP Request: GET https://feeds.bloomberg.com/markets/news.rss "HTTP/1.1 200 OK"
+2026-05-26 11:21:37,424  INFO      ingestion.rss_fetcher    bloomberg_markets: 13 new articles (17 filtered as non-oil)
+2026-05-26 11:21:37,424  INFO      ingestion.rss_fetcher  Fetching RSS: white_house
+2026-05-26 11:21:37,499  INFO      httpx  HTTP Request: GET https://www.whitehouse.gov/feed/ "HTTP/1.1 404 Not Found"
+2026-05-26 11:21:37,501  WARNING   ingestion.rss_fetcher    Failed to fetch white_house: Client error '404 Not Found' for url 'https://www.whitehouse.gov/feed/'
+For more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/404
+2026-05-26 11:21:37,501  INFO      ingestion.rss_fetcher  Fetching RSS: state_department
+2026-05-26 11:21:37,855  INFO      httpx  HTTP Request: GET https://www.state.gov/rss-feeds/ "HTTP/1.1 200 OK"
+2026-05-26 11:21:38,380  INFO      ingestion.rss_fetcher    state_department: 0 new articles (0 filtered as non-oil)
+2026-05-26 11:21:38,380  INFO      ingestion.rss_fetcher  Fetching RSS: reuters_politics
+2026-05-26 11:21:38,396  WARNING   ingestion.rss_fetcher    Failed to fetch reuters_politics: [Errno 8] nodename nor servname provided, or not known
+2026-05-26 11:21:38,396  INFO      ingestion.rss_fetcher  Fetching RSS: ap_politics
+2026-05-26 11:21:38,459  WARNING   ingestion.rss_fetcher    Failed to fetch ap_politics: [SSL: UNEXPECTED_EOF_WHILE_READING] EOF occurred in violation of protocol (_ssl.c:1000)
+2026-05-26 11:21:38,459  INFO      ingestion.rss_fetcher  Fetching RSS: politico
+2026-05-26 11:21:38,548  INFO      httpx  HTTP Request: GET https://www.politico.com/rss/politicopicks.xml "HTTP/1.1 403 Forbidden"
+2026-05-26 11:21:38,550  WARNING   ingestion.rss_fetcher    Failed to fetch politico: Client error '403 Forbidden' for url 'https://www.politico.com/rss/politicopicks.xml'
+For more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/403
+2026-05-26 11:21:38,550  INFO      ingestion.rss_fetcher  Fetching RSS: axios
+2026-05-26 11:21:38,737  INFO      httpx  HTTP Request: GET https://api.axios.com/feed/ "HTTP/1.1 200 OK"
+2026-05-26 11:21:39,372  INFO      ingestion.rss_fetcher    axios: 42 new articles (8 filtered as non-oil)
+2026-05-26 11:21:39,372  INFO      ingestion.rss_fetcher  Fetching RSS: the_hill_energy
+2026-05-26 11:21:39,478  INFO      httpx  HTTP Request: GET https://thehill.com/policy/energy-environment/feed/ "HTTP/1.1 200 OK"
+2026-05-26 11:21:39,557  INFO      ingestion.rss_fetcher    the_hill_energy: 13 new articles (2 filtered as non-oil)
+2026-05-26 11:21:39,558  INFO      ingestion.rss_fetcher  Fetching RSS: nitter_trump
+2026-05-26 11:21:39,643  INFO      httpx  HTTP Request: GET https://nitter.net/realDonaldTrump/rss "HTTP/1.1 200 OK"
+2026-05-26 11:21:39,709  INFO      ingestion.rss_fetcher    nitter_trump: 13 new articles (5 filtered as non-oil)
+2026-05-26 11:21:39,709  INFO      ingestion.rss_fetcher  Fetching RSS: bloomberg_energy
+2026-05-26 11:21:40,059  INFO      httpx  HTTP Request: GET https://feeds.bloomberg.com/energy/news.rss "HTTP/1.1 404 Not Found"
+2026-05-26 11:21:40,060  WARNING   ingestion.rss_fetcher    Failed to fetch bloomberg_energy: Client error '404 Not Found' for url 'https://feeds.bloomberg.com/energy/news.rss'
+For more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/404
+2026-05-26 11:21:40,060  INFO      ingestion.rss_fetcher  Fetching RSS: oilprice_news
+2026-05-26 11:21:40,810  INFO      httpx  HTTP Request: GET https://oilprice.com/rss/main "HTTP/1.1 200 OK"
+2026-05-26 11:21:40,873  INFO      ingestion.rss_fetcher    oilprice_news: 14 new articles (1 filtered as non-oil)
+2026-05-26 11:21:40,873  INFO      ingestion.rss_fetcher  Fetching RSS: platts_oil
+2026-05-26 11:21:41,028  INFO      httpx  HTTP Request: GET https://www.spglobal.com/commodityinsights/en/rss-feed/oil "HTTP/1.1 403 Forbidden"
+2026-05-26 11:21:41,029  WARNING   ingestion.rss_fetcher    Failed to fetch platts_oil: Client error '403 Forbidden' for url 'https://www.spglobal.com/commodityinsights/en/rss-feed/oil'
+For more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/403
+2026-05-26 11:21:41,029  INFO      ingestion.rss_fetcher  Fetching RSS: rigzone
+2026-05-26 11:21:41,438  INFO      httpx  HTTP Request: GET https://www.rigzone.com/news/rss/rigzone_latest.aspx "HTTP/1.1 200 OK"
+2026-05-26 11:21:41,502  INFO      ingestion.rss_fetcher    rigzone: 16 new articles (4 filtered as non-oil)
+2026-05-26 11:21:41,502  INFO      ingestion.rss_fetcher  Fetching RSS: opec_news
+2026-05-26 11:21:41,606  INFO      httpx  HTTP Request: GET https://www.opec.org/opec_web/en/press_room/4_rss_latest.htm "HTTP/1.1 403 Forbidden"
+2026-05-26 11:21:41,607  WARNING   ingestion.rss_fetcher    Failed to fetch opec_news: Client error '403 Forbidden' for url 'https://www.opec.org/opec_web/en/press_room/4_rss_latest.htm'
+For more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/403
+2026-05-26 11:21:41,607  INFO      ingestion.rss_fetcher  Fetching RSS: eia_petroleum_weekly
+2026-05-26 11:21:41,878  INFO      httpx  HTTP Request: GET https://www.eia.gov/petroleum/weekly/includes/archive.php?format=rss "HTTP/1.1 200 OK"
+2026-05-26 11:21:42,155  INFO      ingestion.rss_fetcher    eia_petroleum_weekly: 0 new articles (0 filtered as non-oil)
+2026-05-26 11:21:42,155  INFO      run_ingestion  RSS total new articles: 123
+2026-05-26 11:21:42,155  INFO      ingestion.eia_fetcher  Fetching EIA: wti_spot (PET.RWTC.D)
+2026-05-26 11:21:43,241  INFO      httpx  HTTP Request: GET https://api.eia.gov/v2/seriesid/PET.RWTC.D?api_key=8rXxybukI1E0yjQxUVFS0JPNL4QtmQiQrceec1oD&data%5B0%5D=value&sort%5B0%5D%5Bcolumn%5D=period&sort%5B0%5D%5Bdirection%5D=desc&length=10&offset=0 "HTTP/1.1 200 OK"
+2026-05-26 11:21:43,243  INFO      ingestion.eia_fetcher    wti_spot: 10 data points
+2026-05-26 11:21:43,243  INFO      ingestion.eia_fetcher  Fetching EIA: brent_spot (PET.RBRTE.D)
+2026-05-26 11:21:44,163  INFO      httpx  HTTP Request: GET https://api.eia.gov/v2/seriesid/PET.RBRTE.D?api_key=8rXxybukI1E0yjQxUVFS0JPNL4QtmQiQrceec1oD&data%5B0%5D=value&sort%5B0%5D%5Bcolumn%5D=period&sort%5B0%5D%5Bdirection%5D=desc&length=10&offset=0 "HTTP/1.1 200 OK"
+2026-05-26 11:21:44,164  INFO      ingestion.eia_fetcher    brent_spot: 10 data points
+2026-05-26 11:21:44,165  INFO      ingestion.eia_fetcher  Fetching EIA: us_inventory (PET.WCESTUS1.W)
+2026-05-26 11:21:45,652  INFO      httpx  HTTP Request: GET https://api.eia.gov/v2/seriesid/PET.WCESTUS1.W?api_key=8rXxybukI1E0yjQxUVFS0JPNL4QtmQiQrceec1oD&data%5B0%5D=value&sort%5B0%5D%5Bcolumn%5D=period&sort%5B0%5D%5Bdirection%5D=desc&length=10&offset=0 "HTTP/1.1 200 OK"
+2026-05-26 11:21:45,654  INFO      ingestion.eia_fetcher    us_inventory: 10 data points
+2026-05-26 11:21:45,654  INFO      ingestion.eia_fetcher  Fetching EIA: us_production (PET.WCRFPUS2.W)
+2026-05-26 11:21:47,213  INFO      httpx  HTTP Request: GET https://api.eia.gov/v2/seriesid/PET.WCRFPUS2.W?api_key=8rXxybukI1E0yjQxUVFS0JPNL4QtmQiQrceec1oD&data%5B0%5D=value&sort%5B0%5D%5Bcolumn%5D=period&sort%5B0%5D%5Bdirection%5D=desc&length=10&offset=0 "HTTP/1.1 200 OK"
+2026-05-26 11:21:47,215  INFO      ingestion.eia_fetcher    us_production: 10 data points
+2026-05-26 11:21:47,215  INFO      run_ingestion  EIA data points: 40
+2026-05-26 11:21:47,867  INFO      httpx  HTTP Request: GET https://api.oilpriceapi.com/v1/prices/latest?by_code=BRENT_CRUDE_USD "HTTP/1.1 200 OK"
+2026-05-26 11:21:47,868  INFO      ingestion.yfinance_fetcher    brent_live: $99.01
+2026-05-26 11:21:48,446  INFO      httpx  HTTP Request: GET https://api.oilpriceapi.com/v1/prices/latest?by_code=WTI_USD "HTTP/1.1 200 OK"
+2026-05-26 11:21:48,447  INFO      ingestion.yfinance_fetcher    wti_live: $92.43
+2026-05-26 11:21:48,447  INFO      run_ingestion  Live prices fetched: 2
+2026-05-26 11:21:48,447  INFO      ingestion.gdelt_fetcher  Querying GDELT GKG for date: 2026-05-26
+2026-05-26 11:21:54,645  INFO      ingestion.gdelt_fetcher  GDELT: 500 records returned
+2026-05-26 11:21:54,645  INFO      run_ingestion  GDELT records: 500
+2026-05-26 11:21:54,922  INFO      ingestion.archive_writer  Saved run to /Volumes/Mac_extension/projects/OilNewsDB/agentic_newsroom/data/raw/2026/05/2026-05-26_10-21-17_run.json (623 articles, 42 data points)
+2026-05-26 11:21:54,925  INFO      run_ingestion  Prepared 623 articles for extraction
+2026-05-26 11:21:54,925  INFO      processing.extractor    Extracting [1/623]: US strikes Iranian missile sites as peace talks continue
+2026-05-26 11:22:14,456  INFO      httpx  HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2026-05-26 11:22:14,667  INFO      processing.extractor    Extracting [2/623]: Iran is beating Trump at the art of the deal
+2026-05-26 11:22:27,991  INFO      httpx  HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2026-05-26 11:22:28,203  INFO      processing.extractor    Extracting [3/623]: Real wages start to shrink in developed countries
+2026-05-26 11:22:41,008  INFO      httpx  HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2026-05-26 11:22:41,217  INFO      processing.extractor    Extracting [4/623]: Fewer households should be exempt from energy bills, says re
+2026-05-26 11:22:56,818  INFO      httpx  HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2026-05-26 11:22:57,026  INFO      processing.extractor    Extracting [5/623]: FirstFT: US strikes Iranian missile sites
+2026-05-26 11:23:08,414  INFO      httpx  HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2026-05-26 11:23:08,618  INFO      processing.extractor    Extracting [6/623]: AI and the brave new world of deals
+2026-05-26 11:23:19,656  INFO      httpx  HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2026-05-26 11:23:19,865  INFO      processing.extractor    Extracting [7/623]: Reeves urges ministers to ‘buy British’ in critical sectors
+2026-05-26 11:23:30,653  INFO      httpx  HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2026-05-26 11:23:30,858  INFO      processing.extractor    Extracting [8/623]: The energy shock is not over yet
+2026-05-26 11:23:43,554  INFO      httpx  HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2026-05-26 11:23:43,758  INFO      processing.extractor    Extracting [9/623]: Two LNG tankers pass through Strait of Hormuz
+2026-05-26 11:23:57,526  INFO      httpx  HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2026-05-26 11:23:57,734  INFO      processing.extractor    Extracting [10/623]: UK political turmoil revives Brexit debate as leadership con
+2026-05-26 11:24:08,469  INFO      httpx  HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2026-05-26 11:24:08,677  INFO      processing.extractor    Extracting [11/623]: Indian refiners process less crude in April amid Middle East
+2026-05-26 11:24:22,726  INFO      httpx  HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2026-05-26 11:24:22,933  INFO      processing.extractor    Extracting [12/623]: Iran says retaliatory attacks "legitimate and definite" if U
+2026-05-26 11:24:36,401  INFO      httpx  HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2026-05-26 11:24:36,635  INFO      processing.extractor    Extracting [13/623]: French Power Prices Jump as Hot Weather Spurs Nuclear Concer
+2026-05-26 11:24:49,874  INFO      httpx  HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2026-05-26 11:24:50,083  INFO      processing.extractor    Extracting [14/623]: Emerging Stocks Extend Rally as AI Boom Outweighs Iran Doubt
+2026-05-26 11:25:02,355  INFO      httpx  HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2026-05-26 11:25:02,564  INFO      processing.extractor    Extracting [15/623]: Brazil’s Cotton Farmers Cash in on Rally Fueled by Obstacles
+2026-05-26 11:25:16,713  INFO      httpx  HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2026-05-26 11:25:16,920  INFO      processing.extractor    Extracting [16/623]: European Stocks Fall on US-Iran Tensions Worries; Ferrari Dr
+2026-05-26 11:25:29,353  INFO      httpx  HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2026-05-26 11:25:29,563  INFO      processing.extractor    Extracting [17/623]: Treasuries Gain in Catch-Up Trade as Trump Sees Progress on 
+2026-05-26 11:25:41,963  INFO      httpx  HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2026-05-26 11:25:42,172  INFO      processing.extractor    Extracting [18/623]: Gold Slips After US Strikes Raise Concerns Over Iran Talks
+2026-05-26 11:25:56,362  INFO      httpx  HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2026-05-26 11:25:56,570  INFO      processing.extractor    Extracting [19/623]: Japan Set to Secure More Oil Imports in May After April Slum
+2026-05-26 11:26:12,689  INFO      httpx  HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2026-05-26 11:26:12,897  INFO      processing.extractor    Extracting [20/623]: Oil Rebounds as Strikes Near Hormuz Muddy Outlook for Iran D
+2026-05-26 11:26:26,508  INFO      httpx  HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2026-05-26 11:26:26,713  INFO      processing.extractor    Extracting [21/623]: US Stock Futures Extend Gains as Peace Hopes Hold: Markets W
+2026-05-26 11:26:38,862  INFO      httpx  HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2026-05-26 11:26:39,322  INFO      processing.extractor    Extracting [22/623]: Palm Fruit Left to Rot as Indonesia Export Revamp Hits Farme
+2026-05-26 11:26:51,276  INFO      httpx  HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2026-05-26 11:26:51,487  INFO      processing.extractor    Extracting [23/623]: Indonesia Probes Major Palm Oil Companies on Export Price Is
+2026-05-26 11:27:03,201  INFO      httpx  HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2026-05-26 11:27:03,403  INFO      processing.extractor    Extracting [24/623]: Danish Central Bank Warns of Housing Risks as Price Gains Sp
+2026-05-26 11:27:17,482  INFO      httpx  HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2026-05-26 11:27:17,690  INFO      processing.extractor    Extracting [25/623]: Ferrari Unveils 5-Seat Fully Electric Car, Shares Fall
+2026-05-26 11:27:32,886  INFO      httpx  HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2026-05-26 11:27:33,095  INFO      processing.extractor    Extracting [26/623]: Behind the Curtain: Trump's irreversible choices
+2026-05-26 11:27:46,055  INFO      httpx  HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2026-05-26 11:27:46,262  INFO      processing.extractor    Extracting [27/623]: Scoop: Rubio aide promoted to top White House national secur
+2026-05-26 11:28:03,110  INFO      httpx  HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2026-05-26 11:28:16,312  INFO      httpx  HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2026-05-26 11:28:16,518  INFO      processing.extractor    Extracting [28/623]: The new oil order that could emerge from an Iran deal
+2026-05-26 11:28:32,414  INFO      httpx  HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2026-05-26 11:28:47,706  INFO      httpx  HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2026-05-26 11:28:47,912  INFO      processing.extractor    Extracting [29/623]: The bond market is telling us the free lunch is over
+2026-05-26 11:29:13,399  INFO      httpx  HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2026-05-26 11:29:33,535  INFO      httpx  HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2026-05-26 11:29:33,740  INFO      processing.extractor    Extracting [30/623]: CISA sidelined as White House scrambles on AI cyber threats
+2026-05-26 11:29:51,193  INFO      httpx  HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2026-05-26 11:30:05,797  INFO      httpx  HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2026-05-26 11:30:06,005  INFO      processing.extractor    Extracting [31/623]: Watches, movies and burrito taxis: How Americans splurge in 
+2026-05-26 11:30:20,595  INFO      httpx  HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2026-05-26 11:30:20,806  INFO      processing.extractor    Extracting [32/623]: Scoop: Democrats eyeing 2028 bids court Warren
+2026-05-26 11:30:37,630  INFO      httpx  HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2026-05-26 11:30:37,847  INFO      processing.extractor    Extracting [33/623]: AOC takes more steps toward 2028 run for president
+2026-05-26 11:31:17,215  INFO      httpx  HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2026-05-26 11:31:17,783  INFO      processing.extractor    Extracting [34/623]: Trump asked Muslim leaders to sign peace deal with Israel af
+2026-05-26 11:31:43,267  INFO      httpx  HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2026-05-26 11:31:54,888  INFO      httpx  HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2026-05-26 11:31:55,094  INFO      processing.extractor    Extracting [35/623]: White House says Iran deal could take days
+2026-05-26 11:32:12,604  INFO      httpx  HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2026-05-26 11:32:25,098  INFO      httpx  HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2026-05-26 11:32:25,304  INFO      processing.extractor    Extracting [36/623]: White House shooting: Gunman dead after firing Saturday nigh
+2026-05-26 11:32:41,570  INFO      httpx  HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2026-05-26 11:32:41,775  INFO      processing.extractor    Extracting [37/623]: Dems weaponize Epstein in anti-GOP midterm ads
+2026-05-26 11:33:00,085  INFO      httpx  HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2026-05-26 11:33:00,295  INFO      processing.extractor    Extracting [38/623]: Exclusive: What's inside the Iran deal Trump is close to sig
+2026-05-26 11:33:19,086  INFO      httpx  HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2026-05-26 11:33:32,054  INFO      httpx  HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2026-05-26 11:33:32,262  INFO      processing.extractor    Extracting [39/623]: U.S., Iran close to a deal to end war, official says
+2026-05-26 11:33:49,889  INFO      httpx  HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2026-05-26 11:34:03,283  INFO      httpx  HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2026-05-26 11:34:03,487  INFO      processing.extractor    Extracting [40/623]: Exclusive: Trump says he's "50/50" on Iran deal, decision by
+2026-05-26 11:34:21,288  INFO      httpx  HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2026-05-26 11:34:37,131  INFO      httpx  HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2026-05-26 11:34:37,343  INFO      processing.extractor    Extracting [41/623]: Even Republicans are souring on Trump's economy
+2026-05-26 11:34:58,641  INFO      httpx  HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2026-05-26 11:34:58,717  WARNING   processing.extractor    JSON parse failed on chunk 0: Expecting ',' delimiter: line 32 column 26 (char 688)
+2026-05-26 11:34:58,923  INFO      processing.extractor    Extracting [42/623]: Neighborhood watch programs are fading in the age of Ring an
+2026-05-26 11:35:12,971  INFO      httpx  HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2026-05-26 11:35:13,184  INFO      processing.extractor    Extracting [43/623]: Tulsi Gabbard resigns as director of national intelligence
+2026-05-26 11:35:33,007  INFO      httpx  HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2026-05-26 11:35:33,215  INFO      processing.extractor    Extracting [44/623]: Pakistani field marshal in Tehran to try to seal U.S.-Iran d
+2026-05-26 11:35:51,997  INFO      httpx  HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2026-05-26 11:36:06,611  INFO      httpx  HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2026-05-26 11:36:06,820  INFO      processing.extractor    Extracting [45/623]: Trump to Fed chair Warsh: "Don't look at me, don't look at a
+2026-05-26 11:36:23,830  INFO      httpx  HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2026-05-26 11:36:36,270  INFO      httpx  HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2026-05-26 11:36:36,494  INFO      processing.extractor    Extracting [46/623]: Read the AI executive order thwarted by Trump tech allies
+2026-05-26 11:36:49,176  INFO      httpx  HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2026-05-26 11:36:49,386  INFO      processing.extractor    Extracting [47/623]: Scoop: DCCC launches 11th-hour ad buy against Maureen Galind
+2026-05-26 11:37:06,245  INFO      httpx  HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2026-05-26 11:37:06,450  INFO      processing.extractor    Extracting [48/623]: Trump is cashing in on the presidency like no president ever
+2026-05-26 11:37:21,182  INFO      httpx  HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2026-05-26 11:37:21,402  INFO      processing.extractor    Extracting [49/623]: Scoop: Trump escalates citizenship crackdown
+2026-05-26 11:37:38,190  INFO      httpx  HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2026-05-26 11:37:50,050  INFO      httpx  HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2026-05-26 11:37:50,256  INFO      processing.extractor    Extracting [50/623]: Fusion energy poised for simpler U.S. review
+2026-05-26 11:38:04,693  INFO      httpx  HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2026-05-26 11:38:16,364  INFO      httpx  HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2026-05-26 11:38:16,573  INFO      processing.extractor    Extracting [51/623]: Trump's revenge politics comes back to haunt him
+2026-05-26 11:38:37,387  INFO      httpx  HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2026-05-26 11:38:53,300  INFO      httpx  HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2026-05-26 11:38:53,509  INFO      processing.extractor    Extracting [52/623]: "He should resign": DNC chair Ken Martin's stock plummets on
+2026-05-26 11:39:11,591  INFO      httpx  HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2026-05-26 11:39:11,800  INFO      processing.extractor    Extracting [53/623]: Why Trump's AI executive order was pulled
+2026-05-26 11:39:27,465  INFO      httpx  HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2026-05-26 11:39:27,672  INFO      processing.extractor    Extracting [54/623]: House Republicans scrap vote to rein in Trump's war in Iran
+2026-05-26 11:39:48,000  INFO      httpx  HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2026-05-26 11:39:59,013  INFO      httpx  HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2026-05-26 11:39:59,218  INFO      processing.extractor    Extracting [55/623]: Spotify bets on taste as differentiator in the AI era
+2026-05-26 11:40:12,939  INFO      httpx  HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2026-05-26 11:40:13,148  INFO      processing.extractor    Extracting [56/623]: Trump says U.S. will send 5,000 more troops to Poland
+2026-05-26 11:40:31,479  INFO      httpx  HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2026-05-26 11:40:31,688  INFO      processing.extractor    Extracting [57/623]: Trump copies Obama's playbook on counting deportations
+2026-05-26 11:40:54,025  INFO      httpx  HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2026-05-26 11:40:54,235  INFO      processing.extractor    Extracting [58/623]: Trump's "anti-weaponization fund" torpedoes ICE funding deal
+2026-05-26 11:41:18,535  INFO      httpx  HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2026-05-26 11:41:18,743  INFO      processing.extractor    Extracting [59/623]: Scoop: White House postpones AI EO signing ceremony
+2026-05-26 11:41:32,370  INFO      httpx  HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2026-05-26 11:41:32,576  INFO      processing.extractor    Extracting [60/623]: Democrats finally release 2024 election autopsy after critic
+2026-05-26 11:41:47,192  INFO      httpx  HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2026-05-26 11:41:58,282  INFO      httpx  HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2026-05-26 11:41:58,490  INFO      processing.extractor    Extracting [61/623]: Trump eyes more GOP targets for revenge in 2028
+2026-05-26 11:42:16,467  INFO      httpx  HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2026-05-26 11:42:30,144  INFO      httpx  HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2026-05-26 11:42:30,351  INFO      processing.extractor    Extracting [62/623]: Ebola outbreak raises alarms about Trump's global health mov
+2026-05-26 11:42:51,586  INFO      httpx  HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2026-05-26 11:43:02,233  INFO      httpx  HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2026-05-26 11:43:02,440  INFO      processing.extractor    Extracting [63/623]: Two hours that changed AI
+2026-05-26 11:43:30,142  INFO      httpx  HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2026-05-26 11:43:30,349  INFO      processing.extractor    Extracting [64/623]: Scoop: Palantir fights Pentagon over key intelligence contra
+2026-05-26 11:43:46,696  INFO      httpx  HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2026-05-26 11:43:58,446  INFO      httpx  HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2026-05-26 11:43:58,655  INFO      processing.extractor    Extracting [65/623]: Trump's priorities are in deep trouble after his revenge tou
+2026-05-26 11:44:15,883  INFO      httpx  HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2026-05-26 11:44:16,087  INFO      processing.extractor    Extracting [66/623]: Scoop: Fetterman's chief of staff resigns
+2026-05-26 11:44:30,932  INFO      httpx  HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2026-05-26 11:44:31,136  INFO      processing.extractor    Extracting [67/623]: Trump faces growing risk of losing key Iran war vote in Cong
+2026-05-26 11:44:46,925  INFO      httpx  HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2026-05-26 11:44:58,229  INFO      httpx  HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2026-05-26 11:44:58,436  INFO      processing.extractor    Extracting [68/623]: Israeli opposition leader pushes back on reported US-Iran pe
+2026-05-26 11:45:10,661  INFO      httpx  HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2026-05-26 11:45:10,869  INFO      processing.extractor    Extracting [69/623]: The Wall Street Journal board warns Trump against ‘economic 
+2026-05-26 11:45:23,996  INFO      httpx  HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2026-05-26 11:45:24,202  INFO      processing.extractor    Extracting [70/623]: Oil prices dip amid optimism over potential US-Iran deal
+2026-05-26 11:45:46,374  INFO      httpx  HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2026-05-26 11:45:46,579  INFO      processing.extractor    Extracting [71/623]: Despite high gas prices, drivers aren't expected to hit the 
+2026-05-26 11:46:02,244  INFO      httpx  HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2026-05-26 11:46:02,453  INFO      processing.extractor    Extracting [72/623]: Trump says Iran deal will be 'good and proper' if one is mad
+2026-05-26 11:46:14,392  INFO      httpx  HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2026-05-26 11:46:14,599  INFO      processing.extractor    Extracting [73/623]: Zeldin says EPA providing 'flexibility' by loosening rules f
+2026-05-26 11:46:26,231  INFO      httpx  HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2026-05-26 11:46:26,440  INFO      processing.extractor    Extracting [74/623]: Tillis: Hegseth makes Noem look like 'five-star recruit'
+2026-05-26 11:46:40,370  INFO      httpx  HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2026-05-26 11:46:40,579  INFO      processing.extractor    Extracting [75/623]: Megyn Kelly says MAGA down to 'Trump diehards' who 'love Mar
+2026-05-26 11:46:52,986  INFO      httpx  HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2026-05-26 11:46:53,194  INFO      processing.extractor    Extracting [76/623]: Iran, Oman discuss Strait of Hormuz toll system: Report
+2026-05-26 11:47:05,880  INFO      httpx  HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2026-05-26 11:47:06,084  INFO      processing.extractor    Extracting [77/623]: US envoy says Greenland could relieve Strait of Hormuz oil p
+2026-05-26 11:47:20,766  INFO      httpx  HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2026-05-26 11:47:21,261  INFO      processing.extractor    Extracting [78/623]: NOAA predicts below-normal hurricane season amid building El
+2026-05-26 11:47:40,878  INFO      httpx  HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2026-05-26 11:47:41,085  INFO      processing.extractor    Extracting [79/623]: Newsom's office warns Californians to avoid Chevron this hol
+2026-05-26 11:47:54,247  INFO      httpx  HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2026-05-26 11:47:54,457  INFO      processing.extractor    Extracting [80/623]: Oil prices could spike next week without Iran deal: GasBuddy
+2026-05-26 11:48:08,811  INFO      httpx  HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2026-05-26 11:48:09,025  INFO      processing.extractor    Extracting [81/623]: Video
+2026-05-26 11:48:19,194  INFO      httpx  HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2026-05-26 11:48:19,403  INFO      processing.extractor    Extracting [82/623]: Horrible Congressman Thomas Massie put out an old Endorsemen
+2026-05-26 11:48:32,320  INFO      httpx  HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2026-05-26 11:48:32,532  INFO      processing.extractor    Extracting [83/623]: RT by @realDonaldTrump: On behalf of Erin and me, thank you 
+2026-05-26 11:48:44,464  INFO      httpx  HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2026-05-26 11:48:44,678  INFO      processing.extractor    Extracting [84/623]: RT by @realDonaldTrump: Box Office: ‘Melania’ Heads for $8 M
+2026-05-26 11:48:58,624  INFO      httpx  HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2026-05-26 11:48:58,831  INFO      processing.extractor    Extracting [85/623]: RT by @realDonaldTrump: RECORD BREAKER: “Melania,” a documen
+2026-05-26 11:49:12,296  INFO      httpx  HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2026-05-26 11:49:12,499  INFO      processing.extractor    Extracting [86/623]: RT by @realDonaldTrump: MELANIA, the film.
+#1 Highest Openin
+2026-05-26 11:49:26,808  INFO      httpx  HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2026-05-26 11:49:27,017  INFO      processing.extractor    Extracting [87/623]: I have been briefed on the Record Cold Wave and Historic Win
+2026-05-26 11:49:41,031  INFO      httpx  HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2026-05-26 11:49:41,237  INFO      processing.extractor    Extracting [88/623]: COUNTDOWN: 7 Days until the World will witness an unforgetta
+2026-05-26 11:49:53,044  INFO      httpx  HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2026-05-26 11:49:53,252  INFO      processing.extractor    Extracting [89/623]: Merry Christmas to all, including the Radical Left Scum that
+2026-05-26 11:50:10,757  INFO      httpx  HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2026-05-26 11:50:10,964  INFO      processing.extractor    Extracting [90/623]: THE TRUMP KENNEDY CENTER HONORS will be broadcast tonight, o
+2026-05-26 11:50:25,587  INFO      httpx  HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2026-05-26 11:50:25,796  INFO      processing.extractor    Extracting [91/623]: To all Airlines, Pilots, Drug Dealers, and Human Traffickers
+2026-05-26 11:50:38,911  INFO      httpx  HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2026-05-26 11:50:39,119  INFO      processing.extractor    Extracting [92/623]: The United States did not attend the G20 in South Africa, be
+2026-05-26 11:50:54,603  INFO      httpx  HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2026-05-26 11:51:08,644  INFO      httpx  HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2026-05-26 11:51:08,848  INFO      processing.extractor    Extracting [93/623]: A very Happy Thanksgiving salutation to all of our Great Ame
+2026-05-26 11:51:28,232  INFO      httpx  HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2026-05-26 11:51:43,768  INFO      httpx  HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2026-05-26 11:51:56,596  INFO      httpx  HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2026-05-26 11:52:14,832  INFO      httpx  HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2026-05-26 11:52:15,041  INFO      processing.extractor    Extracting [94/623]: Canada and India Push for Major Free Trade Deal Focused on E
+2026-05-26 11:52:28,109  INFO      httpx  HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2026-05-26 11:52:28,316  INFO      processing.extractor    Extracting [95/623]: Santos Doubles Down on Oil and LNG Expansion
+2026-05-26 11:52:41,842  INFO      httpx  HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2026-05-26 11:52:42,048  INFO      processing.extractor    Extracting [96/623]: QatarEnergy Extends LNG Force Majeure Into August
+2026-05-26 11:52:58,107  INFO      httpx  HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2026-05-26 11:52:58,317  INFO      processing.extractor    Extracting [97/623]: Australia Dodges LNG Disruption as Union Cancels Strike
+2026-05-26 11:53:12,136  INFO      httpx  HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2026-05-26 11:53:12,343  INFO      processing.extractor    Extracting [98/623]: Oil Prices Jump After U.S. Strikes Iranian Missile Sites
+2026-05-26 11:53:37,951  INFO      httpx  HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2026-05-26 11:53:37,959  WARNING   processing.extractor    JSON parse failed on chunk 0: Expecting ',' delimiter: line 42 column 26 (char 944)
+2026-05-26 11:53:38,165  INFO      processing.extractor    Extracting [99/623]: Oil Could Stay Above $100 for Years, Analysts Warn
+2026-05-26 11:53:57,428  INFO      httpx  HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2026-05-26 11:53:57,636  INFO      processing.extractor    Extracting [100/623]: India Cuts Fuel Demand Growth Projections By 40% Amid Auster
+2026-05-26 11:54:19,429  INFO      httpx  HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2026-05-26 11:54:19,637  INFO      processing.extractor    Extracting [101/623]: Mexico’s Pemex Still Struggles Despite the Oil Price Surge
+2026-05-26 11:54:32,604  INFO      httpx  HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2026-05-26 11:54:32,811  INFO      processing.extractor    Extracting [102/623]: Asia's Energy Crisis Is Pushing Singapore Toward Nuclear
+2026-05-26 11:54:45,368  INFO      httpx  HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2026-05-26 11:54:45,581  INFO      processing.extractor    Extracting [103/623]: America’s Water Crisis Can No Longer Be Ignored
+2026-05-26 11:54:58,265  INFO      httpx  HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2026-05-26 11:54:58,474  INFO      processing.extractor    Extracting [104/623]: Europe’s Gas Prices Drop 5% On Renewed U.S.-Iran Talks Optim
+2026-05-26 11:55:18,872  INFO      httpx  HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2026-05-26 11:55:19,083  INFO      processing.extractor    Extracting [105/623]: Data Centers Are Outgrowing Europe’s Clean Power Deals
+2026-05-26 11:55:38,212  INFO      httpx  HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2026-05-26 11:55:38,420  INFO      processing.extractor    Extracting [106/623]: Kazakhstan Won’t Enforce $1.4B Gazprom Asset Seizure
+2026-05-26 11:55:56,766  INFO      httpx  HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2026-05-26 11:55:56,972  INFO      processing.extractor    Extracting [107/623]: Kazakhstan's First Nuclear Plant Faces More Delays
+2026-05-26 11:56:12,426  INFO      httpx  HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2026-05-26 11:56:12,629  INFO      processing.extractor    Extracting [108/623]: Norway Gas Output Falls for 4th Consecutive Month
+2026-05-26 11:56:29,177  INFO      httpx  HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2026-05-26 11:56:29,380  INFO      processing.extractor    Extracting [109/623]: Trump Issues Upbeat Signal on Iran Talks
+2026-05-26 11:56:41,081  INFO      httpx  HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2026-05-26 11:56:41,289  INFO      processing.extractor    Extracting [110/623]: Alaska Oil Revival Sparks New Energy Rush Into Arctic
+2026-05-26 11:56:53,145  INFO      httpx  HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2026-05-26 11:56:53,353  INFO      processing.extractor    Extracting [111/623]: North America Adds 21 Rigs Week on Week
+2026-05-26 11:57:06,513  INFO      httpx  HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2026-05-26 11:57:06,722  INFO      processing.extractor    Extracting [112/623]: India Raises Diesel, Gasoline Prices for 4th Time in May
+2026-05-26 11:57:19,569  INFO      httpx  HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2026-05-26 11:57:19,776  INFO      processing.extractor    Extracting [113/623]: Chevron's Leviathan Partners to Supply Gas to Dalia Power Pl
+2026-05-26 11:57:34,167  INFO      httpx  HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2026-05-26 11:57:34,372  INFO      processing.extractor    Extracting [114/623]: Analysts Explain Oil Price Drop
+2026-05-26 11:57:46,280  INFO      httpx  HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2026-05-26 11:57:46,488  INFO      processing.extractor    Extracting [115/623]: Gazprom Starts Production at Chona Fields in Eastern Siberia
+2026-05-26 11:58:02,563  INFO      httpx  HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2026-05-26 11:58:02,771  INFO      processing.extractor    Extracting [116/623]: Eni Secures LNG Offtake Deals for Indonesia Projects
+2026-05-26 11:58:19,501  INFO      httpx  HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2026-05-26 11:58:19,708  INFO      processing.extractor    Extracting [117/623]: Qatar Quietly Ships LNG via Hormuz to Key Buyers
+2026-05-26 11:58:37,029  INFO      httpx  HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2026-05-26 11:58:37,234  INFO      processing.extractor    Extracting [118/623]: NYSE Owner, OKX to Launch Perpetual Futures Tied to Oil
+2026-05-26 11:58:51,391  INFO      httpx  HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2026-05-26 11:58:51,604  INFO      processing.extractor    Extracting [119/623]: Ukraine Says It Targeted Yaroslavl Oil Refinery Again
+2026-05-26 11:59:06,336  INFO      httpx  HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2026-05-26 11:59:06,546  INFO      processing.extractor    Extracting [120/623]: Oil Swings on Iran Peace Hopes
+2026-05-26 11:59:18,724  INFO      httpx  HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2026-05-26 11:59:18,933  INFO      processing.extractor    Extracting [121/623]: USA Crude Oil Stocks Drop Almost 8MM Barrels WoW
+2026-05-26 11:59:34,904  INFO      httpx  HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2026-05-26 11:59:35,110  INFO      processing.extractor    Extracting [122/623]: UK to Close Oil Tax Loophole
+2026-05-26 11:59:47,670  INFO      httpx  HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2026-05-26 11:59:47,877  INFO      processing.extractor    Extracting [123/623]: ExxonMobil, QatarEnergy Eye Egypt Facilities for Potential C
+2026-05-26 12:00:02,671  INFO      httpx  HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2026-05-26 12:00:02,877  INFO      run_ingestion  Extraction complete: 623 articles enriched
+2026-05-26 12:00:03,018  INFO      processing.processed_writer  Saved processed output: /Volumes/Mac_extension/projects/OilNewsDB/agentic_newsroom/data/processed/2026/05/2026-05-26_10-21-17_processed.json
+2026-05-26 12:00:03,018  INFO      vectordb.store  Loading embedding model: all-MiniLM-L6-v2
+2026-05-26 12:00:04,887  INFO      sentence_transformers.base.model  No device provided, using mps
+2026-05-26 12:00:05,099  INFO      httpx  HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/modules.json "HTTP/1.1 307 Temporary Redirect"
+2026-05-26 12:00:05,113  INFO      httpx  HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/modules.json "HTTP/1.1 200 OK"
+2026-05-26 12:00:05,220  INFO      httpx  HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/config_sentence_transformers.json "HTTP/1.1 307 Temporary Redirect"
+2026-05-26 12:00:05,233  INFO      httpx  HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/config_sentence_transformers.json "HTTP/1.1 200 OK"
+2026-05-26 12:00:05,237  INFO      sentence_transformers.base.model  Loading SentenceTransformer model from sentence-transformers/all-MiniLM-L6-v2.
+2026-05-26 12:00:05,339  INFO      httpx  HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/config_sentence_transformers.json "HTTP/1.1 307 Temporary Redirect"
+2026-05-26 12:00:05,383  INFO      httpx  HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/config_sentence_transformers.json "HTTP/1.1 200 OK"
+2026-05-26 12:00:05,490  INFO      httpx  HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/README.md "HTTP/1.1 307 Temporary Redirect"
+2026-05-26 12:00:05,527  INFO      httpx  HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/README.md "HTTP/1.1 200 OK"
+2026-05-26 12:00:05,635  INFO      httpx  HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/modules.json "HTTP/1.1 307 Temporary Redirect"
+2026-05-26 12:00:05,649  INFO      httpx  HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/modules.json "HTTP/1.1 200 OK"
+2026-05-26 12:00:05,758  INFO      httpx  HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/sentence_bert_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-05-26 12:00:05,781  INFO      httpx  HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/sentence_bert_config.json "HTTP/1.1 200 OK"
+2026-05-26 12:00:05,895  INFO      httpx  HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/adapter_config.json "HTTP/1.1 404 Not Found"
+2026-05-26 12:00:06,010  INFO      httpx  HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-05-26 12:00:06,023  INFO      httpx  HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/config.json "HTTP/1.1 200 OK"
+2026-05-26 12:00:07,475  INFO      httpx  HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/processor_config.json "HTTP/1.1 404 Not Found"
+2026-05-26 12:00:07,581  INFO      httpx  HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/preprocessor_config.json "HTTP/1.1 404 Not Found"
+2026-05-26 12:00:07,684  INFO      httpx  HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/video_preprocessor_config.json "HTTP/1.1 404 Not Found"
+2026-05-26 12:00:07,788  INFO      httpx  HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/preprocessor_config.json "HTTP/1.1 404 Not Found"
+2026-05-26 12:00:07,888  INFO      httpx  HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/tokenizer_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-05-26 12:00:07,899  INFO      httpx  HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/tokenizer_config.json "HTTP/1.1 200 OK"
+2026-05-26 12:00:08,000  INFO      httpx  HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-05-26 12:00:08,011  INFO      httpx  HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/config.json "HTTP/1.1 200 OK"
+2026-05-26 12:00:08,192  INFO      httpx  HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-05-26 12:00:08,202  INFO      httpx  HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/config.json "HTTP/1.1 200 OK"
+2026-05-26 12:00:08,306  INFO      httpx  HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/tokenizer_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-05-26 12:00:08,317  INFO      httpx  HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/tokenizer_config.json "HTTP/1.1 200 OK"
+2026-05-26 12:00:08,487  INFO      httpx  HTTP Request: GET https://huggingface.co/api/models/sentence-transformers/all-MiniLM-L6-v2/tree/main/additional_chat_templates?recursive=false&expand=false "HTTP/1.1 404 Not Found"
+2026-05-26 12:00:08,610  INFO      httpx  HTTP Request: GET https://huggingface.co/api/models/sentence-transformers/all-MiniLM-L6-v2/tree/main?recursive=true&expand=false "HTTP/1.1 200 OK"
+2026-05-26 12:00:08,968  INFO      httpx  HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/1_Pooling/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-05-26 12:00:08,982  INFO      httpx  HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/1_Pooling%2Fconfig.json "HTTP/1.1 200 OK"
+2026-05-26 12:00:09,096  INFO      httpx  HTTP Request: GET https://huggingface.co/api/models/sentence-transformers/all-MiniLM-L6-v2 "HTTP/1.1 200 OK"
+2026-05-26 12:00:10,911  INFO      vectordb.store  Vector store ready. Collection size: 142 chunks
+2026-05-26 12:00:12,785  INFO      vectordb.store    Embedded batch 1: 64 chunks
+2026-05-26 12:00:13,361  INFO      vectordb.store    Embedded batch 2: 64 chunks
+2026-05-26 12:00:13,696  INFO      vectordb.store    Embedded batch 3: 19 chunks
+2026-05-26 12:00:13,697  INFO      vectordb.store  Vector store updated. Total chunks in DB: 256
+2026-05-26 12:00:13,698  INFO      run_ingestion  Vector DB: 147 chunks added, 256 total
+2026-05-26 12:00:15,573  INFO      graph.knowledge_graph  Knowledge graph ready at /Volumes/Mac_extension/projects/OilNewsDB/agentic_newsroom/graph/kuzu
+2026-05-26 12:02:09,530  INFO      graph.knowledge_graph  Knowledge graph updated: 121 articles processed
+2026-05-26 12:02:09,577  INFO      run_ingestion  Knowledge graph: 121 articles added
+2026-05-26 12:02:09,633  INFO      prediction.predictor  Signals — sentiment: -0.419, EIA: 0.546, GDELT: -0.016
+2026-05-26 12:02:09,635  INFO      prediction.predictor  Prediction: neutral (low) score=0.0477
+2026-05-26 12:02:09,635  INFO      run_ingestion  Prediction: neutral (low) score=0.0477
+2026-05-26 12:02:09,714  INFO      vectordb.store  Loading embedding model: all-MiniLM-L6-v2
+2026-05-26 12:02:09,719  INFO      sentence_transformers.base.model  No device provided, using mps
+2026-05-26 12:02:09,918  INFO      httpx  HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/modules.json "HTTP/1.1 307 Temporary Redirect"
+2026-05-26 12:02:09,930  INFO      httpx  HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/modules.json "HTTP/1.1 200 OK"
+2026-05-26 12:02:10,036  INFO      httpx  HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/config_sentence_transformers.json "HTTP/1.1 307 Temporary Redirect"
+2026-05-26 12:02:10,050  INFO      httpx  HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/config_sentence_transformers.json "HTTP/1.1 200 OK"
+2026-05-26 12:02:10,054  INFO      sentence_transformers.base.model  Loading SentenceTransformer model from sentence-transformers/all-MiniLM-L6-v2.
+2026-05-26 12:02:10,154  INFO      httpx  HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/config_sentence_transformers.json "HTTP/1.1 307 Temporary Redirect"
+2026-05-26 12:02:10,168  INFO      httpx  HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/config_sentence_transformers.json "HTTP/1.1 200 OK"
+2026-05-26 12:02:10,276  INFO      httpx  HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/README.md "HTTP/1.1 307 Temporary Redirect"
+2026-05-26 12:02:10,291  INFO      httpx  HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/README.md "HTTP/1.1 200 OK"
+2026-05-26 12:02:10,399  INFO      httpx  HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/modules.json "HTTP/1.1 307 Temporary Redirect"
+2026-05-26 12:02:10,415  INFO      httpx  HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/modules.json "HTTP/1.1 200 OK"
+2026-05-26 12:02:10,528  INFO      httpx  HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/sentence_bert_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-05-26 12:02:10,545  INFO      httpx  HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/sentence_bert_config.json "HTTP/1.1 200 OK"
+2026-05-26 12:02:10,655  INFO      httpx  HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/adapter_config.json "HTTP/1.1 404 Not Found"
+2026-05-26 12:02:10,757  INFO      httpx  HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-05-26 12:02:10,773  INFO      httpx  HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/config.json "HTTP/1.1 200 OK"
+2026-05-26 12:02:10,963  INFO      httpx  HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/processor_config.json "HTTP/1.1 404 Not Found"
+2026-05-26 12:02:11,065  INFO      httpx  HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/preprocessor_config.json "HTTP/1.1 404 Not Found"
+2026-05-26 12:02:11,174  INFO      httpx  HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/video_preprocessor_config.json "HTTP/1.1 404 Not Found"
+2026-05-26 12:02:11,285  INFO      httpx  HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/preprocessor_config.json "HTTP/1.1 404 Not Found"
+2026-05-26 12:02:11,386  INFO      httpx  HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/tokenizer_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-05-26 12:02:11,400  INFO      httpx  HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/tokenizer_config.json "HTTP/1.1 200 OK"
+2026-05-26 12:02:11,664  INFO      httpx  HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-05-26 12:02:11,679  INFO      httpx  HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/config.json "HTTP/1.1 200 OK"
+2026-05-26 12:02:11,790  INFO      httpx  HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-05-26 12:02:11,802  INFO      httpx  HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/config.json "HTTP/1.1 200 OK"
+2026-05-26 12:02:11,912  INFO      httpx  HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/tokenizer_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-05-26 12:02:11,930  INFO      httpx  HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/tokenizer_config.json "HTTP/1.1 200 OK"
+2026-05-26 12:02:12,041  INFO      httpx  HTTP Request: GET https://huggingface.co/api/models/sentence-transformers/all-MiniLM-L6-v2/tree/main/additional_chat_templates?recursive=false&expand=false "HTTP/1.1 404 Not Found"
+2026-05-26 12:02:12,155  INFO      httpx  HTTP Request: GET https://huggingface.co/api/models/sentence-transformers/all-MiniLM-L6-v2/tree/main?recursive=true&expand=false "HTTP/1.1 200 OK"
+2026-05-26 12:02:12,342  INFO      httpx  HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/1_Pooling/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-05-26 12:02:12,357  INFO      httpx  HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/1_Pooling%2Fconfig.json "HTTP/1.1 200 OK"
+2026-05-26 12:02:12,469  INFO      httpx  HTTP Request: GET https://huggingface.co/api/models/sentence-transformers/all-MiniLM-L6-v2 "HTTP/1.1 200 OK"
+2026-05-26 12:02:13,220  INFO      vectordb.store  Vector store ready. Collection size: 256 chunks
+2026-05-26 12:02:13,564  INFO      report.generator  Generating report via Ollama...
+2026-05-26 12:03:02,008  INFO      httpx  HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2026-05-26 12:03:02,416  INFO      report.generator  Report saved: /Volumes/Mac_extension/projects/OilNewsDB/agentic_newsroom/reports/2026-05-26_11-03-02_report.md
+2026-05-26 12:03:04,424  INFO      report.generator  DOCX saved: /Volumes/Mac_extension/projects/OilNewsDB/agentic_newsroom/reports/2026-05-26_11-03-02_report.docx
+2026-05-26 12:03:04,424  INFO      run_ingestion  Report saved: /Volumes/Mac_extension/projects/OilNewsDB/agentic_newsroom/reports/2026-05-26_11-03-02_report.md
+2026-05-26 12:03:04,507  INFO      ingestion.audit_logger  Audit written: status=ok, articles=623
+2026-05-26 12:03:04,516  INFO      run_ingestion  === Run complete: ok | 623 articles | 42 data points ===
