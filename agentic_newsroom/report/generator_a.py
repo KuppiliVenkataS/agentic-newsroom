@@ -17,57 +17,103 @@ from datetime import datetime, timezone
 from pathlib import Path
 
 import httpx
+import os
 
 from config.settings import OLLAMA_BASE_URL, OLLAMA_MODEL, REPORT_DIR
+
+ANTHROPIC_API_KEY = os.getenv('ANTHROPIC_API_KEY', '')
 from vectordb.store import VectorStore
 from graph.knowledge_graph import KnowledgeGraph
 
 logger = logging.getLogger(__name__)
 
-REPORT_PROMPT = """You are a senior oil market analyst writing a concise briefing report.
+REPORT_PROMPT = """You are an experienced oil trader writing your morning briefing note.
+Write exactly like the example below — conversational, direct, opinionated. First person.
+No formal headers. No bullet point lists. Just flowing paragraphs like a trader would write to colleagues.
 
-Use only the data provided below. Do not invent facts or prices not in the data.
+Today's date and time: {date_time}, London
 
-## Prediction Signal
-Direction: {direction}
-Confidence: {confidence}
-Composite Score: {score}
-
-## Price Data (EIA)
-WTI Latest: {wti_price} USD/barrel (as of {wti_period})
-Brent Latest: {brent_price} USD/barrel (as of {brent_period})
+## Price Data
+Brent: {brent_price} USD/barrel (as of {brent_period})
+WTI: {wti_price} USD/barrel (as of {wti_period})
 WTI 5-day trend: {wti_trend}
 Brent 5-day trend: {brent_trend}
 
-## Sentiment from News (last run)
-Bullish articles: {bullish}
-Bearish articles: {bearish}
-Neutral/Unclear: {neutral_unclear}
+## Market Signal
+Overall direction: {direction} (confidence: {confidence}, score: {score})
+News sentiment — Bullish: {bullish}, Bearish: {bearish}, Neutral/Unclear: {neutral_unclear}
+GDELT global news tone: {gdelt_tone} ({gdelt_records} articles)
 
-## GDELT Global News Tone
-Average tone score: {gdelt_tone} (negative = bearish coverage, positive = bullish)
-Articles analysed: {gdelt_records}
-
-## Top Mentioned Organisations
+## Key Organisations in the News
 {top_orgs}
 
-## Most Relevant News (semantic search)
+## Most Relevant Stories
 {relevant_news}
 
-## Recent Events Extracted
+## Recent Events and Developments
 {recent_events}
 
 ---
 
-Write a professional oil market briefing report in markdown format with these sections:
-1. Executive Summary (3-4 sentences, include the price direction call)
-2. Price Overview (current prices, recent trend)
-3. Market Sentiment (what the news is saying)
-4. Key Organisations and Actors
-5. Notable Events and Risks
-6. Outlook (next 12-24 hours based on available signals)
+Write the morning briefing note now. Style rules:
+- Angle for this report: {angle}
+- Start with the date, time and location on the first line e.g. "25/05/2026, 5AM, London"
+- Then immediately give Brent and WTI prices on the next line
+- Write in flowing paragraphs, no headers, no bullet points
+- Be opinionated — say what YOU think will happen and why
+- Highlight geopolitical risks — Iran war risk, Hormuz closure probability, Russia, Ukraine, OPEC+ tensions
+- If any Iran conflict, strike, or Hormuz closure news exists, lead with it — this is the single biggest upside risk to oil prices
+- Quantify the Iran risk where possible e.g. 'a Hormuz closure could spike Brent by $20-30'
+- Mention spreads and market structure if data supports it (backwardation, contango)
+- End with your personal outlook for the next 12-24 hours
+- Keep it under 400 words
+- Do not make up prices or facts not in the data above
+- Use phrases like "I think", "my view is", "markets will likely", "watch out for"
+"""
 
-Be concise. Use bullet points where appropriate. Do not add information not present in the data above.
+APPENDIX_TEMPLATE = """
+---
+
+## Data Appendix
+
+### Price Data
+| Metric | Value | Period | Source |
+|--------|-------|--------|--------|
+| Brent Crude | ${brent_price} | {brent_period} | {brent_source} |
+| WTI Crude | ${wti_price} | {wti_period} | {wti_source} |
+| WTI 5-day trend | {wti_trend} | | EIA |
+| Brent 5-day trend | {brent_trend} | | EIA |
+
+### Prediction Signal
+| Signal | Score | Weight |
+|--------|-------|--------|
+| News Sentiment | {sent_score} | 40% |
+| EIA Price Trend | {eia_score} | 40% |
+| GDELT Tone | {gdelt_score} | 20% |
+| **Composite** | **{composite_score}** | |
+| **Direction** | **{direction}** | |
+| **Confidence** | **{confidence}** | |
+
+### News Sentiment
+- Bullish articles: {bullish}
+- Bearish articles: {bearish}
+- Neutral/Unclear: {neutral_unclear}
+- GDELT tone score: {gdelt_tone} ({gdelt_records} articles analysed)
+
+### Top Mentioned Organisations
+{top_orgs}
+
+### Most Relevant News
+{relevant_news}
+
+### Recent Extracted Events
+{recent_events}
+
+### EIA Market Data
+- US Crude Inventory (latest weekly): from EIA series PET.WCESTUS1.W
+- US Crude Production (latest weekly): from EIA series PET.WCRFPUS2.W
+
+*Report generated: {generated_at}*
 """
 
 
@@ -102,23 +148,40 @@ def _format_events(events: list[dict]) -> str:
     return "\n".join(lines)
 
 
-def _call_ollama(prompt: str) -> str:
-    payload = {
-        "model":  OLLAMA_MODEL,
-        "prompt": prompt,
-        "stream": False,
-        "options": {
-            "temperature": 0.3,
-            "num_predict": 2000,
+def _call_llm(prompt: str) -> str:
+    """Use Claude API if key available, else fall back to Ollama."""
+    if ANTHROPIC_API_KEY:
+        response = httpx.post(
+            "https://api.anthropic.com/v1/messages",
+            headers={
+                "x-api-key": ANTHROPIC_API_KEY,
+                "anthropic-version": "2023-06-01",
+                "content-type": "application/json",
+            },
+            json={
+                "model": "claude-sonnet-4-20250514",
+                "max_tokens": 2000,
+                "temperature": 0.4,
+                "messages": [{"role": "user", "content": prompt}]
+            },
+            timeout=120
+        )
+        response.raise_for_status()
+        return response.json()["content"][0]["text"].strip()
+    else:
+        payload = {
+            "model":  OLLAMA_MODEL,
+            "prompt": prompt,
+            "stream": False,
+            "options": {"temperature": 0.4, "num_predict": 2000}
         }
-    }
-    response = httpx.post(
-        f"{OLLAMA_BASE_URL}/api/generate",
-        json=payload,
-        timeout=300
-    )
-    response.raise_for_status()
-    return response.json().get("response", "").strip()
+        response = httpx.post(
+            f"{OLLAMA_BASE_URL}/api/generate",
+            json=payload,
+            timeout=300
+        )
+        response.raise_for_status()
+        return response.json().get("response", "").strip()
 
 
 def generate_report(prediction: dict, kg: KnowledgeGraph) -> Path:
@@ -148,7 +211,21 @@ def generate_report(prediction: dict, kg: KnowledgeGraph) -> Path:
     )
 
     # ── Build prompt ───────────────────────────────────────────────────────
+    now_london = datetime.now(timezone.utc).strftime("%d/%m/%Y, %I%p, London")
+
+    # Rotate focus angle based on hour — forces different report structure each run
+    angles = [
+        "Lead with geopolitical risk and its price impact.",
+        "Lead with price action and momentum, then explain the drivers.",
+        "Take a contrarian view — challenge the market consensus.",
+        "Focus on supply/demand fundamentals first, then geopolitics.",
+    ]
+    from datetime import datetime as _dt
+    angle = angles[_dt.now().hour % len(angles)]
+
     prompt = REPORT_PROMPT.format(
+        date_time    = now_london,
+        angle        = angle,
         direction    = prediction.get("direction", "neutral"),
         confidence   = prediction.get("confidence", "low"),
         score        = prediction.get("score", 0.0),
@@ -169,8 +246,8 @@ def generate_report(prediction: dict, kg: KnowledgeGraph) -> Path:
     )
 
     # ── Call Ollama ────────────────────────────────────────────────────────
-    logger.info("Generating report via Ollama...")
-    report_text = _call_ollama(prompt)
+    logger.info(f"Generating report via {'Claude API' if ANTHROPIC_API_KEY else 'Ollama'}...")
+    report_text = _call_llm(prompt)
 
     # ── Save report ────────────────────────────────────────────────────────
     now      = datetime.now(timezone.utc)
@@ -188,8 +265,40 @@ brent: {brent_latest.get('value')} ({brent_latest.get('period')})
 ---
 
 """
+    # Build data appendix
+    signals = prediction.get("signals", {})
+    sent    = signals.get("sentiment", {})
+    eia     = signals.get("eia", {})
+    gdelt   = signals.get("gdelt", {})
+
+    appendix = APPENDIX_TEMPLATE.format(
+        brent_price    = brent_latest.get("value", "N/A"),
+        brent_period   = brent_latest.get("period", "N/A"),
+        brent_source   = brent_latest.get("source", "EIA").upper(),
+        wti_price      = wti_latest.get("value", "N/A"),
+        wti_period     = wti_latest.get("period", "N/A"),
+        wti_source     = wti_latest.get("source", "EIA").upper(),
+        wti_trend      = eia.get("wti_trend", "N/A"),
+        brent_trend    = eia.get("brent_trend", "N/A"),
+        sent_score     = sent.get("score", "N/A"),
+        eia_score      = eia.get("score", "N/A"),
+        gdelt_score    = gdelt.get("score", "N/A"),
+        composite_score= prediction.get("score", "N/A"),
+        direction      = prediction.get("direction", "neutral").upper(),
+        confidence     = prediction.get("confidence", "low").upper(),
+        bullish        = sent.get("bullish", 0),
+        bearish        = sent.get("bearish", 0),
+        neutral_unclear= sent.get("neutral", 0) + sent.get("unclear", 0),
+        gdelt_tone     = gdelt.get("avg_tone", "N/A"),
+        gdelt_records  = gdelt.get("records", 0),
+        top_orgs       = _format_orgs(top_orgs),
+        relevant_news  = _format_news(relevant_news),
+        recent_events  = _format_events(recent_events),
+        generated_at   = datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M UTC"),
+    )
+
     with open(filepath, "w", encoding="utf-8") as f:
-        f.write(header + report_text)
+        f.write(header + report_text + appendix)
 
     logger.info(f"Report saved: {filepath}")
 
