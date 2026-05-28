@@ -44,7 +44,9 @@ Return this exact JSON structure:
     {{
       "type": "",
       "description": "",
-      "date_mentioned": ""
+      "date_mentioned": "",
+      "urgency": "",
+      "geopolitical_significance": ""
     }}
   ],
   "price_signals": {{
@@ -59,14 +61,42 @@ Return this exact JSON structure:
       "context": ""
     }}
   ],
-  "sentiment": ""
+  "sentiment": "",
+  "importance_score": 0.0,
+  "importance_reason": "",
+  "is_breaking": false,
+  "hormuz_risk": false,
+  "opec_event": false,
+  "sanctions_event": false
 }}
 
 Rules:
 - direction must be one of: "bullish", "bearish", "neutral", "unclear"
 - confidence must be one of: "high", "medium", "low"
 - sentiment must be one of: "positive", "negative", "neutral"
-- event type must be one of: "price_move", "supply_change", "demand_change", "geopolitical", "policy", "weather", "other"
+- event type must be one of: "price_move", "supply_change", "demand_change", "geopolitical", "sanctions", "military_strike", "opec_decision", "policy", "weather", "other"
+- urgency must be one of: "critical", "high", "medium", "low"
+  - critical: active military strikes, Hormuz closure, major OPEC output cut/hike announced today
+  - high: sanctions announced, ceasefire collapsed, drone attack on oil infrastructure, Iran nuclear talks breakthrough or breakdown
+  - medium: OPEC meeting scheduled, diplomatic talks, inventory data release
+  - low: analyst commentary, company earnings, routine production data
+- geopolitical_significance must be one of: "extreme", "high", "medium", "low", "none"
+  - extreme: Hormuz strait closure, Iran direct conflict with US/Israel, major pipeline sabotage
+  - high: Iran/US/Israel military exchanges, Russia oil infrastructure attacked, major sanctions package
+  - medium: OPEC political tensions, Gulf state disputes, Yemen Houthi attacks on tankers
+  - low: diplomatic statements, trade disputes, minor regional events
+  - none: company news, market data, weather
+- importance_score: float 0.0 to 1.0
+  - 0.9-1.0: military strike on oil infrastructure, Hormuz closure, sudden major OPEC cut
+  - 0.7-0.89: Iran sanctions, ceasefire collapse, major supply disruption confirmed
+  - 0.5-0.69: OPEC decision, significant diplomatic development, inventory shock
+  - 0.3-0.49: central bank policy, demand data, tanker movements
+  - 0.0-0.29: analyst notes, company earnings, routine data
+- importance_reason: one sentence explaining why this score was given
+- is_breaking: true if the event is described as happening today or in the last 24 hours
+- hormuz_risk: true if the text mentions Strait of Hormuz closure risk or Iranian naval activity
+- opec_event: true if text describes an OPEC or OPEC+ production decision or meeting
+- sanctions_event: true if new sanctions on oil-producing nations are described
 - If a field has no data, use empty list [] or empty string ""
 - Return only the JSON object, nothing else, no markdown
 """

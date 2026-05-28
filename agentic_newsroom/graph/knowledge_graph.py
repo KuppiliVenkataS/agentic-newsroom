@@ -32,15 +32,29 @@ logger = logging.getLogger(__name__)
 
 SCHEMA = [
     # Node tables
+    """CREATE NODE TABLE IF NOT EXISTS Event (
+        id                      STRING,
+        type                    STRING,
+        description             STRING,
+        date_mentioned          STRING,
+        urgency                 STRING,
+        geopolitical_significance STRING,
+        PRIMARY KEY (id)
+    )""",
     """CREATE NODE TABLE IF NOT EXISTS Article (
-        id          STRING,
-        url         STRING,
-        title       STRING,
-        source      STRING,
-        published   STRING,
-        sentiment   STRING,
-        direction   STRING,
-        confidence  STRING,
+        id                STRING,
+        url               STRING,
+        title             STRING,
+        source            STRING,
+        published         STRING,
+        sentiment         STRING,
+        direction         STRING,
+        confidence        STRING,
+        importance_score  DOUBLE,
+        is_breaking       BOOLEAN,
+        hormuz_risk       BOOLEAN,
+        opec_event        BOOLEAN,
+        sanctions_event   BOOLEAN,
         PRIMARY KEY (id)
     )""",
     """CREATE NODE TABLE IF NOT EXISTS Organisation (
@@ -59,14 +73,6 @@ SCHEMA = [
         name        STRING,
         PRIMARY KEY (name)
     )""",
-    """CREATE NODE TABLE IF NOT EXISTS Event (
-        id          STRING,
-        type        STRING,
-        description STRING,
-        date_mentioned STRING,
-        PRIMARY KEY (id)
-    )""",
-
     # Edge tables
     """CREATE REL TABLE IF NOT EXISTS MENTIONS (
         FROM Article TO Organisation
@@ -122,26 +128,38 @@ class KnowledgeGraph:
             logger.debug(f"Upsert {table} failed: {e}")
 
     def _upsert_article(self, article: dict, extraction: dict):
-        art_id    = self._safe_str(article.get("url", ""))[:64]
-        url       = self._safe_str(article.get("url", ""))
-        title     = self._safe_str(article.get("title", ""))
-        source    = self._safe_str(article.get("source", ""))
-        published = self._safe_str(article.get("published", ""))
-        sentiment = self._safe_str(extraction.get("sentiment", ""))
-        signals   = extraction.get("price_signals", {})
-        direction = self._safe_str(signals.get("direction", ""))
-        confidence= self._safe_str(signals.get("confidence", ""))
+        art_id     = self._safe_str(article.get("url", ""))[:64]
+        url        = self._safe_str(article.get("url", ""))
+        title      = self._safe_str(article.get("title", ""))
+        source     = self._safe_str(article.get("source", ""))
+        published  = self._safe_str(article.get("published", ""))
+        sentiment  = self._safe_str(extraction.get("sentiment", ""))
+        signals    = extraction.get("price_signals", {})
+        direction  = self._safe_str(signals.get("direction", ""))
+        confidence = self._safe_str(signals.get("confidence", ""))
+
+        # New importance fields
+        importance   = float(extraction.get("importance_score", 0.0))
+        is_breaking  = "true" if extraction.get("is_breaking")  else "false"
+        hormuz_risk  = "true" if extraction.get("hormuz_risk")   else "false"
+        opec_event   = "true" if extraction.get("opec_event")    else "false"
+        sanctions    = "true" if extraction.get("sanctions_event") else "false"
 
         try:
             self.conn.execute(f"""
                 MERGE (a:Article {{id: '{art_id}'}})
-                SET a.url        = '{url}',
-                    a.title      = '{title}',
-                    a.source     = '{source}',
-                    a.published  = '{published}',
-                    a.sentiment  = '{sentiment}',
-                    a.direction  = '{direction}',
-                    a.confidence = '{confidence}'
+                SET a.url             = '{url}',
+                    a.title           = '{title}',
+                    a.source          = '{source}',
+                    a.published       = '{published}',
+                    a.sentiment       = '{sentiment}',
+                    a.direction       = '{direction}',
+                    a.confidence      = '{confidence}',
+                    a.importance_score = {importance},
+                    a.is_breaking     = {is_breaking},
+                    a.hormuz_risk     = {hormuz_risk},
+                    a.opec_event      = {opec_event},
+                    a.sanctions_event = {sanctions}
             """)
         except Exception as e:
             logger.debug(f"Upsert Article failed: {e}")
@@ -222,9 +240,11 @@ class KnowledgeGraph:
                 try:
                     self.conn.execute(f"""
                         MERGE (e:Event {{id: '{event_id}'}})
-                        SET e.type           = '{self._safe_str(event.get("type", ""))}',
-                            e.description    = '{self._safe_str(desc)}',
-                            e.date_mentioned = '{self._safe_str(event.get("date_mentioned", ""))}'
+                        SET e.type                     = '{self._safe_str(event.get("type", ""))}',
+                            e.description              = '{self._safe_str(desc)}',
+                            e.date_mentioned           = '{self._safe_str(event.get("date_mentioned", ""))}',
+                            e.urgency                  = '{self._safe_str(event.get("urgency", ""))}',
+                            e.geopolitical_significance = '{self._safe_str(event.get("geopolitical_significance", ""))}'
                     """)
                     self._link("HAS_EVENT", "Article", art_id, "id",
                                "Event", "id", event_id)
@@ -298,6 +318,48 @@ class KnowledgeGraph:
             if row[0]:
                 summary[row[0]] = row[1]
         return summary
+
+    def query_high_urgency_events(self, limit: int = 10) -> list[dict]:
+        """Events flagged critical or high urgency, most recent first."""
+        result = self.conn.execute(f"""
+            MATCH (a:Article)-[:HAS_EVENT]->(e:Event)
+            WHERE e.urgency IN ['critical', 'high']
+            RETURN a.title AS article, a.source AS source,
+                   e.type AS type, e.description AS description,
+                   e.urgency AS urgency, e.geopolitical_significance AS geo_sig,
+                   a.published AS published, a.importance_score AS importance
+            ORDER BY a.importance_score DESC, a.published DESC
+            LIMIT {limit}
+        """)
+        rows = []
+        while result.has_next():
+            row = result.get_next()
+            rows.append({
+                "article":     row[0],
+                "source":      row[1],
+                "type":        row[2],
+                "description": row[3],
+                "urgency":     row[4],
+                "geo_sig":     row[5],
+                "published":   row[6],
+                "importance":  row[7],
+            })
+        return rows
+
+    def query_risk_flags(self) -> dict:
+        """Count articles with hormuz_risk, opec_event, sanctions_event flags."""
+        result = self.conn.execute("""
+            MATCH (a:Article)
+            RETURN
+                SUM(CASE WHEN a.hormuz_risk    = true THEN 1 ELSE 0 END) AS hormuz,
+                SUM(CASE WHEN a.opec_event     = true THEN 1 ELSE 0 END) AS opec,
+                SUM(CASE WHEN a.sanctions_event = true THEN 1 ELSE 0 END) AS sanctions,
+                SUM(CASE WHEN a.is_breaking    = true THEN 1 ELSE 0 END) AS breaking
+        """)
+        if result.has_next():
+            row = result.get_next()
+            return {"hormuz": row[0], "opec": row[1], "sanctions": row[2], "breaking": row[3]}
+        return {"hormuz": 0, "opec": 0, "sanctions": 0, "breaking": 0}
 
     def close(self):
         pass   # KuzuDB closes automatically

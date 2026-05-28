@@ -185,7 +185,7 @@ def run():
     # ── 12. Generate report ───────────────────────────────────────────────
     try:
         if prediction:
-            report_path = generate_report(prediction, kg)
+            report_path = generate_report(prediction, kg, enriched_articles=enriched)
             logger.info(f"Report saved: {report_path}")
         else:
             logger.warning("Skipping report — no prediction available")

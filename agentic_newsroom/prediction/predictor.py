@@ -28,7 +28,7 @@ import re
 from datetime import datetime, timezone
 from pathlib import Path
 
-from config.settings import RAW_DIR
+from config.settings import RAW_DIR, USER_WATCHLIST, WATCHLIST_BOOST
 from graph.knowledge_graph import KnowledgeGraph
 
 logger = logging.getLogger(__name__)
@@ -44,46 +44,144 @@ W = {
     "disruption":      0.05,
 }
 
-# ── Geopolitical keywords ──────────────────────────────────────────────────────
-HIGH_RISK_KEYWORDS = [
-    "hormuz", "strait of hormuz", "blockade", "iran attack", "iran strike",
-    "nuclear", "missile", "explosion", "pipeline attack", "tanker seized",
-    "houthi", "red sea", "oil facility", "refinery attack", "drone strike",
-    "war", "invasion", "escalation", "sanctions imposed", "embargo",
+# ── Supply impact scoring — topic-agnostic ────────────────────────────────────
+# These keywords detect the MECHANISM of price impact, not the topic.
+# New events (Abqaiq attack, Venezuela collapse, Libyan shutdown) will score
+# correctly as long as they describe physical supply/demand effects.
+
+SUPPLY_REDUCTION_KEYWORDS = [
+    # Physical shutdown language
+    "shut down", "shutdown", "offline", "force majeure", "export halt",
+    "port closure", "blockade", "pipeline explosion", "refinery fire",
+    "production cut", "output cut", "supply cut", "field shut",
+    # Attack/damage language
+    "attack", "strike", "explosion", "sabotage", "drone strike",
+    "missile strike", "bombed", "destroyed", "damaged",
+    # Disruption confirmation
+    "disruption", "disrupted", "suspended", "halted", "stopped",
+    "seized", "impounded", "detained",
 ]
 
-MEDIUM_RISK_KEYWORDS = [
-    "iran", "sanctions", "russia", "ukraine", "opec cut", "supply disruption",
-    "tension", "conflict", "israel", "hezbollah", "gulf", "military",
-    "negotiations", "deal collapsed", "ceasefire", "airstrikes",
+SUPPLY_INCREASE_KEYWORDS = [
+    "production increase", "output increase", "ramp up", "restored",
+    "reopened", "lifted sanctions", "sanctions relief", "ceasefire",
+    "peace deal", "agreement reached", "deal signed", "normalisation",
+    "spare capacity", "flood the market", "increase supply",
 ]
 
-LOW_RISK_KEYWORDS = [
-    "talks", "negotiations", "diplomacy", "agreement", "deal progress",
-    "ceasefire", "peace", "sanctions relief", "reopened",
+DEMAND_SHOCK_KEYWORDS = [
+    "recession", "economic collapse", "demand destruction", "lockdown",
+    "slowdown", "contraction", "demand surge", "economic boom",
+    "industrial boom", "recovery stronger",
+]
+
+RISK_ESCALATION_KEYWORDS = [
+    # Escalation signals — not yet supply impact but high probability
+    "escalation", "retaliation", "war", "invasion", "naval",
+    "strait", "blockade threatened", "threatened to close",
+    "tensions rising", "brink", "imminent", "ultimatum",
 ]
 
 
-# ── Signal 1 — News sentiment ──────────────────────────────────────────────────
-def _sentiment_signal(kg: KnowledgeGraph) -> tuple[float, dict]:
-    summary  = kg.query_signal_summary()
-    bullish  = summary.get("bullish",  0)
-    bearish  = summary.get("bearish",  0)
-    neutral  = summary.get("neutral",  0)
-    unclear  = summary.get("unclear",  0)
-    total    = bullish + bearish + neutral + unclear
+# ── Signal 1 — News sentiment (importance-weighted, recency-decayed) ───────────
+def _watchlist_boost(article: dict) -> float:
+    """
+    Returns an additive importance boost if the article matches
+    any keyword in USER_WATCHLIST. Stacks per match, capped at WATCHLIST_BOOST.
+    Matching is against title + summary, case-insensitive.
+    """
+    if not USER_WATCHLIST or WATCHLIST_BOOST == 0.0:
+        return 0.0
+    text = " ".join(filter(None, [
+        article.get("title", ""),
+        article.get("summary", ""),
+    ])).lower()
+    hits = sum(1 for kw in USER_WATCHLIST if kw.lower() in text)
+    return min(WATCHLIST_BOOST, hits * (WATCHLIST_BOOST / 2)) if hits else 0.0
+    """
+    Weighted sentiment where each article contributes its importance_score
+    multiplied by a recency decay factor, not a flat +1/-1 count.
 
-    if total == 0:
-        return 0.0, {"bullish": 0, "bearish": 0, "total": 0, "score": 0.0, "reliability": "no_data"}
+    Urgency multipliers (on top of importance_score):
+        critical  → 3.0x  (active strike, Hormuz closure)
+        high      → 2.0x  (sanctions, ceasefire collapse)
+        medium    → 1.0x
+        low       → 0.5x
 
-    score = (bullish - bearish) / total
-    reliability = "high" if total >= 20 else "medium" if total >= 10 else "low"
+    Recency decay: articles older than 24h get 0.5 weight; older than 48h get 0.25.
+    This ensures last night's bombing dominates a 3-day-old analyst note.
+
+    Falls back to flat KG counts if no enriched articles available.
+    """
+    URGENCY_MULTIPLIER = {"critical": 3.0, "high": 2.0, "medium": 1.0, "low": 0.5}
+
+    bullish_w = 0.0
+    bearish_w = 0.0
+    article_count = 0
+
+    now = datetime.now(timezone.utc)
+
+    if enriched_articles:
+        for article in enriched_articles:
+            for chunk_result in article.get("extraction", []):
+                if chunk_result.get("status") != "ok":
+                    continue
+
+                direction = chunk_result.get("price_signals", {}).get("direction", "unclear")
+                if direction not in ("bullish", "bearish"):
+                    continue
+
+                importance  = float(chunk_result.get("importance_score", 0.3))
+                importance  = min(1.0, importance + _watchlist_boost(article))
+                urgency_key = chunk_result.get("events", [{}])[0].get("urgency", "medium") \
+                              if chunk_result.get("events") else "medium"
+                urgency_mult = URGENCY_MULTIPLIER.get(urgency_key, 1.0)
+
+                # Recency decay from article published time
+                published_str = article.get("published") or article.get("fetched_at", "")
+                decay = 1.0
+                if published_str:
+                    try:
+                        pub = datetime.fromisoformat(published_str.replace("Z", "+00:00"))
+                        age_hours = (now - pub).total_seconds() / 3600
+                        decay = 1.0 if age_hours <= 24 else 0.5 if age_hours <= 48 else 0.25
+                    except (ValueError, TypeError):
+                        decay = 1.0
+
+                weight = importance * urgency_mult * decay
+                article_count += 1
+
+                if direction == "bullish":
+                    bullish_w += weight
+                else:
+                    bearish_w += weight
+
+    # Fall back to flat KG counts when no enriched data
+    if bullish_w == 0 and bearish_w == 0:
+        summary = kg.query_signal_summary()
+        bullish_w = float(summary.get("bullish", 0))
+        bearish_w = float(summary.get("bearish", 0))
+        article_count = int(summary.get("bullish", 0) + summary.get("bearish", 0)
+                            + summary.get("neutral", 0) + summary.get("unclear", 0))
+
+    total_w = bullish_w + bearish_w
+    if total_w == 0:
+        return 0.0, {"bullish_w": 0, "bearish_w": 0, "articles": 0, "score": 0.0, "reliability": "no_data", "method": "none"}
+
+    score = (bullish_w - bearish_w) / total_w
+    reliability = "high" if article_count >= 20 else "medium" if article_count >= 10 else "low"
 
     return score, {
-        "bullish": bullish, "bearish": bearish,
-        "neutral": neutral, "unclear": unclear,
-        "total": total, "score": round(score, 3),
-        "reliability": reliability
+        "bullish_w":   round(bullish_w, 3),
+        "bearish_w":   round(bearish_w, 3),
+        "bullish":     sum(1 for a in (enriched_articles or []) for c in a.get("extraction", [])
+                          if c.get("price_signals", {}).get("direction") == "bullish"),
+        "bearish":     sum(1 for a in (enriched_articles or []) for c in a.get("extraction", [])
+                          if c.get("price_signals", {}).get("direction") == "bearish"),
+        "articles":    article_count,
+        "score":       round(score, 3),
+        "reliability": reliability,
+        "method":      "weighted" if enriched_articles else "flat_kg",
     }
 
 
@@ -208,47 +306,98 @@ def _eia_inventory(market_data: list[dict]) -> tuple[float, dict]:
     }
 
 
-# ── Signal 6 — Geopolitical risk ──────────────────────────────────────────────
-def _geopolitical_risk(articles: list[dict]) -> tuple[float, dict]:
+# ── Signal 6 — Supply impact score (topic-agnostic) ───────────────────────────
+def _geopolitical_risk(articles: list[dict], enriched_articles: list[dict] = None) -> tuple[float, dict]:
     """
-    Score based on presence of high/medium/low risk keywords in 24h articles.
-    High risk keywords (Hormuz closure, attack) = strongly bullish (supply shock).
-    Low risk keywords (peace deal, diplomacy) = bearish.
+    Scores the net supply/demand impact of current events.
+    Topic-agnostic: works whether the driver is Iran, Venezuela,
+    Abqaiq, a hurricane, or something entirely new.
+
+    Two layers:
+    Layer 1 — mechanism keyword scan of raw article text.
+              Detects supply reduction, supply increase, demand shocks,
+              and escalation risk regardless of geography or actor.
+    Layer 2 — extraction importance scores (LLM-reasoned).
+              High-importance articles add a weighted boost.
+              The LLM already reasoned about price mechanism in Layer 1
+              of extraction, so this captures nuance keywords miss.
     """
-    text_24h = " ".join([
+    text_all = " ".join([
         " ".join(filter(None, [
             a.get("title") or "",
             a.get("summary") or "",
-            a.get("names") or "",
-            a.get("themes") or "",
         ])).lower()
         for a in articles
-        if a.get("window", "24h") == "24h" or a.get("type") == "rss_article"
+        if a.get("type") == "rss_article"
     ])
 
-    high_hits   = sum(1 for kw in HIGH_RISK_KEYWORDS   if kw in text_24h)
-    medium_hits = sum(1 for kw in MEDIUM_RISK_KEYWORDS if kw in text_24h)
-    low_hits    = sum(1 for kw in LOW_RISK_KEYWORDS    if kw in text_24h)
+    # Layer 1 — mechanism keyword scan
+    supply_cut_hits  = sum(1 for kw in SUPPLY_REDUCTION_KEYWORDS  if kw in text_all)
+    supply_add_hits  = sum(1 for kw in SUPPLY_INCREASE_KEYWORDS   if kw in text_all)
+    demand_hits      = sum(1 for kw in DEMAND_SHOCK_KEYWORDS       if kw in text_all)
+    escalation_hits  = sum(1 for kw in RISK_ESCALATION_KEYWORDS   if kw in text_all)
 
-    # High risk = bullish (supply disruption fear)
-    # Low risk  = bearish (de-escalation)
-    raw_score = (high_hits * 0.3 + medium_hits * 0.1 - low_hits * 0.15)
-    score     = max(-1.0, min(1.0, raw_score))
+    # Net keyword score: supply cuts and escalation = bullish, supply adds = bearish
+    kw_score = max(-1.0, min(1.0,
+        supply_cut_hits  * 0.15 +
+        escalation_hits  * 0.10 -
+        supply_add_hits  * 0.15 +
+        demand_hits      * 0.05   # demand shocks can go either way — small weight
+    ))
 
-    level = "critical" if high_hits >= 3 else \
-            "high"     if high_hits >= 1 else \
-            "medium"   if medium_hits >= 3 else \
-            "low"      if medium_hits >= 1 else "minimal"
+    # Layer 2 — importance-weighted extraction boost
+    bullish_imp  = 0.0
+    bearish_imp  = 0.0
+    hormuz_boost = 0.0
+    sanctions_b  = 0.0
+    opec_b       = 0.0
+    n_extractions = 0
 
-    triggered = [kw for kw in HIGH_RISK_KEYWORDS if kw in text_24h][:5]
+    if enriched_articles:
+        for article in enriched_articles:
+            for chunk in article.get("extraction", []):
+                if chunk.get("status") != "ok":
+                    continue
+                imp       = min(1.0, float(chunk.get("importance_score", 0.0)) + _watchlist_boost(article))
+                direction = chunk.get("price_signals", {}).get("direction", "unclear")
+                if direction == "bullish":
+                    bullish_imp += imp
+                elif direction == "bearish":
+                    bearish_imp += imp
+                if chunk.get("hormuz_risk"):
+                    hormuz_boost += imp * 0.5
+                if chunk.get("sanctions_event"):
+                    sanctions_b  += imp * 0.3
+                if chunk.get("opec_event"):
+                    opec_b       += imp * 0.2
+                n_extractions += 1
 
-    return score, {
-        "level":          level,
-        "high_hits":      high_hits,
-        "medium_hits":    medium_hits,
-        "low_hits":       low_hits,
-        "triggered_by":   triggered,
-        "score":          round(score, 3),
+    total_imp = bullish_imp + bearish_imp
+    imp_score = (bullish_imp - bearish_imp) / total_imp if total_imp > 0 else 0.0
+    imp_boost = min(0.5, hormuz_boost + sanctions_b + opec_b)
+
+    final_score = max(-1.0, min(1.0, kw_score * 0.4 + imp_score * 0.4 + imp_boost * 0.2))
+
+    # Level derived from score, not hardcoded topics
+    level = "critical" if final_score > 0.6  else \
+            "high"     if final_score > 0.35 else \
+            "medium"   if final_score > 0.1  else \
+            "low"      if final_score > -0.1 else "bearish_risk"
+
+    triggered = [kw for kw in SUPPLY_REDUCTION_KEYWORDS if kw in text_all][:5]
+
+    return final_score, {
+        "level":            level,
+        "supply_cut_hits":  supply_cut_hits,
+        "supply_add_hits":  supply_add_hits,
+        "escalation_hits":  escalation_hits,
+        "triggered_by":     triggered,
+        "hormuz_boost":     round(hormuz_boost, 3),
+        "sanctions_boost":  round(sanctions_b, 3),
+        "opec_boost":       round(opec_b, 3),
+        "kw_score":         round(kw_score, 3),
+        "imp_score":        round(imp_score, 3),
+        "score":            round(final_score, 3),
     }
 
 
@@ -363,13 +512,17 @@ def generate_prediction(
 
     logger.info("Running prediction engine (7 signals)...")
 
+    # enriched_articles = articles that have gone through extraction (have importance scores, flags)
+    # articles = all raw articles including GDELT (used for tone/geo keyword signals)
+    enriched = [a for a in articles if a.get("extraction")]
+
     # Compute all signals
-    s1_score, s1 = _sentiment_signal(kg)
+    s1_score, s1 = _sentiment_signal(kg, enriched_articles=enriched)
     s2_score, s2 = _gdelt_tone_24h(articles)
     s3_score, s3 = _gdelt_trend_7d(articles)
     s4_score, s4 = _eia_momentum(market_data)
     s5_score, s5 = _eia_inventory(market_data)
-    s6_score, s6 = _geopolitical_risk(articles)
+    s6_score, s6 = _geopolitical_risk(articles, enriched_articles=enriched)
     s7_score, s7 = _disruption_flag(articles)
 
     logger.info(f"  sentiment={s1_score:.3f} gdelt_24h={s2_score:.3f} gdelt_7d={s3_score:.3f}")

@@ -19,7 +19,7 @@ from pathlib import Path
 import httpx
 import os
 
-from config.settings import OLLAMA_BASE_URL, OLLAMA_MODEL, REPORT_DIR
+from config.settings import OLLAMA_BASE_URL, OLLAMA_MODEL, REPORT_DIR, USER_WATCHLIST, WATCHLIST_BOOST
 
 ANTHROPIC_API_KEY = os.getenv('ANTHROPIC_API_KEY', '')
 from vectordb.store import VectorStore
@@ -27,48 +27,86 @@ from graph.knowledge_graph import KnowledgeGraph
 
 logger = logging.getLogger(__name__)
 
-REPORT_PROMPT = """You are an experienced oil trader writing your morning briefing note.
-Write exactly like the example below — conversational, direct, opinionated. First person.
-No formal headers. No bullet point lists. Just flowing paragraphs like a trader would write to colleagues.
+REPORT_PROMPT = """You are an experienced oil trader writing your morning briefing note to trading desk colleagues.
+Write exactly like the example style below — direct, opinionated, personal. First person.
+No formal headers. No bullet point lists. Flowing paragraphs only.
 
-Today's date and time: {date_time}, London
+Today's date and time: {date_time}
 
 ## Price Data
-Brent: {brent_price} USD/barrel (as of {brent_period})
-WTI: {wti_price} USD/barrel (as of {wti_period})
-WTI 5-day trend: {wti_trend}
-Brent 5-day trend: {brent_trend}
+Brent: {brent_price} USD/barrel (as of {brent_period}, source: {brent_source})
+WTI: {wti_price} USD/barrel (as of {wti_period}, source: {wti_source})
+WTI 5-day trend score: {wti_trend} (positive = rising)
+Brent 5-day trend score: {brent_trend}
 
 ## Market Signal
 Overall direction: {direction} (confidence: {confidence}, score: {score})
-News sentiment — Bullish: {bullish}, Bearish: {bearish}, Neutral/Unclear: {neutral_unclear}
+News sentiment — Bullish weight: {bullish_w}, Bearish weight: {bearish_w} (importance-weighted, not raw count)
 GDELT global news tone: {gdelt_tone} ({gdelt_records} articles)
+Geopolitical risk level: {geo_level}
+
+## HIGH-IMPORTANCE EVENTS (importance score ≥ 0.7) — LEAD WITH THESE
+{high_importance_events}
+
+## Breaking News (last 24h)
+{breaking_news}
 
 ## Key Organisations in the News
 {top_orgs}
 
-## Most Relevant Stories
+## Other Relevant Stories
 {relevant_news}
 
 ## Recent Events and Developments
 {recent_events}
 
+## 3-Day Outlook
+Direction: {direction_3d}, Confidence: {confidence_3d}
+Rationale: {rationale_3d}
+
 ---
 
-Write the morning briefing note now. Style rules:
-- Angle for this report: {angle}
-- Start with the date, time and location on the first line e.g. "25/05/2026, 5AM, London"
-- Then immediately give Brent and WTI prices on the next line
-- Write in flowing paragraphs, no headers, no bullet points
-- Be opinionated — say what YOU think will happen and why
-- Highlight geopolitical risks — Iran war risk, Hormuz closure probability, Russia, Ukraine, OPEC+ tensions
-- If any Iran conflict, strike, or Hormuz closure news exists, lead with it — this is the single biggest upside risk to oil prices
-- Quantify the Iran risk where possible e.g. 'a Hormuz closure could spike Brent by $20-30'
-- Mention spreads and market structure if data supports it (backwardation, contango)
-- End with your personal outlook for the next 12-24 hours
+Writing instructions — follow these exactly:
+
+STRUCTURE:
+1. First line: date, time, location (e.g. "28/05/2026, 5AM, London")
+2. Second line: Brent and WTI prices, and any key spread or structure data if available
+3. Body: 3-5 flowing paragraphs, no headers, no bullet points
+
+CONTENT PRIORITY — strictly in this order:
+1. If HIGH-IMPORTANCE EVENTS exist, open the first paragraph with the most significant one — name the specific event, location, actors. Never bury a military strike or Hormuz closure.
+2. Connect that event directly to price impact with your own view ("I think this could add $X to Brent")
+3. Then cover other geopolitical threads separately — do not merge Iran, Russia, Israel into one vague paragraph
+4. Price action and market structure (backwardation/contango, spreads) — only if data supports it
+5. Your personal 12-24h outlook — say what YOU expect and why
+
+STYLE RULES:
+- Be specific: name countries, people, locations (Iran, Hormuz, Kyiv, Netanyahu, Trump)
+- Be opinionated: "I am skeptical", "my view is", "I think markets will"
+- Quantify risks where possible: "a Hormuz closure could spike Brent $20-30"
+- Flag sticking points and unresolved tensions explicitly — do not smooth over conflict
+- If peace talks are ongoing, be skeptical by default unless data says otherwise
+- Do NOT repeat the same point across paragraphs — each paragraph covers a distinct thread
+- Do NOT write generic phrases like "oil markets remain volatile" or "uncertainty persists"
 - Keep it under 400 words
 - Do not make up prices or facts not in the data above
-- Use phrases like "I think", "my view is", "markets will likely", "watch out for"
+
+STALENESS CHECK:
+- If the same organisation or event appears in both HIGH-IMPORTANCE EVENTS and OTHER RELEVANT STORIES, discuss it once and move on
+- If an event has no new development since the last report, note it briefly and move on ("Iran talks continue, no new progress")
+- Always end with your outlook for the next 12-24 hours
+
+EXAMPLE STYLE (do not copy — match the tone):
+"28/05/2026, 5AM, London
+Brent at 97.8, WTI at 94.2. June/July backwardation has come down to below $3.
+
+Israeli strikes on Southern Lebanon overnight are the main story. I think the market is underpricing the escalation risk — if Hezbollah retaliates against Gulf infrastructure, we could see a $5-8 spike quickly. Watch the next 12 hours.
+
+Iran talks are moving but I remain skeptical. Tehran agreeing to give up enriched uranium in principle is a big concession — too big, frankly. The devil is in the details and Iran's track record on sticking points is not good. Hormuz closure probability I'd put at 15% if talks break down.
+
+Russia hit Kyiv with Oreshnik missiles overnight, likely retaliation for the student dorm strike. This keeps the Russia risk premium in the market but I don't see a direct oil supply angle unless attacks hit Novorossiysk or Caspian infrastructure.
+
+My view for the next 24 hours: sideways to slightly higher. Iran headline risk keeps a floor under Brent. I'd watch the $96 level — if we break below, sentiment shifts fast."
 """
 
 APPENDIX_TEMPLATE = """
@@ -168,6 +206,85 @@ def _format_events(events: list[dict]) -> str:
     return "\n".join(lines)
 
 
+def _extract_high_importance_events(enriched_articles: list[dict]) -> tuple[str, str]:
+    """
+    Scan extraction results for high-importance and breaking events.
+    Returns (high_importance_str, breaking_news_str) for the prompt.
+
+    High importance = importance_score >= 0.7
+    Breaking = is_breaking flag set true by the extractor
+    Sorted by importance_score descending so the most critical leads.
+    """
+    high_events = []
+    breaking    = []
+
+    now = datetime.now(timezone.utc)
+
+    for article in enriched_articles:
+        title      = article.get("title", "")
+        source     = article.get("source", "")
+        published  = article.get("published") or article.get("fetched_at", "")
+
+        # Age label
+        age_label = ""
+        if published:
+            try:
+                pub = datetime.fromisoformat(published.replace("Z", "+00:00"))
+                age_h = (now - pub).total_seconds() / 3600
+                age_label = f"{int(age_h)}h ago" if age_h < 48 else f"{int(age_h/24)}d ago"
+            except (ValueError, TypeError):
+                pass
+
+        for chunk in article.get("extraction", []):
+            if chunk.get("status") != "ok":
+                continue
+
+            importance = float(chunk.get("importance_score", 0.0))
+
+            # Watchlist boost — user-defined topics always surface
+            text = " ".join(filter(None, [article.get("title",""), article.get("summary","")])).lower()
+            watchlist_hits = [kw for kw in USER_WATCHLIST if kw.lower() in text]
+            if watchlist_hits:
+                boost = min(WATCHLIST_BOOST, len(watchlist_hits) * (WATCHLIST_BOOST / 2))
+                importance = min(1.0, importance + boost)
+                flags.extend([f"WATCHLIST:{kw}" for kw in watchlist_hits[:2]])
+            reason     = chunk.get("importance_reason", "")
+            is_breaking = chunk.get("is_breaking", False)
+            hormuz      = chunk.get("hormuz_risk", False)
+            sanctions   = chunk.get("sanctions_event", False)
+
+            flags = []
+            if hormuz:    flags.append("⚠ HORMUZ RISK")
+            if sanctions: flags.append("SANCTIONS")
+
+            flag_str  = f" [{', '.join(flags)}]" if flags else ""
+            age_str   = f" ({age_label})" if age_label else ""
+            source_str = f"[{source}] " if source else ""
+
+            line = f"- importance {importance:.2f}{flag_str} — {source_str}{title}{age_str}"
+            if reason:
+                line += f"\n  Reason: {reason}"
+
+            if importance >= 0.7:
+                high_events.append((importance, line))
+
+            if is_breaking and importance >= 0.5:
+                breaking.append((importance, line))
+
+    # Sort by importance descending
+    high_events.sort(key=lambda x: x[0], reverse=True)
+    breaking.sort(key=lambda x: x[0], reverse=True)
+
+    # Deduplicate (breaking events often also high-importance)
+    high_lines     = [l for _, l in high_events[:6]]
+    breaking_lines = [l for _, l in breaking[:4]]
+
+    return (
+        "\n".join(high_lines) if high_lines else "None detected in this run.",
+        "\n".join(breaking_lines) if breaking_lines else "None detected in this run.",
+    )
+
+
 def _call_llm(prompt: str) -> str:
     """Use Claude API if key available, else fall back to Ollama."""
     if ANTHROPIC_API_KEY:
@@ -204,7 +321,7 @@ def _call_llm(prompt: str) -> str:
         return response.json().get("response", "").strip()
 
 
-def generate_report(prediction: dict, kg: KnowledgeGraph) -> Path:
+def generate_report(prediction: dict, kg: KnowledgeGraph, enriched_articles: list[dict] = None) -> Path:
     """
     Generate a markdown analyst report and save it to REPORT_DIR.
     Returns the path of the saved report.
@@ -214,75 +331,92 @@ def generate_report(prediction: dict, kg: KnowledgeGraph) -> Path:
     # ── Pull data for the prompt ───────────────────────────────────────────
     signals    = prediction.get("signals", {})
     eia        = signals.get("eia", {})
-    sent       = signals.get("sentiment", {})
-    gdelt      = signals.get("gdelt", {})
+    sent       = signals.get("sentiment_24h", {})
+    gdelt      = signals.get("gdelt_tone_24h", {})
+    geo        = signals.get("geopolitical", {})
+    disruption = signals.get("disruption", {})
+    inv        = signals.get("eia_inventory", {})
+    outlook_3d = prediction.get("outlook_3d", {})
 
     wti_latest   = eia.get("wti_latest", {})
     brent_latest = eia.get("brent_latest", {})
 
-    top_orgs     = kg.query_top_organisations(limit=8)
-    recent_events= kg.query_recent_events(limit=8)
+    top_orgs      = kg.query_top_organisations(limit=8)
+    recent_events = kg.query_recent_events(limit=8)
 
-    # Semantic search — two targeted searches
+    # Semantic search — queries built from active signal mechanisms, not hardcoded topics
     store = VectorStore()
-    # Last 24h — primary signal
-    recent_news = store.search(
-        "oil price Iran Hormuz OPEC supply geopolitical risk",
-        n_results=6
-    )
-    # Broader context — brewing stories
-    background_news = store.search(
-        "oil market trend sanctions Russia Ukraine tanker shipping",
-        n_results=4
-    )
-    relevant_news = recent_news + background_news
 
-    # ── Build prompt ───────────────────────────────────────────────────────
-    now_london = datetime.now(timezone.utc).strftime("%d/%m/%Y, %I%p, London")
-
-    # Rotate focus angle based on hour — forces different report structure each run
-    angles = [
-        "Lead with geopolitical risk and its price impact.",
-        "Lead with price action and momentum, then explain the drivers.",
-        "Take a contrarian view — challenge the market consensus.",
-        "Focus on supply/demand fundamentals first, then geopolitics.",
-    ]
-    from datetime import datetime as _dt
-    angle = angles[_dt.now().hour % len(angles)]
-
-    outlook_3d = prediction.get("outlook_3d", {})
     geo        = signals.get("geopolitical", {})
     disruption = signals.get("disruption", {})
     inv        = signals.get("eia_inventory", {})
 
+    # Build primary query from what the signals say is actually moving the market
+    query_terms = ["oil price"]
+    if geo.get("supply_cut_hits", 0) > 0:
+        query_terms.append("supply disruption shutdown attack export halt")
+    if geo.get("hormuz_boost", 0) > 0:
+        query_terms.append("Hormuz strait closure blockade")
+    if geo.get("escalation_hits", 0) > 0:
+        query_terms.append("escalation military conflict retaliation")
+    if geo.get("sanctions_boost", 0) > 0:
+        query_terms.append("sanctions embargo oil producer")
+    if geo.get("opec_boost", 0) > 0:
+        query_terms.append("OPEC production decision output cut")
+    if geo.get("supply_add_hits", 0) > 0:
+        query_terms.append("supply increase ceasefire peace deal sanctions relief")
+    if inv.get("signal") == "draw_bullish":
+        query_terms.append("inventory draw crude stockpile decline")
+    if disruption.get("detected"):
+        query_terms.append("force majeure production shutdown pipeline")
+    if len(query_terms) == 1:
+        # No strong signal — use broad oil market query
+        query_terms.append("OPEC geopolitical risk supply demand outlook")
+
+    primary_query   = " ".join(query_terms)
+    recent_news     = store.search_important(primary_query, n_results=6)
+    background_news = store.search_important(
+        "oil market trend producer country export shipping tanker demand outlook",
+        n_results=4
+    )
+    relevant_news   = recent_news + background_news
+
+    # High-importance and breaking events from enriched extraction
+    high_importance_str, breaking_news_str = _extract_high_importance_events(enriched_articles or [])
+
+    # ── Build prompt ───────────────────────────────────────────────────────
+    now_london = datetime.now(timezone.utc).strftime("%d/%m/%Y, %I%p, London")
+
     prompt = REPORT_PROMPT.format(
-        date_time      = now_london,
-        angle          = angle,
-        direction      = prediction.get("direction", "neutral"),
-        confidence     = prediction.get("confidence", "low"),
-        score          = prediction.get("score", 0.0),
-        direction_3d   = outlook_3d.get("direction", "neutral"),
-        confidence_3d  = outlook_3d.get("confidence", "low"),
-        score_3d       = outlook_3d.get("score", 0.0),
-        rationale_3d   = outlook_3d.get("rationale", ""),
-        geo_level      = geo.get("level", "minimal"),
-        geo_triggers   = ", ".join(geo.get("triggered_by", [])) or "none",
-        disruption     = "YES — " + ", ".join(disruption.get("triggers", [])) if disruption.get("detected") else "No",
-        inventory_signal = inv.get("signal", "no_data"),
-        wti_price    = wti_latest.get("value", "N/A"),
-        wti_period   = wti_latest.get("period", "N/A"),
-        brent_price  = brent_latest.get("value", "N/A"),
-        brent_period = brent_latest.get("period", "N/A"),
-        wti_trend    = eia.get("wti_trend", 0.0),
-        brent_trend  = eia.get("brent_trend", 0.0),
-        bullish      = sent.get("bullish", 0),
-        bearish      = sent.get("bearish", 0),
-        neutral_unclear = sent.get("neutral", 0) + sent.get("unclear", 0),
-        gdelt_tone   = gdelt.get("avg_tone", "N/A"),
-        gdelt_records= gdelt.get("records", 0),
-        top_orgs     = _format_orgs(top_orgs),
-        relevant_news= _format_news(relevant_news),
-        recent_events= _format_events(recent_events),
+        date_time           = now_london,
+        direction           = prediction.get("direction", "neutral"),
+        confidence          = prediction.get("confidence", "low"),
+        score               = prediction.get("score", 0.0),
+        direction_3d        = outlook_3d.get("direction", "neutral"),
+        confidence_3d       = outlook_3d.get("confidence", "low"),
+        score_3d            = outlook_3d.get("score", 0.0),
+        rationale_3d        = outlook_3d.get("rationale", ""),
+        geo_level           = geo.get("level", "minimal"),
+        geo_triggers        = ", ".join(geo.get("triggered_by", [])) or "none",
+        disruption          = "YES — " + ", ".join(disruption.get("triggers", [])) if disruption.get("detected") else "No",
+        inventory_signal    = inv.get("signal", "no_data"),
+        wti_price           = wti_latest.get("value", "N/A"),
+        wti_period          = wti_latest.get("period", "N/A"),
+        wti_source          = wti_latest.get("source", "EIA").upper(),
+        brent_price         = brent_latest.get("value", "N/A"),
+        brent_period        = brent_latest.get("period", "N/A"),
+        brent_source        = brent_latest.get("source", "EIA").upper(),
+        wti_trend           = eia.get("wti_trend", 0.0),
+        brent_trend         = eia.get("brent_trend", 0.0),
+        bullish_w           = sent.get("bullish_w", 0),
+        bearish_w           = sent.get("bearish_w", 0),
+        gdelt_tone          = gdelt.get("avg_tone", "N/A"),
+        gdelt_records       = gdelt.get("records", 0),
+        high_importance_events = high_importance_str,
+        breaking_news       = breaking_news_str,
+        top_orgs            = _format_orgs(top_orgs),
+        relevant_news       = _format_news(relevant_news),
+        recent_events       = _format_events(recent_events),
     )
 
     # ── Call Ollama ────────────────────────────────────────────────────────
