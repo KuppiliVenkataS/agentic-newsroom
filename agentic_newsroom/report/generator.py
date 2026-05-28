@@ -246,6 +246,14 @@ def _extract_high_importance_events(enriched_articles: list[dict]) -> tuple[str,
                 continue
 
             importance = float(chunk.get("importance_score", 0.0))
+            reason      = chunk.get("importance_reason", "")
+            is_breaking = chunk.get("is_breaking", False)
+            hormuz      = chunk.get("hormuz_risk", False)
+            sanctions   = chunk.get("sanctions_event", False)
+
+            flags = []
+            if hormuz:    flags.append("⚠ HORMUZ RISK")
+            if sanctions: flags.append("SANCTIONS")
 
             # Watchlist boost — user-defined topics always surface
             text = " ".join(filter(None, [article.get("title",""), article.get("summary","")])).lower()
@@ -254,14 +262,6 @@ def _extract_high_importance_events(enriched_articles: list[dict]) -> tuple[str,
                 boost = min(WATCHLIST_BOOST, len(watchlist_hits) * (WATCHLIST_BOOST / 2))
                 importance = min(1.0, importance + boost)
                 flags.extend([f"WATCHLIST:{kw}" for kw in watchlist_hits[:2]])
-            reason     = chunk.get("importance_reason", "")
-            is_breaking = chunk.get("is_breaking", False)
-            hormuz      = chunk.get("hormuz_risk", False)
-            sanctions   = chunk.get("sanctions_event", False)
-
-            flags = []
-            if hormuz:    flags.append("⚠ HORMUZ RISK")
-            if sanctions: flags.append("SANCTIONS")
 
             flag_str  = f" [{', '.join(flags)}]" if flags else ""
             age_str   = f" ({age_label})" if age_label else ""
