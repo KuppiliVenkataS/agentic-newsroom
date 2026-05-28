@@ -71,42 +71,48 @@ Writing instructions — follow these exactly:
 STRUCTURE:
 1. First line: date, time, location (e.g. "28/05/2026, 5AM, London")
 2. Second line: Brent and WTI prices, and any key spread or structure data if available
-3. Body: 3-5 flowing paragraphs, no headers, no bullet points
+3. Body: 5-7 flowing paragraphs, no headers, no bullet points
+
+LENGTH: 500-700 words. This is a minimum, not a suggestion. If you write less than 500 words you have not done the job.
 
 CONTENT PRIORITY — strictly in this order:
 1. If HIGH-IMPORTANCE EVENTS exist, open the first paragraph with the most significant one — name the specific event, location, actors. Never bury a military strike or Hormuz closure.
 2. Connect that event directly to price impact with your own view ("I think this could add $X to Brent")
-3. Then cover other geopolitical threads separately — do not merge Iran, Russia, Israel into one vague paragraph
-4. Price action and market structure (backwardation/contango, spreads) — only if data supports it
-5. Your personal 12-24h outlook — say what YOU expect and why
+3. Work through EVERY story in the Most Relevant News section — each one gets at least a sentence. Do not skip stories. If a story is in the data, it happened and deserves mention.
+4. Cover each distinct geopolitical thread in its own paragraph — do not merge Iran, Russia, Israel/Lebanon into one vague paragraph
+5. Price action and market structure (backwardation/contango, spreads) — only if data supports it
+6. Supply/demand fundamentals — inventory, production, demand signals
+7. Your personal 12-24h outlook — say what YOU expect and why, with a specific price level to watch
 
 STYLE RULES:
-- Be specific: name countries, people, locations (Iran, Hormuz, Kyiv, Netanyahu, Trump)
+- Be specific: name countries, people, locations, price levels
 - Be opinionated: "I am skeptical", "my view is", "I think markets will"
-- Quantify risks where possible: "a Hormuz closure could spike Brent $20-30"
-- Flag sticking points and unresolved tensions explicitly — do not smooth over conflict
+- Quantify risks: "a Hormuz closure could spike Brent $20-30", "this removes 1.5mb/d from the market"
+- Flag sticking points and unresolved tensions — do not smooth over conflict
 - If peace talks are ongoing, be skeptical by default unless data says otherwise
-- Do NOT repeat the same point across paragraphs — each paragraph covers a distinct thread
 - Do NOT write generic phrases like "oil markets remain volatile" or "uncertainty persists"
-- Keep it under 400 words
-- Do not make up prices or facts not in the data above
+- Each paragraph must cover a distinct topic — no repetition across paragraphs
+- Use the actual numbers from the data — prices, percentages, volumes where available
+
+USING THE NEWS DATA:
+- The Most Relevant News section contains real stories from this run — use them
+- Quote or paraphrase specific details: company names, volumes, price levels, locations
+- If a story mentions a specific price move, reference it ("oil back at $100 after US strikes")
+- Do not invent facts — only use what is in the data above
 
 STALENESS CHECK:
-- If the same organisation or event appears in both HIGH-IMPORTANCE EVENTS and OTHER RELEVANT STORIES, discuss it once and move on
-- If an event has no new development since the last report, note it briefly and move on ("Iran talks continue, no new progress")
-- Always end with your outlook for the next 12-24 hours
+- If an event has no new development, note it briefly and move on
+- Always end with your outlook for the next 12-24 hours, including a specific Brent price level to watch
 
-EXAMPLE STYLE (do not copy — match the tone):
+EXAMPLE STYLE (match the tone, not the content):
 "28/05/2026, 5AM, London
-Brent at 97.8, WTI at 94.2. June/July backwardation has come down to below $3.
+Brent at 96.99, WTI at 91.34. June/July backwardation has compressed to below $3 — the market is less worried about immediate supply than it was a week ago.
 
-Israeli strikes on Southern Lebanon overnight are the main story. I think the market is underpricing the escalation risk — if Hezbollah retaliates against Gulf infrastructure, we could see a $5-8 spike quickly. Watch the next 12 hours.
+US strikes on Iranian missile sites overnight are the dominant story. This is not a drill — American forces hit launch sites in southern Iran and boats placing mines, which changes the risk calculus completely. I think Brent could push to $105-110 in the next 24 hours if Iran retaliates. A Hormuz closure, even partial, removes roughly 20mb/d of throughput and would spike prices $20-30 immediately. Markets are pricing in some risk but not nearly enough in my view.
 
-Iran talks are moving but I remain skeptical. Tehran agreeing to give up enriched uranium in principle is a big concession — too big, frankly. The devil is in the details and Iran's track record on sticking points is not good. Hormuz closure probability I'd put at 15% if talks break down.
+The Hormuz picture is complicated. Tankers trickled through over the weekend as peace talks gave the market some hope, and we saw a sharp price drop on Monday. But the US strikes have reset that. I'd put Hormuz closure probability at 25-30% over the next 48 hours, up from 10% yesterday...
 
-Russia hit Kyiv with Oreshnik missiles overnight, likely retaliation for the student dorm strike. This keeps the Russia risk premium in the market but I don't see a direct oil supply angle unless attacks hit Novorossiysk or Caspian infrastructure.
-
-My view for the next 24 hours: sideways to slightly higher. Iran headline risk keeps a floor under Brent. I'd watch the $96 level — if we break below, sentiment shifts fast."
+[continue for 5-7 paragraphs total]"
 """
 
 APPENDIX_TEMPLATE = """
@@ -189,11 +195,11 @@ def _format_news(results: list[dict]) -> str:
         title  = r["metadata"].get("title", "").strip()
         source = r["metadata"].get("source", "")
         score  = r["score"]
-        chunk  = r["chunk"][:200].strip()
+        chunk  = r["chunk"][:600].strip()   # enough for LLM to extract detail
         if title:
             lines.append(f"- [{source}] {title} (relevance: {score:.2f})\n  {chunk}")
         else:
-            lines.append(f"- [{source}] {chunk[:150]} (relevance: {score:.2f})")
+            lines.append(f"- [{source}] {chunk[:400]} (relevance: {score:.2f})")
     return "\n".join(lines)
 
 
@@ -297,7 +303,7 @@ def _call_llm(prompt: str) -> str:
             },
             json={
                 "model": "claude-sonnet-4-20250514",
-                "max_tokens": 2000,
+                "max_tokens": 3000,
                 "temperature": 0.4,
                 "messages": [{"role": "user", "content": prompt}]
             },
@@ -310,7 +316,7 @@ def _call_llm(prompt: str) -> str:
             "model":  OLLAMA_MODEL,
             "prompt": prompt,
             "stream": False,
-            "options": {"temperature": 0.4, "num_predict": 2000}
+            "options": {"temperature": 0.4, "num_predict": 3000}
         }
         response = httpx.post(
             f"{OLLAMA_BASE_URL}/api/generate",
