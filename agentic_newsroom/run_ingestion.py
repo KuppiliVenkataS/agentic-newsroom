@@ -29,7 +29,7 @@ from ingestion.article_fetcher import enrich_articles_with_body
 from processing.cleaner import prepare_article
 from processing.extractor import process_articles
 from processing.processed_writer import save_processed
-from config.settings import SKIP_EXTRACTION, SKIP_INGESTION
+from config.settings import SKIP_EXTRACTION, SKIP_INGESTION, MAX_TOTAL_RSS
 from vectordb.store import VectorStore
 from graph.knowledge_graph import KnowledgeGraph
 from prediction.predictor import generate_prediction
@@ -82,6 +82,9 @@ def run():
     else:
         try:
             articles = fetch_all_feeds(dedup)
+            if len(articles) > MAX_TOTAL_RSS:
+                logger.info(f"RSS capped: {len(articles)} → {MAX_TOTAL_RSS} articles")
+                articles = articles[:MAX_TOTAL_RSS]
             logger.info(f"RSS total new articles: {len(articles)}")
         except Exception as exc:
             msg = f"RSS fetch failed: {exc}"
@@ -161,8 +164,30 @@ def run():
         enriched = prepared
     else:
         try:
-            enriched = process_articles(prepared)
-            logger.info(f"Extraction complete: {len(enriched)} articles enriched")
+            # Only extract RSS articles — GDELT has no body and doesn't need it
+            # Prioritise: watchlist matches first, then all remaining RSS
+            from config.settings import USER_WATCHLIST
+            def _is_watchlist(a: dict) -> bool:
+                text = (a.get("title","") + " " + a.get("summary","")).lower()
+                return any(kw.lower() in text for kw in USER_WATCHLIST)
+
+            rss_only   = [a for a in prepared if a.get("type") == "rss_article"]
+            non_rss    = [a for a in prepared if a.get("type") != "rss_article"]
+
+            priority   = [a for a in rss_only if _is_watchlist(a)]
+            remainder  = [a for a in rss_only if not _is_watchlist(a)]
+
+            # Cap: extract all watchlist matches + up to 50 others
+            to_extract = priority + remainder[:50]
+            logger.info(
+                f"Extraction scope: {len(to_extract)} articles "
+                f"({len(priority)} watchlist, {len(remainder[:50])} other RSS) "
+                f"— skipping {len(non_rss)} GDELT + {len(remainder[50:])} low-priority RSS"
+            )
+
+            enriched_extracted = process_articles(to_extract)
+            enriched = enriched_extracted + non_rss + remainder[50:]
+            logger.info(f"Extraction complete: {len(enriched_extracted)} articles enriched")
         except Exception as exc:
             msg = f"Extraction failed: {exc}"
             logger.error(msg)

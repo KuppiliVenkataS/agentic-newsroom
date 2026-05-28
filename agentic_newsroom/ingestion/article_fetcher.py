@@ -49,6 +49,8 @@ SKIP_DOMAINS = [
     "ft.com", "bloomberg.com", "wsj.com", "reuters.com",
     "platts.com", "spglobal.com", "argusmedia.com",
     "icis.com", "tradewindsnews.com",
+    "thehill.com", "axios.com", "politico.com",
+    "nytimes.com", "washingtonpost.com",
 ]
 
 MAX_BODY_CHARS = 8000   # cap to keep extraction prompts manageable

@@ -13,7 +13,7 @@ from typing import Optional
 import feedparser
 import httpx
 
-from config.settings import RSS_FEEDS, REQUEST_TIMEOUT, MAX_ARTICLES_PER_FEED, USER_AGENT
+from config.settings import RSS_FEEDS, REQUEST_TIMEOUT, MAX_ARTICLES_PER_FEED, MAX_TOTAL_RSS, USER_AGENT
 from ingestion.dedup import DedupRegistry
 
 logger = logging.getLogger(__name__)
@@ -155,5 +155,9 @@ def fetch_all_feeds(dedup: DedupRegistry) -> list[dict]:
             count_new += 1
 
         logger.info(f"  {feed_key}: {count_new} new articles ({count_filtered} filtered as non-oil)")
+
+        if len(all_articles) >= MAX_TOTAL_RSS:
+            logger.info(f"RSS ceiling reached ({MAX_TOTAL_RSS}) — stopping feed fetch early")
+            break
 
     return all_articles

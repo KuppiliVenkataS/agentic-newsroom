@@ -63,7 +63,8 @@ RSS_FEEDS = {
     "rigzone":              "https://www.rigzone.com/news/rss/rigzone_latest.aspx",
     "eia_petroleum_weekly": "https://www.eia.gov/petroleum/weekly/includes/archive.php?format=rss",
     "energy_voice":         "https://www.energyvoice.com/feed/",
-    "upstream_online":      "https://www.upstreamonline.com/rss",
+    # upstream_online — Zephr SSO paywall, removed
+    # tradewinds — Zephr SSO paywall, removed
 
     # Shipping & tankers
     "hellenic_shipping":    "https://www.hellenicshippingnews.com/feed/",
@@ -78,11 +79,11 @@ RSS_FEEDS = {
     "defense_one":          "https://www.defenseone.com/rss/all/",
     "war_on_rocks":         "https://warontherocks.com/feed/",
 
-    # Paywalled — headlines only
+    # Paywalled — headlines only (these work via RSS despite paywall on full articles)
     "argus_media":          "https://www.argusmedia.com/rss/news.rss",
     "platts_news":          "https://www.spglobal.com/commodityinsights/en/rss-feed/news",
     "icis_news":            "https://www.icis.com/explore/resources/news/rss/",
-    "tradewinds":           "https://www.tradewindsnews.com/rss",
+    # tradewinds — Zephr SSO paywall, removed
 
     # Financial / macro
     "ft_markets":           "https://www.ft.com/rss/home/uk",
@@ -92,19 +93,21 @@ RSS_FEEDS = {
     "investing_oil":        "https://www.investing.com/rss/news_14.rss",
 
     # Trump / US policy
-    "white_house":          "https://www.whitehouse.gov/feed/",
-    "state_department":     "https://www.state.gov/rss-feeds/",
-    "reuters_politics":     "https://feeds.reuters.com/Reuters/PoliticsNews",
-    "ap_politics":          "https://feeds.ap.org/rss/apf-politics",
-    "politico":             "https://www.politico.com/rss/politicopicks.xml",
-    "axios":                "https://api.axios.com/feed/",
+    "reuters_politics":     "https://feeds.reuters.com/reuters/politicsNews",
+    "ap_energy":            "https://rsshub.app/apnews/topics/energy",
+    "axios_energy":         "https://api.axios.com/feed/topics/energy",
     "the_hill_energy":      "https://thehill.com/policy/energy-environment/feed/",
-    "nitter_trump":         "https://nitter.net/realDonaldTrump/rss",
+    # white_house feed returns 404 — removed
+    # nitter_trump returns 429 — removed
+    # reuters_politics DNS fails — replaced above
+    # ap_politics SSL fails — replaced with ap_energy
+    # politico returns 403 — removed
 }
 
 # ── Request settings ──────────────────────────────────────────────────────────
 REQUEST_TIMEOUT       = 20
-MAX_ARTICLES_PER_FEED = 50
+MAX_ARTICLES_PER_FEED = 15    # reduced from 50 — top 15 per feed is enough
+MAX_TOTAL_RSS         = 150   # hard ceiling across all feeds combined
 USER_AGENT            = "AgenticNewsroom/1.0"
 
 # ── Ollama (local LLM) ────────────────────────────────────────────────────────
@@ -140,7 +143,14 @@ USER_WATCHLIST = [
     "iran nuclear",
     "iran deal",
     "iran sanctions",
-    "air strikes",
+
+    # Gaza / Israel / Lebanon
+    "gaza",
+    "israel",
+    "netanyahu",
+    "hezbollah",
+    "southern lebanon",
+    "west bank",
 
     # Trump / US policy
     "trump",
@@ -163,14 +173,6 @@ USER_WATCHLIST = [
     "caspian pipeline",
     "russia oil",
     "ukraine drone oil",
-
-    # Gaza / Israel / Lebanon
-    "gaza",
-    "israel",
-    "netanyahu",
-    "hezbollah",
-    "southern lebanon",
-    "west bank",
 
     # Add your own below — one string per line
 ]

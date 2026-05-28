@@ -183,7 +183,7 @@ WHERE
         OR LOWER(AllNames) LIKE '%opec%'
         OR LOWER(AllNames) LIKE '%trump%'
     )
-LIMIT 500
+LIMIT 150
 """
 
 # 7-day query — background context and brewing stories
@@ -217,7 +217,7 @@ WHERE
         OR LOWER(AllNames) LIKE '%trump%'
         OR LOWER(AllNames) LIKE '%sanctions%'
     )
-LIMIT 300
+LIMIT 100
 """
 
 
