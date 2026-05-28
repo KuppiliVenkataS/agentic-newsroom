@@ -142,14 +142,6 @@ USER_WATCHLIST = [
     "iran sanctions",
     "air strikes",
 
-    # Gaza / Israel / Lebanon
-    "gaza",
-    "israel",
-    "netanyahu",
-    "hezbollah",
-    "southern lebanon",
-    "west bank",
-
     # Trump / US policy
     "trump",
     "white house",
@@ -171,6 +163,14 @@ USER_WATCHLIST = [
     "caspian pipeline",
     "russia oil",
     "ukraine drone oil",
+
+    # Gaza / Israel / Lebanon
+    "gaza",
+    "israel",
+    "netanyahu",
+    "hezbollah",
+    "southern lebanon",
+    "west bank",
 
     # Add your own below — one string per line
 ]

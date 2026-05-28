@@ -83,7 +83,6 @@ RISK_ESCALATION_KEYWORDS = [
 ]
 
 
-# ── Signal 1 — News sentiment (importance-weighted, recency-decayed) ───────────
 def _watchlist_boost(article: dict) -> float:
     """
     Returns an additive importance boost if the article matches
@@ -98,6 +97,10 @@ def _watchlist_boost(article: dict) -> float:
     ])).lower()
     hits = sum(1 for kw in USER_WATCHLIST if kw.lower() in text)
     return min(WATCHLIST_BOOST, hits * (WATCHLIST_BOOST / 2)) if hits else 0.0
+
+
+# ── Signal 1 — News sentiment (importance-weighted, recency-decayed) ───────────
+def _sentiment_signal(kg: KnowledgeGraph, enriched_articles: list[dict] = None) -> tuple[float, dict]:
     """
     Weighted sentiment where each article contributes its importance_score
     multiplied by a recency decay factor, not a flat +1/-1 count.
