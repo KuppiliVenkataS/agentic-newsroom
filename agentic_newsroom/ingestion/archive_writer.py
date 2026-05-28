@@ -23,10 +23,11 @@ from config.settings import RAW_DIR
 logger = logging.getLogger(__name__)
 
 
-def save_run(articles: list[dict], market_data: list[dict], run_id: str) -> Path:
+def save_run(articles: list[dict], market_data: list[dict],
+             run_id: str, prediction: dict = None) -> Path:
     """
     Write one complete ingestion run to a JSON file.
-
+    Includes prediction dict so the scorer can evaluate it next run.
     Returns the path of the saved file.
     """
     now = datetime.utcnow()
@@ -37,12 +38,13 @@ def save_run(articles: list[dict], market_data: list[dict], run_id: str) -> Path
     filepath = date_dir / filename
 
     payload = {
-        "run_id":        run_id,
-        "run_timestamp": now.isoformat(),
-        "article_count": len(articles),
-        "market_data_count": len(market_data),
-        "articles":      articles,
-        "market_data":   market_data,
+        "run_id":              run_id,
+        "run_timestamp":       now.isoformat(),
+        "article_count":       len(articles),
+        "market_data_count":   len(market_data),
+        "articles":            articles,
+        "market_data":         market_data,
+        "prediction":          prediction or {},
     }
 
     with open(filepath, "w", encoding="utf-8") as f:

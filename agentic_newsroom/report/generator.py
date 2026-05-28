@@ -321,7 +321,9 @@ def _call_llm(prompt: str) -> str:
         return response.json().get("response", "").strip()
 
 
-def generate_report(prediction: dict, kg: KnowledgeGraph, enriched_articles: list[dict] = None) -> Path:
+def generate_report(prediction: dict, kg: KnowledgeGraph,
+                    enriched_articles: list[dict] = None,
+                    is_alert: bool = False) -> Path:
     """
     Generate a markdown analyst report and save it to REPORT_DIR.
     Returns the path of the saved report.
@@ -425,19 +427,23 @@ def generate_report(prediction: dict, kg: KnowledgeGraph, enriched_articles: lis
 
     # ── Save report ────────────────────────────────────────────────────────
     now      = datetime.now(timezone.utc)
-    filename = now.strftime("%Y-%m-%d_%H-%M-%S_report.md")
+    prefix   = "ALERT_" if is_alert else ""
+    filename = now.strftime(f"{prefix}%Y-%m-%d_%H-%M-%S_report.md")
     filepath = REPORT_DIR / filename
 
-    # Add metadata header
+    alert_banner = "\n> ⚠ **ALERT REPORT** — High geopolitical risk detected. Sent outside normal schedule.\n" \
+                   if is_alert else ""
+
     header = f"""---
 generated_at: {now.isoformat()}
+alert: {is_alert}
 direction: {prediction.get('direction')}
 confidence: {prediction.get('confidence')}
 score: {prediction.get('score')}
 wti: {wti_latest.get('value')} ({wti_latest.get('period')})
 brent: {brent_latest.get('value')} ({brent_latest.get('period')})
 ---
-
+{alert_banner}
 """
     # Build data appendix
     signals = prediction.get("signals", {})

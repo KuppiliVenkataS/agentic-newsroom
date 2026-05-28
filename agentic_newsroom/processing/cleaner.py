@@ -64,22 +64,31 @@ def chunk_text(text: str) -> list[str]:
 
 def prepare_article(article: dict) -> dict:
     """
-    Takes a raw article dict from the archive and returns it
-    with cleaned text and chunks added.
+    Takes a raw article dict and returns it with cleaned text and chunks.
+    Uses full body text if available (from article_fetcher),
+    falls back to title + summary for paywalled or failed fetches.
     """
-    # Combine title and summary as the text body for RSS articles
     if article.get("type") == "gdelt_gkg":
         return {
             **article,
             "cleaned_text": "",
             "chunks":       [],
             "chunk_count":  0,
+            "text_source":  "none",
         }
+
+    body    = article.get("body", "")
+    title   = article.get("title", "")
+    summary = article.get("summary", "")
+
+    if len(body) >= 200:
+        # Full body available — prepend title so it's always in first chunk
+        raw_text    = title + ". " + body
+        text_source = "full_body"
     else:
-        raw_text = " ".join(filter(None, [
-            article.get("title", ""),
-            article.get("summary", ""),
-        ]))
+        # Fallback to title + summary
+        raw_text    = " ".join(filter(None, [title, summary]))
+        text_source = "summary_only"
 
     cleaned = clean_text(raw_text)
     chunks  = chunk_text(cleaned)
@@ -89,4 +98,5 @@ def prepare_article(article: dict) -> dict:
         "cleaned_text": cleaned,
         "chunks":       chunks,
         "chunk_count":  len(chunks),
+        "text_source":  text_source,
     }

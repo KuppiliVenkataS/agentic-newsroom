@@ -25,6 +25,7 @@ from ingestion.yfinance_fetcher import fetch_live_prices
 from ingestion.gdelt_fetcher import fetch_gdelt_data
 from ingestion.archive_writer import save_run
 from ingestion.audit_logger import write_audit
+from ingestion.article_fetcher import enrich_articles_with_body
 from processing.cleaner import prepare_article
 from processing.extractor import process_articles
 from processing.processed_writer import save_processed
@@ -32,6 +33,7 @@ from config.settings import SKIP_EXTRACTION, SKIP_INGESTION
 from vectordb.store import VectorStore
 from graph.knowledge_graph import KnowledgeGraph
 from prediction.predictor import generate_prediction
+from prediction.scorer import score_last_prediction, read_accuracy_summary
 from report.generator import generate_report
 
 # ── Logging ───────────────────────────────────────────────────────────────────
@@ -121,6 +123,22 @@ def run():
             logger.error(msg)
             errors.append(msg)
 
+    # ── 5b. Full article body fetch ────────────────────────────────────────
+    if not SKIP_INGESTION:
+        try:
+            rss_articles = [a for a in articles if a.get("type") == "rss_article"]
+            logger.info(f"Fetching full article bodies for {len(rss_articles)} RSS articles...")
+            articles_with_body = enrich_articles_with_body(rss_articles, delay=0.5)
+            # Merge back — replace RSS articles with body-enriched versions
+            non_rss = [a for a in articles if a.get("type") != "rss_article"]
+            articles = articles_with_body + non_rss
+            fetched_full = sum(1 for a in articles_with_body if len(a.get("body","")) >= 200)
+            logger.info(f"Full body fetch: {fetched_full}/{len(rss_articles)} articles got full text")
+        except Exception as exc:
+            msg = f"Article body fetch failed: {exc}"
+            logger.error(msg)
+            errors.append(msg)
+
     # ── 6. Clean and chunk articles ────────────────────────────────────────
     prepared: list[dict] = []
     try:
@@ -169,7 +187,21 @@ def run():
         logger.error(msg)
         errors.append(msg)
 
-    # ── 11. Generate prediction ──────────────────────────────────────────
+    # ── 11. Score previous prediction ────────────────────────────────────
+    try:
+        score_record = score_last_prediction(market_data, run_id)
+        if score_record:
+            accuracy = read_accuracy_summary()
+            logger.info(
+                f"Accuracy to date: {accuracy['correct']}/{accuracy['correct']+accuracy['wrong']} "
+                f"scored ({accuracy['accuracy'] or 'n/a'})"
+            )
+    except Exception as exc:
+        msg = f"Scorer failed: {exc}"
+        logger.error(msg)
+        errors.append(msg)
+
+    # ── 12. Generate prediction ──────────────────────────────────────────
     prediction = {}
     try:
         kg         = KnowledgeGraph()
@@ -182,10 +214,36 @@ def run():
         logger.error(msg)
         errors.append(msg)
 
-    # ── 12. Generate report ───────────────────────────────────────────────
+    # ── 12b. Save prediction into archive ─────────────────────────────────
+    if prediction and archive_path:
+        try:
+            import json as _json
+            with open(archive_path, "r", encoding="utf-8") as f:
+                archive = _json.load(f)
+            archive["prediction"] = prediction
+            with open(archive_path, "w", encoding="utf-8") as f:
+                _json.dump(archive, f, ensure_ascii=False, indent=2)
+            logger.info("Prediction saved into archive for future scoring")
+        except Exception as exc:
+            logger.warning(f"Could not save prediction to archive: {exc}")
+
+    # ── 13. Alert check — high urgency triggers immediate report ──────────
+    geo_level  = prediction.get("signals", {}).get("geopolitical", {}).get("level", "minimal")
+    is_alert   = geo_level in ("critical", "high") and prediction.get("confidence") != "low"
+    if is_alert:
+        logger.warning(
+            f"⚠ ALERT: Geopolitical risk level={geo_level} — "
+            f"high-urgency report triggered outside normal schedule"
+        )
+
+    # ── 14. Generate report ───────────────────────────────────────────────
     try:
         if prediction:
-            report_path = generate_report(prediction, kg, enriched_articles=enriched)
+            report_path = generate_report(
+                prediction, kg,
+                enriched_articles=enriched,
+                is_alert=is_alert,
+            )
             logger.info(f"Report saved: {report_path}")
         else:
             logger.warning("Skipping report — no prediction available")
