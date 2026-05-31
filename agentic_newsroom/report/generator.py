@@ -19,7 +19,7 @@ from pathlib import Path
 import httpx
 import os
 
-from config.settings import OLLAMA_BASE_URL, OLLAMA_MODEL, REPORT_DIR, USER_WATCHLIST, WATCHLIST_BOOST
+from config.settings import OLLAMA_BASE_URL, OLLAMA_MODEL, REPORT_DIR, USER_WATCHLIST, WATCHLIST_BOOST, ANTHROPIC_API_KEY, USE_CLAUDE_REPORT
 
 ANTHROPIC_API_KEY = os.getenv('ANTHROPIC_API_KEY', '')
 from vectordb.store import VectorStore
@@ -27,21 +27,21 @@ from graph.knowledge_graph import KnowledgeGraph
 
 logger = logging.getLogger(__name__)
 
-REPORT_PROMPT = """You are an experienced oil trader writing your morning briefing note to trading desk colleagues.
-Write exactly like the example style below — direct, opinionated, personal. First person.
-No formal headers. No bullet point lists. Flowing paragraphs only.
+REPORT_PROMPT = """You are an experienced oil market analyst writing a morning briefing note.
+You are sharp, balanced, and intellectually honest. Your opinions are driven by evidence, not habit.
+Write in first person, flowing paragraphs, no headers, no bullet points.
 
 Today's date and time: {date_time}
 
 ## Price Data
 Brent: {brent_price} USD/barrel (as of {brent_period}, source: {brent_source})
 WTI: {wti_price} USD/barrel (as of {wti_period}, source: {wti_source})
-WTI 5-day trend score: {wti_trend} (positive = rising)
+WTI 5-day trend score: {wti_trend}
 Brent 5-day trend score: {brent_trend}
 
 ## Market Signal
 Overall direction: {direction} (confidence: {confidence}, score: {score})
-News sentiment — Bullish weight: {bullish_w}, Bearish weight: {bearish_w} (importance-weighted, not raw count)
+News sentiment — Bullish weight: {bullish_w}, Bearish weight: {bearish_w}
 GDELT global news tone: {gdelt_tone} ({gdelt_records} articles)
 Geopolitical risk level: {geo_level}
 
@@ -66,53 +66,84 @@ Rationale: {rationale_3d}
 
 ---
 
-Writing instructions — follow these exactly:
-
 STRUCTURE:
-1. First line: date, time, location (e.g. "28/05/2026, 5AM, London")
-2. Second line: Brent and WTI prices, and any key spread or structure data if available
+1. First line: date, time, location (e.g. "30/05/2026, 5AM, London")
+2. Second line: Brent and WTI prices, key spread or structure data if available
 3. Body: 5-7 flowing paragraphs, no headers, no bullet points
+4. LENGTH: 500-700 words minimum
 
-LENGTH: 500-700 words. This is a minimum, not a suggestion. If you write less than 500 words you have not done the job.
+TONE — this is critical:
+You are a versatile analyst, not a permabull or permabear. Your tone follows the data:
+- When a peace deal or ceasefire genuinely reduces risk, say so clearly and price in the bearish impact — do not reflexively dismiss it
+- When supply fundamentals are actually tight, be bullish with conviction
+- When geopolitical noise is overdone relative to actual supply impact, say the market is overreacting
+- When something positive happens — a deal, a de-escalation, a supply restoration — acknowledge it genuinely, not grudgingly
+- When something is bad, be direct and specific about why, not vague
+- Avoid defaulting to skepticism as a personality trait — skepticism should be earned by the data
+- Vary your sentence structure — avoid starting consecutive sentences with "I think" or "my view is"
+- Each paragraph should have a distinct emotional register: one might be cautious, the next genuinely optimistic, the next analytical
 
-CONTENT PRIORITY — strictly in this order:
-1. If HIGH-IMPORTANCE EVENTS exist, open the first paragraph with the most significant one — name the specific event, location, actors. Never bury a military strike or Hormuz closure.
-2. Connect that event directly to price impact with your own view ("I think this could add $X to Brent")
-3. Work through EVERY story in the Most Relevant News section — each one gets at least a sentence. Do not skip stories. If a story is in the data, it happened and deserves mention.
-4. Cover each distinct geopolitical thread in its own paragraph — do not merge Iran, Russia, Israel/Lebanon into one vague paragraph
-5. Price action and market structure (backwardation/contango, spreads) — only if data supports it
-6. Supply/demand fundamentals — inventory, production, demand signals
-7. Your personal 12-24h outlook — say what YOU expect and why, with a specific price level to watch
+CONTENT PRIORITY:
+1. Lead with the most market-moving event from HIGH-IMPORTANCE EVENTS — name actors, locations, specifics
+2. Connect directly to price impact: direction, magnitude, timeframe
+3. Cover each distinct geopolitical thread separately — Iran, Russia, Israel/Lebanon are different stories
+4. Price action and market structure — backwardation, spreads, curve shape — only if data supports
+5. Supply/demand fundamentals — inventory, production, demand signals
+6. Personal 12-24h outlook — specific, with a Brent price level to watch
 
-STYLE RULES:
-- Be specific: name countries, people, locations, price levels
-- Be opinionated: "I am skeptical", "my view is", "I think markets will"
-- Quantify risks: "a Hormuz closure could spike Brent $20-30", "this removes 1.5mb/d from the market"
-- Flag sticking points and unresolved tensions — do not smooth over conflict
-- If peace talks are ongoing, be skeptical by default unless data says otherwise
-- Do NOT write generic phrases like "oil markets remain volatile" or "uncertainty persists"
-- Each paragraph must cover a distinct topic — no repetition across paragraphs
-- Use the actual numbers from the data — prices, percentages, volumes where available
+USING THE DATA:
+- Work through every story in Other Relevant Stories — each gets at least a sentence
+- Use actual numbers from the data — prices, volumes, percentages
+- Do not invent facts not in the data above
+- If a story is genuinely bullish, say so. If bearish, say so. If mixed, say so and explain why
 
-USING THE NEWS DATA:
-- The Most Relevant News section contains real stories from this run — use them
-- Quote or paraphrase specific details: company names, volumes, price levels, locations
-- If a story mentions a specific price move, reference it ("oil back at $100 after US strikes")
-- Do not invent facts — only use what is in the data above
-
-STALENESS CHECK:
+AVOIDING STALENESS:
 - If an event has no new development, note it briefly and move on
-- Always end with your outlook for the next 12-24 hours, including a specific Brent price level to watch
+- Do not repeat the same point across paragraphs
+- Do not use: "oil markets remain volatile", "uncertainty persists", "closely watched"
 
-EXAMPLE STYLE (match the tone, not the content):
-"28/05/2026, 5AM, London
-Brent at 96.99, WTI at 91.34. June/July backwardation has compressed to below $3 — the market is less worried about immediate supply than it was a week ago.
+END with your personal 12-24h outlook — include a specific Brent price level, direction, and the one event that would change your view either way.
+"""
 
-US strikes on Iranian missile sites overnight are the dominant story. This is not a drill — American forces hit launch sites in southern Iran and boats placing mines, which changes the risk calculus completely. I think Brent could push to $105-110 in the next 24 hours if Iran retaliates. A Hormuz closure, even partial, removes roughly 20mb/d of throughput and would spike prices $20-30 immediately. Markets are pricing in some risk but not nearly enough in my view.
+OIL_MARKET_KNOWLEDGE = """
+## Oil Market Domain Knowledge — apply this when interpreting data
 
-The Hormuz picture is complicated. Tankers trickled through over the weekend as peace talks gave the market some hope, and we saw a sharp price drop on Monday. But the US strikes have reset that. I'd put Hormuz closure probability at 25-30% over the next 48 hours, up from 10% yesterday...
+### Investment and Capex
+- Lower upstream investment / capex cuts = BULLISH for oil prices (less future supply coming to market)
+- Higher upstream investment = BEARISH long-term (more future supply), but neutral short-term
+- Do NOT apply equities logic here — in oil markets, less investment means supply constraints ahead
+- IEA or industry reports showing capex decline should be flagged as a medium-term bullish signal
 
-[continue for 5-7 paragraphs total]"
+### Spreads and Market Structure
+- Brent-WTI spread widening (Brent premium increasing):
+  = US crude at a discount, caused by: US export bottlenecks, domestic oversupply, pipeline constraints, or weak US refinery demand
+  = NOT a sign of weak global demand — Brent reflects global/seaborne market separately
+- Brent-WTI spread narrowing:
+  = US crude catching up, usually due to strong US exports or Gulf Coast demand
+- Backwardation (prompt > forward): market is tight NOW, supply shortage, bullish signal
+- Contango (prompt < forward): oversupply or weak demand, bearish signal
+- Steepening backwardation = supply stress increasing
+- Collapsing backwardation = supply stress easing, potentially bearish
+
+### Geopolitical Price Impact
+- Hormuz closure (full): removes ~20mb/d, would spike Brent $30-50 immediately
+- Hormuz partial disruption: $10-20 spike, depending on tanker rerouting capacity
+- Abqaiq-style Saudi infrastructure attack: removes 5-10mb/d, $20-30 spike
+- OPEC surprise cut of 1mb/d: typically adds $3-5 to Brent within days
+- Iran sanctions restored fully: removes ~1.5mb/d, adds $5-8 to Brent
+- Peace deal removing sanctions on major producer: bearish $5-10 once confirmed
+
+### Demand signals
+- India/China demand growth slowdown = bearish, but gradual
+- US SPR release = short-term bearish, typically $2-4 impact
+- US SPR purchase = bullish signal (government sees value at current prices)
+- IEA demand forecast cut = bearish sentiment, not always immediate price impact
+
+### Common LLM errors to avoid
+- Do NOT say "lower investment is bearish" — it is bullish for prices
+- Do NOT attribute Brent-WTI spread moves to "global demand" — it is a US-specific supply/logistics signal
+- Do NOT conflate "oil company profits down" with "oil prices going down" — they can diverge
+- Do NOT say "rising dollar is bullish for oil" — it is bearish (oil is dollar-denominated)
 """
 
 APPENDIX_TEMPLATE = """
@@ -212,6 +243,32 @@ def _format_events(events: list[dict]) -> str:
     return "\n".join(lines)
 
 
+def _load_previous_report(n: int = 1) -> str:
+    """
+    Load the body of the nth most recent report (default: last report).
+    Returns empty string if no previous report exists.
+    Strips the YAML frontmatter and data appendix — just the narrative.
+    """
+    try:
+        reports = sorted(REPORT_DIR.glob("*.md"), reverse=True)
+        if len(reports) <= n - 1:
+            return ""
+        prev = reports[n - 1]
+        text = prev.read_text(encoding="utf-8")
+        # Strip YAML frontmatter
+        if text.startswith("---"):
+            end = text.find("---", 3)
+            if end != -1:
+                text = text[end + 3:].strip()
+        # Strip data appendix
+        if "## Data Appendix" in text:
+            text = text[:text.index("## Data Appendix")].strip()
+        # Cap length — don't blow out the context window
+        return text[:2000]
+    except Exception:
+        return ""
+
+
 def _extract_high_importance_events(enriched_articles: list[dict]) -> tuple[str, str]:
     """
     Scan extraction results for high-importance and breaking events.
@@ -293,7 +350,7 @@ def _extract_high_importance_events(enriched_articles: list[dict]) -> tuple[str,
 
 def _call_llm(prompt: str) -> str:
     """Use Claude API if key available, else fall back to Ollama."""
-    if ANTHROPIC_API_KEY:
+    if ANTHROPIC_API_KEY and USE_CLAUDE_REPORT:
         response = httpx.post(
             "https://api.anthropic.com/v1/messages",
             headers={
@@ -302,7 +359,7 @@ def _call_llm(prompt: str) -> str:
                 "content-type": "application/json",
             },
             json={
-                "model": "claude-sonnet-4-20250514",
+                "model": "claude-sonnet-4-6",
                 "max_tokens": 3000,
                 "temperature": 0.4,
                 "messages": [{"role": "user", "content": prompt}]
@@ -392,6 +449,14 @@ def generate_report(prediction: dict, kg: KnowledgeGraph,
     # High-importance and breaking events from enriched extraction
     high_importance_str, breaking_news_str = _extract_high_importance_events(enriched_articles or [])
 
+    # Previous report for continuity
+    prev_report = _load_previous_report()
+
+    # Brent-WTI spread
+    brent_val = brent_latest.get("value")
+    wti_val   = wti_latest.get("value")
+    spread    = round(float(brent_val) - float(wti_val), 2) if brent_val and wti_val else "N/A"
+
     # ── Build prompt ───────────────────────────────────────────────────────
     now_london = datetime.now(timezone.utc).strftime("%d/%m/%Y, %I%p, London")
 
@@ -427,6 +492,9 @@ def generate_report(prediction: dict, kg: KnowledgeGraph,
         recent_events       = _format_events(recent_events),
     )
 
+    # Prepend domain knowledge so the LLM applies correct oil market logic
+    prompt = OIL_MARKET_KNOWLEDGE + "\n\n" + prompt
+
     # ── Call Ollama ────────────────────────────────────────────────────────
     logger.info(f"Generating report via {'Claude API' if ANTHROPIC_API_KEY else 'Ollama'}...")
     report_text = _call_llm(prompt)
@@ -440,17 +508,18 @@ def generate_report(prediction: dict, kg: KnowledgeGraph,
     alert_banner = "\n> ⚠ **ALERT REPORT** — High geopolitical risk detected. Sent outside normal schedule.\n" \
                    if is_alert else ""
 
-    header = f"""---
-generated_at: {now.isoformat()}
-alert: {is_alert}
-direction: {prediction.get('direction')}
-confidence: {prediction.get('confidence')}
-score: {prediction.get('score')}
-wti: {wti_latest.get('value')} ({wti_latest.get('period')})
-brent: {brent_latest.get('value')} ({brent_latest.get('period')})
----
-{alert_banner}
-"""
+    header = (
+        f"---\n"
+        f"generated_at: {now.isoformat()}\n"
+        f"alert: {is_alert}\n"
+        f"direction: {prediction.get('direction')}\n"
+        f"confidence: {prediction.get('confidence')}\n"
+        f"score: {prediction.get('score')}\n"
+        f"wti: {wti_latest.get('value')} ({wti_latest.get('period')})\n"
+        f"brent: {brent_latest.get('value')} ({brent_latest.get('period')})\n"
+        f"---\n"
+        f"{alert_banner}\n"
+    )
     # Build data appendix
     signals = prediction.get("signals", {})
     sent    = signals.get("sentiment", {})
@@ -509,18 +578,31 @@ brent: {brent_latest.get('value')} ({brent_latest.get('period')})
 
     # Auto-convert to docx if pandoc is available
     try:
-        import subprocess
-        docx_path = filepath.with_suffix(".docx")
-        result = subprocess.run(
-            ["pandoc", str(filepath), "-o", str(docx_path)],
-            capture_output=True, text=True, timeout=30
+        import subprocess, shutil
+
+        # cron runs with minimal PATH — search common install locations explicitly
+        pandoc_cmd = shutil.which("pandoc") or next(
+            (p for p in [
+                "/usr/local/bin/pandoc",
+                "/opt/homebrew/bin/pandoc",
+                "/usr/bin/pandoc",
+                "/home/linuxbrew/.linuxbrew/bin/pandoc",
+            ] if Path(p).exists()),
+            None
         )
-        if result.returncode == 0:
-            logger.info(f"DOCX saved: {docx_path}")
+
+        if not pandoc_cmd:
+            logger.info("Pandoc not found in PATH or known locations — skipping DOCX conversion")
         else:
-            logger.warning(f"Pandoc failed: {result.stderr}")
-    except FileNotFoundError:
-        logger.info("Pandoc not installed — skipping DOCX conversion")
+            docx_path = filepath.with_suffix(".docx")
+            result = subprocess.run(
+                [pandoc_cmd, str(filepath), "-o", str(docx_path)],
+                capture_output=True, text=True, timeout=30
+            )
+            if result.returncode == 0:
+                logger.info(f"DOCX saved: {docx_path}")
+            else:
+                logger.warning(f"Pandoc failed: {result.stderr}")
     except Exception as e:
         logger.warning(f"DOCX conversion error: {e}")
 

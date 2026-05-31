@@ -93,15 +93,13 @@ RSS_FEEDS = {
     "investing_oil":        "https://www.investing.com/rss/news_14.rss",
 
     # Trump / US policy
-    "reuters_politics":     "https://feeds.reuters.com/reuters/politicsNews",
-    "ap_energy":            "https://rsshub.app/apnews/topics/energy",
-    "axios_energy":         "https://api.axios.com/feed/topics/energy",
+    "state_department":     "https://www.state.gov/rss-feeds/",
     "the_hill_energy":      "https://thehill.com/policy/energy-environment/feed/",
-    # white_house feed returns 404 — removed
-    # nitter_trump returns 429 — removed
-    # reuters_politics DNS fails — replaced above
-    # ap_politics SSL fails — replaced with ap_energy
-    # politico returns 403 — removed
+    "ap_top_news":          "https://feeds.ap.org/rss/apf-topnews",
+    "reuters_energy":       "https://feeds.reuters.com/reuters/businessNews",
+    # reuters_politics — DNS fails
+    # ap_energy (rsshub) — 403
+    # axios_energy — 404
 }
 
 # ── Request settings ──────────────────────────────────────────────────────────
@@ -109,6 +107,11 @@ REQUEST_TIMEOUT       = 20
 MAX_ARTICLES_PER_FEED = 15    # reduced from 50 — top 15 per feed is enough
 MAX_TOTAL_RSS         = 150   # hard ceiling across all feeds combined
 USER_AGENT            = "AgenticNewsroom/1.0"
+
+# ── Anthropic API ─────────────────────────────────────────────────────────────
+ANTHROPIC_API_KEY      = os.getenv("ANTHROPIC_API_KEY", "")
+USE_CLAUDE_EXTRACTION  = os.getenv("USE_CLAUDE_EXTRACTION", "false").lower() == "true"  # set true when rate limits allow
+USE_CLAUDE_REPORT      = os.getenv("USE_CLAUDE_REPORT", "true").lower() == "true"        # always use Claude for report
 
 # ── Ollama (local LLM) ────────────────────────────────────────────────────────
 OLLAMA_BASE_URL = os.getenv("OLLAMA_BASE_URL", "http://localhost:11434")
