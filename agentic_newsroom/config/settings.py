@@ -124,61 +124,70 @@ SKIP_INGESTION  = os.getenv("SKIP_INGESTION",  "false").lower() == "true"
 # ── Run cadence ───────────────────────────────────────────────────────────────
 CYCLE_HOURS = 12
 
-# ── User interest watchlist ───────────────────────────────────────────────────
-# Keywords that always get elevated importance regardless of LLM extraction.
-# Edit this list freely — no code changes needed.
+# ── User interest watchlist (THEMED) ──────────────────────────────────────────
+# Organised into themes so you can shift focus as the world's attention moves,
+# WITHOUT editing code. Each theme is a list of keywords; set a theme to []
+# (or comment its terms out) to mute it when it stops driving prices.
+#
+# Design principle: keep this LEAN. When one driver dominates (e.g. an active
+# Iran conflict), that theme carries the weight and the dormant themes stay
+# short. Activate a dormant theme only when a real story is forming — the
+# system's "emerging story" scan (focus/emerging.py) will prompt the adviser
+# when something new surfaces in the broad feeds.
+#
 # Matching is case-insensitive, against article title + summary.
-#
-# How it works: any article matching one or more of these gets a
-# WATCHLIST_BOOST added to its importance_score before scoring.
-# Multiple matches stack up to a cap of 1.0.
-#
-# Current focus: Iran conflict, Hormuz, Trump remarks, peace talks
-USER_WATCHLIST = [
-    # Iran / Hormuz
-    "hormuz",
-    "strait of hormuz",
-    "iran",
-    "iranian",
-    "irgc",
-    "fordow",
-    "natanz",
-    "iran nuclear",
-    "iran deal",
-    "iran sanctions",
+# Any article matching one or more terms gets WATCHLIST_BOOST added to its
+# importance_score (multiple matches stack, capped at 1.0).
 
-    # Gaza / Israel / Lebanon
-    "gaza",
-    "israel",
-    "netanyahu",
-    "hezbollah",
-    "southern lebanon",
-    "west bank",
+WATCHLIST_THEMES = {
+    # ── ACTIVE: the dominant driver(s) right now ──────────────────────────
+    "geopolitics_iran": [
+        "hormuz", "strait of hormuz", "iran", "iranian", "irgc",
+        "fordow", "natanz", "iran nuclear", "iran deal", "iran sanctions",
+    ],
+    "geopolitics_israel": [
+        "gaza", "israel", "netanyahu", "hezbollah", "southern lebanon", "west bank",
+    ],
+    "us_policy": [
+        "trump", "white house", "executive order", "drill baby drill",
+        "strategic reserve", "spr release",
+    ],
+    "deescalation": [
+        "ceasefire", "peace talks", "negotiations", "agreement reached", "hormuz reopened",
+    ],
+    "russia_ukraine": [
+        "novorossiysk", "caspian pipeline", "russia oil", "ukraine drone oil",
+    ],
 
-    # Trump / US policy
-    "trump",
-    "white house",
-    "executive order",
-    "iran deal",
-    "drill baby drill",
-    "strategic reserve",
-    "spr release",
+    # ── DORMANT: activate (add terms) when the emerging-story scan flags one ──
+    # Kept short on purpose. These are the recurring non-conflict drivers the
+    # adviser turns up when attention shifts there.
+    "weather_climate": [
+        # e.g. "heatwave", "cold snap", "freeze-off", "hurricane", "tropical storm"
+    ],
+    "waterways_logistics": [
+        # e.g. "rhine", "low water", "mississippi barge", "suez", "panama canal"
+    ],
+    "natural_disaster": [
+        # e.g. "earthquake", "tsunami", "refinery fire", "pipeline rupture"
+    ],
+    "demand_macro": [
+        # e.g. "china demand", "india demand", "dollar", "recession", "refinery margin"
+    ],
+}
 
-    # Peace talks / de-escalation (bearish risk)
-    "ceasefire",
-    "peace talks",
-    "negotiations",
-    "agreement reached",
-    "hormuz reopened",
+# Flatten themes into the flat list the rest of the pipeline consumes.
+# (Downstream code is unchanged — it still reads USER_WATCHLIST.)
+# De-duplicate while preserving order.
+USER_WATCHLIST = list(dict.fromkeys(
+    kw for terms in WATCHLIST_THEMES.values() for kw in terms
+))
 
-    # Russia / Ukraine oil angle
-    "novorossiysk",
-    "caspian pipeline",
-    "russia oil",
-    "ukraine drone oil",
-
-    # Add your own below — one string per line
-]
+# Broad/general feeds used by the emerging-story scan (focus/emerging.py).
+# These are general-coverage sources that surface a NEW driver before it
+# becomes a dominant theme — the early-warning sensor. Keep this to the
+# genuinely broad ones, not the Iran/ME-specific feeds.
+BROAD_FEEDS = ["reuters_energy", "eia_petroleum_weekly", "ft_markets", "bloomberg_markets"]
 
 # How much to boost importance for watchlist matches (additive, capped at 1.0)
 # 0.2 = a watchlist match adds 0.2 to the LLM's importance_score

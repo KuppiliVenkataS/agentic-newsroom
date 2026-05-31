@@ -58,7 +58,9 @@ Return this exact JSON structure:
   "is_breaking": false,
   "hormuz_risk": false,
   "opec_event": false,
-  "sanctions_event": false
+  "sanctions_event": false,
+  "supply_disruption": false,
+  "logistics_disruption": false
 }}
 
 Rules:
@@ -79,6 +81,13 @@ Rules:
 - hormuz_risk: true if Hormuz closure or Iranian naval threat mentioned
 - opec_event: true if OPEC/OPEC+ production decision or meeting
 - sanctions_event: true if new oil-related sanctions described
+- supply_disruption: true for ANY physical interruption to oil/gas production or
+  refining, from ANY cause — storm/hurricane shut-in, freeze-off, earthquake or
+  tsunami damage, refinery fire/outage, field accident, pipeline rupture, labour
+  strike. This is theme-agnostic: it is NOT limited to the Middle East.
+- logistics_disruption: true for ANY interruption to the TRANSPORT of oil/products —
+  low river water halting barges (e.g. Rhine, Mississippi), canal/strait blockage,
+  port closure, tanker shortage, freight/shipping breakdown. Also theme-agnostic.
 - Empty fields: use [] or ""
 - Return only the JSON object, no markdown
 """
@@ -101,7 +110,9 @@ JSON structure:
   "is_breaking": false,
   "hormuz_risk": false,
   "opec_event": false,
-  "sanctions_event": false
+  "sanctions_event": false,
+  "supply_disruption": false,
+  "logistics_disruption": false
 }}
 
 direction: bullish/bearish/neutral/unclear. confidence: high/medium/low. sentiment: positive/negative/neutral.
@@ -109,6 +120,8 @@ urgency: critical(strikes/Hormuz)/high(sanctions/ceasefire)/medium(OPEC/diplomac
 importance_score: 0.9+=active oil infrastructure attack, 0.7+=major sanctions/disruption, 0.5+=OPEC decision, 0.3+=escalation risk, 0.1+=analyst note.
 importance_reason: one sentence on supply/demand mechanism.
 is_breaking: true if last 24h. hormuz_risk/opec_event/sanctions_event: true if applicable.
+supply_disruption: true for ANY physical production/refining interruption from ANY cause (storm, freeze, quake/tsunami, refinery outage, field accident, pipeline rupture) — not just Middle East.
+logistics_disruption: true for ANY oil/product TRANSPORT interruption (low river water/Rhine barges, canal/strait/port closure, tanker shortage) — not just Middle East.
 Return only JSON, no markdown.
 """
 

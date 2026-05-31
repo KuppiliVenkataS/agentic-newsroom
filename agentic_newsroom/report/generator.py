@@ -70,7 +70,7 @@ STRUCTURE:
 1. First line: date, time, location (e.g. "30/05/2026, 5AM, London")
 2. Second line: Brent and WTI prices, key spread or structure data if available
 3. Body: 5-7 flowing paragraphs, no headers, no bullet points
-4. LENGTH: 500-700 words minimum
+4. LENGTH: governed by the DELIVERY MODE block above. 500-700 words is the MAXIMUM (loud days only), never a minimum — shorter is better when the day is quiet.
 
 TONE — this is critical:
 You are a versatile analyst, not a permabull or permabear. Your tone follows the data:
@@ -311,6 +311,8 @@ def _extract_high_importance_events(enriched_articles: list[dict]) -> tuple[str,
             flags = []
             if hormuz:    flags.append("⚠ HORMUZ RISK")
             if sanctions: flags.append("SANCTIONS")
+            if chunk.get("supply_disruption"):    flags.append("SUPPLY DISRUPTION")
+            if chunk.get("logistics_disruption"): flags.append("LOGISTICS DISRUPTION")
 
             # Watchlist boost — user-defined topics always surface
             text = " ".join(filter(None, [article.get("title",""), article.get("summary","")])).lower()
@@ -346,6 +348,97 @@ def _extract_high_importance_events(enriched_articles: list[dict]) -> tuple[str,
         "\n".join(high_lines) if high_lines else "None detected in this run.",
         "\n".join(breaking_lines) if breaking_lines else "None detected in this run.",
     )
+
+
+def _compute_day_magnitude(enriched_articles: list[dict],
+                           is_alert: bool = False) -> tuple[str, str]:
+    """
+    Aggregate the day's boosted importance scores into a magnitude tier
+    that drives report length and tone. Reuses the same per-chunk scoring
+    (importance_score + watchlist boost, Hormuz/sanctions flags) as
+    _extract_high_importance_events, so no new scoring is introduced.
+
+    Tiers (the SCORE sets the floor; the LLM refines within it):
+      loud   — is_alert, OR any Hormuz/sanctions flag, OR >=2 events >=0.7
+      normal — at least one event >=0.5 but not loud
+      quiet  — nothing material
+
+    Returns (tier, lead_line) where lead_line is the single highest-importance
+    event line, used to anchor the headline/takeaway.
+    """
+    high_count = 0
+    has_critical_flag = False
+    best_importance = 0.0
+    best_line = ""
+
+    for article in enriched_articles or []:
+        title  = article.get("title", "")
+        source = article.get("source", "")
+        text   = " ".join(filter(None, [title, article.get("summary", "")])).lower()
+        watchlist_hits = [kw for kw in USER_WATCHLIST if kw.lower() in text]
+
+        for chunk in article.get("extraction", []):
+            if chunk.get("status") != "ok":
+                continue
+
+            importance = float(chunk.get("importance_score", 0.0))
+            if watchlist_hits:
+                boost = min(WATCHLIST_BOOST, len(watchlist_hits) * (WATCHLIST_BOOST / 2))
+                importance = min(1.0, importance + boost)
+
+            if (chunk.get("hormuz_risk") or chunk.get("sanctions_event")
+                    or chunk.get("supply_disruption") or chunk.get("logistics_disruption")):
+                has_critical_flag = True
+
+            if importance >= 0.7:
+                high_count += 1
+
+            if importance > best_importance:
+                best_importance = importance
+                src = f"[{source}] " if source else ""
+                best_line = f"{src}{title}".strip()
+
+    # Determine tier — score sets the floor
+    if is_alert or has_critical_flag or high_count >= 2:
+        tier = "loud"
+    elif best_importance >= 0.5:
+        tier = "normal"
+    else:
+        tier = "quiet"
+
+    return tier, (best_line or "No single dominant story.")
+
+
+# Per-tier delivery instructions. These OVERRIDE the structural defaults in
+# REPORT_PROMPT so the brief flexes with the magnitude of the day's news.
+_DELIVERY_BLOCKS = {
+    "quiet": """## DELIVERY MODE: QUIET DAY — KEEP IT VERY SHORT
+This overrides the structure/length rules below.
+- Nothing materially moved the market today. Say so plainly and briefly.
+- TOTAL LENGTH: 2-4 sentences. Do NOT pad to fill space. A short, honest
+  "nothing to act on" brief is MORE valuable to a busy reader than a long one.
+- Line 1: a plain conclusion headline, e.g. "Quiet day — nothing to act on."
+- Then 1-2 sentences on the steady state, and one "watch" line for tomorrow.
+- Do NOT manufacture urgency or drama. Calm days are reported calm — this is
+  what makes the loud days credible. No price level needed unless it moved.
+- Skip the 5-7 paragraph structure entirely.""",
+
+    "normal": """## DELIVERY MODE: NORMAL DAY
+This overrides the length rules below.
+- Line 1: a conclusion-carrying headline (the takeaway, not "Daily Oil Brief").
+- TOTAL LENGTH: ~150 words. Tight. Bottom line first, depth optional below it.
+- Surface exactly ONE carry-away takeaway the reader can hold in their head.
+- Sharp, named-adviser voice. Opinionated on direction, not prescriptive on trades.
+- Cover the day's real driver; don't force coverage of minor items.""",
+
+    "loud": """## DELIVERY MODE: LOUD DAY — LEAD HARD WITH THE BIG THING
+This overrides the length rules below.
+- Line 1: a conclusion-carrying headline naming the single most important thing.
+- Lead the body with that one thing, its price impact, and what it means for us.
+- TOTAL LENGTH: up to 500-700 words MAXIMUM — fuller, but never padded.
+- Still surface ONE clear carry-away takeaway up top before the detail.
+- Sharp, named-adviser voice. Urgency here is EARNED by the data, not manufactured.""",
+}
 
 
 def _call_llm(prompt: str) -> str:
@@ -457,6 +550,11 @@ def generate_report(prediction: dict, kg: KnowledgeGraph,
     wti_val   = wti_latest.get("value")
     spread    = round(float(brent_val) - float(wti_val), 2) if brent_val and wti_val else "N/A"
 
+    # ── Magnitude tier — drives report length/tone (score sets floor) ───────
+    day_tier, lead_line = _compute_day_magnitude(enriched_articles or [], is_alert=is_alert)
+    logger.info(f"Day magnitude tier: {day_tier} (lead: {lead_line[:80]})")
+    delivery_block = _DELIVERY_BLOCKS.get(day_tier, _DELIVERY_BLOCKS["normal"])
+
     # ── Build prompt ───────────────────────────────────────────────────────
     now_london = datetime.now(timezone.utc).strftime("%d/%m/%Y, %I%p, London")
 
@@ -492,12 +590,21 @@ def generate_report(prediction: dict, kg: KnowledgeGraph,
         recent_events       = _format_events(recent_events),
     )
 
-    # Prepend domain knowledge so the LLM applies correct oil market logic
-    prompt = OIL_MARKET_KNOWLEDGE + "\n\n" + prompt
+    # Prepend domain knowledge so the LLM applies correct oil market logic,
+    # and the delivery block so length/tone flex with the day's magnitude.
+    prompt = delivery_block + "\n\n" + OIL_MARKET_KNOWLEDGE + "\n\n" + prompt
 
     # ── Call Ollama ────────────────────────────────────────────────────────
     logger.info(f"Generating report via {'Claude API' if ANTHROPIC_API_KEY else 'Ollama'}...")
     report_text = _call_llm(prompt)
+
+    # ── Emerging-story scan (proposes new themes to the adviser; never auto-applies) ─
+    focus_note = ""
+    try:
+        from focus.emerging import scan_emerging_stories
+        focus_note = scan_emerging_stories(enriched_articles or [])
+    except Exception as e:
+        logger.warning(f"Emerging-story scan unavailable: {e}")
 
     # ── Save report ────────────────────────────────────────────────────────
     now      = datetime.now(timezone.utc)
@@ -508,10 +615,25 @@ def generate_report(prediction: dict, kg: KnowledgeGraph,
     alert_banner = "\n> ⚠ **ALERT REPORT** — High geopolitical risk detected. Sent outside normal schedule.\n" \
                    if is_alert else ""
 
+    # First non-empty line of the report is the conclusion-carrying headline.
+    # Expose it as `subject:` in the frontmatter for the email sender to use.
+    subject_line = ""
+    for _line in report_text.splitlines():
+        _stripped = _line.strip().lstrip("#").strip()
+        if _stripped:
+            subject_line = _stripped[:120]
+            break
+    if not subject_line:
+        subject_line = f"Oil Brief — {now.strftime('%d/%m/%Y')}"
+    # YAML-safe: strip any colons that would break the frontmatter parse
+    subject_line = subject_line.replace(":", " —")
+
     header = (
         f"---\n"
         f"generated_at: {now.isoformat()}\n"
         f"alert: {is_alert}\n"
+        f"magnitude: {day_tier}\n"
+        f"subject: {subject_line}\n"
         f"direction: {prediction.get('direction')}\n"
         f"confidence: {prediction.get('confidence')}\n"
         f"score: {prediction.get('score')}\n"
@@ -572,7 +694,7 @@ def generate_report(prediction: dict, kg: KnowledgeGraph,
     )
 
     with open(filepath, "w", encoding="utf-8") as f:
-        f.write(header + report_text + appendix)
+        f.write(header + report_text + appendix + focus_note)
 
     logger.info(f"Report saved: {filepath}")
 
