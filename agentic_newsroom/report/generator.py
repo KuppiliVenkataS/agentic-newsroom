@@ -33,11 +33,24 @@ Write in first person, flowing paragraphs, no headers, no bullet points.
 
 Today's date and time: {date_time}
 
-## Price Data
-Brent: {brent_price} USD/barrel (as of {brent_period}, source: {brent_source})
-WTI: {wti_price} USD/barrel (as of {wti_period}, source: {wti_source})
+## Price Data — PROVISIONAL (EIA reference only; NOT the live assessed prices)
+These EIA numbers are reference context, possibly hours/days old. They are NOT
+the assessed prices the SLT relies on. Treat them as provisional. The adviser
+will confirm/replace with live Argus/Platts numbers at review.
+Brent: {brent_price} USD/barrel (as of {brent_period}, source: {brent_source}) — PRE-REVIEW
+WTI: {wti_price} USD/barrel (as of {wti_period}, source: {wti_source}) — PRE-REVIEW
 WTI 5-day trend score: {wti_trend}
 Brent 5-day trend score: {brent_trend}
+
+PRICE-HANDLING RULES (important):
+- In BOTH sections, never present the EIA numbers as final/live. When you cite a
+  level, mark it provisional, e.g. "Brent ~$93 (EIA reference, pre-review)".
+- For the assessed prices the SLT actually checks — Dated Brent, Ebob gasoline,
+  gasoil/diesel crack — DO NOT invent numbers. Leave the labelled slots for the
+  adviser to fill from Argus/Platts. The promoter brief's price line should point
+  to these assessed slots, not the EIA flat price.
+- Your DIRECTIONAL read does not depend on the exact decimal — write the analysis
+  on events and direction; the adviser drops in the precise live numbers.
 
 ## Market Signal
 Overall direction: {direction} (confidence: {confidence}, score: {score})
@@ -66,11 +79,48 @@ Rationale: {rationale_3d}
 
 ---
 
-STRUCTURE:
+OUTPUT STRUCTURE — TWO SECTIONS, IN THIS ORDER:
+
+You write for TWO readers in one document. Produce both sections, separated
+exactly by a line containing only "===ANALYST===".
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+SECTION 1 — PROMOTER BRIEF (this goes to the refinery owner / top brass)
+This is the most important part. The reader is a busy refinery promoter, not a
+trader. They have 20 seconds. They care about ONE thing: does anything today
+change our crude/feedstock cost, our margin, or our risk — and should we act?
+
+RULES FOR THE PROMOTER BRIEF — follow exactly:
+- LENGTH: ~150 words. HARD CAP 170. Never longer, even on a big news day.
+- LINE 1: a plain headline that IS the conclusion. e.g.
+  "Crude easing on ceasefire bets — no action needed today" — not "Daily Brief".
+- LINE 2: Brent and WTI levels, one line.
+- THEN 2-3 short paragraphs in a sharp, named-adviser voice. Speak to the owner
+  directly. Translate everything into THEIR world:
+    * say "feedstock cost" / "crude cost" / "margin" — NOT "backwardation",
+      "5-day trend score", "$91.50 on volume", or other trader jargon.
+    * if the move is good for a refiner's buying cost, say so plainly.
+- Give exactly ONE clear carry-away — the single thing to know walking into the day.
+- Be opinionated on direction and what it means for US, but do NOT instruct a
+  specific trade or hedge. "The drift favours our crude cost; nothing forces a
+  move today" — inform the decision, don't make it for them.
+- A calm day is stated calm. Never manufacture urgency. "Nothing today demands
+  action" is a valuable sentence — use it when true.
+
+After the promoter brief, output the separator line: ===ANALYST===
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+SECTION 2 — ANALYST NOTE (this stays with the adviser, for their own judgment)
+This is the fuller analytical view — the depth behind the brief. Here you MAY
+use market structure, spreads, price levels, trader framing. Its length is
+governed by the DELIVERY MODE block at the very top of this prompt.
+
+STRUCTURE for the analyst note:
 1. First line: date, time, location (e.g. "30/05/2026, 5AM, London")
 2. Second line: Brent and WTI prices, key spread or structure data if available
-3. Body: 5-7 flowing paragraphs, no headers, no bullet points
-4. LENGTH: governed by the DELIVERY MODE block above. 500-700 words is the MAXIMUM (loud days only), never a minimum — shorter is better when the day is quiet.
+3. Body: flowing paragraphs, no headers, no bullet points
+4. LENGTH: governed by the DELIVERY MODE block above (quiet = short, loud = up to
+   700 words for the adviser). The promoter brief above is ALWAYS ~150 regardless.
 
 TONE — this is critical:
 You are a versatile analyst, not a permabull or permabear. Your tone follows the data:
@@ -102,7 +152,7 @@ AVOIDING STALENESS:
 - Do not repeat the same point across paragraphs
 - Do not use: "oil markets remain volatile", "uncertainty persists", "closely watched"
 
-END with your personal 12-24h outlook — include a specific Brent price level, direction, and the one event that would change your view either way.
+END the ANALYST NOTE with your personal 12-24h outlook — include a specific Brent price level, direction, and the one event that would change your view either way. (Do NOT put price levels or trade triggers in the promoter brief.)
 """
 
 OIL_MARKET_KNOWLEDGE = """
@@ -151,11 +201,11 @@ APPENDIX_TEMPLATE = """
 
 ## Data Appendix
 
-### Price Data
+### Price Data — *EIA reference, pre-review (not live assessed prices)*
 | Metric | Value | Period | Source |
 |--------|-------|--------|--------|
-| Brent Crude | ${brent_price} | {brent_period} | {brent_source} |
-| WTI Crude | ${wti_price} | {wti_period} | {wti_source} |
+| Brent Crude | ${brent_price} | {brent_period} | {brent_source} (pre-review) |
+| WTI Crude | ${wti_price} | {wti_period} | {wti_source} (pre-review) |
 | WTI 5-day trend | {wti_trend} | | EIA |
 | Brent 5-day trend | {brent_trend} | | EIA |
 
@@ -409,35 +459,33 @@ def _compute_day_magnitude(enriched_articles: list[dict],
     return tier, (best_line or "No single dominant story.")
 
 
-# Per-tier delivery instructions. These OVERRIDE the structural defaults in
-# REPORT_PROMPT so the brief flexes with the magnitude of the day's news.
+# Per-tier delivery instructions. These govern the ANALYST NOTE (Section 2) ONLY.
+# The PROMOTER BRIEF (Section 1) is ALWAYS ~150 words regardless of tier.
 _DELIVERY_BLOCKS = {
-    "quiet": """## DELIVERY MODE: QUIET DAY — KEEP IT VERY SHORT
-This overrides the structure/length rules below.
-- Nothing materially moved the market today. Say so plainly and briefly.
-- TOTAL LENGTH: 2-4 sentences. Do NOT pad to fill space. A short, honest
-  "nothing to act on" brief is MORE valuable to a busy reader than a long one.
-- Line 1: a plain conclusion headline, e.g. "Quiet day — nothing to act on."
-- Then 1-2 sentences on the steady state, and one "watch" line for tomorrow.
-- Do NOT manufacture urgency or drama. Calm days are reported calm — this is
-  what makes the loud days credible. No price level needed unless it moved.
-- Skip the 5-7 paragraph structure entirely.""",
+    "quiet": """## DELIVERY MODE: QUIET DAY
+Applies to the ANALYST NOTE (Section 2) only. The promoter brief stays ~150 words.
+- Nothing materially moved the market today. The analyst note should be SHORT too:
+  3-5 sentences. Do not pad. State the steady state and one thing to watch.
+- The promoter brief's headline should plainly say it's a quiet day, e.g.
+  "Quiet day — nothing to act on; crude steady."
+- Do NOT manufacture urgency. Calm days reported calm — this is what makes the
+  loud days credible.""",
 
     "normal": """## DELIVERY MODE: NORMAL DAY
-This overrides the length rules below.
-- Line 1: a conclusion-carrying headline (the takeaway, not "Daily Oil Brief").
-- TOTAL LENGTH: ~150 words. Tight. Bottom line first, depth optional below it.
-- Surface exactly ONE carry-away takeaway the reader can hold in their head.
-- Sharp, named-adviser voice. Opinionated on direction, not prescriptive on trades.
-- Cover the day's real driver; don't force coverage of minor items.""",
+Applies to the ANALYST NOTE (Section 2) only. The promoter brief stays ~150 words.
+- Analyst note: ~250-350 words, the day's real driver and what it means.
+- Cover the genuine driver; don't force coverage of minor items.
+- Sharp, evidence-led voice in the analyst note; business-translated in the brief.""",
 
-    "loud": """## DELIVERY MODE: LOUD DAY — LEAD HARD WITH THE BIG THING
-This overrides the length rules below.
-- Line 1: a conclusion-carrying headline naming the single most important thing.
-- Lead the body with that one thing, its price impact, and what it means for us.
-- TOTAL LENGTH: up to 500-700 words MAXIMUM — fuller, but never padded.
-- Still surface ONE clear carry-away takeaway up top before the detail.
-- Sharp, named-adviser voice. Urgency here is EARNED by the data, not manufactured.""",
+    "loud": """## DELIVERY MODE: LOUD DAY — BIG NEWS
+Applies to the ANALYST NOTE (Section 2) only. The promoter brief STILL stays ~150
+words — a big news day does NOT make the promoter brief longer, it makes it
+SHARPER. The owner still has 20 seconds.
+- Analyst note: fuller, up to 500-700 words MAXIMUM for the adviser's own use.
+  Lead hard with the single most important thing, its price impact, and what it
+  means for our crude cost.
+- Promoter brief: lead with the one big thing in plain business terms, one
+  carry-away, ~150 words. Urgency must be EARNED by the data, never manufactured.""",
 }
 
 
@@ -479,12 +527,30 @@ def _call_llm(prompt: str) -> str:
 
 def generate_report(prediction: dict, kg: KnowledgeGraph,
                     enriched_articles: list[dict] = None,
-                    is_alert: bool = False) -> Path:
+                    is_alert: bool = False) -> Path | None:
     """
     Generate a markdown analyst report and save it to REPORT_DIR.
-    Returns the path of the saved report.
+    Returns the path of the saved report, or None if the cycle-health guard
+    blocked publication (empty/stale/failed cycle — nothing is sent).
     """
     REPORT_DIR.mkdir(parents=True, exist_ok=True)
+
+    # ── Cycle-health guard ─────────────────────────────────────────────────
+    # If the cycle is empty/stale/failed, log the reason and SEND NOTHING.
+    # Silence is safer than a wrong or stale report reaching the SLT.
+    # (is_alert reports bypass the freshness/volume gate — an alert is itself
+    #  the signal — but still log health for the record.)
+    try:
+        from guard import check_cycle_health, log_verdict
+        _cycle = {"articles": enriched_articles or []}
+        _verdict = check_cycle_health(_cycle)
+        log_verdict(_verdict)
+        if not _verdict["publish"] and not is_alert:
+            logger.error("Cycle failed health guard — no report generated or sent this cycle.")
+            return None
+    except Exception as e:
+        # Guard must never itself block a run by crashing — log and continue.
+        logger.warning(f"Cycle-health guard unavailable ({e}); proceeding without it.")
 
     # ── Pull data for the prompt ───────────────────────────────────────────
     signals    = prediction.get("signals", {})
@@ -598,6 +664,20 @@ def generate_report(prediction: dict, kg: KnowledgeGraph,
     logger.info(f"Generating report via {'Claude API' if ANTHROPIC_API_KEY else 'Ollama'}...")
     report_text = _call_llm(prompt)
 
+    # Split the two audience sections on the separator the prompt requested.
+    # Render a clear labelled divider so the promoter brief (top) is visually
+    # distinct from the analyst note (below, for the adviser's own use).
+    if "===ANALYST===" in report_text:
+        brief_part, analyst_part = report_text.split("===ANALYST===", 1)
+        report_text = (
+            brief_part.rstrip()
+            + "\n\n---\n\n"
+            + "## 📊 Analyst Note — *adviser detail (not for distribution as-is)*\n\n"
+            + analyst_part.lstrip()
+        )
+    else:
+        logger.warning("Report missing ===ANALYST=== separator — single-section output.")
+
     # ── Emerging-story scan (proposes new themes to the adviser; never auto-applies) ─
     focus_note = ""
     try:
@@ -693,8 +773,23 @@ def generate_report(prediction: dict, kg: KnowledgeGraph,
         generated_at     = datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M UTC"),
     )
 
+    # ── Assessed-price slots — adviser fills these from Argus/Platts at review ─
+    # Placed at the very top so it's the first thing the adviser sees and cannot
+    # miss before forwarding to the SLT. EIA numbers shown for reference only.
+    assessed_block = (
+        "\n> **⚠ ADVISER ACTION — confirm assessed prices before sending.** "
+        "EIA figures below are pre-review reference only, not live.\n>\n"
+        "> | Assessed price | Adviser to enter (Argus/Platts) | EIA reference (pre-review) |\n"
+        "> |---|---|---|\n"
+        f"> | Dated Brent | __________ | {brent_latest.get('value','N/A')} ({brent_latest.get('period','N/A')}) |\n"
+        "> | Ebob gasoline | __________ | — |\n"
+        "> | Gasoil/diesel crack | __________ | — |\n"
+        f"> | Front Brent / WTI | __________ | {brent_latest.get('value','N/A')} / {wti_latest.get('value','N/A')} |\n"
+        ">\n> *Replace the blanks with the latest assessed numbers, then forward.*\n\n"
+    )
+
     with open(filepath, "w", encoding="utf-8") as f:
-        f.write(header + report_text + appendix + focus_note)
+        f.write(header + assessed_block + report_text + appendix + focus_note)
 
     logger.info(f"Report saved: {filepath}")
 

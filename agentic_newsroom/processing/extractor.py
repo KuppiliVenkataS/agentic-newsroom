@@ -4,6 +4,8 @@ Entity and event extractor using Claude API (primary) or Ollama (fallback).
 
 import json
 import logging
+import os
+import random
 import time
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from datetime import datetime
@@ -14,7 +16,14 @@ from config.settings import OLLAMA_BASE_URL, OLLAMA_MODEL, ANTHROPIC_API_KEY, US
 
 logger = logging.getLogger(__name__)
 
-MAX_WORKERS = 2   # 2 workers × 0.5s chunk delay keeps well within rate limits
+# Concurrency + pacing. Tunable via env without code changes.
+# MAX_WORKERS: parallel extraction workers. MORE workers can make rate-limiting
+#   WORSE, not better — 2-3 is usually the sweet spot for Haiku extraction.
+# EXTRACTION_PACE_SEC: small sleep after each successful call to stay UNDER the
+#   rate limit proactively rather than bouncing off it via 429 retries.
+MAX_WORKERS         = int(os.getenv("MAX_WORKERS", "2"))
+EXTRACTION_PACE_SEC = float(os.getenv("EXTRACTION_PACE_SEC", "0.25"))
+
 
 EXTRACTION_PROMPT_FULL = """You are an expert financial analyst specialising in oil markets.
 
@@ -58,9 +67,7 @@ Return this exact JSON structure:
   "is_breaking": false,
   "hormuz_risk": false,
   "opec_event": false,
-  "sanctions_event": false,
-  "supply_disruption": false,
-  "logistics_disruption": false
+  "sanctions_event": false
 }}
 
 Rules:
@@ -81,13 +88,6 @@ Rules:
 - hormuz_risk: true if Hormuz closure or Iranian naval threat mentioned
 - opec_event: true if OPEC/OPEC+ production decision or meeting
 - sanctions_event: true if new oil-related sanctions described
-- supply_disruption: true for ANY physical interruption to oil/gas production or
-  refining, from ANY cause — storm/hurricane shut-in, freeze-off, earthquake or
-  tsunami damage, refinery fire/outage, field accident, pipeline rupture, labour
-  strike. This is theme-agnostic: it is NOT limited to the Middle East.
-- logistics_disruption: true for ANY interruption to the TRANSPORT of oil/products —
-  low river water halting barges (e.g. Rhine, Mississippi), canal/strait blockage,
-  port closure, tanker shortage, freight/shipping breakdown. Also theme-agnostic.
 - Empty fields: use [] or ""
 - Return only the JSON object, no markdown
 """
@@ -110,9 +110,7 @@ JSON structure:
   "is_breaking": false,
   "hormuz_risk": false,
   "opec_event": false,
-  "sanctions_event": false,
-  "supply_disruption": false,
-  "logistics_disruption": false
+  "sanctions_event": false
 }}
 
 direction: bullish/bearish/neutral/unclear. confidence: high/medium/low. sentiment: positive/negative/neutral.
@@ -120,16 +118,20 @@ urgency: critical(strikes/Hormuz)/high(sanctions/ceasefire)/medium(OPEC/diplomac
 importance_score: 0.9+=active oil infrastructure attack, 0.7+=major sanctions/disruption, 0.5+=OPEC decision, 0.3+=escalation risk, 0.1+=analyst note.
 importance_reason: one sentence on supply/demand mechanism.
 is_breaking: true if last 24h. hormuz_risk/opec_event/sanctions_event: true if applicable.
-supply_disruption: true for ANY physical production/refining interruption from ANY cause (storm, freeze, quake/tsunami, refinery outage, field accident, pipeline rupture) — not just Middle East.
-logistics_disruption: true for ANY oil/product TRANSPORT interruption (low river water/Rhine barges, canal/strait/port closure, tanker shortage) — not just Middle East.
 Return only JSON, no markdown.
 """
 
 
-def _call_llm(prompt: str, retries: int = 3) -> str:
+def _call_llm(prompt: str, retries: int = 6) -> str:
     """
     Use Claude API if key available AND USE_CLAUDE_EXTRACTION=true.
     Falls back to Ollama otherwise.
+
+    Rate-limit handling (fixes the 429-hammering that blew extraction out to
+    ~50-80 min): on a 429 we (a) honour the server's Retry-After header when
+    present, (b) otherwise back off exponentially from a 2s base, (c) add
+    random jitter so parallel workers don't retry in lockstep, and (d) allow
+    more attempts so a transient limit doesn't drop the article.
     """
     if ANTHROPIC_API_KEY and USE_CLAUDE_EXTRACTION:
         for attempt in range(retries):
@@ -150,16 +152,39 @@ def _call_llm(prompt: str, retries: int = 3) -> str:
                     timeout=30
                 )
                 if response.status_code == 429:
-                    wait = 2 ** attempt   # 1s, 2s, 4s
-                    logger.warning(f"  Rate limited — waiting {wait}s before retry {attempt+1}/{retries}")
+                    # Prefer the server's own guidance if it sends one.
+                    retry_after = response.headers.get("retry-after")
+                    if retry_after:
+                        try:
+                            wait = float(retry_after)
+                        except ValueError:
+                            wait = 2.0 * (2 ** attempt)
+                    else:
+                        wait = 2.0 * (2 ** attempt)        # 2,4,8,16,32,64s
+                    wait += random.uniform(0, wait * 0.25)  # jitter, decorrelate workers
+                    wait = min(wait, 60.0)                  # cap any single wait
+                    logger.warning(
+                        f"  Rate limited (429) — waiting {wait:.1f}s "
+                        f"before retry {attempt+1}/{retries}"
+                    )
                     time.sleep(wait)
                     continue
                 response.raise_for_status()
+                # Small proactive pace AFTER a success keeps us under the limit
+                # rather than bouncing off it. (Set EXTRACTION_PACE_SEC=0 to disable.)
+                if EXTRACTION_PACE_SEC:
+                    time.sleep(EXTRACTION_PACE_SEC)
                 return response.json()["content"][0]["text"].strip()
-            except httpx.HTTPStatusError as e:
+            except httpx.HTTPStatusError:
                 if attempt == retries - 1:
                     raise
-                time.sleep(2 ** attempt)
+                wait = 2.0 * (2 ** attempt) + random.uniform(0, 1.0)
+                time.sleep(min(wait, 60.0))
+            except (httpx.ConnectError, httpx.ReadTimeout, httpx.WriteTimeout):
+                # Transient network issue — back off and retry rather than fail.
+                if attempt == retries - 1:
+                    raise
+                time.sleep(min(2.0 * (2 ** attempt), 30.0))
         raise RuntimeError("Claude API failed after retries")
     else:
         return _call_ollama(prompt)
@@ -241,10 +266,10 @@ def extract_entities(chunks: list[str]) -> list[dict]:
             logger.warning(f"  Extraction failed on chunk {i}: {e}")
             results.append({"chunk_index": i, "status": "error", "error": str(e)})
 
+        # Ollama has no internal pacing; the Claude path now paces inside
+        # _call_llm via EXTRACTION_PACE_SEC, so only sleep here for Ollama.
         if not using_claude:
             time.sleep(0.2)
-        else:
-            time.sleep(0.5)
 
     return results
 

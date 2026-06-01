@@ -1,0 +1,1139 @@
+{
+ "run_id": "2026-05-31_03-00-36",
+ "processed_at": "2026-05-31T03:06:26.176823",
+ "article_count": 40,
+ "articles": [
+  {
+   "source": "oilprice_news",
+   "title": "America\u2019s LNG Boom Is Real \u2014 But China Is Planning Beyond It",
+   "summary": "The Iran war has handed the United States a rare opportunity: a new dawn of energy dominance in an increasingly fractured world. With coordinated US-Israeli strikes disrupting the Strait of Hormuz from late February, roughly 20% of global LNG supply has been stripped from the market since early Marc",
+   "published": "2026-05-30T21:00:00+00:00",
+   "fetched_at": "2026-05-31T03:00:37.489748+00:00",
+   "extraction": [
+    {
+     "status": "ok",
+     "importance_score": 0.25,
+     "hormuz_risk": false,
+     "sanctions_event": false,
+     "is_breaking": false,
+     "opec_event": false
+    },
+    {
+     "status": "ok",
+     "importance_score": 0.25,
+     "hormuz_risk": false,
+     "sanctions_event": false,
+     "is_breaking": false,
+     "opec_event": false
+    },
+    {
+     "status": "ok",
+     "importance_score": 0.88,
+     "hormuz_risk": true,
+     "sanctions_event": false,
+     "is_breaking": false,
+     "opec_event": false
+    },
+    {
+     "status": "ok",
+     "importance_score": 0.45,
+     "hormuz_risk": false,
+     "sanctions_event": false,
+     "is_breaking": false,
+     "opec_event": false
+    },
+    {
+     "status": "ok",
+     "importance_score": 0.65,
+     "hormuz_risk": true,
+     "sanctions_event": false,
+     "is_breaking": false,
+     "opec_event": false
+    },
+    {
+     "status": "ok",
+     "importance_score": 0.35,
+     "hormuz_risk": true,
+     "sanctions_event": false,
+     "is_breaking": false,
+     "opec_event": false
+    }
+   ]
+  },
+  {
+   "source": "middle_east_eye",
+   "title": "Draft US-Iran deal would reopen Hormuz and ease sanctions, US media says",
+   "summary": "<article class=\"live-blog-update default clearfix\">\n\n  \n      <h2>\n      <a href=\"https://www.middleeasteye.net/live-blog/live-blog-update/draft-us-iran-deal-would-reopen-hormuz-and-ease-sanctions-us-media-says\" rel=\"bookmark\">\n<span class=\"field field-title\">Draft US-Iran deal would reopen Hormuz a",
+   "published": "2026-05-31T02:53:47+00:00",
+   "fetched_at": "2026-05-31T03:00:47.973317+00:00",
+   "extraction": [
+    {
+     "status": "ok",
+     "importance_score": 0.72,
+     "hormuz_risk": true,
+     "sanctions_event": true,
+     "is_breaking": false,
+     "opec_event": false
+    }
+   ]
+  },
+  {
+   "source": "middle_east_eye",
+   "title": "Iran unveils cruise missile-equipped high-speed naval attack craft in Tehran",
+   "summary": "<article class=\"live-blog-update default clearfix\">\n\n  \n      <h2>\n      <a href=\"https://www.middleeasteye.net/live-blog/live-blog-update/iran-unveils-cruise-missile-equipped-high-speed-naval-attack-craft\" rel=\"bookmark\">\n<span class=\"field field-title\">Iran unveils cruise missile-equipped high-spe",
+   "published": "2026-05-31T01:41:16+00:00",
+   "fetched_at": "2026-05-31T03:00:47.997839+00:00",
+   "extraction": [
+    {
+     "status": "ok",
+     "importance_score": 0.35,
+     "hormuz_risk": false,
+     "sanctions_event": false,
+     "is_breaking": true,
+     "opec_event": false
+    }
+   ]
+  },
+  {
+   "source": "middle_east_eye",
+   "title": "Israeli air strikes hit southern Lebanon amid new displacement orders",
+   "summary": "<article class=\"live-blog-update default clearfix\">\n\n  \n      <h2>\n      <a href=\"https://www.middleeasteye.net/live-blog/live-blog-update/israeli-air-strikes-hit-southern-lebanon-amid-new-displacement-orders\" rel=\"bookmark\">\n<span class=\"field field-title\">Israeli air strikes hit southern Lebanon a",
+   "published": "2026-05-31T01:35:42+00:00",
+   "fetched_at": "2026-05-31T03:00:48.026037+00:00",
+   "extraction": [
+    {
+     "status": "ok",
+     "importance_score": 0.45,
+     "hormuz_risk": false,
+     "sanctions_event": false,
+     "is_breaking": true,
+     "opec_event": false
+    }
+   ]
+  },
+  {
+   "source": "middle_east_eye",
+   "title": "Key issues unresolved in Iran-US talks, Tehran says",
+   "summary": "<article class=\"live-blog-update default clearfix\">\n\n  \n      <h2>\n      <a href=\"https://www.middleeasteye.net/live-blog/live-blog-update/key-issues-unresolved-iran-us-talks-tehran-says\" rel=\"bookmark\">\n<span class=\"field field-title\">Key issues unresolved in Iran-US talks, Tehran says</span>\n</a>\n",
+   "published": "2026-05-31T01:27:39+00:00",
+   "fetched_at": "2026-05-31T03:00:48.141094+00:00",
+   "extraction": [
+    {
+     "status": "ok",
+     "importance_score": 0.45,
+     "hormuz_risk": false,
+     "sanctions_event": false,
+     "is_breaking": false,
+     "opec_event": false
+    }
+   ]
+  },
+  {
+   "source": "middle_east_eye",
+   "title": "Israeli minister urges Netanyahu to \u2018level Beirut suburbs to the ground\u2019",
+   "summary": "<article class=\"live-blog-update default clearfix\">\n\n  \n      <h2>\n      <a href=\"https://www.middleeasteye.net/live-blog/live-blog-update/israeli-minister-urges-netanyahu-level-beirut-suburbs-ground\" rel=\"bookmark\">\n<span class=\"field field-title\">Israeli minister urges Netanyahu to \u2018level Beirut s",
+   "published": "2026-05-31T00:48:02+00:00",
+   "fetched_at": "2026-05-31T03:00:48.146726+00:00",
+   "extraction": [
+    {
+     "status": "ok",
+     "importance_score": 0.45,
+     "hormuz_risk": false,
+     "sanctions_event": false,
+     "is_breaking": true,
+     "opec_event": false
+    }
+   ]
+  },
+  {
+   "source": "middle_east_eye",
+   "title": "Israeli raids and settler attacks intensify across occupied West Bank",
+   "summary": "<article class=\"live-blog-update default clearfix\">\n\n  \n      <h2>\n      <a href=\"https://www.middleeasteye.net/live-blog/live-blog-update/israeli-raids-and-settler-attacks-intensify-across-occupied-west-bank\" rel=\"bookmark\">\n<span class=\"field field-title\">Israeli raids and settler attacks intensif",
+   "published": "2026-05-31T00:47:02+00:00",
+   "fetched_at": "2026-05-31T03:00:48.164097+00:00",
+   "extraction": [
+    {
+     "status": "ok",
+     "importance_score": 0.15,
+     "hormuz_risk": false,
+     "sanctions_event": false,
+     "is_breaking": true,
+     "opec_event": false
+    }
+   ]
+  },
+  {
+   "source": "middle_east_eye",
+   "title": "Israel pushes to encircle Nabatieh as ground operations expand",
+   "summary": "<article class=\"live-blog-update default clearfix\">\n\n  \n      <h2>\n      <a href=\"https://www.middleeasteye.net/live-blog/live-blog-update/israel-pushes-encircle-nabatieh-ground-operations-expand\" rel=\"bookmark\">\n<span class=\"field field-title\">Israel pushes to encircle Nabatieh as ground operations",
+   "published": "2026-05-31T00:39:14+00:00",
+   "fetched_at": "2026-05-31T03:00:48.171065+00:00",
+   "extraction": [
+    {
+     "status": "ok",
+     "importance_score": 0.35,
+     "hormuz_risk": false,
+     "sanctions_event": false,
+     "is_breaking": true,
+     "opec_event": false
+    }
+   ]
+  },
+  {
+   "source": "middle_east_eye",
+   "title": "Hezbollah says it carried out 24 attacks on Israeli troops and military sites",
+   "summary": "<article class=\"live-blog-update default clearfix\">\n\n  \n      <h2>\n      <a href=\"https://www.middleeasteye.net/live-blog/live-blog-update/hezbollah-says-it-carried-out-24-attacks-israeli-troops-and-military\" rel=\"bookmark\">\n<span class=\"field field-title\">Hezbollah says it carried out 24 attacks on",
+   "published": "2026-05-31T00:29:58+00:00",
+   "fetched_at": "2026-05-31T03:00:48.190177+00:00",
+   "extraction": [
+    {
+     "status": "ok",
+     "importance_score": 0.45,
+     "hormuz_risk": false,
+     "sanctions_event": false,
+     "is_breaking": true,
+     "opec_event": false
+    }
+   ]
+  },
+  {
+   "source": "middle_east_eye",
+   "title": "Situation in north \u2018uncontrollable\u2019 after Hezbollah barrage, Israeli media says",
+   "summary": "<article class=\"live-blog-update default clearfix\">\n\n  \n      <h2>\n      <a href=\"https://www.middleeasteye.net/live-blog/live-blog-update/situation-north-uncontrollable-after-hezbollah-barrage-israeli-media\" rel=\"bookmark\">\n<span class=\"field field-title\">Situation in north \u2018uncontrollable\u2019 after H",
+   "published": "2026-05-31T00:05:31+00:00",
+   "fetched_at": "2026-05-31T03:00:48.258994+00:00",
+   "extraction": [
+    {
+     "status": "ok",
+     "importance_score": 0.45,
+     "hormuz_risk": false,
+     "sanctions_event": false,
+     "is_breaking": true,
+     "opec_event": false
+    }
+   ]
+  },
+  {
+   "source": "middle_east_eye",
+   "title": "US says it is \u2018more than capable\u2019 of resuming war on Iran",
+   "summary": "<article class=\"live-blog-update default clearfix\">\n\n  \n      <h2>\n      <a href=\"https://www.middleeasteye.net/live-blog/live-blog-update/us-says-it-more-capable-resuming-war-iran\" rel=\"bookmark\">\n<span class=\"field field-title\">US says it is \u2018more than capable\u2019 of resuming war on Iran</span>\n</a>\n",
+   "published": "2026-05-30T23:58:36+00:00",
+   "fetched_at": "2026-05-31T03:00:48.263454+00:00",
+   "extraction": [
+    {
+     "status": "ok",
+     "importance_score": 0.62,
+     "hormuz_risk": true,
+     "sanctions_event": false,
+     "is_breaking": true,
+     "opec_event": false
+    }
+   ]
+  },
+  {
+   "source": "middle_east_eye",
+   "title": "Israeli strike near Nabatieh hospital in Lebanon kills at least one person",
+   "summary": "<article class=\"live-blog-update default clearfix\">\n\n  \n      <h2>\n      <a href=\"https://www.middleeasteye.net/live-blog/live-blog-update/israeli-strike-near-nabatieh-hospital-lebanon-kills-least-one-person\" rel=\"bookmark\">\n<span class=\"field field-title\">Israeli strike near Nabatieh hospital in Le",
+   "published": "2026-05-30T21:33:34+00:00",
+   "fetched_at": "2026-05-31T03:00:48.269038+00:00",
+   "extraction": [
+    {
+     "status": "ok",
+     "importance_score": 0.35,
+     "hormuz_risk": false,
+     "sanctions_event": false,
+     "is_breaking": true,
+     "opec_event": false
+    }
+   ]
+  },
+  {
+   "source": "middle_east_eye",
+   "title": "Netanyahu to hold security talks as Israel escalates attacks on Lebanon",
+   "summary": "<article class=\"live-blog-update default clearfix\">\n\n  \n      <h2>\n      <a href=\"https://www.middleeasteye.net/live-blog/live-blog-update/netanyahu-hold-security-talks-israel-escalates-attacks-lebanon\" rel=\"bookmark\">\n<span class=\"field field-title\">Netanyahu to hold security talks as Israel escala",
+   "published": "2026-05-30T20:43:51+00:00",
+   "fetched_at": "2026-05-31T03:00:48.274454+00:00",
+   "extraction": [
+    {
+     "status": "ok",
+     "importance_score": 0.45,
+     "hormuz_risk": false,
+     "sanctions_event": false,
+     "is_breaking": true,
+     "opec_event": false
+    }
+   ]
+  },
+  {
+   "source": "middle_east_eye",
+   "title": "Israeli strike kills nine Syrian family members, including six children",
+   "summary": "<article class=\"live-blog-update default clearfix\">\n\n  \n      <h2>\n      <a href=\"https://www.middleeasteye.net/live-blog/live-blog-update/israeli-strike-kills-nine-syrian-family-members-including-six-children\" rel=\"bookmark\">\n<span class=\"field field-title\">Israeli strike kills nine Syrian family m",
+   "published": "2026-05-30T20:20:15+00:00",
+   "fetched_at": "2026-05-31T03:00:48.278801+00:00",
+   "extraction": [
+    {
+     "status": "ok",
+     "importance_score": 0.25,
+     "hormuz_risk": false,
+     "sanctions_event": false,
+     "is_breaking": true,
+     "opec_event": false
+    }
+   ]
+  },
+  {
+   "source": "middle_east_eye",
+   "title": "Israel closes schools near Lebanon border as security measures tighten",
+   "summary": "<article class=\"live-blog-update default clearfix\">\n\n  \n      <h2>\n      <a href=\"https://www.middleeasteye.net/live-blog/live-blog-update/israel-closes-schools-near-lebanon-border-security-measures-tighten\" rel=\"bookmark\">\n<span class=\"field field-title\">Israel closes schools near Lebanon border as",
+   "published": "2026-05-30T19:52:45+00:00",
+   "fetched_at": "2026-05-31T03:00:48.287120+00:00",
+   "extraction": [
+    {
+     "status": "ok",
+     "importance_score": 0.45,
+     "hormuz_risk": false,
+     "sanctions_event": false,
+     "is_breaking": true,
+     "opec_event": false
+    }
+   ]
+  },
+  {
+   "source": "al_monitor",
+   "title": "UK foreign minister due to visit China and India to discuss global issues",
+   "summary": "<p>LONDON, May 31 (Reuters) - British foreign minister Yvette Cooper will travel to China on Monday, and then onwards to India later in the week, with the visits to focus on global issues from the Strait of Hormuz and the Russia-Ukraine war to the recent Ebola outbreak.</p><p>Cooper will meet her Ch",
+   "published": "2026-05-30T23:36:37+00:00",
+   "fetched_at": "2026-05-31T03:00:48.561162+00:00",
+   "extraction": [
+    {
+     "status": "ok",
+     "importance_score": 0.25,
+     "hormuz_risk": false,
+     "sanctions_event": false,
+     "is_breaking": false,
+     "opec_event": false
+    },
+    {
+     "status": "ok",
+     "importance_score": 0.45,
+     "hormuz_risk": false,
+     "sanctions_event": false,
+     "is_breaking": false,
+     "opec_event": false
+    }
+   ]
+  },
+  {
+   "source": "al_monitor",
+   "title": "US military says it turned away blockade runner trying to reach Iranian port",
+   "summary": "<p>By Raphael Satter</p><p>May 30 - The U.S. military says it fired a missile into the engine room of a vessel trying to get through the U.S. blockade of Iran on Friday.</p><p>Here are some details:</p><p>\u2022 In a statement on Saturday, U.S. Central Command said it fired a Hellfire missile into the en",
+   "published": "2026-05-30T19:36:39+00:00",
+   "fetched_at": "2026-05-31T03:00:48.578905+00:00",
+   "extraction": [
+    {
+     "status": "ok",
+     "importance_score": 0.85,
+     "hormuz_risk": true,
+     "sanctions_event": false,
+     "is_breaking": true,
+     "opec_event": false
+    },
+    {
+     "status": "ok",
+     "importance_score": 0.92,
+     "hormuz_risk": true,
+     "sanctions_event": false,
+     "is_breaking": false,
+     "opec_event": false
+    }
+   ]
+  },
+  {
+   "source": "jerusalem_post",
+   "title": "'This is not a ceasefire': Bennett, Eisenkot blast government as Hezbollah fire intensifies",
+   "summary": "<img align=\"right\" alt=\"Opposition Leader and Head of the Yesh Atid party Yair Lapid and former Prime Minister Naftali Bennett speak during a press conference announcing a joint list named \u201cTogether\u201d ahead of upcoming elections, to be led by Bennett, in Herzliya, central Israel, April 26, 2026. (pho",
+   "published": "2026-05-30T22:41:42+00:00",
+   "fetched_at": "2026-05-31T03:00:48.989100+00:00",
+   "extraction": [
+    {
+     "status": "ok",
+     "importance_score": 0.45,
+     "hormuz_risk": false,
+     "sanctions_event": false,
+     "is_breaking": true,
+     "opec_event": false
+    },
+    {
+     "status": "ok",
+     "importance_score": 0.55,
+     "hormuz_risk": false,
+     "sanctions_event": false,
+     "is_breaking": true,
+     "opec_event": false
+    },
+    {
+     "status": "ok",
+     "importance_score": 0.45,
+     "hormuz_risk": false,
+     "sanctions_event": false,
+     "is_breaking": true,
+     "opec_event": false
+    },
+    {
+     "status": "ok",
+     "importance_score": 0.25,
+     "hormuz_risk": false,
+     "sanctions_event": false,
+     "is_breaking": true,
+     "opec_event": false
+    }
+   ]
+  },
+  {
+   "source": "jerusalem_post",
+   "title": "Home Front Command issues new guidelines for the North, canceling school in Lebanon border towns",
+   "summary": "<img align=\"right\" alt=\"Israelis take cover in a public shelter in the northern Israeli city of Safed as a siren sounds warning of incoming missiles fired into Israel, March 10, 2026 (photo credit: David Cohen/Flash90)\" src=\"https://images.jpost.com/image/upload/f_auto,fl_lossy/q_auto/c_fill,g_faces",
+   "published": "2026-05-30T23:56:21+00:00",
+   "fetched_at": "2026-05-31T03:00:48.994232+00:00",
+   "extraction": [
+    {
+     "status": "ok",
+     "importance_score": 0.35,
+     "hormuz_risk": false,
+     "sanctions_event": false,
+     "is_breaking": true,
+     "opec_event": false
+    },
+    {
+     "status": "ok",
+     "importance_score": 0.45,
+     "hormuz_risk": false,
+     "sanctions_event": false,
+     "is_breaking": true,
+     "opec_event": false
+    },
+    {
+     "status": "ok",
+     "importance_score": 0.45,
+     "hormuz_risk": false,
+     "sanctions_event": false,
+     "is_breaking": true,
+     "opec_event": false
+    }
+   ]
+  },
+  {
+   "source": "jerusalem_post",
+   "title": "Nearly three years into war, Hezbollah keeps northern Israel under fire - analysis",
+   "summary": "<img align=\"right\" alt=\"Israeli soldiers take position as civilians take cover during a Hezbollah attack near the Israeli border with Lebanon in northern Israel, May 19, 2026.  (photo credit: AYAL MARGOLIN/FLASH90)\" src=\"https://images.jpost.com/image/upload/f_auto,fl_lossy/q_auto/c_fill,g_faces:cen",
+   "published": "2026-05-30T22:51:32+00:00",
+   "fetched_at": "2026-05-31T03:00:48.998126+00:00",
+   "extraction": [
+    {
+     "status": "ok",
+     "importance_score": 0.05,
+     "hormuz_risk": false,
+     "sanctions_event": false,
+     "is_breaking": true,
+     "opec_event": false
+    },
+    {
+     "status": "ok",
+     "importance_score": 0.15,
+     "hormuz_risk": false,
+     "sanctions_event": false,
+     "is_breaking": true,
+     "opec_event": false
+    },
+    {
+     "status": "ok",
+     "importance_score": 0.35,
+     "hormuz_risk": false,
+     "sanctions_event": false,
+     "is_breaking": true,
+     "opec_event": false
+    },
+    {
+     "status": "ok",
+     "importance_score": 0.15,
+     "hormuz_risk": false,
+     "sanctions_event": false,
+     "is_breaking": false,
+     "opec_event": false
+    }
+   ]
+  },
+  {
+   "source": "jerusalem_post",
+   "title": "Using delay tactics, Iran turns US negotiations into prolonged waiting game - opinion",
+   "summary": "<img align=\"right\" alt=\"US President Donald Trump boards Air Force One en route to Joint Base Andrews, Maryland, as he departs Morristown Airport in Morristown, New Jersey, May 22, 2026. (photo credit: Reuters/Kylie Cooper)\" src=\"https://images.jpost.com/image/upload/f_auto,fl_lossy/q_auto/c_fill,g_",
+   "published": "2026-05-30T23:43:14+00:00",
+   "fetched_at": "2026-05-31T03:00:49.011896+00:00",
+   "extraction": [
+    {
+     "status": "ok",
+     "importance_score": 0.35,
+     "hormuz_risk": false,
+     "sanctions_event": false,
+     "is_breaking": false,
+     "opec_event": false
+    },
+    {
+     "status": "ok",
+     "importance_score": 0.45,
+     "hormuz_risk": true,
+     "sanctions_event": false,
+     "is_breaking": false,
+     "opec_event": false
+    },
+    {
+     "status": "ok",
+     "importance_score": 0.25,
+     "hormuz_risk": false,
+     "sanctions_event": false,
+     "is_breaking": false,
+     "opec_event": false
+    },
+    {
+     "status": "ok",
+     "importance_score": 0.25,
+     "hormuz_risk": false,
+     "sanctions_event": false,
+     "is_breaking": false,
+     "opec_event": false
+    },
+    {
+     "status": "ok",
+     "importance_score": 0.25,
+     "hormuz_risk": false,
+     "sanctions_event": false,
+     "is_breaking": false,
+     "opec_event": false
+    },
+    {
+     "status": "ok",
+     "importance_score": 0.0,
+     "hormuz_risk": false,
+     "sanctions_event": false,
+     "is_breaking": false,
+     "opec_event": false
+    }
+   ]
+  },
+  {
+   "source": "jerusalem_post",
+   "title": "No, ambassador: Israel's anger with France is not 'staged,' it is earned - opinion",
+   "summary": "<img align=\"right\" alt=\"French President Emmanuel Macron attends a Greece\u2013France Economic Forum at the Stavros Niarchos Foundation Cultural Center in Athens, last week. (photo credit: Louiza Vradi/Reuters)\" src=\"https://images.jpost.com/image/upload/f_auto,fl_lossy/q_auto/c_fill,g_faces:center,h_183",
+   "published": "2026-05-30T23:42:42+00:00",
+   "fetched_at": "2026-05-31T03:00:49.077586+00:00",
+   "extraction": [
+    {
+     "status": "ok",
+     "importance_score": 0.0,
+     "hormuz_risk": false,
+     "sanctions_event": false,
+     "is_breaking": false,
+     "opec_event": false
+    },
+    {
+     "status": "ok",
+     "importance_score": 0.05,
+     "hormuz_risk": false,
+     "sanctions_event": false,
+     "is_breaking": false,
+     "opec_event": false
+    },
+    {
+     "status": "ok",
+     "importance_score": 0.0,
+     "hormuz_risk": false,
+     "sanctions_event": false,
+     "is_breaking": false,
+     "opec_event": false
+    },
+    {
+     "status": "ok",
+     "importance_score": 0.0,
+     "hormuz_risk": false,
+     "sanctions_event": false,
+     "is_breaking": false,
+     "opec_event": false
+    }
+   ]
+  },
+  {
+   "source": "times_of_israel",
+   "title": "Trump in excellent health with leg swelling and hand bruising, doctor says",
+   "summary": "<p>Memo on US president's health released after physical earlier in the week; leg swelling continues but has improved, memo says; Trump turns 80 in June</p>\n<p>The post <a href=\"https://www.timesofisrael.com/trump-in-excellent-health-with-leg-swelling-and-hand-bruising-doctor-says/\">Trump in excelle",
+   "published": "2026-05-31T01:36:32+00:00",
+   "fetched_at": "2026-05-31T03:00:49.196382+00:00",
+   "extraction": [
+    {
+     "status": "ok",
+     "importance_score": 0.0,
+     "hormuz_risk": false,
+     "sanctions_event": false,
+     "is_breaking": false,
+     "opec_event": false
+    },
+    {
+     "status": "ok",
+     "importance_score": 0.0,
+     "hormuz_risk": false,
+     "sanctions_event": false,
+     "is_breaking": false,
+     "opec_event": false
+    },
+    {
+     "status": "ok",
+     "importance_score": 0.0,
+     "hormuz_risk": false,
+     "sanctions_event": false,
+     "is_breaking": false,
+     "opec_event": false
+    }
+   ]
+  },
+  {
+   "source": "times_of_israel",
+   "title": "Trump to headline fair for US\u2019s 250th anniversary after artists drop out",
+   "summary": "<p>As some performers back away from 'Great American State Fair' due to ties to president, he calls their music 'boring' and claims he gets 'larger audiences than Elvis in his prime'</p>\n<p>The post <a href=\"https://www.timesofisrael.com/trump-to-headline-fair-for-uss-250th-anniversary-after-artists",
+   "published": "2026-05-31T00:54:19+00:00",
+   "fetched_at": "2026-05-31T03:00:49.231792+00:00",
+   "extraction": [
+    {
+     "status": "ok",
+     "importance_score": 0.0,
+     "hormuz_risk": false,
+     "sanctions_event": false,
+     "is_breaking": false,
+     "opec_event": false
+    },
+    {
+     "status": "ok",
+     "importance_score": 0.0,
+     "hormuz_risk": false,
+     "sanctions_event": false,
+     "is_breaking": false,
+     "opec_event": false
+    },
+    {
+     "status": "ok",
+     "importance_score": 0.0,
+     "hormuz_risk": false,
+     "sanctions_event": false,
+     "is_breaking": false,
+     "opec_event": false
+    },
+    {
+     "status": "ok",
+     "importance_score": 0.0,
+     "hormuz_risk": false,
+     "sanctions_event": false,
+     "is_breaking": false,
+     "opec_event": false
+    }
+   ]
+  },
+  {
+   "source": "times_of_israel",
+   "title": "Trump said seeking changes to Iran deal, including more detail on fate of uranium stockpile",
+   "summary": "<p>'There will be a deal. The imminence of it, we'll see,' senior US official quoted as saying * Report: US has allowed some tankers from Qatar to cross Hormuz despite payments to Iran</p>\n<p>The post <a href=\"https://www.timesofisrael.com/liveblog-may-31-2026/\">Trump said seeking changes to Iran de",
+   "published": "2026-05-30T23:43:00+00:00",
+   "fetched_at": "2026-05-31T03:00:49.237598+00:00",
+   "extraction": [
+    {
+     "status": "ok",
+     "importance_score": 0.45,
+     "hormuz_risk": true,
+     "sanctions_event": false,
+     "is_breaking": false,
+     "opec_event": false
+    },
+    {
+     "status": "ok",
+     "importance_score": 0.55,
+     "hormuz_risk": true,
+     "sanctions_event": false,
+     "is_breaking": true,
+     "opec_event": false
+    },
+    {
+     "status": "ok",
+     "importance_score": 0.0,
+     "hormuz_risk": false,
+     "sanctions_event": false,
+     "is_breaking": false,
+     "opec_event": false
+    },
+    {
+     "status": "ok",
+     "importance_score": 0.45,
+     "hormuz_risk": true,
+     "sanctions_event": false,
+     "is_breaking": true,
+     "opec_event": false
+    },
+    {
+     "status": "ok",
+     "importance_score": 0.0,
+     "hormuz_risk": false,
+     "sanctions_event": false,
+     "is_breaking": false,
+     "opec_event": false
+    }
+   ]
+  },
+  {
+   "source": "times_of_israel",
+   "title": "Israel shuts schools near Lebanon border amid repeated Hezbollah rocket, drone attacks",
+   "summary": "<p>IDF Home Front Command tightens guidelines, as Nahariya hospital moves operations underground; Lebanese PM accuses Israel of 'scorched-earth policy' but defends ongoing peace talks</p>\n<p>The post <a href=\"https://www.timesofisrael.com/israel-shuts-schools-near-lebanon-border-amid-repeated-hezbol",
+   "published": "2026-05-30T23:13:04+00:00",
+   "fetched_at": "2026-05-31T03:00:49.242318+00:00",
+   "extraction": [
+    {
+     "status": "ok",
+     "importance_score": 0.25,
+     "hormuz_risk": false,
+     "sanctions_event": false,
+     "is_breaking": true,
+     "opec_event": false
+    },
+    {
+     "status": "ok",
+     "importance_score": 0.35,
+     "hormuz_risk": false,
+     "sanctions_event": false,
+     "is_breaking": true,
+     "opec_event": false
+    },
+    {
+     "status": "ok",
+     "importance_score": 0.25,
+     "hormuz_risk": false,
+     "sanctions_event": false,
+     "is_breaking": true,
+     "opec_event": false
+    },
+    {
+     "status": "ok",
+     "importance_score": 0.25,
+     "hormuz_risk": false,
+     "sanctions_event": false,
+     "is_breaking": false,
+     "opec_event": false
+    },
+    {
+     "status": "ok",
+     "importance_score": 0.25,
+     "hormuz_risk": false,
+     "sanctions_event": false,
+     "is_breaking": false,
+     "opec_event": false
+    }
+   ]
+  },
+  {
+   "source": "times_of_israel",
+   "title": "US says it struck ship trying to breach blockade and reach Iran",
+   "summary": "<p>US forces have yet to board vessel, which remains adrift in Gulf of Oman; six ships halted, one allowed to pass, and another 116 ships have been redirected since start of blockade</p>\n<p>The post <a href=\"https://www.timesofisrael.com/us-says-it-struck-ship-trying-to-breach-blockade-and-reach-ira",
+   "published": "2026-05-30T20:51:03+00:00",
+   "fetched_at": "2026-05-31T03:00:49.248327+00:00",
+   "extraction": [
+    {
+     "status": "ok",
+     "importance_score": 0.72,
+     "hormuz_risk": true,
+     "sanctions_event": false,
+     "is_breaking": true,
+     "opec_event": false
+    },
+    {
+     "status": "ok",
+     "importance_score": 0.82,
+     "hormuz_risk": true,
+     "sanctions_event": true,
+     "is_breaking": true,
+     "opec_event": false
+    },
+    {
+     "status": "ok",
+     "importance_score": 0.55,
+     "hormuz_risk": true,
+     "sanctions_event": false,
+     "is_breaking": false,
+     "opec_event": false
+    },
+    {
+     "status": "ok",
+     "importance_score": 0.0,
+     "hormuz_risk": false,
+     "sanctions_event": false,
+     "is_breaking": false,
+     "opec_event": false
+    }
+   ]
+  },
+  {
+   "source": "nasdaq_commodities",
+   "title": "Precious Metals News: Gold, Silver and PGM Price Floors Hold Up Against Headwinds",
+   "summary": "The precious metals complex is proving resilient in the face of intensifying macroeconomic headwinds and ongoing uncertainty over the direction of the conflict in the Middle East. Prices for gold, silver, platinum and palladium fell below key psychological levels this week on the back of hawkish int",
+   "published": "2026-05-28T20:10:00+00:00",
+   "fetched_at": "2026-05-31T03:00:58.385280+00:00",
+   "extraction": [
+    {
+     "status": "ok",
+     "importance_score": 0.05,
+     "hormuz_risk": false,
+     "sanctions_event": false,
+     "is_breaking": false,
+     "opec_event": false
+    },
+    {
+     "status": "ok",
+     "importance_score": 0.25,
+     "hormuz_risk": true,
+     "sanctions_event": false,
+     "is_breaking": false,
+     "opec_event": false
+    },
+    {
+     "status": "ok",
+     "importance_score": 0.65,
+     "hormuz_risk": true,
+     "sanctions_event": false,
+     "is_breaking": false,
+     "opec_event": false
+    },
+    {
+     "status": "ok",
+     "importance_score": 0.15,
+     "hormuz_risk": false,
+     "sanctions_event": false,
+     "is_breaking": false,
+     "opec_event": false
+    },
+    {
+     "status": "ok",
+     "importance_score": 0.15,
+     "hormuz_risk": true,
+     "sanctions_event": false,
+     "is_breaking": false,
+     "opec_event": false
+    },
+    {
+     "status": "ok",
+     "importance_score": 0.05,
+     "hormuz_risk": false,
+     "sanctions_event": false,
+     "is_breaking": false,
+     "opec_event": false
+    },
+    {
+     "status": "ok",
+     "importance_score": 0.05,
+     "hormuz_risk": false,
+     "sanctions_event": false,
+     "is_breaking": false,
+     "opec_event": false
+    }
+   ]
+  },
+  {
+   "source": "investing_oil",
+   "title": "U.S.-Iran talks hit sticking points as Lebanon fighting escalates",
+   "summary": "",
+   "published": "2026-05-31T01:23:02+00:00",
+   "fetched_at": "2026-05-31T03:00:58.552870+00:00",
+   "extraction": [
+    {
+     "status": "ok",
+     "importance_score": 0.55,
+     "hormuz_risk": true,
+     "sanctions_event": false,
+     "is_breaking": false,
+     "opec_event": false
+    }
+   ]
+  },
+  {
+   "source": "investing_oil",
+   "title": "Will ceasefires in Iran and Ukraine be enough to stabilize markets?",
+   "summary": "",
+   "published": "2026-05-30T20:52:03+00:00",
+   "fetched_at": "2026-05-31T03:00:58.564297+00:00",
+   "extraction": [
+    {
+     "status": "ok",
+     "importance_score": 0.45,
+     "hormuz_risk": false,
+     "sanctions_event": false,
+     "is_breaking": false,
+     "opec_event": false
+    }
+   ]
+  },
+  {
+   "source": "oilprice_news",
+   "title": "China\u2019s Oil Buying Pause Won\u2019t Last Forever",
+   "summary": "China has been cited as an example of a country that has managed to insulate itself relatively well against oil crises. With over a billion barrels in estimated inventories before the war in the Middle East started, China was the poster child of forward planning in energy security. But this could ch",
+   "published": "2026-05-30T23:00:00+00:00",
+   "fetched_at": "2026-05-31T03:00:37.279729+00:00",
+   "extraction": [
+    {
+     "status": "ok",
+     "importance_score": 0.25,
+     "hormuz_risk": false,
+     "sanctions_event": false,
+     "is_breaking": false,
+     "opec_event": false
+    },
+    {
+     "status": "ok",
+     "importance_score": 0.62,
+     "hormuz_risk": true,
+     "sanctions_event": false,
+     "is_breaking": false,
+     "opec_event": false
+    },
+    {
+     "status": "ok",
+     "importance_score": 0.65,
+     "hormuz_risk": false,
+     "sanctions_event": false,
+     "is_breaking": false,
+     "opec_event": false
+    },
+    {
+     "status": "ok",
+     "importance_score": 0.55,
+     "hormuz_risk": false,
+     "sanctions_event": false,
+     "is_breaking": false,
+     "opec_event": false
+    },
+    {
+     "status": "ok",
+     "importance_score": 0.45,
+     "hormuz_risk": false,
+     "sanctions_event": true,
+     "is_breaking": false,
+     "opec_event": false
+    },
+    {
+     "status": "ok",
+     "importance_score": 0.72,
+     "hormuz_risk": false,
+     "sanctions_event": true,
+     "is_breaking": false,
+     "opec_event": false
+    },
+    {
+     "status": "ok",
+     "importance_score": 0.65,
+     "hormuz_risk": true,
+     "sanctions_event": false,
+     "is_breaking": false,
+     "opec_event": false
+    }
+   ]
+  },
+  {
+   "source": "jerusalem_post",
+   "title": "The Jewish world cannot afford to leave AI education to Silicon Valley - opinion",
+   "summary": "<img align=\"right\" alt=\" AI education illustrative (photo credit: SCREENSHOT/FACEBOOK/VIA SECTION 27A OF THE COPYRIGHT ACT)\" src=\"https://images.jpost.com/image/upload/f_auto,fl_lossy/q_auto/c_fill,g_faces:center,h_396,w_382/647411\" title=\" AI education illustrative (photo credit: SCREENSHOT/FACEBOO",
+   "published": "2026-05-30T23:44:52+00:00",
+   "fetched_at": "2026-05-31T03:00:49.002984+00:00",
+   "extraction": [
+    {
+     "status": "ok",
+     "importance_score": 0.0,
+     "hormuz_risk": false,
+     "sanctions_event": false,
+     "is_breaking": false,
+     "opec_event": false
+    },
+    {
+     "status": "ok",
+     "importance_score": 0.0,
+     "hormuz_risk": false,
+     "sanctions_event": false,
+     "is_breaking": false,
+     "opec_event": false
+    },
+    {
+     "status": "ok",
+     "importance_score": 0.0,
+     "hormuz_risk": false,
+     "sanctions_event": false,
+     "is_breaking": false,
+     "opec_event": false
+    },
+    {
+     "status": "ok",
+     "importance_score": 0.0,
+     "hormuz_risk": false,
+     "sanctions_event": false,
+     "is_breaking": false,
+     "opec_event": false
+    },
+    {
+     "status": "ok",
+     "importance_score": 0.0,
+     "hormuz_risk": false,
+     "sanctions_event": false,
+     "is_breaking": false,
+     "opec_event": false
+    }
+   ]
+  },
+  {
+   "source": "jerusalem_post",
+   "title": "Voices from the Arab press: Communication is not a prerogative",
+   "summary": "<img align=\"right\" alt=\"A TEMPORARY ENCAMPMENT in Beirut, March 30. (photo credit: Adnan Abidi/File/Reuters)\" src=\"https://images.jpost.com/image/upload/f_auto,fl_lossy/q_auto/c_fill,g_faces:center,h_3442,w_5379/722910\" title=\"A TEMPORARY ENCAMPMENT in Beirut, March 30. (photo credit: Adnan Abidi/Fi",
+   "published": "2026-05-30T23:43:55+00:00",
+   "fetched_at": "2026-05-31T03:00:49.007432+00:00",
+   "extraction": [
+    {
+     "status": "ok",
+     "importance_score": 0.0,
+     "hormuz_risk": false,
+     "sanctions_event": false,
+     "is_breaking": false,
+     "opec_event": false
+    },
+    {
+     "status": "ok",
+     "importance_score": 0.0,
+     "hormuz_risk": false,
+     "sanctions_event": false,
+     "is_breaking": false,
+     "opec_event": false
+    },
+    {
+     "status": "ok",
+     "importance_score": 0.0,
+     "hormuz_risk": false,
+     "sanctions_event": false,
+     "is_breaking": false,
+     "opec_event": false
+    },
+    {
+     "status": "ok",
+     "importance_score": 0.0,
+     "hormuz_risk": false,
+     "sanctions_event": false,
+     "is_breaking": false,
+     "opec_event": false
+    },
+    {
+     "status": "ok",
+     "importance_score": 0.45,
+     "hormuz_risk": true,
+     "sanctions_event": false,
+     "is_breaking": false,
+     "opec_event": false
+    },
+    {
+     "status": "ok",
+     "importance_score": 0.72,
+     "hormuz_risk": true,
+     "sanctions_event": true,
+     "is_breaking": false,
+     "opec_event": false
+    },
+    {
+     "status": "ok",
+     "importance_score": 0.45,
+     "hormuz_risk": true,
+     "sanctions_event": false,
+     "is_breaking": false,
+     "opec_event": false
+    }
+   ]
+  },
+  {
+   "source": "bloomberg_markets",
+   "title": "SpaceX, OpenAI Windfall Fuels Bets on Next-Wave Asian AI Winners",
+   "summary": "The hunt is on for companies that could benefit from the tailwinds of an unprecedented wave of stock offerings in the US, and investors are increasingly honing in on the Asian supply chain.",
+   "published": "2026-05-31T00:00:00+00:00",
+   "fetched_at": "2026-05-31T03:00:56.955584+00:00",
+   "extraction": [
+    {
+     "status": "ok",
+     "importance_score": 0.05,
+     "hormuz_risk": false,
+     "sanctions_event": false,
+     "is_breaking": false,
+     "opec_event": false
+    }
+   ]
+  },
+  {
+   "source": "bloomberg_markets",
+   "title": "Brazil Extends Measures to Limit Fuel Price Hikes by Two Months",
+   "summary": "The Brazilian government extended by two months measures to contain the rise in fuel prices triggered by the conflict in Middle East.",
+   "published": "2026-05-30T19:47:53+00:00",
+   "fetched_at": "2026-05-31T03:00:56.960867+00:00",
+   "extraction": [
+    {
+     "status": "ok",
+     "importance_score": 0.15,
+     "hormuz_risk": false,
+     "sanctions_event": false,
+     "is_breaking": false,
+     "opec_event": false
+    }
+   ]
+  },
+  {
+   "source": "investing_oil",
+   "title": "Brazil extends fuel price relief measures through July",
+   "summary": "",
+   "published": "2026-05-31T00:02:23+00:00",
+   "fetched_at": "2026-05-31T03:00:58.557673+00:00",
+   "extraction": [
+    {
+     "status": "ok",
+     "importance_score": 0.15,
+     "hormuz_risk": false,
+     "sanctions_event": false,
+     "is_breaking": false,
+     "opec_event": false
+    }
+   ]
+  },
+  {
+   "source": "gdelt",
+   "title": "",
+   "summary": "",
+   "published": "20260531024500",
+   "fetched_at": "2026-05-31T03:01:28.058061+00:00",
+   "extraction": []
+  },
+  {
+   "source": "gdelt",
+   "title": "",
+   "summary": "",
+   "published": "20260531024500",
+   "fetched_at": "2026-05-31T03:01:28.058061+00:00",
+   "extraction": []
+  },
+  {
+   "source": "gdelt",
+   "title": "",
+   "summary": "",
+   "published": "20260531024500",
+   "fetched_at": "2026-05-31T03:01:28.058061+00:00",
+   "extraction": []
+  },
+  {
+   "source": "gdelt",
+   "title": "",
+   "summary": "",
+   "published": "20260531024500",
+   "fetched_at": "2026-05-31T03:01:28.058061+00:00",
+   "extraction": []
+  }
+ ]
+}

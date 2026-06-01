@@ -1,0 +1,58 @@
+{
+  "global supply-chain disruption from tariffs and trade friction": {
+    "cycles": 1,
+    "first_seen": "2026-05-31T16:46:37.493621+00:00",
+    "details": {
+      "theme": "Global supply-chain disruption from tariffs and trade friction",
+      "why_it_matters": "Rising US tariffs and trade barriers are disrupting industrial input costs and logistics networks, which can affect refining margins, shipping demand, and downstream energy-intensive manufacturing.",
+      "suggested_keywords": [
+        "US tariffs",
+        "trade friction",
+        "supply chain disruption",
+        "industrial costs"
+      ],
+      "example_headlines": [
+        "The Aluminum Shock Hitting the Global Economy \u2014 The global aluminum market is being squeezed by two powerful forces at once: conflict in the Middle East and rising US tariffs",
+        "EU frets as China builds an industrial base in Morocco \u2014 Billions of dollars of investment raise concerns that subsidised goods could swamp European manufacturers"
+      ]
+    },
+    "last_seen": "2026-05-31T16:46:37.493621+00:00"
+  },
+  "ecb inflation concerns and energy price pass-through": {
+    "cycles": 1,
+    "first_seen": "2026-06-01T04:23:56.018972+00:00",
+    "details": {
+      "theme": "ECB inflation concerns and energy price pass-through",
+      "why_it_matters": "Central bank concern about unanchored inflation from energy shocks could drive tighter monetary policy, affecting global demand and oil prices through economic growth channels.",
+      "suggested_keywords": [
+        "ECB inflation",
+        "energy price pressures",
+        "monetary policy tightening",
+        "demand destruction"
+      ],
+      "example_headlines": [
+        "ECB's Schnabel Sees Risk of Unanchored Inflation Views From War \u2014 The European Central Bank can no longer look through the inflationary impact of the war in Iran as price pressures spread beyond energy",
+        "Jay Powell warns Federal Reserve is undergoing 'stress test'"
+      ]
+    },
+    "last_seen": "2026-06-01T04:23:56.018972+00:00"
+  },
+  "us refinery utilization surge": {
+    "cycles": 1,
+    "first_seen": "2026-06-01T17:26:45.928975+00:00",
+    "details": {
+      "theme": "US refinery utilization surge",
+      "why_it_matters": "High refinery run rates and deferred maintenance reduce crude demand flexibility and could tighten margins if maintenance backlogs create sudden capacity drops.",
+      "suggested_keywords": [
+        "refinery runs",
+        "utilization rates",
+        "maintenance deferrals",
+        "refinery capacity"
+      ],
+      "example_headlines": [
+        "US Crude Refiners Are Pushing Run Rates to Maximum Levels"
+      ]
+    },
+    "last_seen": "2026-06-01T17:26:45.928975+00:00"
+  }
+}
