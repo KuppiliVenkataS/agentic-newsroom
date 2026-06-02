@@ -46,6 +46,14 @@ day-by-day log. It is read by busy executives via their adviser.
 This week's material (deduplicated across the last 7 days of cycles):
 {week_digest}
 
+FIRST, decide the week's SINGLE organising read — the one thread that ties the
+week together (e.g. "a peace trade that reversed", "premium draining despite
+loud headlines", "supply story quietly overtaking the conflict story"). Every
+section below must serve that one read, so the whole summary speaks in one
+coherent voice rather than listing disconnected events. Where the week had
+several drivers, state how they RELATE — did they reinforce, offset, or did one
+overtake another across the week — and which dominated by Friday.
+
 WRITE THE WEEKLY IN EXACTLY THIS STRUCTURE (~370 words total, prose, no bullets):
 
 Headline: one line that IS the week's conclusion for a refiner.
@@ -71,6 +79,11 @@ RULES:
 - ~370 words. Tight. Executive audience — no padding, no jargon dumps.
 - Sharp, opinionated adviser voice on direction and meaning; never a hard price
   call or trade instruction (directional hinting only — the SLT decides).
+- Every section serves the one organising read; events are RELATED to each
+  other, not listed in isolation. The coherence is the point.
+- Frame actor-driven moves as MARKET BEHAVIOUR (sentiment that may retrace vs.
+  substance that lasts). NEVER characterise a named real person's competence,
+  motives, or depth — read the market's reaction, not the person.
 - Do NOT invent assessed prices. The adviser adds Argus/Platts numbers at review.
 - This is a DRAFT until the adviser reviews it.
 """
@@ -198,7 +211,7 @@ def generate_weekly(now: datetime = None) -> Path | None:
             break
     if not subject_line:
         subject_line = f"Weekly Oil Outlook — week to {now.strftime('%d/%m/%Y')}"
-    subject_line = subject_line.replace(":", " —")
+    _safe_subject = subject_line.replace("\\", "\\\\").replace('"', '\\"')
 
     header = (
         f"---\n"
@@ -207,7 +220,7 @@ def generate_weekly(now: datetime = None) -> Path | None:
         f"window_days: {WEEKLY_WINDOW_DAYS}\n"
         f"cycles_used: {len(cycles)}\n"
         f"articles_used: {len(articles)}\n"
-        f"subject: {subject_line}\n"
+        f'subject: "{_safe_subject}"\n'
         f"---\n\n"
     )
 

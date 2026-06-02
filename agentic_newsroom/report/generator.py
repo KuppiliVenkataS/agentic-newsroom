@@ -459,6 +459,90 @@ def _compute_day_magnitude(enriched_articles: list[dict],
     return tier, (best_line or "No single dominant story.")
 
 
+_THESIS_PROMPT = """You are a chief oil-trading adviser. Below are the day's
+ranked market events (already sorted by importance — the scores PROPOSE the
+ranking; you may REFINE it if your judgement differs, like a desk head would).
+
+Ranked events:
+{events}
+
+Decide the SINGLE organising read for today's brief, so the whole report speaks
+in one coherent voice rather than listing disconnected facts. Return ONLY valid
+JSON, no markdown:
+{{
+  "thesis": "<one sentence: the central read of the day>",
+  "structure": "<'weave' if the events are related and should flow as one
+     connected read, or 'rank' if they are unrelated and should be presented
+     dominant-first then briefly>",
+  "ranked_events": ["<event 1 (most important)>", "<event 2>", "..."],
+  "connecting_read": "<one sentence on how the events relate — do they reinforce,
+     offset, or are they independent? which dominates and why?>"
+}}
+
+Apply seasoned market judgement:
+- Distinguish SENTIMENT moves (headline/political reactions that often outrun
+  fundamentals and tend to retrace) from SUBSTANCE moves (real supply/demand
+  shifts). Say which a move looks like.
+- NEVER characterise a named real person (their competence, motives, depth).
+  Read the MARKET'S BEHAVIOUR instead: e.g. "the market is reacting to a
+  political headline that doesn't change supply" — not "X's shallow remarks".
+- If only one event matters, thesis = that event; structure = 'weave'.
+"""
+
+
+def _generate_thesis(high_importance_str: str, breaking_str: str) -> dict:
+    """Pass 1 of two-pass generation: decide the day's single organising read
+    and how to structure multiple events (weave vs rank). Falls back to an
+    empty thesis if the call fails, so the main report still generates."""
+    events = (high_importance_str or "").strip() or (breaking_str or "").strip()
+    if not events:
+        return {"thesis": "", "structure": "weave", "ranked_events": [],
+                "connecting_read": ""}
+    try:
+        raw = _call_llm(_THESIS_PROMPT.format(events=events))
+        cleaned = raw.strip()
+        if "```" in cleaned:
+            for part in cleaned.split("```"):
+                part = part.strip()
+                if part.startswith("json"):
+                    part = part[4:].strip()
+                try:
+                    return json.loads(part)
+                except json.JSONDecodeError:
+                    continue
+        return json.loads(cleaned)
+    except Exception as e:
+        logger.warning(f"Thesis pass failed ({e}); proceeding without it.")
+        return {"thesis": "", "structure": "weave", "ranked_events": [],
+                "connecting_read": ""}
+
+
+def _format_thesis_block(thesis: dict) -> str:
+    """Render the thesis as a prompt instruction block for pass 2."""
+    if not thesis.get("thesis"):
+        return ""
+    struct = thesis.get("structure", "weave")
+    struct_instruction = (
+        "These events are RELATED — weave them into one connected read, showing "
+        "how they relate (reinforce / offset), not as a list."
+        if struct == "weave" else
+        "These events are UNRELATED — lead with the dominant one, then cover the "
+        "others briefly. Keep them ranked, most important first."
+    )
+    ranked = "\n".join(f"  {i+1}. {e}" for i, e in enumerate(thesis.get("ranked_events", [])))
+    return (
+        "## TODAY'S ORGANISING READ (write the whole report to serve this — "
+        "one coherent voice, every statement supporting or testing the thesis)\n"
+        f"THESIS: {thesis['thesis']}\n"
+        f"HOW EVENTS RELATE: {thesis.get('connecting_read','')}\n"
+        f"STRUCTURE: {struct_instruction}\n"
+        + (f"RANKED EVENTS:\n{ranked}\n" if ranked else "")
+        + "Carry this single read through both the promoter brief and the analyst "
+          "note. Frame actor-driven moves as market behaviour (sentiment vs "
+          "substance), never as judgements of a named person.\n"
+    )
+
+
 # Per-tier delivery instructions. These govern the ANALYST NOTE (Section 2) ONLY.
 # The PROMOTER BRIEF (Section 1) is ALWAYS ~150 words regardless of tier.
 _DELIVERY_BLOCKS = {
@@ -621,6 +705,15 @@ def generate_report(prediction: dict, kg: KnowledgeGraph,
     logger.info(f"Day magnitude tier: {day_tier} (lead: {lead_line[:80]})")
     delivery_block = _DELIVERY_BLOCKS.get(day_tier, _DELIVERY_BLOCKS["normal"])
 
+    # ── Thesis pass (pass 1 of 2) — one organising read for coherence ───────
+    # Decides the day's single thesis and how to structure multiple events
+    # (weave if related, rank if not). Scores proposed the ranking; the LLM
+    # refines it. Keeps the whole report in one coherent voice.
+    thesis = _generate_thesis(high_importance_str, breaking_news_str)
+    if thesis.get("thesis"):
+        logger.info(f"Thesis: {thesis['thesis'][:90]} | structure={thesis.get('structure')}")
+    thesis_block = _format_thesis_block(thesis)
+
     # ── Build prompt ───────────────────────────────────────────────────────
     now_london = datetime.now(timezone.utc).strftime("%d/%m/%Y, %I%p, London")
 
@@ -657,8 +750,9 @@ def generate_report(prediction: dict, kg: KnowledgeGraph,
     )
 
     # Prepend domain knowledge so the LLM applies correct oil market logic,
-    # and the delivery block so length/tone flex with the day's magnitude.
-    prompt = delivery_block + "\n\n" + OIL_MARKET_KNOWLEDGE + "\n\n" + prompt
+    # the thesis block so the report stays coherent around one read, and the
+    # delivery block so length/tone flex with the day's magnitude.
+    prompt = delivery_block + "\n\n" + thesis_block + "\n\n" + OIL_MARKET_KNOWLEDGE + "\n\n" + prompt
 
     # ── Call Ollama ────────────────────────────────────────────────────────
     logger.info(f"Generating report via {'Claude API' if ANTHROPIC_API_KEY else 'Ollama'}...")
@@ -705,15 +799,17 @@ def generate_report(prediction: dict, kg: KnowledgeGraph,
             break
     if not subject_line:
         subject_line = f"Oil Brief — {now.strftime('%d/%m/%Y')}"
-    # YAML-safe: strip any colons that would break the frontmatter parse
-    subject_line = subject_line.replace(":", " —")
+    # YAML-safe: double-quote the value and escape backslashes/quotes so that
+    # any special leading character (*, &, :, #, {, [, |, >, @, etc.) in a
+    # headline is treated as a literal string, not YAML syntax.
+    _safe_subject = subject_line.replace("\\", "\\\\").replace('"', '\\"')
 
     header = (
         f"---\n"
         f"generated_at: {now.isoformat()}\n"
         f"alert: {is_alert}\n"
         f"magnitude: {day_tier}\n"
-        f"subject: {subject_line}\n"
+        f'subject: "{_safe_subject}"\n'
         f"direction: {prediction.get('direction')}\n"
         f"confidence: {prediction.get('confidence')}\n"
         f"score: {prediction.get('score')}\n"

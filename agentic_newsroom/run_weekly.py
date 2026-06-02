@@ -31,6 +31,7 @@ logging.basicConfig(
         logging.FileHandler(LOG_DIR / "weekly.log", encoding="utf-8"),
     ],
 )
+logging.getLogger("httpx").setLevel(logging.WARNING)  
 logger = logging.getLogger("run_weekly")
 
 
