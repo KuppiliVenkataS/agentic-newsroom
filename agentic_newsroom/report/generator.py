@@ -643,6 +643,10 @@ def _price_age_label(period_or_ts: str, now: datetime) -> str:
             return f"{hours/24:.0f}d ago"
         except (ValueError, TypeError):
             return period_or_ts
+
+
+def _call_llm(prompt: str) -> str:
+    """Use Claude API if key available and USE_CLAUDE_REPORT=true, else Ollama."""
     if ANTHROPIC_API_KEY and USE_CLAUDE_REPORT:
         response = httpx.post(
             "https://api.anthropic.com/v1/messages",
@@ -695,7 +699,8 @@ def generate_report(prediction: dict, kg: KnowledgeGraph,
     try:
         from guard import check_cycle_health, log_verdict
         _cycle = {"articles": enriched_articles or []}
-        _verdict = check_cycle_health(_cycle)
+        _skip_ext = os.getenv("SKIP_EXTRACTION", "false").lower() == "true"
+        _verdict = check_cycle_health(_cycle, skip_extraction=_skip_ext)
         log_verdict(_verdict)
         if not _verdict["publish"] and not is_alert:
             logger.error("Cycle failed health guard — no report generated or sent this cycle.")

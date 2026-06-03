@@ -72,5 +72,23 @@
       ]
     },
     "last_seen": "2026-06-02T18:42:06.768681+00:00"
+  },
+  "ukraine strikes on russian oil infrastructure": {
+    "cycles": 1,
+    "first_seen": "2026-06-03T18:43:10.931514+00:00",
+    "details": {
+      "theme": "Ukraine strikes on Russian oil infrastructure",
+      "why_it_matters": "Direct attacks on Russian oil terminals and refining capacity reduce global supply and can disrupt export flows from major producer.",
+      "suggested_keywords": [
+        "Ukraine oil strikes",
+        "St Petersburg terminal",
+        "Russian refinery attacks",
+        "Black Sea exports"
+      ],
+      "example_headlines": [
+        "Ukraine strikes St Petersburg as Putin's forum gets under way \u2014 Kyiv hits oil terminal after deadly Russian strikes on Ukrainian cities"
+      ]
+    },
+    "last_seen": "2026-06-03T18:43:10.931514+00:00"
   }
 }

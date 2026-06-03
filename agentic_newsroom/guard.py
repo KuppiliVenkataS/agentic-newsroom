@@ -43,7 +43,8 @@ def _parse_dt(value: str):
         return None
 
 
-def check_cycle_health(cycle: dict, now: datetime = None) -> dict:
+def check_cycle_health(cycle: dict, now: datetime = None,
+                       skip_extraction: bool = False) -> dict:
     """
     Return a verdict dict:
       {
@@ -52,6 +53,10 @@ def check_cycle_health(cycle: dict, now: datetime = None) -> dict:
         "warnings": [str, ...],   # non-blocking concerns (e.g. source concentration)
         "stats": {...}            # counts for logging
       }
+
+    skip_extraction: when True, bypasses the ok_extractions check.
+    Pass this when SKIP_EXTRACTION=true is set so test/dev runs are not
+    blocked by the guard checking extractions that were deliberately skipped.
     """
     now = now or datetime.now(timezone.utc)
     reasons, warnings = [], []
@@ -88,7 +93,12 @@ def check_cycle_health(cycle: dict, now: datetime = None) -> dict:
     # ── Blocking checks ────────────────────────────────────────────────────
     if n_articles < MIN_ARTICLES:
         reasons.append(f"too_few_articles: {n_articles} < {MIN_ARTICLES}")
-    if ok_extractions < MIN_OK_EXTRACTIONS:
+    if skip_extraction:
+        # Extraction was deliberately skipped — don't penalise the count.
+        # Log a warning so it's visible in the output, but don't block.
+        if ok_extractions == 0:
+            warnings.append("extraction_skipped: ok_extractions=0 (SKIP_EXTRACTION=true)")
+    elif ok_extractions < MIN_OK_EXTRACTIONS:
         reasons.append(f"too_few_extractions: {ok_extractions} ok < {MIN_OK_EXTRACTIONS}")
     if freshest_age_hours is None:
         reasons.append("no_timestamps: cannot determine data freshness")
