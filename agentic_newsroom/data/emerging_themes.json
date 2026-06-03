@@ -54,5 +54,23 @@
       ]
     },
     "last_seen": "2026-06-01T17:26:45.928975+00:00"
+  },
+  "venezuela power crisis affecting oil operations": {
+    "cycles": 1,
+    "first_seen": "2026-06-02T18:42:06.768681+00:00",
+    "details": {
+      "theme": "Venezuela power crisis affecting oil operations",
+      "why_it_matters": "Energy companies forced to self-supply power for oil/gas projects signals deteriorating infrastructure that could constrain production capacity and exports.",
+      "suggested_keywords": [
+        "Venezuela power",
+        "oil production capacity",
+        "energy infrastructure",
+        "PDVSA operations"
+      ],
+      "example_headlines": [
+        "Venezuela Wants Oil Firms to Supply Their Own Power for Projects"
+      ]
+    },
+    "last_seen": "2026-06-02T18:42:06.768681+00:00"
   }
 }

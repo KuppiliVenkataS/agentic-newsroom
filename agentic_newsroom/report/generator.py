@@ -33,22 +33,22 @@ Write in first person, flowing paragraphs, no headers, no bullet points.
 
 Today's date and time: {date_time}
 
-## Price Data — PROVISIONAL (EIA reference only; NOT the live assessed prices)
-These EIA numbers are reference context, possibly hours/days old. They are NOT
-the assessed prices the SLT relies on. Treat them as provisional. The adviser
-will confirm/replace with live Argus/Platts numbers at review.
-Brent: {brent_price} USD/barrel (as of {brent_period}, source: {brent_source}) — PRE-REVIEW
-WTI: {wti_price} USD/barrel (as of {wti_period}, source: {wti_source}) — PRE-REVIEW
+## Price Data
+Two reference sources provided. Use directionally; the adviser confirms precise
+live figures at review from Argus/Platts.
+Brent (article-quoted): {art_brent}
+WTI (article-quoted): {art_wti}
+Brent (EIA, {eia_brent_age}): {brent_price} USD/barrel
+WTI (EIA, {eia_wti_age}): {wti_price} USD/barrel
 WTI 5-day trend score: {wti_trend}
 Brent 5-day trend score: {brent_trend}
 
 PRICE-HANDLING RULES (important):
-- In BOTH sections, never present the EIA numbers as final/live. When you cite a
-  level, mark it provisional, e.g. "Brent ~$93 (EIA reference, pre-review)".
-- For the assessed prices the SLT actually checks — Dated Brent, Ebob gasoline,
-  gasoil/diesel crack — DO NOT invent numbers. Leave the labelled slots for the
-  adviser to fill from Argus/Platts. The promoter brief's price line should point
-  to these assessed slots, not the EIA flat price.
+- EIA figures are authoritative open data but may be 1-3 days old; article-quoted
+  figures are fresher but sourced from news text. Use whichever is more recent as
+  directional context. Neither replaces the adviser's live Argus/Platts read.
+- For assessed prices (Dated Brent, Ebob, gasoil crack): DO NOT invent numbers.
+  Leave slots blank — the adviser fills from their terminal.
 - Your DIRECTIONAL read does not depend on the exact decimal — write the analysis
   on events and direction; the adviser drops in the precise live numbers.
 
@@ -201,11 +201,13 @@ APPENDIX_TEMPLATE = """
 
 ## Data Appendix
 
-### Price Data — *EIA reference, pre-review (not live assessed prices)*
+### Price Data
 | Metric | Value | Period | Source |
 |--------|-------|--------|--------|
-| Brent Crude | ${brent_price} | {brent_period} | {brent_source} (pre-review) |
-| WTI Crude | ${wti_price} | {wti_period} | {wti_source} (pre-review) |
+| Brent (article-quoted) | {art_brent} | — | OilPrice.com (ingested) |
+| WTI (article-quoted) | {art_wti} | — | OilPrice.com (ingested) |
+| Brent (EIA) | ${brent_price} | {brent_period} ({eia_brent_age}) | {brent_source} |
+| WTI (EIA) | ${wti_price} | {wti_period} ({eia_wti_age}) | {wti_source} |
 | WTI 5-day trend | {wti_trend} | | EIA |
 | Brent 5-day trend | {brent_trend} | | EIA |
 
@@ -573,8 +575,74 @@ SHARPER. The owner still has 20 seconds.
 }
 
 
-def _call_llm(prompt: str) -> str:
-    """Use Claude API if key available, else fall back to Ollama."""
+def _extract_article_prices(enriched_articles: list[dict]) -> dict:
+    """
+    Extract the most recent Brent and WTI price mentions from already-ingested
+    article key_figures. OilPrice.com articles embed live ticker prices in their
+    text; the extractor captures these as key_figures with USD/barrel units.
+
+    Returns: {
+      'brent': {'value': float, 'fetched_at': str, 'source': str} | None,
+      'wti':   {'value': float, 'fetched_at': str, 'source': str} | None,
+    }
+    Uses the article's fetched_at timestamp so the staleness label is accurate.
+    """
+    candidates = {"brent": [], "wti": []}
+    for a in enriched_articles or []:
+        fetched = a.get("fetched_at") or a.get("published", "")
+        src = a.get("source", "")
+        for c in a.get("extraction", []) or []:
+            if c.get("status") != "ok":
+                continue
+            for f in c.get("key_figures", []) or []:
+                val  = f.get("value", "")
+                unit = str(f.get("unit",    "")).lower()
+                ctx  = str(f.get("context", "")).lower()
+                try:
+                    v = float(str(val).replace(",", ""))
+                except (ValueError, TypeError):
+                    continue
+                # plausible crude price: USD/barrel range only
+                if not (50 <= v <= 200):
+                    continue
+                if "barrel" not in unit and "bbl" not in unit:
+                    continue
+                if "brent" in ctx:
+                    candidates["brent"].append(
+                        {"value": v, "fetched_at": fetched, "source": src})
+                elif "wti" in ctx or "west texas" in ctx or ("crude" in ctx and "brent" not in ctx):
+                    candidates["wti"].append(
+                        {"value": v, "fetched_at": fetched, "source": src})
+    result = {}
+    for k, v in candidates.items():
+        if v:
+            result[k] = sorted(v, key=lambda x: x["fetched_at"], reverse=True)[0]
+    return result
+
+
+def _price_age_label(period_or_ts: str, now: datetime) -> str:
+    """Return a human-readable age label for a price timestamp."""
+    if not period_or_ts:
+        return "age unknown"
+    try:
+        dt = datetime.fromisoformat(str(period_or_ts))
+        if dt.tzinfo is None:
+            dt = dt.replace(tzinfo=timezone.utc)
+        hours = (now - dt).total_seconds() / 3600
+        if hours < 1:
+            return f"{int(hours*60)}min ago"
+        elif hours < 24:
+            return f"{hours:.0f}h ago"
+        else:
+            return f"{hours/24:.0f}d ago"
+    except (ValueError, TypeError):
+        # EIA period is a date string like "2026-06-01"
+        try:
+            dt = datetime.strptime(str(period_or_ts), "%Y-%m-%d").replace(tzinfo=timezone.utc)
+            hours = (now - dt).total_seconds() / 3600
+            return f"{hours/24:.0f}d ago"
+        except (ValueError, TypeError):
+            return period_or_ts
     if ANTHROPIC_API_KEY and USE_CLAUDE_REPORT:
         response = httpx.post(
             "https://api.anthropic.com/v1/messages",
@@ -649,6 +717,30 @@ def generate_report(prediction: dict, kg: KnowledgeGraph,
     wti_latest   = eia.get("wti_latest", {})
     brent_latest = eia.get("brent_latest", {})
 
+    # ── Article-quoted prices (OilPrice.com ticker via existing ingestion) ───
+    # These are extracted from already-ingested articles — no new source,
+    # no new subscription. Fresher than EIA; labelled with actual age so
+    # the adviser can judge at a glance whether they need updating.
+    _now = datetime.now(timezone.utc)
+    art_prices = _extract_article_prices(enriched_articles or [])
+    _ap_brent  = art_prices.get("brent")
+    _ap_wti    = art_prices.get("wti")
+
+    # Build the price reference line shown in the report header and prompt.
+    # Two rows: article-quoted (fresher) and EIA (authoritative, dated).
+    _eia_brent_age = _price_age_label(brent_latest.get("period",""), _now)
+    _eia_wti_age   = _price_age_label(wti_latest.get("period",""),   _now)
+    _art_brent_str = (
+        f"${_ap_brent['value']:.2f} ({_price_age_label(_ap_brent['fetched_at'], _now)}, "
+        f"{_ap_brent['source']})"
+        if _ap_brent else "not available this cycle"
+    )
+    _art_wti_str = (
+        f"${_ap_wti['value']:.2f} ({_price_age_label(_ap_wti['fetched_at'], _now)}, "
+        f"{_ap_wti['source']})"
+        if _ap_wti else "not available this cycle"
+    )
+
     top_orgs      = kg.query_top_organisations(limit=8)
     recent_events = kg.query_recent_events(limit=8)
 
@@ -709,10 +801,18 @@ def generate_report(prediction: dict, kg: KnowledgeGraph,
     # Decides the day's single thesis and how to structure multiple events
     # (weave if related, rank if not). Scores proposed the ranking; the LLM
     # refines it. Keeps the whole report in one coherent voice.
-    thesis = _generate_thesis(high_importance_str, breaking_news_str)
-    if thesis.get("thesis"):
-        logger.info(f"Thesis: {thesis['thesis'][:90]} | structure={thesis.get('structure')}")
-    thesis_block = _format_thesis_block(thesis)
+    #
+    # OFF by default during the trial period: set USE_THESIS_PASS=true to enable.
+    # While off, the existing (known-good) generation is unchanged AND no extra
+    # LLM call is made — so it costs nothing until you turn it on.
+    thesis_block = ""
+    if os.getenv("USE_THESIS_PASS", "false").lower() == "true":
+        thesis = _generate_thesis(high_importance_str, breaking_news_str)
+        if thesis.get("thesis"):
+            logger.info(f"Thesis: {thesis['thesis'][:90]} | structure={thesis.get('structure')}")
+        thesis_block = _format_thesis_block(thesis)
+    else:
+        logger.info("Thesis pass: OFF (set USE_THESIS_PASS=true to enable)")
 
     # ── Build prompt ───────────────────────────────────────────────────────
     now_london = datetime.now(timezone.utc).strftime("%d/%m/%Y, %I%p, London")
@@ -736,6 +836,10 @@ def generate_report(prediction: dict, kg: KnowledgeGraph,
         brent_price         = brent_latest.get("value", "N/A"),
         brent_period        = brent_latest.get("period", "N/A"),
         brent_source        = brent_latest.get("source", "EIA").upper(),
+        art_brent           = f"${_ap_brent['value']:.2f} ({_price_age_label(_ap_brent['fetched_at'], _now)}, {_ap_brent['source']})" if _ap_brent else "not available this cycle",
+        art_wti             = f"${_ap_wti['value']:.2f} ({_price_age_label(_ap_wti['fetched_at'], _now)}, {_ap_wti['source']})" if _ap_wti else "not available this cycle",
+        eia_brent_age       = _eia_brent_age,
+        eia_wti_age         = _eia_wti_age,
         wti_trend           = eia.get("wti_trend", 0.0),
         brent_trend         = eia.get("brent_trend", 0.0),
         bullish_w           = sent.get("bullish_w", 0),
@@ -838,6 +942,10 @@ def generate_report(prediction: dict, kg: KnowledgeGraph,
         wti_price        = wti_latest.get("value", "N/A"),
         wti_period       = wti_latest.get("period", "N/A"),
         wti_source       = wti_latest.get("source", "EIA").upper(),
+        art_brent        = f"${_ap_brent['value']:.2f}" if _ap_brent else "N/A",
+        art_wti          = f"${_ap_wti['value']:.2f}"   if _ap_wti   else "N/A",
+        eia_brent_age    = _eia_brent_age,
+        eia_wti_age      = _eia_wti_age,
         wti_trend        = eia.get("wti_trend", "N/A"),
         brent_trend      = eia.get("brent_trend", "N/A"),
         sent_score       = sent.get("score", "N/A"),
@@ -873,15 +981,18 @@ def generate_report(prediction: dict, kg: KnowledgeGraph,
     # Placed at the very top so it's the first thing the adviser sees and cannot
     # miss before forwarding to the SLT. EIA numbers shown for reference only.
     assessed_block = (
-        "\n> **⚠ ADVISER ACTION — confirm assessed prices before sending.** "
-        "EIA figures below are pre-review reference only, not live.\n>\n"
-        "> | Assessed price | Adviser to enter (Argus/Platts) | EIA reference (pre-review) |\n"
-        "> |---|---|---|\n"
-        f"> | Dated Brent | __________ | {brent_latest.get('value','N/A')} ({brent_latest.get('period','N/A')}) |\n"
-        "> | Ebob gasoline | __________ | — |\n"
-        "> | Gasoil/diesel crack | __________ | — |\n"
-        f"> | Front Brent / WTI | __________ | {brent_latest.get('value','N/A')} / {wti_latest.get('value','N/A')} |\n"
-        ">\n> *Replace the blanks with the latest assessed numbers, then forward.*\n\n"
+        "\n> **⚠ ADVISER ACTION — confirm assessed prices before sending.**\n>\n"
+        "> | Price | Article-quoted (OilPrice.com) | EIA reference | Assessed (Argus/Platts) |\n"
+        "> |---|---|---|---|\n"
+        f"> | Brent | {_art_brent_str} | ${brent_latest.get('value','N/A')} ({_eia_brent_age}) | __________ |\n"
+        f"> | WTI | {_art_wti_str} | ${wti_latest.get('value','N/A')} ({_eia_wti_age}) | __________ |\n"
+        "> | Dated Brent | — | — | __________ |\n"
+        "> | Ebob gasoline | — | — | __________ |\n"
+        "> | Gasoil/diesel crack | — | — | __________ |\n"
+        ">\n"
+        "> *Article prices: fresher, sourced from ingested news text. "
+        "EIA: authoritative open data, age shown. "
+        "Assessed: enter from Argus/Platts terminal.*\n\n"
     )
 
     with open(filepath, "w", encoding="utf-8") as f:
