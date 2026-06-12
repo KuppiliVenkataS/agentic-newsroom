@@ -156,7 +156,7 @@ WATCHLIST_THEMES = {
         "ceasefire", "peace talks", "negotiations", "agreement reached", "hormuz reopened",
     ],
     "russia_ukraine": [
-        "novorossiysk", "caspian pipeline", "russia oil", "ukraine drone oil",
+        "novorossiysk", "caspian pipeline", "russia oil", "ukraine drone oil", "ukraine strikes", "russia strikes"
     ],
 
     # ── DORMANT: activate (add terms) when the emerging-story scan flags one ──

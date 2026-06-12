@@ -90,5 +90,245 @@
       ]
     },
     "last_seen": "2026-06-03T18:43:10.931514+00:00"
+  },
+  "asian energy resilience concerns": {
+    "cycles": 1,
+    "first_seen": "2026-06-04T04:13:10.237747+00:00",
+    "details": {
+      "theme": "Asian energy resilience concerns",
+      "why_it_matters": "Asean explicitly flagging energy security as a priority amid Middle East disruptions could drive regional demand shifts and hedging behavior that affects global oil flows and pricing.",
+      "suggested_keywords": [
+        "Asean energy security",
+        "Southeast Asia oil demand",
+        "energy resilience"
+      ],
+      "example_headlines": [
+        "Asean Head Warns of Food Security Challenge \u2014 Asean Secretary-General Kao Kim Hourn says the war in the Middle East is a 'wake-up' call for the bloc to work together to ensure energy resilience and food se"
+      ]
+    },
+    "last_seen": "2026-06-04T04:13:10.237747+00:00"
+  },
+  "asian inflation and central bank tightening": {
+    "cycles": 1,
+    "first_seen": "2026-06-05T04:07:25.144945+00:00",
+    "details": {
+      "theme": "Asian inflation and central bank tightening",
+      "why_it_matters": "Rising oil prices are driving inflation in Asia, forcing central banks toward rate hikes that could dampen economic growth and reduce oil demand in a key consumption region.",
+      "suggested_keywords": [
+        "RBI rate hike",
+        "Asian inflation",
+        "rupee weakness",
+        "oil-driven CPI"
+      ],
+      "example_headlines": [
+        "Philippine CPI Slows to 6.8% as Transport Cost Pressures Ease",
+        "India Rate-Hike Bets Build as Pricey Oil, Weak Rupee Stoke Inflation Risks"
+      ]
+    },
+    "last_seen": "2026-06-05T04:07:25.144945+00:00"
+  },
+  "global shipping route congestion and cost inflation": {
+    "cycles": 1,
+    "first_seen": "2026-06-06T19:39:49.042413+00:00",
+    "details": {
+      "theme": "Global shipping route congestion and cost inflation",
+      "why_it_matters": "Container rate spikes driven by port congestion and fuel costs are raising logistics expenses that could feed into refined product pricing and demand destruction.",
+      "suggested_keywords": [
+        "container rates",
+        "shipping congestion",
+        "Asian ports",
+        "fuel surcharges",
+        "logistics costs"
+      ],
+      "example_headlines": [
+        "Asia-to-US Container Rates Spike 109% Since Iran War Started",
+        "Oil tanker owners fear market crash after Iran war drove record profits"
+      ]
+    },
+    "last_seen": "2026-06-06T19:39:49.042413+00:00"
+  },
+  "tanker fleet overcapacity and rate collapse risk": {
+    "cycles": 1,
+    "first_seen": "2026-06-06T19:39:49.042413+00:00",
+    "details": {
+      "theme": "Tanker fleet overcapacity and rate collapse risk",
+      "why_it_matters": "Shipowners' recent vessel investments during high-rate periods create structural oversupply risk; a sudden rate collapse could signal weakening crude transport demand or route normalization.",
+      "suggested_keywords": [
+        "tanker rates",
+        "vessel overcapacity",
+        "shipping rates decline",
+        "fleet utilization"
+      ],
+      "example_headlines": [
+        "Oil tanker owners fear market crash after Iran war drove record profits"
+      ]
+    },
+    "last_seen": "2026-06-06T19:39:49.042413+00:00"
+  },
+  "jet fuel demand surge and refinery incentives": {
+    "cycles": 1,
+    "first_seen": "2026-06-07T03:34:41.486808+00:00",
+    "details": {
+      "theme": "Jet fuel demand surge and refinery incentives",
+      "why_it_matters": "Rising jet fuel costs are incentivizing refineries to increase production, which affects crude oil demand and refinery utilization rates as a new driver of oil consumption.",
+      "suggested_keywords": [
+        "jet fuel demand",
+        "refinery utilization",
+        "aviation fuel",
+        "kerosene production"
+      ],
+      "example_headlines": [
+        "Etihad to surpass pre-Iran war capacity without price cuts",
+        "IATA Director Willie Walsh on Rising Cost of Jet Fuel"
+      ]
+    },
+    "last_seen": "2026-06-07T03:34:41.486808+00:00"
+  },
+  "aviation fuel demand recovery": {
+    "cycles": 1,
+    "first_seen": "2026-06-07T17:52:01.330654+00:00",
+    "details": {
+      "theme": "Aviation fuel demand recovery",
+      "why_it_matters": "Airlines signaling improved fuel cost environment and industry recovery could drive jet fuel demand and refinery utilization rates.",
+      "suggested_keywords": [
+        "airline fuel demand",
+        "jet fuel",
+        "aviation recovery",
+        "IATA fuel prices"
+      ],
+      "example_headlines": [
+        "Etihad Airways CEO Antonoaldo Neves on Fuel Prices \u2014 'things are coming back'",
+        "United Airlines CEO Discusses Industry Challenges \u2014 At The International Air Transport Association"
+      ]
+    },
+    "last_seen": "2026-06-07T17:52:01.330654+00:00"
+  },
+  "asia coal supply tightening": {
+    "cycles": 1,
+    "first_seen": "2026-06-08T03:53:25.694258+00:00",
+    "details": {
+      "theme": "Asia coal supply tightening",
+      "why_it_matters": "Rising coal prices and supply constraints in Asia can shift energy demand toward oil as a substitute fuel for power generation and industrial use, increasing crude demand in the region.",
+      "suggested_keywords": [
+        "Indonesia coal exports",
+        "Asia coal prices",
+        "coal supply constraints",
+        "energy substitution"
+      ],
+      "example_headlines": [
+        "Asia Coal Prices Rise to 22-Month High on Indonesia Export Rules"
+      ]
+    },
+    "last_seen": "2026-06-08T03:53:25.694258+00:00"
+  },
+  "supertanker fleet expansion": {
+    "cycles": 1,
+    "first_seen": "2026-06-08T18:41:39.987266+00:00",
+    "details": {
+      "theme": "Supertanker fleet expansion",
+      "why_it_matters": "Record orders for new oil supertankers signal expectations of sustained long-distance crude flows, potentially indicating anticipated supply disruptions or route changes that require larger carrying capacity.",
+      "suggested_keywords": [
+        "supertanker orders",
+        "tanker fleet",
+        "crude transport capacity",
+        "shipping demand"
+      ],
+      "example_headlines": [
+        "Giant Oil Supertanker Orders Eclipse Record Set in 2008"
+      ]
+    },
+    "last_seen": "2026-06-08T18:41:39.987266+00:00"
+  },
+  "asian energy demand surge and lng restocking": {
+    "cycles": 1,
+    "first_seen": "2026-06-09T04:12:07.872387+00:00",
+    "details": {
+      "theme": "Asian energy demand surge and LNG restocking",
+      "why_it_matters": "Hotter weather in Asia and European restocking are driving LNG prices to multi-year highs, which can shift global energy mix and compete with oil for heating/power generation demand.",
+      "suggested_keywords": [
+        "LNG prices",
+        "Asian demand",
+        "hotter weather",
+        "restocking",
+        "energy demand"
+      ],
+      "example_headlines": [
+        "Morgan Stanley Sees LNG Upside Risks as Asian Demand Picks Up",
+        "Nifty Swings Rise as War Risk Unnerves India Stock Bulls \u2014 Geopolitics, costlier energy and uncertainty over global growth are weighing on sentiment"
+      ]
+    },
+    "last_seen": "2026-06-09T04:12:07.872387+00:00"
+  },
+  "canadian airline fuel cost crisis and supply chain stress": {
+    "cycles": 1,
+    "first_seen": "2026-06-09T04:12:07.872387+00:00",
+    "details": {
+      "theme": "Canadian airline fuel cost crisis and supply chain stress",
+      "why_it_matters": "Jet fuel cost pressures on North American carriers signal sustained elevated fuel prices and potential logistics constraints affecting regional energy markets.",
+      "suggested_keywords": [
+        "jet fuel costs",
+        "airline fuel",
+        "Canada airlines",
+        "fuel surcharge",
+        "aviation fuel"
+      ],
+      "example_headlines": [
+        "WestJet Slams Canada's Loan Offer to Airlines Hit by Fuel Costs \u2014 WestJet Airlines Ltd. condemned the Canadian government's offer of loans to help carriers hit by high jet fuel costs in the wake of the closing of the Strait of"
+      ]
+    },
+    "last_seen": "2026-06-09T04:12:07.872387+00:00"
+  },
+  "fuel subsidy cost pressures in oil-importing nations": {
+    "cycles": 1,
+    "first_seen": "2026-06-10T04:14:37.496913+00:00",
+    "details": {
+      "theme": "Fuel subsidy cost pressures in oil-importing nations",
+      "why_it_matters": "Rising crude prices from Middle East tensions are forcing oil-importing governments to increase fuel subsidy spending, which may force fiscal retrenchment or subsidy cuts that could dampen demand.",
+      "suggested_keywords": [
+        "fuel subsidy",
+        "fiscal deficit",
+        "oil-importing countries",
+        "subsidy burden"
+      ],
+      "example_headlines": [
+        "Malaysia Minister on Fuel Subsidy, Deficit Goals \u2014 Malaysia may not meet its fiscal deficit targets for 2026 as the Iran war drives up the cost of fuel subsidies"
+      ]
+    },
+    "last_seen": "2026-06-10T04:14:37.496913+00:00"
+  },
+  "asia coal substitution for oil": {
+    "cycles": 1,
+    "first_seen": "2026-06-10T18:40:05.186932+00:00",
+    "details": {
+      "theme": "Asia coal substitution for oil",
+      "why_it_matters": "Energy-starved Asian countries shifting from oil to coal signals reduced oil demand in a major consumption region, potentially pressuring prices.",
+      "suggested_keywords": [
+        "Asia coal demand",
+        "oil substitution",
+        "energy alternatives",
+        "coal shipping"
+      ],
+      "example_headlines": [
+        "Oil Crunch Is Stoking Asia's Demand for Coal, Shipping CEO Says"
+      ]
+    },
+    "last_seen": "2026-06-10T18:40:05.186932+00:00"
+  },
+  "us inflation spike from middle east energy shock": {
+    "cycles": 1,
+    "first_seen": "2026-06-10T18:40:05.186932+00:00",
+    "details": {
+      "theme": "US inflation spike from Middle East energy shock",
+      "why_it_matters": "Inflation jump to 4.2% attributed to Middle East energy disruption suggests sustained oil price elevation is feeding into broader economy, affecting demand elasticity.",
+      "suggested_keywords": [
+        "energy shock inflation",
+        "Middle East oil prices",
+        "US CPI energy component"
+      ],
+      "example_headlines": [
+        "US inflation jumped to 4.2% in May amid Middle East energy shock"
+      ]
+    },
+    "last_seen": "2026-06-10T18:40:05.186932+00:00"
   }
 }
