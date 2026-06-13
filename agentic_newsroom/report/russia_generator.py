@@ -126,4 +126,35 @@ def generate_russia_report(
     report_path.write_text(report_text)
     logger.info(f"Russia report saved: {report_path}")
 
+    # Auto-convert to docx if pandoc is available
+    try:
+        import subprocess, shutil
+
+        # cron runs with minimal PATH — search common install locations explicitly
+        pandoc_cmd = shutil.which("pandoc") or next(
+            (p for p in [
+                "/usr/local/bin/pandoc",
+                "/opt/homebrew/bin/pandoc",
+                "/usr/bin/pandoc",
+                "/home/linuxbrew/.linuxbrew/bin/pandoc",
+            ] if Path(p).exists()),
+            None
+        )
+
+        if not pandoc_cmd:
+            logger.info("Pandoc not found in PATH or known locations — skipping DOCX conversion")
+        else:
+            docx_path = report_path.with_suffix(".docx")
+            result = subprocess.run(
+                [pandoc_cmd, str(report_path), "-o", str(docx_path)],
+                capture_output=True, text=True, timeout=30
+            )
+            if result.returncode == 0:
+                logger.info(f"DOCX saved: {docx_path}")
+            else:
+                logger.warning(f"Pandoc failed: {result.stderr}")
+    except Exception as e:
+        logger.warning(f"DOCX conversion error: {e}")
+
+
     return report_text
