@@ -110,12 +110,12 @@ USER_AGENT            = "AgenticNewsroom/1.0"
 
 # ── Anthropic API ─────────────────────────────────────────────────────────────
 ANTHROPIC_API_KEY      = os.getenv("ANTHROPIC_API_KEY", "")
-USE_CLAUDE_EXTRACTION  = os.getenv("USE_CLAUDE_EXTRACTION", "false").lower() == "true"  # set true when rate limits allow
+USE_CLAUDE_EXTRACTION  = os.getenv("USE_CLAUDE_EXTRACTION", "false").lower() == "false"  # set true when rate limits allow
 USE_CLAUDE_REPORT      = os.getenv("USE_CLAUDE_REPORT", "true").lower() == "true"        # always use Claude for report
 
 # ── Ollama (local LLM) ────────────────────────────────────────────────────────
 OLLAMA_BASE_URL = os.getenv("OLLAMA_BASE_URL", "http://localhost:11434")
-OLLAMA_MODEL    = os.getenv("OLLAMA_MODEL", "llama3.1:8b")
+OLLAMA_MODEL    = os.getenv("OLLAMA_MODEL", "mistral")
 
 # ── Dev flags ─────────────────────────────────────────────────────────────────
 SKIP_EXTRACTION = os.getenv("SKIP_EXTRACTION", "false").lower() == "true"

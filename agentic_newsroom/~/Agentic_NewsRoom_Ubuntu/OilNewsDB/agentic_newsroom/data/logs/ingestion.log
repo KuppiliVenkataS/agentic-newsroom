@@ -1,0 +1,393 @@
+2026-06-13 16:09:16,183  INFO      run_ingestion  === Ingestion run started: 2026-06-13_15-09-16 ===
+2026-06-13 16:09:16,183  INFO      run_ingestion  Storage root: ~/Agentic_NewsRoom_Ubuntu/OilNewsDB/agentic_newsroom
+2026-06-13 16:09:16,309  INFO      ingestion.rss_fetcher  Fetching RSS: oilprice_news
+2026-06-13 16:09:18,026  INFO      ingestion.rss_fetcher    oilprice_news: 14 new articles (1 filtered as non-oil)
+2026-06-13 16:09:18,027  INFO      ingestion.rss_fetcher  Fetching RSS: rigzone
+2026-06-13 16:09:19,325  INFO      ingestion.rss_fetcher    rigzone: 14 new articles (1 filtered as non-oil)
+2026-06-13 16:09:19,326  INFO      ingestion.rss_fetcher  Fetching RSS: eia_petroleum_weekly
+2026-06-13 16:09:27,920  INFO      ingestion.rss_fetcher    eia_petroleum_weekly: 0 new articles (0 filtered as non-oil)
+2026-06-13 16:09:27,920  INFO      ingestion.rss_fetcher  Fetching RSS: energy_voice
+2026-06-13 16:09:28,831  INFO      ingestion.rss_fetcher    energy_voice: 10 new articles (5 filtered as non-oil)
+2026-06-13 16:09:28,832  INFO      ingestion.rss_fetcher  Fetching RSS: hellenic_shipping
+2026-06-13 16:09:30,071  INFO      ingestion.rss_fetcher    hellenic_shipping: 10 new articles (5 filtered as non-oil)
+2026-06-13 16:09:30,071  INFO      ingestion.rss_fetcher  Fetching RSS: middle_east_eye
+2026-06-13 16:09:31,357  INFO      ingestion.rss_fetcher    middle_east_eye: 14 new articles (0 filtered as non-oil)
+2026-06-13 16:09:31,357  INFO      ingestion.rss_fetcher  Fetching RSS: al_monitor
+2026-06-13 16:09:33,345  INFO      ingestion.rss_fetcher    al_monitor: 12 new articles (0 filtered as non-oil)
+2026-06-13 16:09:33,346  INFO      ingestion.rss_fetcher  Fetching RSS: iran_international
+2026-06-13 16:09:33,564  INFO      ingestion.rss_fetcher    iran_international: 0 new articles (0 filtered as non-oil)
+2026-06-13 16:09:33,564  INFO      ingestion.rss_fetcher  Fetching RSS: jerusalem_post
+2026-06-13 16:09:35,274  INFO      ingestion.rss_fetcher    jerusalem_post: 15 new articles (0 filtered as non-oil)
+2026-06-13 16:09:35,274  INFO      ingestion.rss_fetcher  Fetching RSS: times_of_israel
+2026-06-13 16:09:36,802  INFO      ingestion.rss_fetcher    times_of_israel: 13 new articles (0 filtered as non-oil)
+2026-06-13 16:09:36,802  INFO      ingestion.rss_fetcher  Fetching RSS: arab_news
+2026-06-13 16:09:38,430  INFO      ingestion.rss_fetcher    arab_news: 9 new articles (1 filtered as non-oil)
+2026-06-13 16:09:38,430  INFO      ingestion.rss_fetcher  Fetching RSS: defense_one
+2026-06-13 16:09:40,050  INFO      ingestion.rss_fetcher    defense_one: 7 new articles (8 filtered as non-oil)
+2026-06-13 16:09:40,050  INFO      ingestion.rss_fetcher  Fetching RSS: war_on_rocks
+2026-06-13 16:09:42,040  INFO      ingestion.rss_fetcher    war_on_rocks: 11 new articles (4 filtered as non-oil)
+2026-06-13 16:09:42,040  INFO      ingestion.rss_fetcher  Fetching RSS: argus_media
+2026-06-13 16:09:42,146  WARNING   ingestion.rss_fetcher    Failed to fetch argus_media: Server error '500 Internal Server Error' for url 'https://www.argusmedia.com/rss/news.rss'
+For more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/500
+2026-06-13 16:09:42,146  INFO      ingestion.rss_fetcher  Fetching RSS: platts_news
+2026-06-13 16:09:42,222  WARNING   ingestion.rss_fetcher    Failed to fetch platts_news: Client error '403 Forbidden' for url 'https://www.spglobal.com/commodityinsights/en/rss-feed/news'
+For more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/403
+2026-06-13 16:09:42,222  INFO      ingestion.rss_fetcher  Fetching RSS: icis_news
+2026-06-13 16:09:42,289  INFO      ingestion.rss_fetcher    icis_news: 0 new articles (0 filtered as non-oil)
+2026-06-13 16:09:42,289  INFO      ingestion.rss_fetcher  Fetching RSS: ft_markets
+2026-06-13 16:09:42,951  INFO      ingestion.rss_fetcher    ft_markets: 4 new articles (8 filtered as non-oil)
+2026-06-13 16:09:42,951  INFO      ingestion.rss_fetcher  Fetching RSS: ft_companies
+2026-06-13 16:09:43,801  INFO      ingestion.rss_fetcher    ft_companies: 4 new articles (10 filtered as non-oil)
+2026-06-13 16:09:43,801  INFO      ingestion.rss_fetcher  Fetching RSS: bloomberg_markets
+2026-06-13 16:09:44,666  INFO      ingestion.rss_fetcher    bloomberg_markets: 4 new articles (11 filtered as non-oil)
+2026-06-13 16:09:44,666  INFO      ingestion.rss_fetcher  Fetching RSS: nasdaq_commodities
+2026-06-13 16:09:46,974  INFO      ingestion.rss_fetcher    nasdaq_commodities: 12 new articles (3 filtered as non-oil)
+2026-06-13 16:09:46,975  INFO      ingestion.rss_fetcher  RSS ceiling reached (150) — stopping feed fetch early
+2026-06-13 16:09:46,975  INFO      run_ingestion  RSS capped: 153 → 150 articles
+2026-06-13 16:09:46,975  INFO      run_ingestion  RSS total new articles: 150
+2026-06-13 16:09:46,975  INFO      ingestion.eia_fetcher  Fetching EIA: wti_spot (PET.RWTC.D)
+2026-06-13 16:09:48,272  INFO      ingestion.eia_fetcher    wti_spot: 10 data points
+2026-06-13 16:09:48,272  INFO      ingestion.eia_fetcher  Fetching EIA: brent_spot (PET.RBRTE.D)
+2026-06-13 16:09:49,311  INFO      ingestion.eia_fetcher    brent_spot: 10 data points
+2026-06-13 16:09:49,312  INFO      ingestion.eia_fetcher  Fetching EIA: us_inventory (PET.WCESTUS1.W)
+2026-06-13 16:09:51,344  INFO      ingestion.eia_fetcher    us_inventory: 10 data points
+2026-06-13 16:09:51,344  INFO      ingestion.eia_fetcher  Fetching EIA: us_production (PET.WCRFPUS2.W)
+2026-06-13 16:09:53,186  INFO      ingestion.eia_fetcher    us_production: 10 data points
+2026-06-13 16:09:53,186  INFO      run_ingestion  EIA data points: 40
+2026-06-13 16:09:54,747  ERROR     yfinance  Failed to get ticker 'BZ=F' reason: Expecting value: line 1 column 1 (char 0)
+2026-06-13 16:09:54,895  ERROR     yfinance  $BZ=F: possibly delisted; No price data found  (period=1y)
+2026-06-13 16:09:54,895  WARNING   ingestion.yfinance_fetcher    brent_live (BZ=F) fetch failed: 'currentTradingPeriod'
+2026-06-13 16:09:55,099  ERROR     yfinance  Failed to get ticker 'CL=F' reason: Expecting value: line 1 column 1 (char 0)
+2026-06-13 16:09:55,336  ERROR     yfinance  $CL=F: possibly delisted; No price data found  (period=1y)
+2026-06-13 16:09:55,339  WARNING   ingestion.yfinance_fetcher    wti_live (CL=F) fetch failed: 'currentTradingPeriod'
+2026-06-13 16:09:55,340  INFO      run_ingestion  Live prices fetched: 0
+2026-06-13 16:09:55,341  ERROR     run_ingestion  GDELT fetch failed: GCP key file not found: /home/santhilata/Agentic_NewsRoom_Ubuntu/OilNewsDB/agentic_newsroom/secrets/agentic-newsroom-132bc7cb81ee.json
+2026-06-13 16:09:55,349  INFO      ingestion.archive_writer  Saved run to ~/Agentic_NewsRoom_Ubuntu/OilNewsDB/agentic_newsroom/data/raw/2026/06/2026-06-13_15-09-16_run.json (150 articles, 40 data points)
+2026-06-13 16:09:55,349  INFO      run_ingestion  Fetching full article bodies for 150 RSS articles...
+2026-06-13 16:09:55,349  INFO      ingestion.article_fetcher    Fetching body [1/150]: https://oilprice.com/Energy/Energy-General/Rising-Energy-Bills-Are-Fueling-a-Glo
+2026-06-13 16:09:56,275  INFO      ingestion.article_fetcher    Fetching body [2/150]: https://oilprice.com/Energy/Crude-Oil/The-Oil-Market-Could-Be-Weeks-From-a-Break
+2026-06-13 16:09:57,196  INFO      ingestion.article_fetcher    Fetching body [3/150]: https://oilprice.com/Alternative-Energy/Nuclear-Power/Chinas-Fusion-Reactor-on-T
+2026-06-13 16:09:58,133  INFO      ingestion.article_fetcher    Fetching body [4/150]: https://oilprice.com/Energy/Energy-General/US-and-Uzbekistan-Deepen-Economic-Tie
+2026-06-13 16:09:59,077  INFO      ingestion.article_fetcher    Fetching body [5/150]: https://oilprice.com/Energy/Energy-General/Pace-of-US-Oil-Drilling-Inches-Up.htm
+2026-06-13 16:10:00,043  INFO      ingestion.article_fetcher    Fetching body [6/150]: https://oilprice.com/Latest-Energy-News/World-News/US-Military-Helping-Move-7-Mi
+2026-06-13 16:10:00,961  INFO      ingestion.article_fetcher    Fetching body [7/150]: https://oilprice.com/Energy/Crude-Oil/A-War-of-Words-Sends-Brent-Crude-to-a-Two-
+2026-06-13 16:10:02,080  INFO      ingestion.article_fetcher    Fetching body [8/150]: https://oilprice.com/Latest-Energy-News/World-News/Europe-Wary-Of-Too-Much-Depen
+2026-06-13 16:10:03,100  INFO      ingestion.article_fetcher    Fetching body [9/150]: https://oilprice.com/Latest-Energy-News/World-News/Nigerias-Crude-Oil-Production
+2026-06-13 16:10:04,085  INFO      ingestion.article_fetcher    Fetching body [10/150]: https://oilprice.com/Energy/Energy-General/Trump-Says-Iran-Peace-Deal-Could-Be-S
+2026-06-13 16:10:05,012  INFO      ingestion.article_fetcher    Fetching body [11/150]: https://oilprice.com/Latest-Energy-News/World-News/Russian-Governors-Rush-to-Den
+2026-06-13 16:10:05,972  INFO      ingestion.article_fetcher    Fetching body [12/150]: https://oilprice.com/Latest-Energy-News/World-News/Norway-Pitches-Arctic-Resourc
+2026-06-13 16:10:06,908  INFO      ingestion.article_fetcher    Fetching body [13/150]: https://oilprice.com/Latest-Energy-News/World-News/India-Accuses-West-of-Double-
+2026-06-13 16:10:08,005  INFO      ingestion.article_fetcher    Fetching body [14/150]: https://oilprice.com/Energy/Energy-General/Oil-Prices-Slide-as-Traders-Bet-on-Di
+2026-06-13 16:10:09,036  INFO      ingestion.article_fetcher    Fetching body [15/150]: https://www.rigzone.com/news/wire/exxonmobil_explores_acquisitions_including_woo
+2026-06-13 16:10:09,882  INFO      ingestion.article_fetcher    Fetching body [16/150]: https://www.rigzone.com/news/wire/oil_drops_to_fourmonth_low-12-jun-2026-183918-
+2026-06-13 16:10:10,766  INFO      ingestion.article_fetcher    Fetching body [17/150]: https://www.rigzone.com/news/wire/hope_for_hormuz_as_iran_us_edge_closer_to_peac
+2026-06-13 16:10:11,594  INFO      ingestion.article_fetcher    Fetching body [18/150]: https://www.rigzone.com/news/apa_expands_alaska_footprint_with_savant_acquisitio
+2026-06-13 16:10:12,522  INFO      ingestion.article_fetcher    Fetching body [19/150]: https://www.rigzone.com/news/aker_bp_raises_stake_in_norways_johan_sverdrup-12-j
+2026-06-13 16:10:13,427  INFO      ingestion.article_fetcher    Fetching body [20/150]: https://www.rigzone.com/news/naftogaz_wins_its_first_longterm_regasification_boo
+2026-06-13 16:10:14,169  INFO      ingestion.article_fetcher    Fetching body [21/150]: https://www.rigzone.com/news/wire/russian_oil_output_at_lowest_in_year_amid_ukra
+2026-06-13 16:10:14,979  INFO      ingestion.article_fetcher    Fetching body [22/150]: https://www.rigzone.com/news/wire/trump_claims_iran_deal_close_in_uturn-12-jun-2
+2026-06-13 16:10:15,831  INFO      ingestion.article_fetcher    Fetching body [23/150]: https://www.rigzone.com/news/wire/oil_falls_to_april_lows_on_trump_signals-11-ju
+2026-06-13 16:10:16,634  INFO      ingestion.article_fetcher    Fetching body [24/150]: https://www.rigzone.com/news/wire/greek_lng_buyer_says_long_term_usa_deals_getti
+2026-06-13 16:10:17,434  INFO      ingestion.article_fetcher    Fetching body [25/150]: https://www.rigzone.com/news/usa_gasoline_prices_drop_for_4_straight_weeks-11-ju
+2026-06-13 16:10:18,465  INFO      ingestion.article_fetcher    Fetching body [26/150]: https://www.rigzone.com/news/wire/dangote_refinery_seeks_to_raise_1b_in_private_
+2026-06-13 16:10:19,278  INFO      ingestion.article_fetcher    Fetching body [27/150]: https://www.rigzone.com/news/wire/alberta_says_its_talking_with_fortune_500_co_t
+2026-06-13 16:10:20,238  INFO      ingestion.article_fetcher    Fetching body [28/150]: https://www.rigzone.com/news/usa_commercial_crude_oil_stocks_down_over_7mm_barre
+2026-06-13 16:10:21,131  INFO      ingestion.article_fetcher    Fetching body [29/150]: https://www.energyvoice.com/oilandgas/north-sea/599186/odfjell-drilling-served-s
+2026-06-13 16:10:22,074  INFO      ingestion.article_fetcher    Fetching body [30/150]: https://www.energyvoice.com/oilandgas/599181/ukog-sells-off-horse-hill-developme
+2026-06-13 16:10:23,098  INFO      ingestion.article_fetcher    Fetching body [31/150]: https://www.energyvoice.com/oilandgas/north-sea/599158/beryl-field-celebrates-50
+2026-06-13 16:10:23,995  INFO      ingestion.article_fetcher    Fetching body [32/150]: https://www.energyvoice.com/oilandgas/599135/adura-could-sue-uk-government/
+2026-06-13 16:10:25,150  INFO      ingestion.article_fetcher    Fetching body [33/150]: https://www.energyvoice.com/renewables-energy-transition/ccs/uk-ccs/599144/uk-co
+2026-06-13 16:10:25,501  INFO      ingestion.article_fetcher    Fetching body [34/150]: https://www.energyvoice.com/renewables-energy-transition/wind/uk-wind/599116/uk-
+2026-06-13 16:10:26,582  INFO      ingestion.article_fetcher    Fetching body [35/150]: https://www.energyvoice.com/renewables-energy-transition/wind/uk-wind/599131/no-
+2026-06-13 16:10:27,591  INFO      ingestion.article_fetcher    Fetching body [36/150]: https://www.energyvoice.com/events/599108/pictures-eage-aberdeen/
+2026-06-13 16:10:28,836  INFO      ingestion.article_fetcher    Fetching body [37/150]: https://www.energyvoice.com/oilandgas/north-sea/599097/serica-energy-completes-p
+2026-06-13 16:10:30,028  INFO      ingestion.article_fetcher    Fetching body [38/150]: https://www.energyvoice.com/renewables-energy-transition/598742/motive-offshore-
+2026-06-13 16:10:31,311  INFO      ingestion.article_fetcher    Fetching body [39/150]: https://www.hellenicshippingnews.com/dangote-ramp-up-slashes-waf-product-imports
+2026-06-13 16:10:32,107  INFO      ingestion.article_fetcher    Fetching body [40/150]: https://www.hellenicshippingnews.com/tanker-market-stays-elevated-in-may/
+2026-06-13 16:10:32,924  INFO      ingestion.article_fetcher    Fetching body [41/150]: https://www.hellenicshippingnews.com/trade-stands-at-a-crossroads/
+2026-06-13 16:10:33,748  INFO      ingestion.article_fetcher    Fetching body [42/150]: https://www.hellenicshippingnews.com/retrofitting-at-scale-lessons-from-deliveri
+2026-06-13 16:10:34,193  INFO      ingestion.article_fetcher    Fetching body [43/150]: https://www.hellenicshippingnews.com/bimcos-energy-saving-device-retrofitting-ad
+2026-06-13 16:10:34,973  INFO      ingestion.article_fetcher    Fetching body [44/150]: https://www.hellenicshippingnews.com/acerinox-y-alfa-laval-drive-industrial-deca
+2026-06-13 16:10:35,588  INFO      ingestion.article_fetcher    Fetching body [45/150]: https://www.hellenicshippingnews.com/cpn-delivers-b100-to-oil-tanker-in-hong-kon
+2026-06-13 16:10:36,404  INFO      ingestion.article_fetcher    Fetching body [46/150]: https://www.hellenicshippingnews.com/emergency-fuel-surcharge-negotiations-revea
+2026-06-13 16:10:36,893  INFO      ingestion.article_fetcher    Fetching body [47/150]: https://www.hellenicshippingnews.com/aluminum-recycling-accelerating-shift-from-
+2026-06-13 16:10:37,442  INFO      ingestion.article_fetcher    Fetching body [48/150]: https://www.hellenicshippingnews.com/gibson-tanker-report-too-much-of-a-good-thi
+2026-06-13 16:10:38,250  INFO      ingestion.article_fetcher    Fetching body [49/150]: https://www.middleeasteye.net/live-blog/live-blog-update/death-toll-lebanon-rise
+2026-06-13 16:10:38,532  INFO      ingestion.article_fetcher    Fetching body [50/150]: https://www.middleeasteye.net/opinion/i-survived-genocide-gaza-war-still-carry-s
+2026-06-13 16:10:38,817  INFO      ingestion.article_fetcher    Fetching body [51/150]: https://www.middleeasteye.net/live-blog/live-blog-update/nearly-100-uk-mps-and-p
+2026-06-13 16:10:39,078  INFO      ingestion.article_fetcher    Fetching body [52/150]: https://www.middleeasteye.net/live-blog/live-blog-update/palestinian-killed-isra
+2026-06-13 16:10:39,360  INFO      ingestion.article_fetcher    Fetching body [53/150]: https://www.middleeasteye.net/live-blog/live-blog-update/iran-says-signing-memor
+2026-06-13 16:10:39,615  INFO      ingestion.article_fetcher    Fetching body [54/150]: https://www.middleeasteye.net/live-blog/live-blog-update/israel-launches-attacks
+2026-06-13 16:10:39,861  INFO      ingestion.article_fetcher    Fetching body [55/150]: https://www.middleeasteye.net/live-blog/live-blog-update/israeli-army-says-least
+2026-06-13 16:10:40,112  INFO      ingestion.article_fetcher    Fetching body [56/150]: https://www.middleeasteye.net/live-blog/live-blog-update/death-toll-gaza-nears-7
+2026-06-13 16:10:40,364  INFO      ingestion.article_fetcher    Fetching body [57/150]: https://www.middleeasteye.net/live-blog/live-blog-update/funeral-preparations-ir
+2026-06-13 16:10:40,611  INFO      ingestion.article_fetcher    Fetching body [58/150]: https://www.middleeasteye.net/live-blog/live-blog-update/maritime-body-says-tank
+2026-06-13 16:10:40,861  INFO      ingestion.article_fetcher    Fetching body [59/150]: https://www.middleeasteye.net/live-blog/live-blog-update/pakistan-says-us-iran-p
+2026-06-13 16:10:41,119  INFO      ingestion.article_fetcher    Fetching body [60/150]: https://www.middleeasteye.net/live-blog/live-blog-update/irans-slain-supreme-lea
+2026-06-13 16:10:41,420  INFO      ingestion.article_fetcher    Fetching body [61/150]: https://www.middleeasteye.net/live-blog/live-blog-update/uae-denies-reports-it-r
+2026-06-13 16:10:41,699  INFO      ingestion.article_fetcher    Fetching body [62/150]: https://www.middleeasteye.net/opinion/manchester-airport-trial-shows-why-juries-
+2026-06-13 16:10:41,949  INFO      ingestion.article_fetcher    Fetching body [63/150]: https://www.al-monitor.com/originals/2026/06/trump-meet-middle-east-leaders-atte
+2026-06-13 16:10:42,544  INFO      ingestion.article_fetcher    Fetching body [64/150]: https://www.al-monitor.com/originals/2026/06/iran-says-signing-islamabad-memoran
+2026-06-13 16:10:43,161  INFO      ingestion.article_fetcher    Fetching body [65/150]: https://www.al-monitor.com/originals/2026/06/us-iran-deal-could-be-finalised-soo
+2026-06-13 16:10:43,556  INFO      ingestion.article_fetcher    Fetching body [66/150]: https://www.al-monitor.com/originals/2026/06/pakistan-pm-says-us-iran-peace-deal
+2026-06-13 16:10:44,003  INFO      ingestion.article_fetcher    Fetching body [67/150]: https://www.al-monitor.com/originals/2026/06/iran-says-funeral-late-supreme-lead
+2026-06-13 16:10:44,597  INFO      ingestion.article_fetcher    Fetching body [68/150]: https://www.al-monitor.com/originals/2026/06/somaliland-says-it-has-right-choose
+2026-06-13 16:10:45,028  INFO      ingestion.article_fetcher    Fetching body [69/150]: https://www.al-monitor.com/originals/2026/06/iran-peace-deal-looms-while-new-mil
+2026-06-13 16:10:45,621  INFO      ingestion.article_fetcher    Fetching body [70/150]: https://www.al-monitor.com/originals/2026/06/how-iran-framing-deal-us-amid-compe
+2026-06-13 16:10:46,241  INFO      ingestion.article_fetcher    Fetching body [71/150]: https://www.al-monitor.com/originals/2026/06/soccer-iran-team-chief-slams-fifas-
+2026-06-13 16:10:46,850  INFO      ingestion.article_fetcher    Fetching body [72/150]: https://www.al-monitor.com/originals/2026/06/factbox-main-provisions-2015-iran-n
+2026-06-13 16:10:47,257  INFO      ingestion.article_fetcher    Fetching body [73/150]: https://www.al-monitor.com/originals/2026/06/israeli-palestinian-civil-society-g
+2026-06-13 16:10:47,875  INFO      ingestion.article_fetcher    Fetching body [74/150]: https://www.al-monitor.com/originals/2026/06/exclusive-uae-unlock-billions-dolla
+2026-06-13 16:10:48,374  INFO      ingestion.article_fetcher    Fetching body [75/150]: https://www.jpost.com/middle-east/iran-news/article-899251
+2026-06-13 16:10:48,805  INFO      ingestion.article_fetcher    Fetching body [76/150]: https://www.jpost.com/middle-east/article-899092
+2026-06-13 16:10:49,210  INFO      ingestion.article_fetcher    Fetching body [77/150]: https://www.jpost.com/business-and-innovation/energy-and-infrastructure/article-
+2026-06-13 16:10:49,618  INFO      ingestion.article_fetcher    Fetching body [78/150]: https://www.jpost.com/business-and-innovation/all-news/article-899253
+2026-06-13 16:10:50,036  INFO      ingestion.article_fetcher    Fetching body [79/150]: https://www.jpost.com/israel-news/article-899252
+2026-06-13 16:10:50,472  INFO      ingestion.article_fetcher    Fetching body [80/150]: https://www.jpost.com/international/article-899228
+2026-06-13 16:10:50,879  INFO      ingestion.article_fetcher    Fetching body [81/150]: https://www.jpost.com/middle-east/iran-news/article-899234
+2026-06-13 16:10:51,282  INFO      ingestion.article_fetcher    Fetching body [82/150]: https://www.jpost.com/israel-news/culture/article-899254
+2026-06-13 16:10:51,801  INFO      ingestion.article_fetcher    Fetching body [83/150]: https://www.jpost.com/international/article-899249
+2026-06-13 16:10:52,236  INFO      ingestion.article_fetcher    Fetching body [84/150]: https://www.jpost.com/international/article-899176
+2026-06-13 16:10:52,663  INFO      ingestion.article_fetcher    Fetching body [85/150]: https://www.jpost.com/diaspora/antisemitism/article-899105
+2026-06-13 16:10:53,100  INFO      ingestion.article_fetcher    Fetching body [86/150]: https://www.jpost.com/travel/article-899075
+2026-06-13 16:10:53,624  INFO      ingestion.article_fetcher    Fetching body [87/150]: https://www.jpost.com/conferences/article-898190
+2026-06-13 16:10:54,020  INFO      ingestion.article_fetcher    Fetching body [88/150]: https://www.jpost.com/conferences/article-898237
+2026-06-13 16:10:54,445  INFO      ingestion.article_fetcher    Fetching body [89/150]: https://www.jpost.com/conferences/article-898281
+2026-06-13 16:10:54,845  INFO      ingestion.article_fetcher    Fetching body [90/150]: https://www.timesofisrael.com/activists-rally-to-kick-israel-out-of-fifa-despite
+2026-06-13 16:10:55,198  INFO      ingestion.article_fetcher    Fetching body [91/150]: https://www.timesofisrael.com/pakistan-claims-us-iran-deal-to-be-signed-within-2
+2026-06-13 16:10:55,600  INFO      ingestion.article_fetcher    Fetching body [92/150]: https://www.timesofisrael.com/rooftop-installation-brings-searing-oct-7-imagery-
+2026-06-13 16:10:55,951  INFO      ingestion.article_fetcher    Fetching body [93/150]: https://www.timesofisrael.com/13000-jews-were-driven-out-of-poland-in-1968-now-s
+2026-06-13 16:10:56,339  INFO      ingestion.article_fetcher    Fetching body [94/150]: https://www.timesofisrael.com/anthropic-says-it-cut-access-to-powerful-ai-models
+2026-06-13 16:10:56,746  INFO      ingestion.article_fetcher    Fetching body [95/150]: https://www.timesofisrael.com/unrwa-fires-70-gaza-staffers-amid-israeli-accusati
+2026-06-13 16:10:57,095  INFO      ingestion.article_fetcher    Fetching body [96/150]: https://www.timesofisrael.com/workers-begin-removing-trumps-name-from-kennedy-ce
+2026-06-13 16:10:57,486  INFO      ingestion.article_fetcher    Fetching body [97/150]: https://www.timesofisrael.com/her-whole-face-was-covered-in-blood-11-campers-att
+2026-06-13 16:10:57,867  INFO      ingestion.article_fetcher    Fetching body [98/150]: https://www.timesofisrael.com/iran-said-to-have-mined-entrance-to-bombed-nuclear
+2026-06-13 16:10:58,161  INFO      ingestion.article_fetcher    Fetching body [99/150]: https://www.timesofisrael.com/us-approves-paramount-warner-bros-110-billion-merg
+2026-06-13 16:10:58,422  INFO      ingestion.article_fetcher    Fetching body [100/150]: https://www.timesofisrael.com/youngest-ever-kkl-jnf-chair-vows-to-cut-waste-mend
+2026-06-13 16:10:58,688  INFO      ingestion.article_fetcher    Fetching body [101/150]: https://www.timesofisrael.com/beaufort-how-israel-left-lebanon-in-2000-with-a-ba
+2026-06-13 16:10:58,952  INFO      ingestion.article_fetcher    Fetching body [102/150]: https://www.timesofisrael.com/hebrew-union-college-claims-ohios-charity-law-suit
+2026-06-13 16:10:59,217  INFO      ingestion.article_fetcher    Fetching body [103/150]: https://www.arabnews.com/node/2643365/world
+2026-06-13 16:10:59,561  INFO      ingestion.article_fetcher    Fetching body [104/150]: https://www.arabnews.com/node/2643364/world
+2026-06-13 16:10:59,848  INFO      ingestion.article_fetcher    Fetching body [105/150]: https://www.arabnews.com/node/2643363/world
+2026-06-13 16:11:00,150  INFO      ingestion.article_fetcher    Fetching body [106/150]: https://www.arabnews.com/node/2643362/world
+2026-06-13 16:11:00,456  INFO      ingestion.article_fetcher    Fetching body [107/150]: https://www.arabnews.com/node/2643361/world
+2026-06-13 16:11:00,752  INFO      ingestion.article_fetcher    Fetching body [108/150]: https://www.arabnews.com/node/2643360/world
+2026-06-13 16:11:01,075  INFO      ingestion.article_fetcher    Fetching body [109/150]: https://www.arabnews.com/node/2643359/world
+2026-06-13 16:11:02,514  INFO      ingestion.article_fetcher    Fetching body [110/150]: https://www.arabnews.com/node/2643358/saudi-arabia
+2026-06-13 16:11:02,885  INFO      ingestion.article_fetcher    Fetching body [111/150]: https://www.arabnews.com/node/2643357/sport
+2026-06-13 16:11:04,279  INFO      ingestion.article_fetcher    Fetching body [112/150]: https://www.defenseone.com/policy/2026/06/army-data-center/414137/
+2026-06-13 16:11:05,148  INFO      ingestion.article_fetcher    Fetching body [113/150]: https://www.defenseone.com/policy/2026/06/house-section-702-lapse-spy-chief/4141
+2026-06-13 16:11:06,029  INFO      ingestion.article_fetcher    Fetching body [114/150]: https://www.defenseone.com/threats/2026/06/mystery-gps-outages-russian-satellite
+2026-06-13 16:11:06,877  INFO      ingestion.article_fetcher    Fetching body [115/150]: https://www.defenseone.com/policy/2026/06/senate-appropriators-defense-reconcili
+2026-06-13 16:11:07,692  INFO      ingestion.article_fetcher    Fetching body [116/150]: https://www.defenseone.com/policy/2026/06/lawmakers-anti-union-pentagon/414083/
+2026-06-13 16:11:08,509  INFO      ingestion.article_fetcher    Fetching body [117/150]: https://www.defenseone.com/defense-systems/2026/06/apparent-first-navy-drone-boa
+2026-06-13 16:11:09,093  INFO      ingestion.article_fetcher    Fetching body [118/150]: https://www.defenseone.com/policy/2026/06/trump-memo-pushes-national-security-ag
+2026-06-13 16:11:10,000  INFO      ingestion.article_fetcher    Fetching body [119/150]: https://warontherocks.com/the-gulf-arab-states-need-a-shield-built-for-limited-t
+2026-06-13 16:11:10,720  INFO      ingestion.article_fetcher    Fetching body [120/150]: https://warontherocks.com/strike-counterstrike-repeat/
+2026-06-13 16:11:11,357  INFO      ingestion.article_fetcher    Fetching body [121/150]: https://warontherocks.com/the-evolution-of-ukraines-asymmetrical-combat-tactics/
+2026-06-13 16:11:12,047  INFO      ingestion.article_fetcher    Fetching body [122/150]: https://warontherocks.com/the-chain-of-peace-do-supply-chain-chokepoints-deter-w
+2026-06-13 16:11:12,681  INFO      ingestion.article_fetcher    Fetching body [123/150]: https://warontherocks.com/the-maritime-action-plan-needs-a-yardstick-enter-the-m
+2026-06-13 16:11:13,157  INFO      ingestion.article_fetcher    Fetching body [124/150]: https://warontherocks.com/cogs-of-war/dusting-a-dirt-road-how-the-united-states-
+2026-06-13 16:11:13,886  INFO      ingestion.article_fetcher    Fetching body [125/150]: https://warontherocks.com/cascading-failure-the-spanish-navys-reserve-squadron-a
+2026-06-13 16:11:14,388  INFO      ingestion.article_fetcher    Fetching body [126/150]: https://warontherocks.com/how-can-lebanons-partners-help-strengthen-the-lebanese
+2026-06-13 16:11:14,910  INFO      ingestion.article_fetcher    Fetching body [127/150]: https://warontherocks.com/from-pyongyang-to-primorsk-when-sanctions-evasion-beco
+2026-06-13 16:11:15,408  INFO      ingestion.article_fetcher    Fetching body [128/150]: https://warontherocks.com/is-skepticism-ukraines-foreign-policy-playbook/
+2026-06-13 16:11:16,139  INFO      ingestion.article_fetcher    Fetching body [129/150]: https://warontherocks.com/what-beiruts-port-scanners-miss-about-militant-supply-
+2026-06-13 16:11:16,635  INFO      ingestion.article_fetcher    Fetching body [130/150]: https://www.ft.com/content/726f4afe-c3ff-4ec0-bfc9-b572b419e11f
+2026-06-13 16:11:16,836  INFO      ingestion.article_fetcher    Fetching body [131/150]: https://www.ft.com/content/6982febe-5d1b-4e16-9505-fbee84ca60ab
+2026-06-13 16:11:17,036  INFO      ingestion.article_fetcher    Fetching body [132/150]: https://www.ft.com/content/298a1431-dc3e-4cbc-aa6f-769e54541b60
+2026-06-13 16:11:17,237  INFO      ingestion.article_fetcher    Fetching body [133/150]: https://www.ft.com/content/2a27300a-b90d-4649-8c09-f7e7cd426dbb
+2026-06-13 16:11:17,437  INFO      ingestion.article_fetcher    Fetching body [134/150]: https://www.ft.com/content/5b0caef5-7cd0-4708-9c62-e35f2dd32370
+2026-06-13 16:11:17,638  INFO      ingestion.article_fetcher    Fetching body [135/150]: https://www.ft.com/content/02ba251d-a538-427f-b2e5-65d78b56e56f
+2026-06-13 16:11:17,839  INFO      ingestion.article_fetcher    Fetching body [136/150]: https://www.ft.com/content/54892eff-55c3-4d0c-8824-827db7c3486b
+2026-06-13 16:11:18,039  INFO      ingestion.article_fetcher    Fetching body [137/150]: https://www.ft.com/content/23e56094-69fb-424a-a8af-7798a7a77bb5
+2026-06-13 16:11:18,240  INFO      ingestion.article_fetcher    Fetching body [138/150]: https://www.bloomberg.com/news/videos/2026-06-13/health-officials-warn-of-measle
+2026-06-13 16:11:18,441  INFO      ingestion.article_fetcher    Fetching body [139/150]: https://www.bloomberg.com/news/articles/2026-06-13/us-s-screwworm-fix-is-still-a
+2026-06-13 16:11:18,641  INFO      ingestion.article_fetcher    Fetching body [140/150]: https://www.bloomberg.com/news/articles/2026-06-13/us-strikes-iranian-drones-whi
+2026-06-13 16:11:18,842  INFO      ingestion.article_fetcher    Fetching body [141/150]: https://www.bloomberg.com/news/articles/2026-06-13/prices-likely-to-stay-higher-
+2026-06-13 16:11:19,042  INFO      ingestion.article_fetcher    Fetching body [142/150]: https://www.nasdaq.com/articles/canadian-stocks-advance-after-trump-announces-us
+2026-06-13 16:11:19,841  INFO      ingestion.article_fetcher    Fetching body [143/150]: https://www.nasdaq.com/articles/crude-oil-plunges-amid-prospects-us-iran-deal-re
+2026-06-13 16:11:20,453  INFO      ingestion.article_fetcher    Fetching body [144/150]: https://www.nasdaq.com/articles/gold-surges-optimism-us-iran-deal-increases
+2026-06-13 16:11:21,309  INFO      ingestion.article_fetcher    Fetching body [145/150]: https://www.nasdaq.com/articles/brent-crude-oil-prices-may-climb-36-2026-middle-
+2026-06-13 16:11:22,092  INFO      ingestion.article_fetcher    Fetching body [146/150]: https://www.nasdaq.com/articles/gold-extends-recovery-us-iran-peace-deal-hopes
+2026-06-13 16:11:22,911  INFO      ingestion.article_fetcher    Fetching body [147/150]: https://www.nasdaq.com/articles/oil-prices-slump-trump-claims-breakthrough-talks
+2026-06-13 16:11:23,731  INFO      ingestion.article_fetcher    Fetching body [148/150]: https://www.nasdaq.com/articles/crude-oil-plummets-trump-confirms-iran-signing-p
+2026-06-13 16:11:24,547  INFO      ingestion.article_fetcher    Fetching body [149/150]: https://www.nasdaq.com/articles/gold-slides-amid-us-iran-escalation-gains-crude-
+2026-06-13 16:11:25,160  INFO      ingestion.article_fetcher    Fetching body [150/150]: https://www.nasdaq.com/articles/gold-edges-slide-amid-us-iran-escalation-gains-c
+2026-06-13 16:11:25,812  INFO      ingestion.article_fetcher  Body fetch complete: 133 fetched, 12 skipped, 5 failed
+2026-06-13 16:11:25,812  INFO      run_ingestion  Full body fetch: 133/150 articles got full text
+2026-06-13 16:11:25,841  INFO      run_ingestion  Prepared 150 articles for extraction
+2026-06-13 16:11:25,841  INFO      vectordb.store  Loading embedding model: all-MiniLM-L6-v2
+2026-06-13 16:11:27,123  INFO      sentence_transformers.SentenceTransformer  Use pytorch device_name: cuda
+2026-06-13 16:11:27,123  INFO      sentence_transformers.SentenceTransformer  Load pretrained SentenceTransformer: all-MiniLM-L6-v2
+2026-06-13 16:11:36,248  INFO      vectordb.store  Vector store ready. Collection size: 0 chunks
+2026-06-13 16:11:36,342  INFO      run_ingestion  Extraction dedup: 0 articles already in vector DB, skipping
+2026-06-13 16:11:36,344  INFO      run_ingestion  Extraction scope: 140 articles (90 watchlist, 50 other RSS)
+2026-06-13 16:11:36,344  INFO      processing.extractor  Extracting 140 articles via Claude API (2 parallel workers)...
+2026-06-13 16:11:36,344  INFO      processing.extractor    Extracting [1/140]: Rising Energy Bills Are Fueling a Global Home Battery Boom
+2026-06-13 16:11:36,345  INFO      processing.extractor    Extracting [2/140]: The Oil Market Could Be Weeks From a Breaking Point
+2026-06-13 16:12:06,357  INFO      processing.extractor    Extracting [3/140]: U.S. Military Helping Move 7 Million Bpd Out of Persian Gulf
+2026-06-13 16:12:10,863  INFO      processing.extractor    Extracting [4/140]: A War of Words Sends Brent Crude to a Two-Month Low
+2026-06-13 16:12:31,547  WARNING   processing.extractor    JSON parse failed on chunk 4: Expecting value: line 1 column 1 (char 0)
+2026-06-13 16:12:31,547  INFO      processing.extractor    Extracting [5/140]: Trump Says Iran Peace Deal Could Be Signed Within Days
+2026-06-13 16:12:44,861  WARNING   processing.extractor    JSON parse failed on chunk 5: Expecting value: line 1 column 1 (char 0)
+2026-06-13 16:12:49,573  INFO      processing.extractor    Extracting [6/140]: Norway Pitches Arctic Resources as Key to EU Energy Security
+2026-06-13 16:12:56,123  INFO      processing.extractor    Extracting [7/140]: India Accuses West of Double Standards Over U.S. Russia Oil 
+2026-06-13 16:13:15,784  WARNING   processing.extractor    JSON parse failed on chunk 4: Expecting value: line 1 column 1 (char 0)
+2026-06-13 16:13:15,785  INFO      processing.extractor    Extracting [8/140]: Oil Prices Slide as Traders Bet on Diplomacy
+2026-06-13 16:13:24,388  WARNING   processing.extractor    JSON parse failed on chunk 4: Expecting value: line 1 column 1 (char 0)
+2026-06-13 16:13:24,388  INFO      processing.extractor    Extracting [9/140]: Oil Drops to Four-Month Low
+2026-06-13 16:13:44,256  INFO      processing.extractor    Extracting [10/140]: Hope for Hormuz as Iran, US Edge Closer to Peace Deal
+2026-06-13 16:13:44,631  INFO      processing.extractor    Extracting [11/140]: Trump Claims Iran Deal Close in Uturn
+2026-06-13 16:14:07,190  INFO      processing.extractor    Extracting [12/140]: Oil Falls to April Lows on Trump Signals
+2026-06-13 16:14:14,870  INFO      processing.extractor    Extracting [13/140]: Emergency Fuel Surcharge Negotiations Reveal a Larger Questi
+2026-06-13 16:14:31,561  INFO      processing.extractor    Extracting [14/140]: Aluminum recycling accelerating shift from green initiative 
+2026-06-13 16:14:36,682  INFO      processing.extractor    Extracting [15/140]: Gibson tanker report – Too Much of a Good Thing
+2026-06-13 16:14:44,820  INFO      processing.extractor    Extracting [16/140]: Death toll in Lebanon rises to 3,756, health ministry says
+2026-06-13 16:14:48,558  INFO      processing.extractor    Extracting [17/140]: I survived the genocide in Gaza, but still carry its scars w
+2026-06-13 16:15:04,133  INFO      processing.extractor    Extracting [18/140]: Nearly 100 UK MPs and peers urge cancellation of Israeli set
+2026-06-13 16:15:09,655  INFO      processing.extractor    Extracting [19/140]: Palestinian killed by Israeli drone strike in central Gaza
+2026-06-13 16:15:09,658  INFO      processing.extractor    Extracting [20/140]: Iran says signing of memorandum with US will not be on Sunda
+2026-06-13 16:15:12,727  INFO      processing.extractor    Extracting [21/140]: Israel launches attacks on southern Lebanon
+2026-06-13 16:15:13,013  INFO      processing.extractor    Extracting [22/140]: Israeli army says at least 70 attacks in Lebanon over past d
+2026-06-13 16:15:16,002  INFO      processing.extractor    Extracting [23/140]: Death toll in Gaza nears 73,000
+2026-06-13 16:15:16,822  INFO      processing.extractor    Extracting [24/140]: Funeral preparations for Iran's former Supreme Leader set fo
+2026-06-13 16:15:19,492  INFO      processing.extractor    Extracting [25/140]: Pakistan says US-Iran peace deal likely finalised within 24 
+2026-06-13 16:15:19,795  INFO      processing.extractor    Extracting [26/140]: Iran's slain supreme leader Ali Khamenei to be buried 9 July
+2026-06-13 16:15:22,762  INFO      processing.extractor    Extracting [27/140]: UAE denies reports of it releasing frozen funds to Iran: Rep
+2026-06-13 16:15:23,372  INFO      processing.extractor    Extracting [28/140]: Trump to meet with Middle East leaders, attend Ukraine sessi
+2026-06-13 16:15:27,473  INFO      processing.extractor    Extracting [29/140]: Iran says signing of Islamabad memorandum will not take plac
+2026-06-13 16:15:29,267  INFO      processing.extractor    Extracting [30/140]: US-Iran deal could be finalised soon, mediator Pakistan says
+2026-06-13 16:15:30,751  INFO      processing.extractor    Extracting [31/140]: Pakistan PM says US-Iran peace deal signing expected within 
+2026-06-13 16:15:34,028  INFO      processing.extractor    Extracting [32/140]: Iran says funeral for late Supreme Leader Khamenei to begin 
+2026-06-13 16:15:37,106  INFO      processing.extractor    Extracting [33/140]: Iran peace deal looms while new military action flares near 
+2026-06-13 16:15:47,954  INFO      processing.extractor    Extracting [34/140]: How Iran is framing deal with US amid competing narratives
+2026-06-13 16:15:53,688  INFO      processing.extractor    Extracting [35/140]: Soccer-Iran team chief slams FIFA’s 'lack of coordination' o
+2026-06-13 16:15:59,629  INFO      processing.extractor    Extracting [36/140]: Factbox-Main provisions of the 2015 Iran nuclear deal abando
+2026-06-13 16:16:06,794  INFO      processing.extractor    Extracting [37/140]: Israeli, Palestinian civil society groups meet in France as 
+2026-06-13 16:16:10,070  INFO      processing.extractor    Extracting [38/140]: Exclusive-UAE to unlock billions of dollars for Iran, source
+2026-06-13 16:16:21,869  INFO      processing.extractor    Extracting [39/140]: Iran booby traps entrances, collapses tunnels leading to cac
+2026-06-13 16:16:29,938  INFO      processing.extractor    Extracting [40/140]: Israel's bomb shelter crisis: When sirens sound, millions of
+2026-06-13 16:16:31,781  INFO      processing.extractor    Extracting [41/140]: US-Iran deal to include dismantling of Iranian nuclear progr
+2026-06-13 16:16:41,841  INFO      processing.extractor    Extracting [42/140]: Trump tells Netanyahu it's time for war to end, calls Iran d
+2026-06-13 16:16:51,647  INFO      processing.extractor    Extracting [43/140]: Israeli-Arab singer from Nazareth, Elyanna, takes the stage 
+2026-06-13 16:16:55,136  INFO      processing.extractor    Extracting [44/140]: Trump's name removed from Kennedy Center in predawn operatio
+2026-06-13 16:17:00,044  INFO      processing.extractor    Extracting [45/140]: Beyond the postcard
+2026-06-13 16:17:04,753  INFO      processing.extractor    Extracting [46/140]: Naamat International President: Women's leadership is a demo
+2026-06-13 16:17:09,745  INFO      processing.extractor    Extracting [47/140]: Jerusalem home to 400+ hi-tech firms, JDA chief Tsachi Namir
+2026-06-13 16:17:17,862  INFO      processing.extractor    Extracting [48/140]: Believe your enemy wants to hurt you, WZO’s Yifat Ovadia Lus
+2026-06-13 16:17:22,982  INFO      processing.extractor    Extracting [49/140]: Activists rally to ‘kick Israel out of FIFA’ despite team’s 
+2026-06-13 16:17:23,053  INFO      processing.extractor    Extracting [50/140]: Pakistan claims US-Iran deal to be signed within 24 hours; T
+2026-06-13 16:17:32,180  INFO      processing.extractor    Extracting [51/140]: Rooftop installation brings searing Oct. 7 imagery and poign
+2026-06-13 16:17:43,052  INFO      processing.extractor    Extracting [52/140]: 13,000 Jews were driven out of Poland in 1968. Now, some are
+2026-06-13 16:17:48,008  INFO      processing.extractor    Extracting [53/140]: Anthropic says it cut access to powerful AI models over US ‘
+2026-06-13 16:17:56,164  INFO      processing.extractor    Extracting [54/140]: UNRWA fires 70 Gaza staffers amid Israeli accusations agency
+2026-06-13 16:18:03,530  INFO      processing.extractor    Extracting [55/140]: Workers begin removing Trump’s name from Kennedy Center, hou
+2026-06-13 16:18:12,337  INFO      processing.extractor    Extracting [56/140]: ‘Her whole face was covered in blood’: 11 campers attacked b
+2026-06-13 16:18:13,568  INFO      processing.extractor    Extracting [57/140]: Iran said to have mined entrance to bombed nuclear site to d
+2026-06-13 16:18:17,051  INFO      processing.extractor    Extracting [58/140]: US approves Paramount-Warner Bros. $110 billion merger, as s
+2026-06-13 16:18:20,328  INFO      processing.extractor    Extracting [59/140]: Youngest-ever KKL-JNF chair vows to cut waste, mend fences a
+2026-06-13 16:18:21,146  INFO      processing.extractor    Extracting [60/140]: ‘Beaufort’: How Israel left Lebanon in 2000 with a bang
+2026-06-13 16:18:23,399  INFO      processing.extractor    Extracting [61/140]: Hebrew Union College claims Ohio’s charity law suit violates
+2026-06-13 16:18:23,603  INFO      processing.extractor    Extracting [62/140]: China urges Pakistan step up mediation in Middle East: state
+2026-06-13 16:18:26,064  INFO      processing.extractor    Extracting [63/140]: Trump says stopping Iran’s nuclear program outweighs America
+2026-06-13 16:18:34,663  INFO      processing.extractor    Extracting [64/140]: As Trump heads to China, past US flubs on US policy toward T
+2026-06-13 16:18:45,313  INFO      processing.extractor    Extracting [65/140]: 85-year-old French widow caught in Trump’s immigration crack
+2026-06-13 16:19:02,721  INFO      processing.extractor    Extracting [66/140]: Trump’s proposed ‘Golden Dome’ estimated to cost $1.2 trilli
+2026-06-13 16:19:06,613  INFO      processing.extractor    Extracting [67/140]: Russian attacks in Dnipropetrovsk region kill six after ceas
+2026-06-13 16:19:19,107  INFO      processing.extractor    Extracting [68/140]: House vote puts Section 702 on brink of lapse amid fight ove
+2026-06-13 16:19:32,009  INFO      processing.extractor    Extracting [69/140]: ‘A terrible risk’: Senate appropriators dim prospects of ano
+2026-06-13 16:19:36,610  INFO      processing.extractor    Extracting [70/140]: New calls for lawmakers to override Trump’s anti-union EO at
+2026-06-13 16:19:45,858  INFO      processing.extractor    Extracting [71/140]: Trump memo pushes national-security agencies to move faster 
+2026-06-13 16:19:47,575  INFO      processing.extractor    Extracting [72/140]: The Gulf Arab States Need a Shield Built for Limited Trust
+2026-06-13 16:19:59,043  INFO      processing.extractor    Extracting [73/140]: Strike, Counterstrike, Repeat
+2026-06-13 16:20:10,919  INFO      processing.extractor    Extracting [74/140]: The Maritime Action Plan Needs a Yardstick: Enter the Mahan 
+2026-06-13 16:20:17,985  INFO      processing.extractor    Extracting [75/140]: How Can Lebanon’s Partners Help Strengthen the Lebanese Arme
+2026-06-13 16:20:29,351  INFO      processing.extractor    Extracting [76/140]: Pakistan says US-Iran deal to be signed within 24 hours
+2026-06-13 16:20:32,220  INFO      processing.extractor    Extracting [77/140]: Investment firms join Donald Trump’s $100bn race for Venezue
+2026-06-13 16:20:37,137  INFO      processing.extractor    Extracting [78/140]: US kills leader of Venezuelan Tren de Aragua gang in air str
+2026-06-13 16:20:40,208  INFO      processing.extractor    Extracting [79/140]: Anthropic suspends latest AI models after US blocks access t
+2026-06-13 16:20:42,528  INFO      processing.extractor    Extracting [80/140]: US and Iran Move Closer to Deal Despite Hormuz Skirmishes
+2026-06-13 16:20:42,805  INFO      processing.extractor    Extracting [81/140]: Prices Likely to Stay Higher Even If Conflict Ends, ECB’s Na
+2026-06-13 16:20:45,531  INFO      processing.extractor    Extracting [82/140]: Canadian Stocks Advance After Trump Announces U.S.-Iran Deal
+2026-06-13 16:20:46,148  INFO      processing.extractor    Extracting [83/140]: Crude Oil Plunges Amid Prospects Of U.S.-Iran Deal, Reopenin
+2026-06-13 16:21:04,375  INFO      processing.extractor    Extracting [84/140]: Gold Surges As Optimism On U.S.-Iran Deal Increases
+2026-06-13 16:21:07,857  INFO      processing.extractor    Extracting [85/140]: Brent Crude Oil Prices May Climb 36% In 2026 On Middle East 
+2026-06-13 16:21:18,709  INFO      processing.extractor    Extracting [86/140]: Gold Extends Recovery On US-Iran Peace Deal Hopes
+2026-06-13 16:21:26,904  INFO      processing.extractor    Extracting [87/140]: Oil Prices Slump As Trump Claims Breakthrough In Talks With 
+2026-06-13 16:21:31,000  INFO      processing.extractor    Extracting [88/140]: Crude Oil Plummets As Trump Confirms Iran Signing A Peace De
+2026-06-13 16:21:39,806  INFO      processing.extractor    Extracting [89/140]: Gold Slides Amid U.S.-Iran Escalation, Gains In Crude Oil, U
+2026-06-13 16:21:51,685  INFO      processing.extractor    Extracting [90/140]: Gold Edges Slide Amid U.S.-Iran Escalation, Gains In Crude O
+2026-06-13 16:22:01,103  INFO      processing.extractor    Extracting [91/140]: China's Fusion Reactor on Track for Ignition by 2027, Threat
+2026-06-13 16:22:12,326  INFO      processing.extractor    Extracting [92/140]: U.S. and Uzbekistan Deepen Economic Ties With New Investment
+2026-06-13 16:22:27,862  INFO      processing.extractor    Extracting [93/140]: Pace of US Oil Drilling Inches Up
+2026-06-13 16:22:35,912  INFO      processing.extractor    Extracting [94/140]: Europe Wary Of Too Much Dependence on U.S. LNG
+2026-06-13 16:22:49,030  INFO      processing.extractor    Extracting [95/140]: Nigeria's Crude Oil Production Hits 15-Month High
+2026-06-13 16:23:01,727  WARNING   processing.extractor    JSON parse failed on chunk 4: Expecting value: line 1 column 1 (char 0)
+2026-06-13 16:23:01,728  INFO      processing.extractor    Extracting [96/140]: Russian Governors Rush to Deny Fuel Crisis as Rationing Spre
+2026-06-13 16:23:15,452  INFO      processing.extractor    Extracting [97/140]: ExxonMobil Explores Acquisitions Including Woodside
+2026-06-13 16:23:27,327  INFO      processing.extractor    Extracting [98/140]: APA Expands Alaska Footprint with Savant Acquisition
+2026-06-13 16:23:29,580  INFO      processing.extractor    Extracting [99/140]: Aker BP Raises Stake in Norway's Johan Sverdrup
+2026-06-13 16:23:43,507  INFO      processing.extractor    Extracting [100/140]: Naftogaz Wins Its First Long-Term Regasification Booking in 
+2026-06-13 16:23:49,856  INFO      processing.extractor    Extracting [101/140]: Russian Oil Output at Lowest in Year amid Ukrainian Strikes
+2026-06-13 16:23:57,028  INFO      processing.extractor    Extracting [102/140]: Greek LNG Buyer Says Long Term USA Deals Getting Harder
+2026-06-13 16:24:04,606  INFO      processing.extractor    Extracting [103/140]: USA Gasoline Prices Drop for 4 Straight Weeks
+2026-06-13 16:24:12,385  INFO      processing.extractor    Extracting [104/140]: Dangote Refinery Seeks to Raise $1B in Private Debt Sale
+2026-06-13 16:24:22,010  INFO      processing.extractor    Extracting [105/140]: Alberta Says It's Talking with Fortune 500 Co to Finance Pip
+2026-06-13 16:24:28,768  INFO      processing.extractor    Extracting [106/140]: USA Commercial Crude Oil Stocks Down Over 7MM Barrels WoW
+2026-06-13 16:24:32,351  INFO      processing.extractor    Extracting [107/140]: Odfjell Drilling served safety notice over Rosebank rig fail
+2026-06-13 16:24:41,058  INFO      processing.extractor    Extracting [108/140]: UKOG sells off Horse Hill development in million pound deal
+2026-06-13 16:24:56,827  INFO      processing.extractor    Extracting [109/140]: Archive pictures: Beryl field celebrates 50 years of product
+2026-06-13 16:25:05,602  INFO      processing.extractor    Extracting [110/140]: Adura ‘could sue UK government’ if Rosebank and Jackdaw stop
+2026-06-13 16:25:07,681  INFO      processing.extractor    Extracting [111/140]: UK consortium plans Teesside direct air capture plant
+2026-06-13 16:25:28,365  INFO      processing.extractor    Extracting [112/140]: UK tops offshore wind injury list as safety rates improve
+2026-06-13 16:25:31,234  INFO      processing.extractor    Extracting [113/140]: ‘No time to spare’: UK must act now to double offshore wind 
+2026-06-13 16:25:43,727  INFO      processing.extractor    Extracting [114/140]: 13 of the best pictures as EAGE comes to Aberdeen
+2026-06-13 16:25:47,005  INFO      processing.extractor    Extracting [115/140]: Serica Energy completes purchase of ONE-Dyas North Sea asset
+2026-06-13 16:25:54,175  INFO      processing.extractor    Extracting [116/140]: Motive Offshore reels in subsea cable firm, C-Kore
+2026-06-13 16:25:56,423  INFO      processing.extractor    Extracting [117/140]: Dangote ramp-up slashes WAF product imports, reshapes clean 
+2026-06-13 16:26:05,847  INFO      processing.extractor    Extracting [118/140]: Tanker Market Stays Elevated in May
+2026-06-13 16:26:08,714  WARNING   processing.extractor    JSON parse failed on chunk 1: Expecting value: line 1 column 1 (char 0)
+2026-06-13 16:26:17,110  WARNING   processing.extractor    JSON parse failed on chunk 1: Expecting value: line 1 column 1 (char 0)
+2026-06-13 16:26:27,350  INFO      processing.extractor    Extracting [119/140]: Trade stands at a crossroads
+2026-06-13 16:26:29,808  WARNING   processing.extractor    JSON parse failed on chunk 3: Expecting value: line 1 column 1 (char 0)
+2026-06-13 16:26:34,723  INFO      processing.extractor    Extracting [120/140]: Retrofitting at scale: Lessons from delivering the world’s f
+2026-06-13 16:26:57,661  INFO      processing.extractor    Extracting [121/140]: BIMCO’s Energy Saving Device Retrofitting Addendum: Work wel
+2026-06-13 16:27:02,373  INFO      processing.extractor    Extracting [122/140]: Acerinox y Alfa Laval drive industrial decarbonization throu
+2026-06-13 16:27:13,226  INFO      processing.extractor    Extracting [123/140]: CPN delivers B100 to oil tanker in Hong Kong
+2026-06-13 16:27:14,251  INFO      processing.extractor    Extracting [124/140]: Maritime body says tanker struck off the coast of Oman
+2026-06-13 16:27:17,733  INFO      processing.extractor    Extracting [125/140]: Manchester Airport trial shows why juries may be Britain's l
+2026-06-13 16:27:21,388  INFO      processing.extractor    Extracting [126/140]: Somaliland says it has a right to choose its relationships a
+2026-06-13 16:27:30,429  INFO      processing.extractor    Extracting [127/140]: Voices from the Arab press: Attacking civilians is never jus
+2026-06-13 16:27:35,143  INFO      processing.extractor    Extracting [128/140]: Anthropic disables top-tier AI models after US order limitin
+2026-06-13 16:27:50,910  INFO      processing.extractor    Extracting [129/140]: Suspected rabid jackals attack campers, leaving 11 injured i
+2026-06-13 16:27:53,983  INFO      processing.extractor    Extracting [130/140]: How a Venezuelan bailout became a threat to Spain's politica
+2026-06-13 16:28:00,330  INFO      processing.extractor    Extracting [131/140]: Fighting antisemitism with gin: Kosher spirits project backs
+2026-06-13 16:28:16,067  INFO      processing.extractor    Extracting [132/140]: Nigeria, Morocco target 2026 deal to advance Atlantic gas pi
+2026-06-13 16:28:17,534  INFO      processing.extractor    Extracting [133/140]: Saudi crown prince, UAE president discuss regional developme
+2026-06-13 16:28:20,195  INFO      processing.extractor    Extracting [134/140]: Late Al-Hilal equalizer delays Al-Nassr’s bid for Saudi Pro 
+2026-06-13 16:28:27,979  INFO      processing.extractor    Extracting [135/140]: The Army wants to build a better data center. Can they do it
+2026-06-13 16:28:37,333  INFO      processing.extractor    Extracting [136/140]: Mystery GPS outages traced to Russian satellite
+2026-06-13 16:28:46,880  INFO      processing.extractor    Extracting [137/140]: In apparent first, Navy drone boat rescues helicopter crew d
+2026-06-13 16:28:51,531  INFO      processing.extractor    Extracting [138/140]: The Evolution of Ukraine’s Asymmetrical Combat Tactics
+2026-06-13 16:29:00,953  INFO      processing.extractor    Extracting [139/140]: The Chain of Peace: Do Supply Chain Chokepoints Deter War?
+2026-06-13 16:29:01,598  INFO      processing.extractor    Extracting [140/140]: Dusting a Dirt Road: How The United States Can Break the Cyc
+2026-06-13 16:29:26,319  INFO      run_ingestion  Extraction complete: 140 articles enriched
+2026-06-13 16:29:26,367  INFO      processing.processed_writer  Saved processed output: ~/Agentic_NewsRoom_Ubuntu/OilNewsDB/agentic_newsroom/data/processed/2026/06/2026-06-13_15-09-16_processed.json
+2026-06-13 16:29:26,367  INFO      vectordb.store  Loading embedding model: all-MiniLM-L6-v2
+2026-06-13 16:29:26,368  INFO      sentence_transformers.SentenceTransformer  Use pytorch device_name: cuda
+2026-06-13 16:29:26,368  INFO      sentence_transformers.SentenceTransformer  Load pretrained SentenceTransformer: all-MiniLM-L6-v2
+2026-06-13 16:29:27,863  INFO      vectordb.store  Vector store ready. Collection size: 0 chunks
+2026-06-13 16:29:29,861  INFO      vectordb.store    Embedded batch 1: 64 chunks
+2026-06-13 16:29:30,297  INFO      vectordb.store    Embedded batch 2: 64 chunks
+2026-06-13 16:29:30,770  INFO      vectordb.store    Embedded batch 3: 64 chunks
+2026-06-13 16:29:31,568  INFO      vectordb.store    Embedded batch 4: 64 chunks
+2026-06-13 16:29:32,350  INFO      vectordb.store    Embedded batch 5: 64 chunks
+2026-06-13 16:29:32,972  INFO      vectordb.store    Embedded batch 6: 64 chunks
+2026-06-13 16:29:33,888  INFO      vectordb.store    Embedded batch 7: 64 chunks
+2026-06-13 16:29:34,884  INFO      vectordb.store    Embedded batch 8: 64 chunks
+2026-06-13 16:29:35,600  INFO      vectordb.store    Embedded batch 9: 51 chunks
+2026-06-13 16:29:35,602  INFO      vectordb.store  Vector store updated. Total chunks in DB: 563
+2026-06-13 16:29:35,605  INFO      run_ingestion  Vector DB: 563 chunks added, 563 total
+2026-06-13 16:29:35,606  INFO      prediction.scorer  Scorer: need at least 2 runs to evaluate — skipping
+2026-06-13 16:29:36,929  INFO      graph.knowledge_graph  Knowledge graph ready at ~/Agentic_NewsRoom_Ubuntu/OilNewsDB/agentic_newsroom/graph/kuzu

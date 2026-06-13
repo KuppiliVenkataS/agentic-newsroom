@@ -193,8 +193,8 @@ def _call_llm(prompt: str, retries: int = 6) -> str:
 def _call_ollama(prompt: str) -> str:
     """Send a prompt to Ollama and return the response text."""
     payload = {
-        "model":  OLLAMA_MODEL,
-        "prompt": prompt,
+        "model": OLLAMA_MODEL,
+        "messages": [{"role": "user", "content": prompt}],
         "stream": False,
         "options": {
             "temperature": 0.1,
@@ -202,12 +202,12 @@ def _call_ollama(prompt: str) -> str:
         }
     }
     response = httpx.post(
-        f"{OLLAMA_BASE_URL}/api/generate",
+        f"{OLLAMA_BASE_URL}/api/chat",
         json=payload,
         timeout=120
     )
     response.raise_for_status()
-    return response.json().get("response", "").strip()
+    return response.json()["message"]["content"].strip()
 
 
 def _parse_json(raw: str) -> dict:
