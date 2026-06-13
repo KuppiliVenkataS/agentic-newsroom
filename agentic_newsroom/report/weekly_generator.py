@@ -230,4 +230,38 @@ def generate_weekly(now: datetime = None) -> Path | None:
         f.write(header + _DRAFT_BANNER + _ASSESSED_BLOCK + report_text + "\n")
 
     logger.info(f"Weekly report saved: {filepath}")
+
+
+    # Auto-convert to docx if pandoc is available
+    try:
+        import subprocess, shutil
+
+        # cron runs with minimal PATH — search common install locations explicitly
+        pandoc_cmd = shutil.which("pandoc") or next(
+            (p for p in [
+                "/usr/local/bin/pandoc",
+                "/opt/homebrew/bin/pandoc",
+                "/usr/bin/pandoc",
+                "/home/linuxbrew/.linuxbrew/bin/pandoc",
+            ] if Path(p).exists()),
+            None
+        )
+
+        if not pandoc_cmd:
+            logger.info("Pandoc not found in PATH or known locations — skipping DOCX conversion")
+        else:
+            docx_path = filepath.with_suffix(".docx")
+            result = subprocess.run(
+                [pandoc_cmd, str(filepath), "-o", str(docx_path)],
+                capture_output=True, text=True, timeout=30
+            )
+            if result.returncode == 0:
+                logger.info(f"DOCX saved: {docx_path}")
+            else:
+                logger.warning(f"Pandoc failed: {result.stderr}")
+    except Exception as e:
+        logger.warning(f"DOCX conversion error: {e}")
+
+
+        
     return filepath

@@ -330,5 +330,42 @@
       ]
     },
     "last_seen": "2026-06-10T18:40:05.186932+00:00"
+  },
+  "asian chip sector demand surge": {
+    "cycles": 1,
+    "first_seen": "2026-06-12T04:14:27.089763+00:00",
+    "details": {
+      "theme": "Asian chip sector demand surge",
+      "why_it_matters": "Renewed investment in semiconductor manufacturing across South Korea and Japan could drive incremental petrochemical feedstock demand and refinery utilization in Asia.",
+      "suggested_keywords": [
+        "chip stocks",
+        "semiconductor demand",
+        "Asian manufacturing",
+        "petrochemical feedstock"
+      ],
+      "example_headlines": [
+        "Korean Stocks Surge as Iran Deal Hopes Spark Chip Stock Rally",
+        "Japan's Stocks Gain as Trump's Iran Deal Comments Lift Sentiment"
+      ]
+    },
+    "last_seen": "2026-06-12T04:14:27.089763+00:00"
+  },
+  "chinese coal-to-chemicals expansion": {
+    "cycles": 1,
+    "first_seen": "2026-06-12T04:14:27.089763+00:00",
+    "details": {
+      "theme": "Chinese coal-to-chemicals expansion",
+      "why_it_matters": "Large-scale shift toward coal-based chemical production in China could reduce crude oil demand for petrochemical feedstocks and alter regional refining economics.",
+      "suggested_keywords": [
+        "coal chemicals",
+        "China energy security",
+        "coal-to-chemicals",
+        "petrochemical substitution"
+      ],
+      "example_headlines": [
+        "Chinese Region Pushes Coal Chemicals as Energy Security Fix"
+      ]
+    },
+    "last_seen": "2026-06-12T04:14:27.089763+00:00"
   }
 }
