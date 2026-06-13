@@ -100,6 +100,14 @@ RSS_FEEDS = {
     # reuters_politics — DNS fails
     # ap_energy (rsshub) — 403
     # axios_energy — 404
+
+    # Russia / sanctions / shadow fleet
+    "kyiv_independent":     "https://kyivindependent.com/feed/",
+    "moscow_times":         "https://www.themoscowtimes.com/rss/news",
+    "bellcat":              "https://www.bellingcat.com/feed/",
+    "tanker_trackers":      "https://www.tankertrackers.com/rss",
+    "maritime_executive":   "https://maritime-executive.com/rss",
+    "occrp":                "https://www.occrp.org/en/rss",
 }
 
 # ── Request settings ──────────────────────────────────────────────────────────
@@ -156,7 +164,16 @@ WATCHLIST_THEMES = {
         "ceasefire", "peace talks", "negotiations", "agreement reached", "hormuz reopened",
     ],
     "russia_ukraine": [
-        "novorossiysk", "caspian pipeline", "russia oil", "ukraine drone oil", "ukraine strikes", "russia strikes"
+        "russia oil", "russian crude", "urals", "urals discount",
+        "shadow fleet", "dark fleet", "price cap", "oil price cap",
+        "arctic lng", "yamal", "novatek", "rosneft", "lukoil",
+        "novorossiysk", "primorsk", "ust-luga", "baltic tanker",
+        "cpc pipeline", "caspian pipeline",
+        "ukraine drone oil", "ukraine strikes refinery",
+        "gazprom", "transneft",
+        "st petersburg port", "kronstadt",
+        "russia sanctions", "ofac russia",
+        "g7 price cap", "insurance ban",
     ],
 
     # ── DORMANT: activate (add terms) when the emerging-story scan flags one ──
@@ -193,3 +210,7 @@ BROAD_FEEDS = ["reuters_energy", "eia_petroleum_weekly", "ft_markets", "bloomber
 # 0.2 = a watchlist match adds 0.2 to the LLM's importance_score
 # Set to 0.0 to disable the watchlist boost without removing the list
 WATCHLIST_BOOST = 0.20
+
+# ── Russia report ─────────────────────────────────────────────────────────────
+RUSSIA_COLLECTION = "russia_oil"
+RUSSIA_WATCHLIST  = WATCHLIST_THEMES["russia_ukraine"]
