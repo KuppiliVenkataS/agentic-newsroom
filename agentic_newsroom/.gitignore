@@ -1,12 +1,12 @@
 .env
 secrets/
 env/
+*.log
 
-data/processed/
-data/raw/
-data/logs/
-data/portal_users.db
-data/dedup.db
+data/
+
+
+
 __pycache__
 vectordb/
 reports/
@@ -15,6 +15,3 @@ reports/
 *.pyc 
 *.pyo 
 graph/kuzu
-agentic_newsroom_copy/
-email_agent/recipients.csv
-email_agent/__pycache__
