@@ -37,7 +37,12 @@ Write the Analyst Note covering:
 2. Shadow fleet / dark fleet — any incidents, detentions, insurance developments
 3. Sanctions and price cap — any new enforcement, evasion, or policy developments
 4. Russian export routes — Novorossiysk, Baltic ports, Arctic — any disruptions or changes
-5. Ukraine strikes on Russian oil infrastructure — refineries, pipelines, ports
+5. Ukraine Strikes on Russian Oil Infrastructure — PRIORITY SECTION
+List every confirmed or reported strike on Russian refineries, oil depots, pipelines,
+or port terminals in this cycle. For each: facility name, location, reported damage,
+estimated capacity affected in bpd if available, and whether confirmed or unconfirmed.
+If no strikes this cycle, state explicitly: No strikes reported this cycle.
+This section must never be skipped — SLT reads it first.
 6. What this means for a refinery buying crude — feedstock cost implications, alternative sourcing
 
 Format:
