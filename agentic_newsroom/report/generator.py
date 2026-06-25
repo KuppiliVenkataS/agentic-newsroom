@@ -273,16 +273,19 @@ def _format_orgs(orgs: list[dict]) -> str:
 def _format_news(results: list[dict]) -> str:
     if not results:
         return "No relevant news found."
+    now = datetime.now(timezone.utc)
     lines = []
     for r in results:
-        title  = r["metadata"].get("title", "").strip()
-        source = r["metadata"].get("source", "")
-        score  = r["score"]
-        chunk  = r["chunk"][:600].strip()   # enough for LLM to extract detail
+        title     = r["metadata"].get("title", "").strip()
+        source    = r["metadata"].get("source", "")
+        score     = r["score"]
+        published = r["metadata"].get("published", "")
+        age_label = _price_age_label(published, now) if published else "date unknown"
+        chunk     = r["chunk"][:600].strip()   # enough for LLM to extract detail
         if title:
-            lines.append(f"- [{source}] {title} (relevance: {score:.2f})\n  {chunk}")
+            lines.append(f"- [{source}] {title} (relevance: {score:.2f}, published {age_label})\n  {chunk}")
         else:
-            lines.append(f"- [{source}] {chunk[:400]} (relevance: {score:.2f})")
+            lines.append(f"- [{source}] {chunk[:400]} (relevance: {score:.2f}, published {age_label})")
     return "\n".join(lines)
 
 

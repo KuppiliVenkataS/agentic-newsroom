@@ -3,6 +3,10 @@ secrets/
 env/
 *.log
 
+data/logs/
+data/processed/
+data/raw/
+data/dedup.db
 data/
 
 

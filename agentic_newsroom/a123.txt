@@ -1,0 +1,222 @@
+.
+├── a123.txt
+├── config
+│   ├── __pycache__
+│   │   └── settings.cpython-312.pyc
+│   └── settings.py
+├── data
+│   ├── dedup.db
+│   ├── emerging_themes.json
+│   ├── logs
+│   │   ├── audit_2026-06.jsonl
+│   │   ├── cron_evening.log
+│   │   ├── cron_morning.log
+│   │   ├── ingestion.log
+│   │   ├── russia_evening.log
+│   │   ├── russia_morning.log
+│   │   ├── score_history.jsonl
+│   │   └── weekly.log
+│   ├── processed
+│   │   └── 2026
+│   │       └── 06
+│   │           ├── 2026-06-14_17-00-26_processed.json
+│   │           ├── 2026-06-15_03-30-05_processed.json
+│   │           ├── 2026-06-15_17-00-05_processed.json
+│   │           ├── 2026-06-16_03-30-06_processed.json
+│   │           ├── 2026-06-16_17-00-14_processed.json
+│   │           ├── 2026-06-17_03-30-13_processed.json
+│   │           ├── 2026-06-17_17-00-11_processed.json
+│   │           ├── 2026-06-18_03-30-05_processed.json
+│   │           ├── 2026-06-18_17-00-06_processed.json
+│   │           ├── 2026-06-19_03-30-07_processed.json
+│   │           ├── 2026-06-20_03-30-05_processed.json
+│   │           ├── 2026-06-20_17-00-06_processed.json
+│   │           ├── 2026-06-21_03-30-06_processed.json
+│   │           ├── 2026-06-21_17-00-05_processed.json
+│   │           └── 2026-06-22_03-30-04_processed.json
+│   └── raw
+│       └── 2026
+│           └── 06
+│               ├── 2026-06-14_17-00-26_run.json
+│               ├── 2026-06-15_03-30-05_run.json
+│               ├── 2026-06-15_17-00-05_run.json
+│               ├── 2026-06-16_03-30-06_run.json
+│               ├── 2026-06-16_17-00-14_run.json
+│               ├── 2026-06-17_03-30-13_run.json
+│               ├── 2026-06-17_17-00-11_run.json
+│               ├── 2026-06-18_03-30-05_run.json
+│               ├── 2026-06-18_17-00-06_run.json
+│               ├── 2026-06-19_03-30-07_run.json
+│               ├── 2026-06-20_03-30-05_run.json
+│               ├── 2026-06-20_17-00-06_run.json
+│               ├── 2026-06-21_03-30-06_run.json
+│               ├── 2026-06-21_17-00-05_run.json
+│               └── 2026-06-22_03-30-04_run.json
+├── email_agent
+│   ├── recipients.csv
+│   ├── sender.py
+│   └── send_now.py
+├── focus
+│   ├── emerging.py
+│   ├── __init__.py
+│   └── __pycache__
+│       ├── emerging.cpython-312.pyc
+│       └── __init__.cpython-312.pyc
+├── graph
+│   ├── knowledge_graph.py
+│   ├── kuzu
+│   └── __pycache__
+│       └── knowledge_graph.cpython-312.pyc
+├── guard.py
+├── ingestion
+│   ├── archive_writer.py
+│   ├── article_fetcher.py
+│   ├── audit_logger.py
+│   ├── dedup.py
+│   ├── eia_fetcher.py
+│   ├── gdelt_fetcher.py
+│   ├── __pycache__
+│   │   ├── archive_writer.cpython-312.pyc
+│   │   ├── article_fetcher.cpython-312.pyc
+│   │   ├── audit_logger.cpython-312.pyc
+│   │   ├── dedup.cpython-312.pyc
+│   │   ├── eia_fetcher.cpython-312.pyc
+│   │   ├── gdelt_fetcher.cpython-312.pyc
+│   │   ├── rss_fetcher.cpython-312.pyc
+│   │   └── yfinance_fetcher.cpython-312.pyc
+│   ├── rss_fetcher.py
+│   └── yfinance_fetcher.py
+├── portal
+│   ├── app.py
+│   ├── manage_users.py
+│   └── users.py
+├── prediction
+│   ├── predictor.py
+│   ├── __pycache__
+│   │   ├── predictor.cpython-312.pyc
+│   │   └── scorer.cpython-312.pyc
+│   └── scorer.py
+├── processing
+│   ├── cleaner.py
+│   ├── extractor.py
+│   ├── processed_writer.py
+│   └── __pycache__
+│       ├── cleaner.cpython-312.pyc
+│       ├── extractor.cpython-312.pyc
+│       └── processed_writer.cpython-312.pyc
+├── Procfile
+├── __pycache__
+│   └── guard.cpython-312.pyc
+├── query.py
+├── Readme.md
+├── report
+│   ├── generator_a.py
+│   ├── generator.py
+│   ├── __pycache__
+│   │   ├── generator.cpython-312.pyc
+│   │   ├── russia_generator.cpython-312.pyc
+│   │   └── weekly_generator.cpython-312.pyc
+│   ├── russia_generator.py
+│   └── weekly_generator.py
+├── reports
+│   ├── 2026-06-13_16-12-56_russia_report.md
+│   ├── 2026-06-13_17-15-27_russia_report.docx
+│   ├── 2026-06-13_17-15-27_russia_report.md
+│   ├── 2026-06-14_17-13-25_report.docx
+│   ├── 2026-06-14_17-13-25_report.md
+│   ├── 2026-06-14_17-15-27_russia_report.docx
+│   ├── 2026-06-14_17-15-27_russia_report.md
+│   ├── 2026-06-15_03-45-33_russia_report.docx
+│   ├── 2026-06-15_03-45-33_russia_report.md
+│   ├── 2026-06-15_03-47-54_report.docx
+│   ├── 2026-06-15_03-47-54_report.md
+│   ├── 2026-06-15_17-15-30_russia_report.docx
+│   ├── 2026-06-15_17-15-30_russia_report.md
+│   ├── 2026-06-15_17-20-58_report.docx
+│   ├── 2026-06-15_17-20-58_report.md
+│   ├── 2026-06-16_03-45-13_report.docx
+│   ├── 2026-06-16_03-45-13_report.md
+│   ├── 2026-06-16_03-45-35_russia_report.docx
+│   ├── 2026-06-16_03-45-35_russia_report.md
+│   ├── 2026-06-16_17-15-31_russia_report.docx
+│   ├── 2026-06-16_17-15-31_russia_report.md
+│   ├── 2026-06-16_17-20-01_report.docx
+│   ├── 2026-06-16_17-20-01_report.md
+│   ├── 2026-06-17_03-44-43_report.docx
+│   ├── 2026-06-17_03-44-43_report.md
+│   ├── 2026-06-17_03-45-29_russia_report.docx
+│   ├── 2026-06-17_03-45-29_russia_report.md
+│   ├── 2026-06-17_17-15-27_russia_report.docx
+│   ├── 2026-06-17_17-15-27_russia_report.md
+│   ├── 2026-06-17_17-21-53_report.docx
+│   ├── 2026-06-17_17-21-53_report.md
+│   ├── 2026-06-18_03-44-42_report.docx
+│   ├── 2026-06-18_03-44-42_report.md
+│   ├── 2026-06-18_03-45-28_russia_report.docx
+│   ├── 2026-06-18_03-45-28_russia_report.md
+│   ├── 2026-06-18_17-15-28_russia_report.docx
+│   ├── 2026-06-18_17-15-28_russia_report.md
+│   ├── 2026-06-18_17-21-28_report.docx
+│   ├── 2026-06-18_17-21-28_report.md
+│   ├── 2026-06-19_03-44-35_report.docx
+│   ├── 2026-06-19_03-44-35_report.md
+│   ├── 2026-06-19_03-45-27_russia_report.docx
+│   ├── 2026-06-19_03-45-27_russia_report.md
+│   ├── 2026-06-19_17-15-27_russia_report.docx
+│   ├── 2026-06-19_17-15-27_russia_report.md
+│   ├── 2026-06-20_03-45-32_russia_report.docx
+│   ├── 2026-06-20_03-45-32_russia_report.md
+│   ├── 2026-06-20_03-49-45_report.docx
+│   ├── 2026-06-20_03-49-45_report.md
+│   ├── 2026-06-20_17-07-37_report.docx
+│   ├── 2026-06-20_17-07-37_report.md
+│   ├── 2026-06-20_17-15-27_russia_report.docx
+│   ├── 2026-06-20_17-15-27_russia_report.md
+│   ├── 2026-06-21_03-39-40_report.docx
+│   ├── 2026-06-21_03-39-40_report.md
+│   ├── 2026-06-21_03-45-29_russia_report.docx
+│   ├── 2026-06-21_03-45-29_russia_report.md
+│   ├── 2026-06-21_17-10-13_report.docx
+│   ├── 2026-06-21_17-10-13_report.md
+│   ├── 2026-06-21_17-15-26_russia_report.docx
+│   ├── 2026-06-21_17-15-26_russia_report.md
+│   ├── 2026-06-22_03-42-13_report.docx
+│   ├── 2026-06-22_03-42-13_report.md
+│   ├── 2026-06-22_03-45-31_russia_report.docx
+│   ├── 2026-06-22_03-45-31_russia_report.md
+│   ├── WEEKLY_2026-06-19_17-00-05_report.docx
+│   └── WEEKLY_2026-06-19_17-00-05_report.md
+├── requirements.txt
+├── run_ingestion.py
+├── run_russia_report.py
+├── run_weekly.py
+├── tests
+│   ├── fixture_cycle.json
+│   ├── regression_replay.py
+│   ├── test10.py
+│   ├── test11_oilprice.py
+│   ├── test13.py
+│   ├── test14.py
+│   ├── test2.py
+│   ├── test3.py
+│   ├── test4.py
+│   ├── test5.py
+│   ├── test6.py
+│   ├── test7.py
+│   ├── test8.py
+│   ├── test9.py
+│   ├── test.py
+│   └── tests12.py
+└── vectordb
+    ├── 433db987-c43b-4172-897c-42691e3e29b1
+    │   ├── data_level0.bin
+    │   ├── header.bin
+    │   ├── index_metadata.pickle
+    │   ├── length.bin
+    │   └── link_lists.bin
+    ├── chroma.sqlite3
+    ├── __pycache__
+    │   └── store.cpython-312.pyc
+    └── store.py
+
+31 directories, 189 files

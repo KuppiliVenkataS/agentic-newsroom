@@ -1,283 +1,4 @@
 {
-  "global supply-chain disruption from tariffs and trade friction": {
-    "cycles": 1,
-    "first_seen": "2026-05-31T16:46:37.493621+00:00",
-    "details": {
-      "theme": "Global supply-chain disruption from tariffs and trade friction",
-      "why_it_matters": "Rising US tariffs and trade barriers are disrupting industrial input costs and logistics networks, which can affect refining margins, shipping demand, and downstream energy-intensive manufacturing.",
-      "suggested_keywords": [
-        "US tariffs",
-        "trade friction",
-        "supply chain disruption",
-        "industrial costs"
-      ],
-      "example_headlines": [
-        "The Aluminum Shock Hitting the Global Economy \u2014 The global aluminum market is being squeezed by two powerful forces at once: conflict in the Middle East and rising US tariffs",
-        "EU frets as China builds an industrial base in Morocco \u2014 Billions of dollars of investment raise concerns that subsidised goods could swamp European manufacturers"
-      ]
-    },
-    "last_seen": "2026-05-31T16:46:37.493621+00:00"
-  },
-  "ecb inflation concerns and energy price pass-through": {
-    "cycles": 1,
-    "first_seen": "2026-06-01T04:23:56.018972+00:00",
-    "details": {
-      "theme": "ECB inflation concerns and energy price pass-through",
-      "why_it_matters": "Central bank concern about unanchored inflation from energy shocks could drive tighter monetary policy, affecting global demand and oil prices through economic growth channels.",
-      "suggested_keywords": [
-        "ECB inflation",
-        "energy price pressures",
-        "monetary policy tightening",
-        "demand destruction"
-      ],
-      "example_headlines": [
-        "ECB's Schnabel Sees Risk of Unanchored Inflation Views From War \u2014 The European Central Bank can no longer look through the inflationary impact of the war in Iran as price pressures spread beyond energy",
-        "Jay Powell warns Federal Reserve is undergoing 'stress test'"
-      ]
-    },
-    "last_seen": "2026-06-01T04:23:56.018972+00:00"
-  },
-  "us refinery utilization surge": {
-    "cycles": 1,
-    "first_seen": "2026-06-01T17:26:45.928975+00:00",
-    "details": {
-      "theme": "US refinery utilization surge",
-      "why_it_matters": "High refinery run rates and deferred maintenance reduce crude demand flexibility and could tighten margins if maintenance backlogs create sudden capacity drops.",
-      "suggested_keywords": [
-        "refinery runs",
-        "utilization rates",
-        "maintenance deferrals",
-        "refinery capacity"
-      ],
-      "example_headlines": [
-        "US Crude Refiners Are Pushing Run Rates to Maximum Levels"
-      ]
-    },
-    "last_seen": "2026-06-01T17:26:45.928975+00:00"
-  },
-  "venezuela power crisis affecting oil operations": {
-    "cycles": 1,
-    "first_seen": "2026-06-02T18:42:06.768681+00:00",
-    "details": {
-      "theme": "Venezuela power crisis affecting oil operations",
-      "why_it_matters": "Energy companies forced to self-supply power for oil/gas projects signals deteriorating infrastructure that could constrain production capacity and exports.",
-      "suggested_keywords": [
-        "Venezuela power",
-        "oil production capacity",
-        "energy infrastructure",
-        "PDVSA operations"
-      ],
-      "example_headlines": [
-        "Venezuela Wants Oil Firms to Supply Their Own Power for Projects"
-      ]
-    },
-    "last_seen": "2026-06-02T18:42:06.768681+00:00"
-  },
-  "ukraine strikes on russian oil infrastructure": {
-    "cycles": 1,
-    "first_seen": "2026-06-03T18:43:10.931514+00:00",
-    "details": {
-      "theme": "Ukraine strikes on Russian oil infrastructure",
-      "why_it_matters": "Direct attacks on Russian oil terminals and refining capacity reduce global supply and can disrupt export flows from major producer.",
-      "suggested_keywords": [
-        "Ukraine oil strikes",
-        "St Petersburg terminal",
-        "Russian refinery attacks",
-        "Black Sea exports"
-      ],
-      "example_headlines": [
-        "Ukraine strikes St Petersburg as Putin's forum gets under way \u2014 Kyiv hits oil terminal after deadly Russian strikes on Ukrainian cities"
-      ]
-    },
-    "last_seen": "2026-06-03T18:43:10.931514+00:00"
-  },
-  "asian energy resilience concerns": {
-    "cycles": 1,
-    "first_seen": "2026-06-04T04:13:10.237747+00:00",
-    "details": {
-      "theme": "Asian energy resilience concerns",
-      "why_it_matters": "Asean explicitly flagging energy security as a priority amid Middle East disruptions could drive regional demand shifts and hedging behavior that affects global oil flows and pricing.",
-      "suggested_keywords": [
-        "Asean energy security",
-        "Southeast Asia oil demand",
-        "energy resilience"
-      ],
-      "example_headlines": [
-        "Asean Head Warns of Food Security Challenge \u2014 Asean Secretary-General Kao Kim Hourn says the war in the Middle East is a 'wake-up' call for the bloc to work together to ensure energy resilience and food se"
-      ]
-    },
-    "last_seen": "2026-06-04T04:13:10.237747+00:00"
-  },
-  "asian inflation and central bank tightening": {
-    "cycles": 1,
-    "first_seen": "2026-06-05T04:07:25.144945+00:00",
-    "details": {
-      "theme": "Asian inflation and central bank tightening",
-      "why_it_matters": "Rising oil prices are driving inflation in Asia, forcing central banks toward rate hikes that could dampen economic growth and reduce oil demand in a key consumption region.",
-      "suggested_keywords": [
-        "RBI rate hike",
-        "Asian inflation",
-        "rupee weakness",
-        "oil-driven CPI"
-      ],
-      "example_headlines": [
-        "Philippine CPI Slows to 6.8% as Transport Cost Pressures Ease",
-        "India Rate-Hike Bets Build as Pricey Oil, Weak Rupee Stoke Inflation Risks"
-      ]
-    },
-    "last_seen": "2026-06-05T04:07:25.144945+00:00"
-  },
-  "global shipping route congestion and cost inflation": {
-    "cycles": 1,
-    "first_seen": "2026-06-06T19:39:49.042413+00:00",
-    "details": {
-      "theme": "Global shipping route congestion and cost inflation",
-      "why_it_matters": "Container rate spikes driven by port congestion and fuel costs are raising logistics expenses that could feed into refined product pricing and demand destruction.",
-      "suggested_keywords": [
-        "container rates",
-        "shipping congestion",
-        "Asian ports",
-        "fuel surcharges",
-        "logistics costs"
-      ],
-      "example_headlines": [
-        "Asia-to-US Container Rates Spike 109% Since Iran War Started",
-        "Oil tanker owners fear market crash after Iran war drove record profits"
-      ]
-    },
-    "last_seen": "2026-06-06T19:39:49.042413+00:00"
-  },
-  "tanker fleet overcapacity and rate collapse risk": {
-    "cycles": 1,
-    "first_seen": "2026-06-06T19:39:49.042413+00:00",
-    "details": {
-      "theme": "Tanker fleet overcapacity and rate collapse risk",
-      "why_it_matters": "Shipowners' recent vessel investments during high-rate periods create structural oversupply risk; a sudden rate collapse could signal weakening crude transport demand or route normalization.",
-      "suggested_keywords": [
-        "tanker rates",
-        "vessel overcapacity",
-        "shipping rates decline",
-        "fleet utilization"
-      ],
-      "example_headlines": [
-        "Oil tanker owners fear market crash after Iran war drove record profits"
-      ]
-    },
-    "last_seen": "2026-06-06T19:39:49.042413+00:00"
-  },
-  "jet fuel demand surge and refinery incentives": {
-    "cycles": 1,
-    "first_seen": "2026-06-07T03:34:41.486808+00:00",
-    "details": {
-      "theme": "Jet fuel demand surge and refinery incentives",
-      "why_it_matters": "Rising jet fuel costs are incentivizing refineries to increase production, which affects crude oil demand and refinery utilization rates as a new driver of oil consumption.",
-      "suggested_keywords": [
-        "jet fuel demand",
-        "refinery utilization",
-        "aviation fuel",
-        "kerosene production"
-      ],
-      "example_headlines": [
-        "Etihad to surpass pre-Iran war capacity without price cuts",
-        "IATA Director Willie Walsh on Rising Cost of Jet Fuel"
-      ]
-    },
-    "last_seen": "2026-06-07T03:34:41.486808+00:00"
-  },
-  "aviation fuel demand recovery": {
-    "cycles": 1,
-    "first_seen": "2026-06-07T17:52:01.330654+00:00",
-    "details": {
-      "theme": "Aviation fuel demand recovery",
-      "why_it_matters": "Airlines signaling improved fuel cost environment and industry recovery could drive jet fuel demand and refinery utilization rates.",
-      "suggested_keywords": [
-        "airline fuel demand",
-        "jet fuel",
-        "aviation recovery",
-        "IATA fuel prices"
-      ],
-      "example_headlines": [
-        "Etihad Airways CEO Antonoaldo Neves on Fuel Prices \u2014 'things are coming back'",
-        "United Airlines CEO Discusses Industry Challenges \u2014 At The International Air Transport Association"
-      ]
-    },
-    "last_seen": "2026-06-07T17:52:01.330654+00:00"
-  },
-  "asia coal supply tightening": {
-    "cycles": 1,
-    "first_seen": "2026-06-08T03:53:25.694258+00:00",
-    "details": {
-      "theme": "Asia coal supply tightening",
-      "why_it_matters": "Rising coal prices and supply constraints in Asia can shift energy demand toward oil as a substitute fuel for power generation and industrial use, increasing crude demand in the region.",
-      "suggested_keywords": [
-        "Indonesia coal exports",
-        "Asia coal prices",
-        "coal supply constraints",
-        "energy substitution"
-      ],
-      "example_headlines": [
-        "Asia Coal Prices Rise to 22-Month High on Indonesia Export Rules"
-      ]
-    },
-    "last_seen": "2026-06-08T03:53:25.694258+00:00"
-  },
-  "supertanker fleet expansion": {
-    "cycles": 1,
-    "first_seen": "2026-06-08T18:41:39.987266+00:00",
-    "details": {
-      "theme": "Supertanker fleet expansion",
-      "why_it_matters": "Record orders for new oil supertankers signal expectations of sustained long-distance crude flows, potentially indicating anticipated supply disruptions or route changes that require larger carrying capacity.",
-      "suggested_keywords": [
-        "supertanker orders",
-        "tanker fleet",
-        "crude transport capacity",
-        "shipping demand"
-      ],
-      "example_headlines": [
-        "Giant Oil Supertanker Orders Eclipse Record Set in 2008"
-      ]
-    },
-    "last_seen": "2026-06-08T18:41:39.987266+00:00"
-  },
-  "asian energy demand surge and lng restocking": {
-    "cycles": 1,
-    "first_seen": "2026-06-09T04:12:07.872387+00:00",
-    "details": {
-      "theme": "Asian energy demand surge and LNG restocking",
-      "why_it_matters": "Hotter weather in Asia and European restocking are driving LNG prices to multi-year highs, which can shift global energy mix and compete with oil for heating/power generation demand.",
-      "suggested_keywords": [
-        "LNG prices",
-        "Asian demand",
-        "hotter weather",
-        "restocking",
-        "energy demand"
-      ],
-      "example_headlines": [
-        "Morgan Stanley Sees LNG Upside Risks as Asian Demand Picks Up",
-        "Nifty Swings Rise as War Risk Unnerves India Stock Bulls \u2014 Geopolitics, costlier energy and uncertainty over global growth are weighing on sentiment"
-      ]
-    },
-    "last_seen": "2026-06-09T04:12:07.872387+00:00"
-  },
-  "canadian airline fuel cost crisis and supply chain stress": {
-    "cycles": 1,
-    "first_seen": "2026-06-09T04:12:07.872387+00:00",
-    "details": {
-      "theme": "Canadian airline fuel cost crisis and supply chain stress",
-      "why_it_matters": "Jet fuel cost pressures on North American carriers signal sustained elevated fuel prices and potential logistics constraints affecting regional energy markets.",
-      "suggested_keywords": [
-        "jet fuel costs",
-        "airline fuel",
-        "Canada airlines",
-        "fuel surcharge",
-        "aviation fuel"
-      ],
-      "example_headlines": [
-        "WestJet Slams Canada's Loan Offer to Airlines Hit by Fuel Costs \u2014 WestJet Airlines Ltd. condemned the Canadian government's offer of loans to help carriers hit by high jet fuel costs in the wake of the closing of the Strait of"
-      ]
-    },
-    "last_seen": "2026-06-09T04:12:07.872387+00:00"
-  },
   "fuel subsidy cost pressures in oil-importing nations": {
     "cycles": 1,
     "first_seen": "2026-06-10T04:14:37.496913+00:00",
@@ -367,5 +88,382 @@
       ]
     },
     "last_seen": "2026-06-12T04:14:27.089763+00:00"
+  },
+  "hormuz backlog clearance logistics": {
+    "cycles": 1,
+    "first_seen": "2026-06-15T03:47:54.252477+00:00",
+    "details": {
+      "theme": "Hormuz backlog clearance logistics",
+      "why_it_matters": "Physical bottleneck in vessel queuing and cargo movement could delay supply recovery even after waterway reopens, extending price support longer than deal announcement suggests.",
+      "suggested_keywords": [
+        "Hormuz backlog",
+        "vessel queue",
+        "cargo clearance",
+        "tanker congestion",
+        "Persian Gulf logistics"
+      ],
+      "example_headlines": [
+        "Strait of Hormuz oil backlog could take weeks to clear after US-Iran deal",
+        "Shipowners Seek Clarity on Hormuz Deal as 600 Vessels Eye Exit",
+        "LNG Tanker Heads Toward Hormuz as Deal Lifts Reopening Hopes"
+      ]
+    },
+    "last_seen": "2026-06-15T03:47:54.252477+00:00"
+  },
+  "us manufacturing output decline": {
+    "cycles": 1,
+    "first_seen": "2026-06-15T17:20:58.076373+00:00",
+    "details": {
+      "theme": "US manufacturing output decline",
+      "why_it_matters": "Stalling US manufacturing production, including chemical and petroleum output drops, signals weakening domestic demand for refined products and petrochemicals.",
+      "suggested_keywords": [
+        "US manufacturing output",
+        "chemical production",
+        "petroleum output",
+        "demand weakness"
+      ],
+      "example_headlines": [
+        "US Manufacturing Output Stalls for the First Time This Year \u2014 US manufacturing production stalled in May after four months of gains as a drop in chemical and petroleum output masked ongoing strength in categories tied to t"
+      ]
+    },
+    "last_seen": "2026-06-15T17:20:58.076373+00:00"
+  },
+  "china refinery demand collapse": {
+    "cycles": 1,
+    "first_seen": "2026-06-16T03:45:13.082806+00:00",
+    "details": {
+      "theme": "China refinery demand collapse",
+      "why_it_matters": "Sharp cuts in Chinese refinery output and crude imports to 8-year lows directly reduce global oil demand and could pressure prices if sustained.",
+      "suggested_keywords": [
+        "China refinery output",
+        "China crude imports",
+        "Chinese demand weakness",
+        "refinery utilization China"
+      ],
+      "example_headlines": [
+        "China's Oil Refiners Slash Output After Crude Imports Plunge \u2014 Chinese oil refiners sharply reduced output last month to the weakest level in nearly four years",
+        "China's Consumer Spending Drop Imperils Growth \u2014 China's consumer spending contracted last month for the first time since the pandemic"
+      ]
+    },
+    "last_seen": "2026-06-16T03:45:13.082806+00:00"
+  },
+  "lng project leadership instability": {
+    "cycles": 1,
+    "first_seen": "2026-06-16T03:45:13.082806+00:00",
+    "details": {
+      "theme": "LNG project leadership instability",
+      "why_it_matters": "Abrupt departure of top executive at major LNG project signals potential operational or strategic disruption that could affect global LNG supply and oil-gas market dynamics.",
+      "suggested_keywords": [
+        "LNG project leadership",
+        "Woodside Louisiana",
+        "LNG executive departure",
+        "LNG project disruption"
+      ],
+      "example_headlines": [
+        "Woodside Energy's Louisiana LNG President Abruptly Departs \u2014 The top executive at Woodside Energy Group Ltd.'s $17.5 billion liquefied natural gas project in Louisiana has departed"
+      ]
+    },
+    "last_seen": "2026-06-16T03:45:13.082806+00:00"
+  },
+  "australian lng supply disruption": {
+    "cycles": 1,
+    "first_seen": "2026-06-17T03:44:43.279716+00:00",
+    "details": {
+      "theme": "Australian LNG supply disruption",
+      "why_it_matters": "Industrial action at major LNG export facilities reduces global liquefied natural gas supply and can shift energy demand toward crude oil as a substitute fuel.",
+      "suggested_keywords": [
+        "Australia LNG strikes",
+        "Ichthys LNG",
+        "LNG export disruption",
+        "Inpex strikes"
+      ],
+      "example_headlines": [
+        "Australia LNG Union Reaches Deal to End Strikes at Inpex Plant"
+      ]
+    },
+    "last_seen": "2026-06-17T03:44:43.279716+00:00"
+  },
+  "us crude export surge draining domestic inventories": {
+    "cycles": 1,
+    "first_seen": "2026-06-17T17:21:53.660877+00:00",
+    "details": {
+      "theme": "US crude export surge draining domestic inventories",
+      "why_it_matters": "Rising US oil exports are depleting commercial stockpiles to 2014 lows, tightening domestic supply buffers and potentially constraining refinery feedstock availability.",
+      "suggested_keywords": [
+        "US oil exports",
+        "crude inventory depletion",
+        "commercial storage",
+        "refinery feedstock"
+      ],
+      "example_headlines": [
+        "US Oil Stockpiles Fall to Critical Lows as War Spurs Exports"
+      ]
+    },
+    "last_seen": "2026-06-17T17:21:53.660877+00:00"
+  },
+  "russian refinery disruptions spiking fuel prices": {
+    "cycles": 1,
+    "first_seen": "2026-06-17T17:21:53.660877+00:00",
+    "details": {
+      "theme": "Russian refinery disruptions spiking fuel prices",
+      "why_it_matters": "Ukrainian strikes on Russian refineries are reducing domestic fuel production capacity, pushing retail gasoline prices higher and signaling potential tightness in regional fuel supply.",
+      "suggested_keywords": [
+        "Russian refinery strikes",
+        "fuel supply disruption",
+        "gasoline prices Russia",
+        "refinery capacity loss"
+      ],
+      "example_headlines": [
+        "Russian Gasoline Prices Skyrocket as Ukraine Strikes Refineries"
+      ]
+    },
+    "last_seen": "2026-06-17T17:21:53.660877+00:00"
+  },
+  "fed rate hike cycle impact on oil demand": {
+    "cycles": 1,
+    "first_seen": "2026-06-18T03:44:42.285263+00:00",
+    "details": {
+      "theme": "Fed rate hike cycle impact on oil demand",
+      "why_it_matters": "Hawkish Fed signals and rate rises typically dampen economic growth and reduce oil consumption, offsetting supply-side relief from geopolitical de-escalation.",
+      "suggested_keywords": [
+        "Fed rate hike",
+        "Kevin Warsh",
+        "inflation",
+        "economic growth oil demand",
+        "interest rates crude"
+      ],
+      "example_headlines": [
+        "Fed officials tilt towards rate rise as Kevin Warsh era begins \u2014 US government bonds drop after central bank vows to tame jolt of inflation triggered by Iran war",
+        "Gold Jumps as Peace Deal Optimism Counters Hawkish Fed \u2014 Gold rose, supported by the signing of an interim peace deal between the US and Iran, even as the Federal Reserve signaled a rate hike later in the year.",
+        "US Futures Climb as Iran Deal Offsets Hawkish Fed: Markets Wrap"
+      ]
+    },
+    "last_seen": "2026-06-18T03:44:42.285263+00:00"
+  },
+  "anticipated persian gulf supply glut": {
+    "cycles": 1,
+    "first_seen": "2026-06-18T03:44:42.285263+00:00",
+    "details": {
+      "theme": "Anticipated Persian Gulf supply glut",
+      "why_it_matters": "Multiple sources indicate market focus has shifted from shortage fears to oversupply concerns as Hormuz transit normalizes, which could pressure crude prices if supply ramps faster than demand recovery.",
+      "suggested_keywords": [
+        "oil glut",
+        "Persian Gulf supply",
+        "oversupply",
+        "Hormuz transit ramp-up",
+        "supply surplus"
+      ],
+      "example_headlines": [
+        "How the oil market shrugged off the Iran crisis \u2014 Fears of summer shortages and $200 oil have been replaced by a focus on looming gluts",
+        "Oil Slides as Trump's Hormuz Agreement Lifts Outlook for Supply \u2014 Oil fell as an interim US-Iran peace deal went into effect, putting the focus on how quickly transits through the Strait of Hormuz can be ramped up"
+      ]
+    },
+    "last_seen": "2026-06-18T03:44:42.285263+00:00"
+  },
+  "asian refinery export surge and fuel market dynamics": {
+    "cycles": 1,
+    "first_seen": "2026-06-19T03:44:35.235373+00:00",
+    "details": {
+      "theme": "Asian refinery export surge and fuel market dynamics",
+      "why_it_matters": "East Asian refineries ramping up fuel exports after supply constraints could shift regional fuel pricing, margins, and crude demand patterns as they front-run market opportunities.",
+      "suggested_keywords": [
+        "Asian refinery exports",
+        "fuel exports East Asia",
+        "refinery margins Asia",
+        "crude demand Asia"
+      ],
+      "example_headlines": [
+        "East Asian Refiners Eye Fuel Sale Boost as Hormuz Reopens",
+        "S. Korean Producer Prices Rise Most Since 2022 on Energy Costs"
+      ]
+    },
+    "last_seen": "2026-06-19T03:44:35.235373+00:00"
+  },
+  "iraq production ramp-up post-deal": {
+    "cycles": 1,
+    "first_seen": "2026-06-20T17:07:37.676608+00:00",
+    "details": {
+      "theme": "Iraq production ramp-up post-deal",
+      "why_it_matters": "Iraq is actively increasing crude output to 3+ million bpd following US-Iran de-escalation, directly adding supply to global markets and potentially pressuring prices.",
+      "suggested_keywords": [
+        "Iraq oil production",
+        "Iraqi crude output",
+        "Basra crude",
+        "Iraq fields expansion"
+      ],
+      "example_headlines": [
+        "Iraq Tells Oil Fields to Start Lifting Output After US-Iran Deal"
+      ]
+    },
+    "last_seen": "2026-06-20T17:07:37.676608+00:00"
+  },
+  "super el ni\u00f1o climate impacts": {
+    "cycles": 1,
+    "first_seen": "2026-06-21T03:39:40.116030+00:00",
+    "details": {
+      "theme": "Super El Ni\u00f1o climate impacts",
+      "why_it_matters": "Extreme weather patterns from Super El Ni\u00f1o can disrupt oil production, refining, and shipping logistics across multiple regions simultaneously.",
+      "suggested_keywords": [
+        "El Ni\u00f1o",
+        "climate risk",
+        "weather disruption",
+        "production impact",
+        "logistics"
+      ],
+      "example_headlines": [
+        "A Stock Trader's Guide to Navigating a Rare 'Super El Ni\u00f1o'"
+      ]
+    },
+    "last_seen": "2026-06-21T03:39:40.116030+00:00"
+  },
+  "russia fuel supply disruption from drone attacks": {
+    "cycles": 1,
+    "first_seen": "2026-06-21T17:10:13.964452+00:00",
+    "details": {
+      "theme": "Russia fuel supply disruption from drone attacks",
+      "why_it_matters": "Widespread fuel shortages across 50+ Russian regions reduce refining capacity and logistics availability, constraining crude processing and export infrastructure.",
+      "suggested_keywords": [
+        "Russia fuel shortage",
+        "Russian refinery drone",
+        "Russia energy infrastructure attack",
+        "Russian fuel depot"
+      ],
+      "example_headlines": [
+        "Fuel Shortages in Russia Amid Ukraine Drone Attacks \u2014 Over 50 regions in Russia are currently experiencing severe fuel shortages",
+        "Putin's war machine sputters in drone age \u2014 Ukraine's innovations cut into Russia's manpower advantage"
+      ]
+    },
+    "last_seen": "2026-06-21T17:10:13.964452+00:00"
+  },
+  "qatar lng export restart and tanker logistics": {
+    "cycles": 1,
+    "first_seen": "2026-06-22T03:42:13.975407+00:00",
+    "details": {
+      "theme": "Qatar LNG export restart and tanker logistics",
+      "why_it_matters": "Qatar restarting LNG shipments accounting for ~20% of global supply requires functioning Hormuz transit and affects global gas-to-oil switching demand.",
+      "suggested_keywords": [
+        "Qatar LNG",
+        "LNG exports",
+        "tanker logistics",
+        "global LNG supply",
+        "gas demand"
+      ],
+      "example_headlines": [
+        "Qatar Brings Empty LNG Ships Through Hormuz as Exports Rise"
+      ]
+    },
+    "last_seen": "2026-06-22T03:42:13.975407+00:00"
+  },
+  "colombia political shift and energy policy uncertainty": {
+    "cycles": 1,
+    "first_seen": "2026-06-22T03:42:13.975407+00:00",
+    "details": {
+      "theme": "Colombia political shift and energy policy uncertainty",
+      "why_it_matters": "Election of Trump-aligned populist outsider in Colombia creates uncertainty around oil production policy and investment in a major Western Hemisphere producer.",
+      "suggested_keywords": [
+        "Colombia election",
+        "Abelardo de la Espriella",
+        "Colombian oil policy",
+        "energy investment Colombia"
+      ],
+      "example_headlines": [
+        "Rightwing populist 'El Tigre' wins Colombia election"
+      ]
+    },
+    "last_seen": "2026-06-22T03:42:13.975407+00:00"
+  },
+  "ai-driven fuel pricing mechanisms": {
+    "cycles": 1,
+    "first_seen": "2026-06-22T17:21:01.694850+00:00",
+    "details": {
+      "theme": "AI-driven fuel pricing mechanisms",
+      "why_it_matters": "Algorithmic price-setting at retail level could amplify or dampen demand volatility and create new price discovery inefficiencies in downstream markets.",
+      "suggested_keywords": [
+        "AI pricing",
+        "algorithmic fuel pricing",
+        "gas station pricing",
+        "retail fuel automation"
+      ],
+      "example_headlines": [
+        "Gas Stations Accused of Using AI to Inflate Prices in California"
+      ]
+    },
+    "last_seen": "2026-06-22T17:21:01.694850+00:00"
+  },
+  "lng demand diversification and us export expansion": {
+    "cycles": 1,
+    "first_seen": "2026-06-22T17:21:01.694850+00:00",
+    "details": {
+      "theme": "LNG demand diversification and US export expansion",
+      "why_it_matters": "Increased international buyer interest in US LNG (beyond traditional markets) signals growing demand for liquefied gas and potential tightening of global supply chains that can affect crude demand.",
+      "suggested_keywords": [
+        "US LNG exports",
+        "LNG trading",
+        "liquefied natural gas demand",
+        "energy transition fuel"
+      ],
+      "example_headlines": [
+        "Centrica CEO Eyes US for More LNG Deals and Trading Expansion"
+      ]
+    },
+    "last_seen": "2026-06-22T17:21:01.694850+00:00"
+  },
+  "middle east supply recovery expectations": {
+    "cycles": 1,
+    "first_seen": "2026-06-23T03:44:02.917430+00:00",
+    "details": {
+      "theme": "Middle East supply recovery expectations",
+      "why_it_matters": "Peace talk progress is creating market expectations of restored oil production and export capacity from major regional producers, which could increase global supply and pressure prices downward.",
+      "suggested_keywords": [
+        "middle east supply",
+        "regional production recovery",
+        "export capacity return",
+        "peace dividend oil"
+      ],
+      "example_headlines": [
+        "Aluminum Falls as Peace Talk Progress Points to Returning Supply",
+        "Iran Oil Waiver Offers Lifeline to Tehran as Talks Proceed"
+      ]
+    },
+    "last_seen": "2026-06-23T03:44:02.917430+00:00"
+  },
+  "russia refinery capacity loss": {
+    "cycles": 1,
+    "first_seen": "2026-06-23T17:19:47.497878+00:00",
+    "details": {
+      "theme": "Russia refinery capacity loss",
+      "why_it_matters": "Sustained Ukrainian attacks on Russian refineries are reducing domestic fuel production and forcing export restrictions, tightening global refined product markets and potentially raising prices for diesel and gasoline.",
+      "suggested_keywords": [
+        "Russia gasoline crunch",
+        "refinery attacks",
+        "fuel rationing",
+        "diesel export ban",
+        "refinery capacity"
+      ],
+      "example_headlines": [
+        "Russia's Gasoline Crunch Spreads After Refinery Attacks",
+        "Russia Considers Diesel-Export Ban on Ukraine Refinery Attacks"
+      ]
+    },
+    "last_seen": "2026-06-23T17:19:47.497878+00:00"
+  },
+  "latin american oil expansion": {
+    "cycles": 1,
+    "first_seen": "2026-06-23T17:19:47.497878+00:00",
+    "details": {
+      "theme": "Latin American oil expansion",
+      "why_it_matters": "Pemex and Petrobras joint ventures to expand discovery, production, and refining could increase Western Hemisphere crude supply and alter regional refining economics over medium term.",
+      "suggested_keywords": [
+        "Pemex",
+        "Petrobras",
+        "Latin America oil",
+        "refining expansion",
+        "Mexico Brazil"
+      ],
+      "example_headlines": [
+        "Pemex and Petrobras to Team Up on Oil and Refining Projects"
+      ]
+    },
+    "last_seen": "2026-06-23T17:19:47.497878+00:00"
   }
 }
