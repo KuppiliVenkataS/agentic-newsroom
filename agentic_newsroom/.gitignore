@@ -12,7 +12,10 @@ data/
 
 
 __pycache__
-vectordb/
+vectordb/__pycache__/
+vectordb/433db987-c43b-4172-897c-42691e3e29b1/
+vectordb/chroma.sqlite3
+vectordb/chroma.sqlite3-journal
 reports/
 
 
