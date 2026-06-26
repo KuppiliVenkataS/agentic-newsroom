@@ -250,7 +250,7 @@ def run():
         kg         = KnowledgeGraph()
         added      = kg.add_articles(enriched)
         logger.info(f"Knowledge graph: {added} articles added")
-        prediction = generate_prediction(kg, market_data=market_data, articles=articles)
+        prediction = generate_prediction(kg, market_data=market_data, articles=enriched)
         logger.info(f"Prediction: {prediction['direction']} ({prediction['confidence']}) score={prediction['score']}")
     except Exception as exc:
         msg = f"Prediction failed: {exc}"

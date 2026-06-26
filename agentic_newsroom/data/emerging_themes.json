@@ -1,57 +1,4 @@
 {
-  "fuel subsidy cost pressures in oil-importing nations": {
-    "cycles": 1,
-    "first_seen": "2026-06-10T04:14:37.496913+00:00",
-    "details": {
-      "theme": "Fuel subsidy cost pressures in oil-importing nations",
-      "why_it_matters": "Rising crude prices from Middle East tensions are forcing oil-importing governments to increase fuel subsidy spending, which may force fiscal retrenchment or subsidy cuts that could dampen demand.",
-      "suggested_keywords": [
-        "fuel subsidy",
-        "fiscal deficit",
-        "oil-importing countries",
-        "subsidy burden"
-      ],
-      "example_headlines": [
-        "Malaysia Minister on Fuel Subsidy, Deficit Goals \u2014 Malaysia may not meet its fiscal deficit targets for 2026 as the Iran war drives up the cost of fuel subsidies"
-      ]
-    },
-    "last_seen": "2026-06-10T04:14:37.496913+00:00"
-  },
-  "asia coal substitution for oil": {
-    "cycles": 1,
-    "first_seen": "2026-06-10T18:40:05.186932+00:00",
-    "details": {
-      "theme": "Asia coal substitution for oil",
-      "why_it_matters": "Energy-starved Asian countries shifting from oil to coal signals reduced oil demand in a major consumption region, potentially pressuring prices.",
-      "suggested_keywords": [
-        "Asia coal demand",
-        "oil substitution",
-        "energy alternatives",
-        "coal shipping"
-      ],
-      "example_headlines": [
-        "Oil Crunch Is Stoking Asia's Demand for Coal, Shipping CEO Says"
-      ]
-    },
-    "last_seen": "2026-06-10T18:40:05.186932+00:00"
-  },
-  "us inflation spike from middle east energy shock": {
-    "cycles": 1,
-    "first_seen": "2026-06-10T18:40:05.186932+00:00",
-    "details": {
-      "theme": "US inflation spike from Middle East energy shock",
-      "why_it_matters": "Inflation jump to 4.2% attributed to Middle East energy disruption suggests sustained oil price elevation is feeding into broader economy, affecting demand elasticity.",
-      "suggested_keywords": [
-        "energy shock inflation",
-        "Middle East oil prices",
-        "US CPI energy component"
-      ],
-      "example_headlines": [
-        "US inflation jumped to 4.2% in May amid Middle East energy shock"
-      ]
-    },
-    "last_seen": "2026-06-10T18:40:05.186932+00:00"
-  },
   "asian chip sector demand surge": {
     "cycles": 1,
     "first_seen": "2026-06-12T04:14:27.089763+00:00",
@@ -465,5 +412,42 @@
       ]
     },
     "last_seen": "2026-06-23T17:19:47.497878+00:00"
+  },
+  "strait of hormuz transit disruption": {
+    "cycles": 1,
+    "first_seen": "2026-06-25T17:51:23.635335+00:00",
+    "details": {
+      "theme": "Strait of Hormuz transit disruption",
+      "why_it_matters": "Multiple reports of ships being turned back or struck in the Strait suggest a new pattern of maritime obstruction that could physically block oil transit through the world's most critical chokepoint.",
+      "suggested_keywords": [
+        "Hormuz transit",
+        "ship strikes Hormuz",
+        "vessel diversions",
+        "maritime obstruction"
+      ],
+      "example_headlines": [
+        "Iran tells ships in Strait of Hormuz to turn back",
+        "Ship Struck in Hormuz as Oil Supertankers Turn Back Again"
+      ]
+    },
+    "last_seen": "2026-06-25T17:51:23.635335+00:00"
+  },
+  "opec production allocation pressure": {
+    "cycles": 1,
+    "first_seen": "2026-06-25T17:51:23.635335+00:00",
+    "details": {
+      "theme": "OPEC production allocation pressure",
+      "why_it_matters": "Iraq's request to pump more oil due to export losses signals internal OPEC tension over quota compliance and production levels during supply constraints.",
+      "suggested_keywords": [
+        "OPEC quota",
+        "Iraq oil production",
+        "OPEC allocation",
+        "crude export capacity"
+      ],
+      "example_headlines": [
+        "Iraq pushes Opec to let it pump more oil"
+      ]
+    },
+    "last_seen": "2026-06-25T17:51:23.635335+00:00"
   }
 }
