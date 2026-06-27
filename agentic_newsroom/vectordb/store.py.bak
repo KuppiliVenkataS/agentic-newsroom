@@ -38,16 +38,8 @@ ANTHROPIC_API_KEY = os.getenv("ANTHROPIC_API_KEY", "")
 # ── Recency-decay and staleness-exemption tuning ────────────────────────────
 RECENCY_HALF_LIFE_DAYS   = 3.5   # importance contribution halves every ~3.5 days
 HARD_CUTOFF_DAYS         = 7     # candidates older than this are dropped by default
-HIGH_IMPORTANCE_FLOOR    = 0.6   # importance >= this MAY be exempted from HARD_CUTOFF_DAYS
-                                  # if still being actively corroborated (see below)
-ABSOLUTE_CEILING_DAYS    = 30    # nothing survives past this, regardless of importance
-                                  # or corroboration — a hard backstop so no story can
-                                  # persist forever just because nothing contradicted it
-FRESH_UPDATE_WINDOW_DAYS = 1      # window checked for active corroboration (tightened
-                                  # from 2 days — "developing" means continuous coverage,
-                                  # not just something related happened in the last 48h)
-FRESH_UPDATE_SIMILARITY_MIN = 0.65  # tightened from 0.55 — must be substantively the
-                                  # same claim, not just nearby in embedding space
+HIGH_IMPORTANCE_FLOOR    = 0.7   # matches the prompt's "HIGH-IMPORTANCE EVENTS" threshold
+FRESH_UPDATE_WINDOW_DAYS = 2      # window checked for a possible fresher update on the same topic
 
 
 def _parse_published(published: str):
@@ -234,22 +226,17 @@ class VectorStore:
         Recency handling:
         - importance contribution decays with an exponential half-life of
           RECENCY_HALF_LIFE_DAYS, so old "breaking" stories stop dominating.
-        - candidates older than HARD_CUTOFF_DAYS are dropped UNLESS they are
-          high-importance (>= HIGH_IMPORTANCE_FLOOR), and even then only if
-          age <= ABSOLUTE_CEILING_DAYS — nothing survives past the absolute
-          ceiling regardless of importance or corroboration status.
-        - within that window, exemption requires ACTIVE corroboration: a
-          fresh same-topic article within FRESH_UPDATE_WINDOW_DAYS, at
-          similarity >= FRESH_UPDATE_SIMILARITY_MIN. If found and the fresh
-          article does NOT contradict the older claim, the older article is
-          exempted at a moderate floor score (genuinely still developing).
-        - if no fresh corroboration exists but the article is still within
-          ABSOLUTE_CEILING_DAYS, it's kept as a "grace period" candidate at
-          a lower floor score — distinct from active development, since
-          coverage has gone quiet, but not yet old enough to drop outright.
-        - if a fresh same-topic article DOES exist and a Haiku call confirms
-          it contradicts/supersedes the older claim, the older candidate is
-          dropped entirely (the fresh one surfaces on its own merits).
+        - candidates older than HARD_CUTOFF_DAYS are dropped UNLESS they
+          are high-importance (>= HIGH_IMPORTANCE_FLOOR) AND no fresher
+          same-topic article exists within FRESH_UPDATE_WINDOW_DAYS days
+          (checked via a second similarity query) — these are treated as
+          still-developing stories with no update and exempted at a floor
+          score rather than decayed to zero.
+        - if a fresher same-topic article DOES exist, a Haiku call checks
+          whether it contradicts/supersedes the older claim. If yes, the
+          older candidate is dropped (the fresher one will surface on its
+          own merits). If no, the normal hard cutoff applies — old news
+          with nothing new to say has no reason to be exempted.
 
         Args:
             query:          natural language query
@@ -300,23 +287,6 @@ class VectorStore:
             else:
                 decay = math.exp(-age / RECENCY_HALF_LIFE_DAYS)
 
-            # ── Staleness gating ─────────────────────────────────────────
-            # 1. ABSOLUTE_CEILING_DAYS is a hard backstop — nothing survives
-            #    past this, regardless of importance or corroboration. This
-            #    exists specifically so a high-importance "still developing"
-            #    story (e.g. Hormuz reopening) cannot persist forever just
-            #    because nothing has explicitly contradicted it.
-            # 2. Below the ceiling but past HARD_CUTOFF_DAYS: only
-            #    importance >= HIGH_IMPORTANCE_FLOOR is even considered for
-            #    exemption, and exemption requires ACTIVE corroboration
-            #    (a fresh same-topic article within FRESH_UPDATE_WINDOW_DAYS,
-            #    checked below) — not just "nothing contradicted it yet".
-            #    If corroboration has gone quiet, the story falls back to a
-            #    grace-period candidate (kept, but at a floor score) rather
-            #    than being exempted as if it were still actively breaking.
-            if age is not None and age > ABSOLUTE_CEILING_DAYS:
-                continue  # past the absolute ceiling — drop, no exceptions
-
             if age is not None and age > HARD_CUTOFF_DAYS:
                 if importance >= HIGH_IMPORTANCE_FLOOR:
                     candidate["_exemption_candidate"] = True
@@ -328,12 +298,8 @@ class VectorStore:
             candidate["_decay"] = decay
             candidates.append(candidate)
 
-        # Resolve exemption candidates: check for ACTIVE corroboration (a
-        # fresh same-topic article within the tightened window). Active
-        # corroboration -> stays exempt at full strength (still genuinely
-        # developing). No corroboration -> falls back to a grace-period slot,
-        # kept only because it's still within ABSOLUTE_CEILING_DAYS, scored at
-        # a floor rather than treated as breaking news. Contradicted -> dropped.
+        # Resolve exemption candidates: check for a fresher update, and if
+        # found, check whether it contradicts/supersedes the older claim.
         kept = []
         for c in candidates:
             if not c.get("_exemption_candidate"):
@@ -342,18 +308,14 @@ class VectorStore:
 
             fresh = self._find_fresh_update(c, now)
             if fresh is None:
-                # No active corroboration. Already confirmed age <=
-                # ABSOLUTE_CEILING_DAYS (checked above), so this is the grace
-                # period: kept, but scored at a floor — it's no longer being
-                # actively reported on, just hasn't been explicitly
-                # contradicted either. Distinguish in the log from a truly
-                # still-developing story.
-                c["_decay"] = max(c["_decay"], 0.2)
+                # Still-developing story, no newer reporting on it at all —
+                # exempt from the cutoff, but score at a floor (not boosted
+                # as if it were fresh breaking news).
+                c["_decay"] = max(c["_decay"], 0.3)
                 kept.append(c)
                 logger.info(
-                    f"Grace-period keep (no active corroboration, within "
-                    f"{ABSOLUTE_CEILING_DAYS}d ceiling) — age={c['_age_days']:.1f}d, "
-                    f"importance={c['_importance']:.2f}: "
+                    f"Exempting stale high-importance article from cutoff "
+                    f"(age={c['_age_days']:.1f}d, importance={c['_importance']:.2f}): "
                     f"{c['metadata'].get('title', '')[:80]}"
                 )
                 continue
@@ -367,14 +329,11 @@ class VectorStore:
                 continue  # drop — the fresh article supersedes it and will
                           # surface on its own merits
             else:
-                # Actively corroborated AND not contradicted — genuinely
-                # still developing. Exempt at a higher floor than the grace
-                # period, reflecting real ongoing relevance.
-                c["_decay"] = max(c["_decay"], 0.3)
-                kept.append(c)
+                # Fresher coverage exists but doesn't contradict it — it's
+                # just old news with nothing new to add. Normal cutoff applies.
                 logger.info(
-                    f"Exempting actively-corroborated high-importance article "
-                    f"(age={c['_age_days']:.1f}d, importance={c['_importance']:.2f}): "
+                    f"Dropping stale article past cutoff with non-contradicting "
+                    f"fresher coverage available (age={c['_age_days']:.1f}d): "
                     f"{c['metadata'].get('title', '')[:80]}"
                 )
                 continue
@@ -422,8 +381,8 @@ class VectorStore:
             if age is None or age > FRESH_UPDATE_WINDOW_DAYS:
                 continue
             sim = 1 - results["distances"][0][i]
-            if sim < FRESH_UPDATE_SIMILARITY_MIN:
-                # Not actually the same claim, just nearby in embedding space.
+            if sim < 0.55:
+                # Not actually the same topic, just nearby in embedding space.
                 continue
             if best is None or sim > best["score"]:
                 best = {

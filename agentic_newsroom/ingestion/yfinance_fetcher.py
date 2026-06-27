@@ -47,9 +47,22 @@ def fetch_live_prices() -> list[dict]:
         try:
             ticker = yf.Ticker(ticker_symbol)
 
-            # Try fast_info first — single network call, real-time price
-            fast = ticker.fast_info
-            price = getattr(fast, "last_price", None)
+            # Try fast_info first — single network call, real-time price.
+            # Isolated in its own try/except: yfinance's fast_info has a
+            # known bug (KeyError: 'currentTradingPeriod') triggered by
+            # certain Yahoo Finance response shapes — see
+            # github.com/ranaroussi/yfinance/issues/2348. When that hits,
+            # fall through to the history() fallback below instead of
+            # losing the whole ticker for the cycle.
+            try:
+                fast = ticker.fast_info
+                price = getattr(fast, "last_price", None)
+            except Exception as fast_exc:
+                logger.warning(
+                    f"  {label} ({ticker_symbol}): fast_info failed "
+                    f"({fast_exc}) — falling back to history()"
+                )
+                price = None
 
             # Fallback: pull last 5 days of 1h bars and take the most recent close
             if not price:
