@@ -21,6 +21,7 @@ DB location: STORAGE_ROOT/graph/
 """
 
 import logging
+from datetime import datetime, timezone, timedelta
 from pathlib import Path
 
 import kuzu
@@ -305,18 +306,50 @@ class KnowledgeGraph:
             })
         return rows
 
-    def query_signal_summary(self) -> dict:
-        """Count of bullish/bearish/neutral articles."""
+    def query_signal_summary(self, window_hours: int | None = 24) -> dict:
+        """
+        Count of bullish/bearish/neutral articles.
+
+        window_hours: if set (default 24), only counts articles published
+        within the last N hours. If None, returns the lifetime cumulative
+        count across the whole knowledge graph — useful for diagnostics,
+        but NOT what a per-cycle "News Sentiment" display should show.
+
+        Filtering happens in Python rather than Cypher because `published`
+        is stored as a plain STRING (no native date arithmetic in this
+        Kuzu schema) — same parsing approach as vectordb/store.py's
+        _age_days() for consistency.
+        """
         result = self.conn.execute("""
             MATCH (a:Article)
-            RETURN a.direction AS direction, COUNT(a) AS count
-            ORDER BY count DESC
+            RETURN a.direction AS direction, a.published AS published
         """)
-        summary = {}
+
+        cutoff = None
+        if window_hours is not None:
+            cutoff = datetime.now(timezone.utc) - timedelta(hours=window_hours)
+
+        summary: dict[str, int] = {}
         while result.has_next():
             row = result.get_next()
-            if row[0]:
-                summary[row[0]] = row[1]
+            direction, published = row[0], row[1]
+            if not direction:
+                continue
+
+            if cutoff is not None:
+                if not published:
+                    continue  # no timestamp — can't confirm it's in-window, skip
+                try:
+                    pub_dt = datetime.fromisoformat(published.replace("Z", "+00:00"))
+                    if pub_dt.tzinfo is None:
+                        pub_dt = pub_dt.replace(tzinfo=timezone.utc)
+                except (ValueError, TypeError):
+                    continue  # unparseable — skip rather than miscounting
+                if pub_dt < cutoff:
+                    continue
+
+            summary[direction] = summary.get(direction, 0) + 1
+
         return summary
 
     def query_high_urgency_events(self, limit: int = 10) -> list[dict]:

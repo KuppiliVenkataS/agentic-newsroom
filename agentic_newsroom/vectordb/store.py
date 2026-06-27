@@ -87,6 +87,21 @@ class VectorStore:
             metadata={"hnsw:space": "cosine"}
         )
 
+        # Cache for contradiction-check verdicts within this VectorStore
+        # instance's lifetime (i.e. one report-generation run). Without this,
+        # the SAME old/fresh article pair can be asked to Haiku multiple
+        # times across different search_important() calls in one run (e.g.
+        # the report builds several queries, and a high-importance article
+        # can surface as an exemption-candidate in more than one), and since
+        # the contradiction check is an LLM call, it is not guaranteed to
+        # return the identical verdict each time even at temperature=0.0 —
+        # observed in production logs flip-flopping "dropped" / "exempted" /
+        # "dropped" for the same article within one run. Caching the first
+        # verdict per pair makes the exemption decision consistent within a
+        # single run, rather than depending on which call happened to land
+        # last.
+        self._contradiction_cache: dict[tuple[str, str], bool] = {}
+
         logger.info(f"Vector store ready. Collection size: {self.collection.count()} chunks")
 
     def _chunk_id(self, url: str, chunk_index: int) -> str:
@@ -438,9 +453,31 @@ class VectorStore:
         Ask Haiku whether fresh_article contradicts, reverses, or supersedes
         the factual claim in old_article. Returns True if it does.
 
+        Cached per (old_chunk, fresh_chunk) pair for this VectorStore
+        instance's lifetime — see __init__ for why. The cache key is a hash
+        of both chunk texts (no stable article ID exists in metadata), so a
+        repeat call with the same pair returns the same verdict without a
+        second API call.
+
         Fails safe: on any API/parsing error, returns True (treat as
         contradicted/superseded) so a stale high-importance story is never
         silently exempted from the cutoff just because the check broke.
+        """
+        cache_key = (
+            hashlib.sha256(old_article["chunk"].encode()).hexdigest()[:16],
+            hashlib.sha256(fresh_article["chunk"].encode()).hexdigest()[:16],
+        )
+        if cache_key in self._contradiction_cache:
+            return self._contradiction_cache[cache_key]
+
+        verdict = self._check_contradiction_uncached(old_article, fresh_article)
+        self._contradiction_cache[cache_key] = verdict
+        return verdict
+
+    def _check_contradiction_uncached(self, old_article: dict, fresh_article: dict) -> bool:
+        """
+        Actual Haiku call — see _check_contradiction for the cached wrapper
+        that should be called instead in all normal code paths.
         """
         if not ANTHROPIC_API_KEY:
             logger.warning("No ANTHROPIC_API_KEY set — cannot run contradiction "

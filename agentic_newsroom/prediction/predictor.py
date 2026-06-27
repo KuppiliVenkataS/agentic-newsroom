@@ -160,12 +160,15 @@ def _sentiment_signal(kg: KnowledgeGraph, enriched_articles: list[dict] = None) 
                     bearish_w += weight
 
     # Fall back to flat KG counts when no enriched data
+    used_fallback = False
+    fallback_summary = {}
     if bullish_w == 0 and bearish_w == 0:
-        summary = kg.query_signal_summary()
-        bullish_w = float(summary.get("bullish", 0))
-        bearish_w = float(summary.get("bearish", 0))
-        article_count = int(summary.get("bullish", 0) + summary.get("bearish", 0)
-                            + summary.get("neutral", 0) + summary.get("unclear", 0))
+        used_fallback = True
+        fallback_summary = kg.query_signal_summary()
+        bullish_w = float(fallback_summary.get("bullish", 0))
+        bearish_w = float(fallback_summary.get("bearish", 0))
+        article_count = int(fallback_summary.get("bullish", 0) + fallback_summary.get("bearish", 0)
+                            + fallback_summary.get("neutral", 0) + fallback_summary.get("unclear", 0))
 
     total_w = bullish_w + bearish_w
     if total_w == 0:
@@ -174,17 +177,30 @@ def _sentiment_signal(kg: KnowledgeGraph, enriched_articles: list[dict] = None) 
     score = (bullish_w - bearish_w) / total_w
     reliability = "high" if article_count >= 20 else "medium" if article_count >= 10 else "low"
 
+    # Display counts must reflect whichever source actually produced the
+    # score above. If the flat-KG fallback fired, re-deriving "bullish"/
+    # "bearish" from enriched_articles would show 0/0 next to a non-zero
+    # score (enriched_articles had no qualifying chunks — that's WHY the
+    # fallback fired) — misleading in the report. Use the fallback's own
+    # counts in that case instead.
+    if used_fallback:
+        bullish_count = int(fallback_summary.get("bullish", 0))
+        bearish_count = int(fallback_summary.get("bearish", 0))
+    else:
+        bullish_count = sum(1 for a in (enriched_articles or []) for c in a.get("extraction", [])
+                            if c.get("price_signals", {}).get("direction") == "bullish")
+        bearish_count = sum(1 for a in (enriched_articles or []) for c in a.get("extraction", [])
+                            if c.get("price_signals", {}).get("direction") == "bearish")
+
     return score, {
         "bullish_w":   round(bullish_w, 3),
         "bearish_w":   round(bearish_w, 3),
-        "bullish":     sum(1 for a in (enriched_articles or []) for c in a.get("extraction", [])
-                          if c.get("price_signals", {}).get("direction") == "bullish"),
-        "bearish":     sum(1 for a in (enriched_articles or []) for c in a.get("extraction", [])
-                          if c.get("price_signals", {}).get("direction") == "bearish"),
+        "bullish":     bullish_count,
+        "bearish":     bearish_count,
         "articles":    article_count,
         "score":       round(score, 3),
         "reliability": reliability,
-        "method":      "weighted" if enriched_articles else "flat_kg",
+        "method":      "flat_kg" if used_fallback else "weighted",
     }
 
 
